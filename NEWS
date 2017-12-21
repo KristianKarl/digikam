@@ -138,5 +138,63 @@ BUGFIXES FROM BUGZILLA:
 127 ==> 201772 - Slogan reflects poorly on the application capabilities.
 128 ==> 091542 - Add a keyboard shortcut for JPEG lossless rotation in album view.
 129 ==> 292578 - Windows 7 prof. 32Bits, Context Menu not fully visible.
-130 ==> 
-
+130 ==> 269084 - Crash when editing Geo-Location.
+131 ==> 229900 - digiKam crashed when moving folders into another folder.
+132 ==> 348756 - Crash on Startup.
+133 ==> 232221 - digiKam crashed while editing a photo.
+134 ==> 354468 - digiKam crashing when try to open color effects. No crash info.
+135 ==> 284141 - Crash while adjusting luminosity levels.
+136 ==> 334987 - Crashes during import from Nikon coolpix S01.
+137 ==> 340934 - Crash while starting image viewer with pictures selected by stars.
+138 ==> 298635 - Crashes when deleting.
+139 ==> 307745 - Crash while scanning at startup.
+140 ==> 222044 - crash on importing images from USB camera.
+141 ==> 208315 - digiKam did not create a new folder.
+142 ==> 237773 - Crash while download pictures mobile phone camera Samsung.
+143 ==> 222048 - digiKam doesnt start anymore having JPEG2000 picture in database.
+144 ==> 209455 - After slideshow screen blanks after 1 minute.
+145 ==> 130986 - Non-image files appear broken in html gallery.
+146 ==> 210756 - Rename dialog should not force to add numbers.
+147 ==> 387514 - Importing regular images from Canon EOS 600D crashes digikam.
+148 ==> 222047 - Crash while assigning 4 Stars to JPEG200 Picture.
+149 ==> 199340 - Reopening a cs4 tiff file with exif data.
+150 ==> 275529 - Crashes when copying one image from Canon Ixus to PC hard drive.
+151 ==> 237752 - digiKam crashes during work.
+152 ==> 233470 - digiKam crashed on downloading pictures from CF card.
+153 ==> 289144 - digiKam crashes during scan of memory card.
+154 ==> 284723 - digiKam crashed after trying to remove photos from device.
+155 ==> 237163 - Crash after multiple queued downloads.
+156 ==> 386063 - Crash on opening file dialog.
+157 ==> 190131 - sig SIGABRT when importing from Kodak Camera.
+158 ==> 183753 - digiKam crashes while detecting my camera.
+159 ==> 229793 - Drop image file in digiKam.
+160 ==> 187204 - Keeps crashing 6 (SIGABRT) import from camera.
+161 ==> 271473 - digiKam crashes reproducably when scanning collection afte re-organising underlying picture folders.
+162 ==> 192426 - Tried to open a picture in Gimp. The Picture opens in Gimp and digiKam crashes.
+163 ==> 241585 - digiKam hangs at 0% in editor when calling "Save as".
+164 ==> 191414 - Selecting "synchronize images with database" in album drop-down menu causes signal 6 (sigabrt).
+165 ==> 190202 - Crash when transfer image from camera.
+166 ==> 255520 - digiKam crashed while assigning tags to pictures.
+167 ==> 156599 - Bad date in header.
+168 ==> 242623 - The default product for Report Bug about metadata editor does not exist.
+169 ==> 094362 - Change permissions while importing images.
+170 ==> 152313 - I can't configurate Intel Pocket Camera cs630. I can't get the photos.
+171 ==> 361982 - Browse tag clicking on a tag crashes digiKam.
+172 ==> 252200 - digiKam fails to compile.
+173 ==> 277046 - digiKam doesn't build with libpgf-6.11.24.
+174 ==> 121485 - Current camera images are hidden by cached images.
+175 ==> 146169 - Download images into Folder hierarchy (using exif-info).
+176 ==> 287186 - Import queued downloads does not work anymore.
+177 ==> 296817 - Unsort download of pictures.
+178 ==> 291541 - digiKam seems to be rewriting Metadata even if no change is made.
+179 ==> 296078 - Changes in the organization of tags are not saved when quitting digiKam.
+180 ==> 271021 - Result: stability improved.
+181 ==> 387958 - Core database: cannot process schema initialization (uprade from 5.7).
+182 ==> 387960 - Failed build Calendar tool with kcalcore 17.12.
+183 ==> 387957 - Image Editor Launches without Image.
+184 ==> 387975 - Just after ugrade to 5.7.0 version, none pictures are shown.
+185 ==> 387976 - Remember aspect ratio.
+186 ==> 375317 - MYSQL: digikam crashes during face recognition.
+187 ==> 310050 - MYSQL : Slow database performance after canceling a large duplicate image search.
+188 ==> 385653 - Non handled sqlite exception because of lack of space.
+189 ==> 
