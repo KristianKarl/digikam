@@ -504,9 +504,6 @@ void DigikamView::setupConnections()
     connect(d->iconView, SIGNAL(zoomInStep()),
             this, SLOT(slotZoomIn()));
 
-    connect(d->iconView, SIGNAL(signalAddToExistingQueue(int)),
-            this, SLOT(slotImageAddToExistingQueue(int)));
-
     connect(d->iconView, SIGNAL(signalShowContextMenu(QContextMenuEvent*,
                                                       QList<QAction*>)),
             this, SLOT(slotShowContextMenu(QContextMenuEvent*,QList<QAction*>)));
@@ -644,6 +641,9 @@ void DigikamView::setupConnections()
 
     connect(d->stackedview, SIGNAL(signalGotoTagAndItem(int)),
             this, SLOT(slotGotoTagAndItem(int)));
+
+    connect(d->stackedview, SIGNAL(signalPopupTagsView()),
+            d->rightSideBar, SLOT(slotPopupTagsView()));
 
     // -- FileActionMngr progress ---------------
 
