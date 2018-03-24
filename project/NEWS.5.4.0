@@ -89,7 +89,7 @@ BUGFIXES FROM BUGZILLA:
 041 ==> 363998 - digiKam sees Nikon D700 but cannot import files.
 042 ==> 361848 - When writing metadata to files is disabled, digikam still displays "Writing metadata to files".
 043 ==> 330062 - Import from MTP or PTP based cameras is very slow.
-044 ==> 372900 - When starting Digikam5, it crashes before opening the program, but after the splash screen.
+044 ==> 372900 - When starting digiKam5, it crashes before opening the program, but after the splash screen.
 045 ==> 372427 - Some pictures do not display.
 046 ==> 102500 - ICONVIEW : more space conservative in thumbs view.
 047 ==> 330064 - Copy file from computer to camera doesn't work.
@@ -239,3 +239,10 @@ BUGFIXES FROM BUGZILLA:
 191 ==> 323194 - Crash of digiKam by starting as user.
 192 ==> 261397 - digiKam Crashes on Startup.
 193 ==> 323514 - digiKam crashes when viewing a video.
+194 ==> 373434 - No exif data in pictures exported to Flickr.
+195 ==> 374242 - exported photos to Gphoto are rotated.
+196 ==> 374409 - Export to Flickr ignores EXIF Orientation.
+197 ==> 329309 - TIF files appear not in correct orientation in Piwigo.
+198 ==> 374510 - Creating albums on flickr with line breaks in their descriptions fails [patch].
+199 ==> 374442 - Exporting images with line breaks in their captions to flickr fails.
+200 ==> 374293 - Google albums reload button still display albums which have been removed from google photos.

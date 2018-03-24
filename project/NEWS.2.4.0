@@ -29,10 +29,15 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 016 ==> 181813 : digiKam text decoration font size problem.
 017 ==> 265554 : Problem in colors between digiKam's theme and Gnome appearance.
 018 ==> 283281 : Crash during batch convert.
-019 ==> 283572 : Unreadable text on tooltips in KDE 4.7 [patch].
+019 ==> 283572 : Unreadable text on tooltips [patch].
 020 ==> 169432 : Introduce setting to always save to a lossless format.
 021 ==> 155406 : Extra tool bar in the image editor.
 022 ==> 254857 : Minimal image editor window is bigger than 800px.
 023 ==> 213680 : Show warning or info message when not working with color management in Image Editor.
 024 ==> 277628 : Resize controls in editor are missing.
 025 ==> 160013 : Display RGB histograms in 3 separate diagrams.
+026 ==> 260649 : digiKam crashed rotate photo.
+027 ==> 285941 : digiKam crashes when launching batch proccessing tool.
+028 ==> 286155 : digiKam crashing.
+029 ==> 286661 : RemoteStorage folder browsing fix for Windows
+030 ==> 283650 : Panorama tool can't find cpfind version on OS X.

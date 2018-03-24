@@ -18,6 +18,10 @@ ImageEditor       : Complete rewrite of the FilmGrain tool.
                     FilmGrain tool use now YCrCb color space to add noise. Graininess size can be adjusted
                     with an option to set-up photographic distribution of noise. 
                     Different amounts of noise can be added to highlights, shadows and midtones.
+GoogleServices   : Tool dialog redesigned with same layout than Flickr, Facebook, etc.
+HTMLGallery        : Show screenshot alongside theme description.
+PiwigoExport      : New tool to export images to Piwigo server (aka PhpWebGallery).
+HTMLGallery        : Get metadata from image files and new detailed theme.
 
 BatchQueueManager : New tool to fix Brightness/Contrast/gamma.
 BatchQueueManager : New tool to adjust Color Balance.
@@ -42,7 +46,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 001 ==> 223936 : Moving photos between albums is slow.
 002 ==> 224698 : digiKam fails to rotate pefs via orientation tag.
 003 ==> 224021 : Zoom shortcuts inconsistent between editor and preview.
-004 ==> 225160 : digiKam built with QT4 ver 4.5.3 does not display pictures in album view.
+004 ==> 225160 : digiKam built with Qt4 ver 4.5.3 does not display pictures in album view.
 005 ==> 225397 : Tip refers to "Print Wizard", it is now "Print Assistant".
 006 ==> 225555 : Crash when deleting tag.
 007 ==> 207244 : Image disappears when enlarging.
@@ -52,7 +56,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 011 ==> 225328 : Creating new album during import fails.
 012 ==> 216633 : Additional aspect ratios in crop tool.
 013 ==> 151406 : Filters in 'Enhance' dropdown menu lack mouse-over preview mode.
-014 ==> 225698 : When I export my Album to a Html Gallery then Digikam crashed at the End.
+014 ==> 225698 : When I export my Album to a Html Gallery then digiKam crashed at the End.
 015 ==> 225787 : Scroll wheel doesn't work while moving images.
 016 ==> 226081 : Trying to delete tags crashes digiKam.
 017 ==> 226118 : IPTC metadata tag delimiter is no longer stored (since 0.10).
@@ -122,7 +126,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 081 ==> 230003 : Zoombar slider adjustments below 100% are hard to archieve [patch].
 082 ==> 228810 : Need to roll over again on a thumb to correct the rating.
 083 ==> 210259 : Scan crashed on multi-layer TIFFs.
-084 ==> 229344 : digiKam starting up - loading kipi-plugins.
+084 ==> 229344 : digiKam starting up - loading tools.
 085 ==> 229578 : Metadata is not correctly updated when just assigning tags.
 086 ==> 230323 : ShowFoto and digiKam opening Olympus E-P2 ORF file will crash.
 087 ==> 229108 : digiKam doesn't display all images after and upgrade.
@@ -138,3 +142,29 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 097 ==> 230573 : digiKam crash with import from DSL Nikon D90.
 098 ==> 196470 : Update files with metadata from DB.
 099 ==> 224052 : Pressing Delete repeatedly is not cached.
+100 ==> 232339 : Wrong flash export url in digiKam.
+101 ==> 225001 : Google map is empty.
+102 ==> 225162 : Picasaweb export no progress bar.
+103 ==> 225164 : Picasaweb export waiting mouse cursor without ending.
+104 ==> 203541 : Select images to upload.
+105 ==> 225316 : ExpoBlend won't compile even with dependencies all right.
+106 ==> 225396 : "Mozilla" MUA option is broken.
+107 ==> 223492 : Show screenshot alongside theme description.
+108 ==> 225407 : Dngconverter fix endian detection [patch].
+109 ==> 225161 : Picasaweb export does not export photo geotag.
+110 ==> 225665 : digiKam crashed when cancelling transfer to Picasa.
+111 ==> 225646 : Picasaweb does not export movie.
+112 ==> 196593 : EXIF Geotags not recognised by Picasa.
+113 ==> 226799 : RawEngine should use all CPU cores when converting images.
+114 ==> 224872 : Export for Piwigo.
+115 ==> 226916 : Get metadata from image files and new detailed theme.
+116 ==> 217539 : picasaweb ability to choose add or update photo.
+117 ==> 227920 : Cannot compile: opencv/highgui.h missing for removeredeyes tool.
+118 ==> 219603 : Renaming images to send.
+119 ==> 229068 : digiKam repeatedly crashes when uploading several pictures to Picasaweb.
+120 ==> 229826 : PicasaWeb Export won't login with certain chars in password.
+121 ==> 196236 : Facebook upload unreliable, and fails in unsafe fashion.
+122 ==> 229169 : Print Assistant on the page preview shows screen corruption.
+123 ==> 221298 : digiKam segfaults on Flickr export.
+124 ==> 213921 : DNG Converter lost exif info about ISO.
+125 ==> 228524 : Failed to rotate image [patch].

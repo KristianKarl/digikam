@@ -27,6 +27,11 @@ Editor   : DistortionFx tool support zoomable preview.
 
 Showfoto : Port of Thumbbar to Qt Model/view.
 
+General  : New tool to export collection to Google Drive cloud service.
+General  : New tool to export collection to DropBox cloud service.
+
+MediaWiki: allow removal of metadata/GPS coordinates before uploading.
+MediaWiki: graphical interface improvements.
 
 BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 
@@ -57,7 +62,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 025 ==> 321403 - digiKam Crashes When Trying to Start.
 026 ==> 327707 - Custom list of metadata cannot be customized.
 027 ==> 180322 - Compute 35mm equivalent focal length.
-028 ==> 320185 - Compatibility issue with hierarchical tags between Digikam and WLPG (and perhaps other software).
+028 ==> 320185 - Compatibility issue with hierarchical tags between digiKam and WLPG (and perhaps other software).
 029 ==> 327957 - Text Filter Returns All Videos Regardless of String.
 030 ==> 277928 - Database upgrade v4 to v5 failed : digiKam fails to start properly, lost albums.
 031 ==> 325112 - Hang when opening folder of images to view thumbs.
@@ -133,12 +138,12 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 101 ==> 322652 - Crashes on camera import.
 102 ==> 312285 - Crash in image editor when moving to the next image.
 103 ==> 299755 - After latest X upgrades the Level Tools upgrade is a solid color (black, white, gray).
-104 ==> 328835 - Crash when opening "Configure Digikam" settings.
+104 ==> 328835 - Crash when opening "Configure digiKam" settings.
 105 ==> 329127 - Remove Tag menu entry is enabled if a picture has no Tags.
 106 ==> 297804 - Saving an image loses portait orientation.
 107 ==> 279996 - Crash while running face detection.
-108 ==> 278049 - Crash during tagging while scanning run in background (Digikam::ImageModel::removeRowPairs).
-109 ==> 262596 - Crash when finding faces (Digikam::ImageModel::removeRowPairs).
+108 ==> 278049 - Crash during tagging while scanning run in background (digiKam::ImageModel::removeRowPairs).
+109 ==> 262596 - Crash when finding faces (digiKam::ImageModel::removeRowPairs).
 110 ==> 329323 - Compile time error: flandmark_detector.cpp: No such file or directory.
 111 ==> 308734 - digiKam/kioslave: a lot of "KIO::Slave::timeout: Houston, we lost our slave" and "slave died".
 112 ==> 304207 - Progress manager: more control on appearance/disappearance.
@@ -159,7 +164,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 127 ==> 218023 - Albums tree does not remember sorting order (ascending/descending).
 128 ==> 126116 - Keep directory hierarchy when albums are view by category.
 129 ==> 225786 - Proposed digiKam Menu Changes.
-130 ==> 246903 - Editor Canvas : not updated when zoom level changes in plugins.
+130 ==> 246903 - Editor Canvas : not updated when zoom level changes in tools.
 131 ==> 129941 - Editor Canvas : Ability to Drag and Drop an image.
 132 ==> 224246 - Editor Canvas : displays useless scroll bars.
 133 ==> 233773 - Editor Canvas : ctrl + shift + e doesn't enable scrolling.
@@ -193,6 +198,26 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 161 ==> 333386 - Tags manager: '' shown in dialog box when removing a tag.
 162 ==> 333388 - Tag manager: Tags removed from images without confirmation dialog.
 163 ==> 333385 - Selecting a month in the tree view shows a different month in calendar and icon view.
-164 ==> 329697 - digiKam crash when browsing albums (qt-sqlite plugin broken due to BC issue with libsqlite).
+164 ==> 329697 - digiKam crash when browsing albums (qt-sqlite tool broken due to BC issue with libsqlite).
 165 ==> 331597 - Tags are not sorted in UI [patch].
 166 ==> 334183 - Face recognition folder selection scans all available folders.
+167 ==> 319664 - 3.2.0-beta2 (and 3.1.0) installs a static archive /usr/lib64/libPropertyBrowser.a.
+168 ==> 324044 - MediaWiki: Fix bug, add feature, improve usability
+169 ==> 307689 - digiKam crashes during Export to Rajce service [patch].
+170 ==> 323118 - SmugMug API access fails after SmugMug relaunch [patch].
+171 ==> 324646 - digiKam hangs when producting "Video Slide Show" [patch].
+172 ==> 319611 - Invalid placement of TimeStamp element in kml export [patch].
+173 ==> 319612 - Update kml export to use KML 2.2 schema [patch].
+174 ==> 199978 - Can not email images on Windows [patch].
+175 ==> 320782 - Try to automatically guess new flickr set name from image folders [patch].
+176 ==> 326728 - Panorama Stitching crashes upon start.
+177 ==> 300445 - Integration with cloud storage (as Dropbox or GDrive) for quick sharing.
+178 ==> 328679 - Untranslated strings due to missing i18n().
+179 ==> 328981 - Cannot select between multiple scanner devices.
+180 ==> 296650 - digiKam crash while uploading to PicasaWeb.
+181 ==> 304809 - Crash when attempting to download Facebook photos.
+182 ==> 299038 - Crashes when Starting Geo-Tagging.
+183 ==> 290797 - Crash when exporting images to flickr.
+184 ==> 183014 - Png converter compressor unconsistent.
+185 ==> 305137 - Wish for integrated(?) clip-generator.
+186 ==> 332838 - String problems: word puzzle, exclamation marks.

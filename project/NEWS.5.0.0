@@ -3,6 +3,8 @@ digiKam 5.0.0 - Release date: 2016-07-03
 
 NEW FEATURES:
 
+General            : Tool obsolete/unmaintained and removed : Kopete, IpodExport, PiwigoExport, RawConverte
+General            : KIO support replaced by native Qt5::Network everywhere (excepted for RemoteStorage tool which is optional).
 General            : Implementations ported to Qt5 libraries and KF5 libraries.
 General            : Integer and double input value sliders use now PhotoShop/Krita/Gimp like widget.
 General            : LCMS1 support removed.
@@ -55,7 +57,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 011 ==> 138200 - Display all pictures when root album (as "My Albums" and "My Tags") is selected instead of welcome page.
 012 ==> 348173 - digiKam crash during i was browsing photo in a directory.
 013 ==> 349925 - Fail cmake chek if -DENABLE_KFILEMETADATASUPPORT=ON is not set.
-014 ==> 333377 - Show warning messagebox when non-RAW file is added to DNGConverter instead of none.
+014 ==> 333377 - Show warning messagebox when non-RAW file is added to DNGWriter instead of none.
 015 ==> 122653 - File-dialogue claims that pictures are not on the local-storage, yet they are
 016 ==> 348347 - Can't create albums - menu is greyed out.
 017 ==> 164168 - Integration of image scanning into showfoto.
@@ -101,7 +103,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 057 ==> 339801 - Thumbnails are not displayed properly on 10-bit/channel monitors.
 058 ==> 353789 - Add new tool to apply Lut3D on image [patch].
 059 ==> 356672 - digiKam 4.14.0 failed to build against lensfun 0.3.2.
-060 ==> 355980 - Showfotosetup link errors - undefined reference to `Digikam::Setup*.
+060 ==> 355980 - Showfotosetup link errors - undefined reference to `digiKam::Setup*.
 061 ==> 262644 - When typing names to unconfirmed faces, only tags beginning with "name" are shown.
 062 ==> 356975 - Nikon 5300 12bit RAW/NEF: wrong white/black level.
 063 ==> 356639 - digiKam crash when i create a new folder.
@@ -126,14 +128,14 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 082 ==> 359088 - With "Show a count of items in Tree Views" Trash always shows count of 0 [patch].
 083 ==> 358913 - Using Versionning, after returning from edit mode wrong image is selected, image itself is not updated [patch].
 084 ==> 358144 - Moving images with special characters in the file name does not work.
-085 ==> 359196 - Digikam segfaults when tagging a face.
+085 ==> 359196 - digiKam segfaults when tagging a face.
 086 ==> 358081 - Tags Manager - selecting tags from tree-view do not focus tags title field in right sidebar.
 087 ==> 234546 - Preview fails for some images [patch].
 088 ==> 357224 - Add ability to change icon theme.
 089 ==> 359386 - Import from SD forgets downloaded images, but remembers marked as downloaded.
 090 ==> 359429 - Image history: original image's entry contains markup.
 091 ==> 355836 - Aspect ratio incorrect.
-092 ==> 359608 - Digikam does not decode 16 bit grayscale jp2.
+092 ==> 359608 - digiKam does not decode 16 bit grayscale jp2.
 093 ==> 276050 - Setting "string comparison type" is not evaluated in icon-view.
 094 ==> 351433 - pto2mk not found with Hugin 2015.0.
 095 ==> 325830 - Panorama Stitcher returns an error after pre-processing, as a result of attempting to invoke Hugin commands.
@@ -155,7 +157,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 111 ==> 355256 - Failed to load image if file path contains non-ascii characters.
 112 ==> 331261 - Import not using Date/Time Original or create date EXIF data.
 113 ==> 359516 - Trash not sortable by deletion time.
-114 ==> 360329 - Digikam 5 beta 4 build breaks.
+114 ==> 360329 - digiKam 5 beta 4 build breaks.
 115 ==> 360434 - Geolocation Editor messed up size and contents.
 116 ==> 360437 - Crash during the face detection.
 117 ==> 360460 - No date for pics during import but for movies.
@@ -184,7 +186,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 140 ==> 361955 - digiKam hangs after start.
 141 ==> 348760 - Old and not secure VLC version.
 142 ==> 342481 - Provide Build Instructions for Windows.
-143 ==> 351654 - Windows 7: Digikam (4.12) keeps hanging at startup (no crash or crash report).
+143 ==> 351654 - Windows 7: digiKam (4.12) keeps hanging at startup (no crash or crash report).
 144 ==> 327627 - version 2.9 dk I have added a tag...bring up pictures with the tag and adding a second tag and it crashes multiple times.
 145 ==> 305191 - digiKam closed when loading cameras.
 146 ==> 321338 - Work on win8 x64?
@@ -242,7 +244,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 198 ==> 364009 - Cannot use batch processing to resize images.
 199 ==> 364035 - GPS correlation fails to save coordinates back to files.
 200 ==> 364065 - image editor doesn't open at double click.
-201 ==> 307337 - Add versioning support to libkipi interface.
+201 ==> 307337 - Add versioning support to tools interface.
 202 ==> 363505 - 4.x crash on start under Windows - Need a new 5.0 installer.
 203 ==> 364116 - Uninstaller doesn't remove C:\Program Files.
 204 ==> 351016 - Crash in Windows when building finger-prints.
@@ -268,7 +270,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 224 ==> 322709 - digiKam and drkonqi crash at startup.
 225 ==> 198915 - Segfault during histogram calculation.
 226 ==> 354234 - Crash when changing Lens selection in Lens distortion correction dialog.
-227 ==> 364933 - Cannot use cursor and certain other keys inside Showfoto plugins.
+227 ==> 364933 - Cannot use cursor and certain other keys inside Showfoto tools.
 228 ==> 358886 - Application crashes upon second launch in OS X 10.11.
 229 ==> 361346 - Always hangs at startup while loading cameras or ICC profiles under OSX.
 230 ==> 248430 - digiKam crashes while rebuilding missing thumbnails.
@@ -319,7 +321,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 275 ==> 297022 - Crash digiKam.
 276 ==> 302776 - digiKam crashes at startup.
 277 ==> 294232 - digiKam crash after trying to send photo via KMail.
-278 ==> 307775 - libkipi1 apps crash with libkipi2 plugins installed.
+278 ==> 307775 - Apps crash with shared lib installed.
 279 ==> 302465 - Crash when closing digiKam.
 280 ==> 273795 - digiKam crashed almost every it is opened.
 281 ==> 357944 - Wrong encoded collection paths after upgrade from digikam v4.x.
@@ -347,3 +349,69 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 303 ==> 162132 - Crash while saving tiff (possibly caused by present alpha channel).
 304 ==> 221985 - Update histogram before preview.
 305 ==> 204311 - Choice of resizing algorithms in resize dialog along with preview of each.
+306 ==> 348340 - Progress halts when finished resizing images.
+307 ==> 225409 - Gallery tool should save multiples gallery settings.
+308 ==> 229341 - Add export support for Gallery3.
+309 ==> 257166 - Unable to create a new album or upload photos when gallery use https.
+310 ==> 195136 - Hard coded GALLERYSID cookie name breaks compatibility with other G2 API compatible backends.
+311 ==> 257184 - When browsing twice an album, images list contains duplicates.
+312 ==> 094496 - Support for gallery photo addition order override.
+313 ==> 206121 - digiKam export to gallery fails "Failed to login into remote gallery".
+314 ==> 206114 - Connection to remote gallery hangs.
+315 ==> 148521 - Gallery export does not see deep directories.
+316 ==> 202284 - Export problem using port 990.
+317 ==> 332430 - Application crashes when accidentally converting to black and white.
+318 ==> 120501 - Smart rotation (first keystroke 90°, second keystroke 180°).
+319 ==> 315489 - Application crash.
+320 ==> 107723 - Allow to tune batch process priority.
+321 ==> 333734 - Improve image filters preview.
+322 ==> 107541 - Add a process console and scripting support.
+323 ==> 264075 - Usability issues in batch resizing dialog.
+324 ==> 345198 - Batch rename is *extremely* slow.
+325 ==> 252181 - Resizing images: "Start" button hidden after non-existent folder has been selected.
+326 ==> 308019 - Application crash after using Plugins->Collections->Border images.
+327 ==> 125039 - Rename Images cancel button do not cancel but stop.
+328 ==> 126113 - schema of renaming images: resetting counter.
+329 ==> 302714 - Crash when selecting Tools->Image Effects.
+330 ==> 144528 - in a batch process the resize images in 2d produces black images.
+331 ==> 152210 - Metadata lost when converting from png to jpeg (IPTC thumbnail too big).
+332 ==> 152905 - Batch processes does not work properly if target directory is outside Album Library Path.
+333 ==> 203379 - Error while converting RAW images to JPEG.
+334 ==> 161347 - Application doesn't clean properly ~/tmp/kde-username.
+335 ==> 177175 - Resize image prepare to print 9x13 results in wrong.
+336 ==> 213172 - Convert images: png conversion not deterministic.
+337 ==> 289181 - Raw processor rotates images without Orientation EXIF tag.
+338 ==> 211524 - Raw batch converter can't get rid of scroll bar.
+339 ==> 215037 - Batch RAW converter crashed after open with NEF file.
+340 ==> 246437 - digiKam crashes when loading a raw file.
+341 ==> 342687 - Panorama file time-stamps should be the same than the stitched pictures [patch].
+342 ==> 356673 - MediaWiki export doesn't work.
+343 ==> 353626 - Processing of bracketed images fails after the first set is done.
+344 ==> 359257 - Image size spinbox doesn't allow values larger than 99.
+345 ==> 359478 - Flickr export tool crashed on creating new set.
+346 ==> 321647 - Kenburns effect from AdvancedSlideshow forgets to auto-rotate photos.
+347 ==> 356939 - Advanced slide show: playing sound track does not work.
+348 ==> 361329 - Flickr uploader does not clean /tmp after upload.
+349 ==> 353135 - Unable to sign in to Flickr or Facebook, Geolocation Search in GeoNames.
+350 ==> 358759 - Unable to import/export from google photos.
+351 ==> 363925 - Export Menu - Export to Smugmug not working.
+352 ==> 361323 - Application "Send To..." button crash.
+353 ==> 309613 - Crash on exit after unsucessful photo time adjustment.
+354 ==> 303878 - digiKam crashed after clicking "Photo -> Adjust Date and Time".
+355 ==> 150191 - Embedded thumbnail date is used for sorting.
+356 ==> 296113 - Regression: Can't transfer EXIF creation date to file date.
+357 ==> 363162 - dngconverter crashes when converting any RAW file.
+358 ==> 302292 - application crashes when batch editing EXIF data.
+359 ==> 269106 - digiKam crashes if the currently uploading item is removed from the export list.
+360 ==> 290509 - Application crashed exporting to PicasaWeb & Facebook.
+361 ==> 322056 - Imgur exporter can crash application.
+362 ==> 233909 - Crash when creating new folder on 23HQ.
+363 ==> 307666 - Flick export plug in crash.
+364 ==> 232599 - digiKam crashed when selecting Export -> Export to Shwup.
+365 ==> 304560 - Application crashes when trying to send picture to other computer.
+366 ==> 319077 - Application se cierra al crear una carpeta para subir archivos a flickr.
+367 ==> 240763 - Export Shwup crash when trying to export with latest SVN version as of today.
+368 ==> 352391 - Crash when exporting to facebook.com.
+369 ==> 272168 - Crash when starting Flickr Uploadr.
+370 ==> 264390 - digiKam crashes when uploading to Flickr.
+371 ==> 327342 - Application crash.

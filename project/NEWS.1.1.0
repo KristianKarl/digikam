@@ -5,6 +5,9 @@ NEW FEATURES:
 
 AdvancedRename : The ReplaceModifier has regular expressions support now.
 ImageEditor    : Add an option to add vignetting over an image.
+ExpoBlending   : New tool to make pseudo HDR image with a stack of bracketed images.
+PrintCreator : New custom grid layout
+PrintCreator : Filling page with custom size images
 
 BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 
@@ -22,7 +25,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 012 ==> 219908 : Drag and Drop photo to folder: let user choose to copy or move.
 013 ==> 220131 : Ctrl + Scroll Wheel triggers two different actions.
 014 ==> 198697 : Images are not sorted in the Import window.
-015 ==> 220398 : Downloaded/deleted all from SD card, went to other Digikam window, browsed two folders, closed windows, crashed.
+015 ==> 220398 : Downloaded/deleted all from SD card, went to other digiKam window, browsed two folders, closed windows, crashed.
 016 ==> 215473 : Remember openend albums after closing digikam.
 017 ==> 220423 : Ctrl + scrool doesn't work in editor when some tool open [patch].
 018 ==> 220399 : Crash in color space conversion.
@@ -44,7 +47,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 034 ==> 221397 : Batch processing auto levels.
 035 ==> 211238 : Scrolling (shift + mousewheel) through pictures in editor caused crash
 036 ==> 220444 : Auto lens correction does not recognize a listed camera and lens using exif data.
-037 ==> 220559 : Crash after select and unselect an item in batch window [QTreeWidgetItem::setIcon, Digikam::AssignedListViewItem::setDone, Digikam::QueueMgrWindow::slotAction]
+037 ==> 220559 : Crash after select and unselect an item in batch window [QTreeWidgetItem::setIcon, digiKam::AssignedListViewItem::setDone, digiKam::QueueMgrWindow::slotAction]
 038 ==> 221065 : Many Icons Don't Show Up in digikam Under Mac OS X (10.6.2).
 039 ==> 221188 : When system is set to Czech locale, there is "Aspect Ratio Crop" missing in transform menu.
 040 ==> 207392 : Crash after rebuild all thumbnails.
@@ -71,7 +74,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 061 ==> 219745 : Zoom is ignored in the tools on 1. try.
 062 ==> 222748 : Editor preview mode buttons lack tooltip.
 063 ==> 222744 : Mouse-over preview mode with zoom removes ability to see whole image.
-064 ==> 220365 : digiKam crashes at startup (kipi-plugins work now).
+064 ==> 220365 : digiKam crashes at startup.
 065 ==> 222975 : Wrong editorwindow zoom behaviour.
 066 ==> 163284 : Choose smart default zoom factor for each filter preview.
 067 ==> 148072 : zoom tool for sharpen tool is ankward.
@@ -96,7 +99,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 086 ==> 177827 : Add vignetting effect to digiKam.
 087 ==> 224136 : Show dialog with settings when saving image on Windows [patch].
 088 ==> 183108 : View mode: mouse zoom and pan.
-089 ==> 150533 : New plugin for correction of backlighting.
+089 ==> 150533 : New tool for correction of backlighting.
 090 ==> 105934 : Would like to use the arrow keys to pan an image.
 091 ==> 193708 : digiKam crash on startup.
 092 ==> 218376 : digiKam tagging crash metadata.
@@ -112,3 +115,25 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 102 ==> 224697 : Crash with gimp xcf files with metadata.
 103 ==> 224682 : Color Channel Mixer ui & usability.
 104 ==> 224841 : Search for duplicates in specific album only.
+105 ==> 199145 : Tags not exported to picasaweb [patch].
+106 ==> 215846 : PicasaWeb tool crashes digiKam after start sending the pic [delete, KIPIPicasawebExportPlugin::PicasawebWindow::slotUploadImages] (double deletion)
+107 ==> 221056 : Expoblending.app causes digiKam compile to fail.
+108 ==> 205903 : accentuated chars are converted into a mess during picasa web export [patch]
+109 ==> 220433 : digiKam crash when has long time working on it.
+110 ==> 208426 : Exporting images fails with : "Could not connect to host xxxx.xxxx.xxxx.xxxx: Unknown error."
+111 ==> 222297 : Overwriting on Windows and multiple saves fixes [patch].
+112 ==> 198045 : New albums don't appear in list
+113 ==> 200469 : Ampersand character in caption causes Picasa export to freeze
+114 ==> 222328 : In-place rotation converts 16 bit TIFF to 8 bit.
+115 ==> 219381 : fill page with images of certain size
+116 ==> 194946 : Simple Fix - extra " ' " in cleanframes/themes/template.xsl.
+117 ==> 182326 : Remember last position when geotagging images.
+118 ==> 165613 : Crash when GPS altitude is negative.
+119 ==> 167286 : GPS tagging fails with message titled "digikam3rdparty.free.fr" and text "unauthorized call of the API" when starting the gps tagger window.
+120 ==> 224205 : Geolocation correlator: GPX date/time format.
+121 ==> 222067 : Geolocation no more search field to fill with a town.
+122 ==> 224379 : digiKam doesn't compile (problem with advanced slideshow).
+123 ==> 144593 : New High Dynamic Range (HDR) tool.
+124 ==> 219998 : Export to Gallery tool crashes when adding files.
+125 ==> 215798 : Slideshow crashes when starting.
+126 ==> 200031 : Photo is rotated but not thumbnail.

@@ -23,7 +23,11 @@ ImageEditor    : Foveon sensor based camera.
 ImageEditor    : New advanced RAW decoding settings backported from RawTherapee project.
 
 AdvancedRename : New datetime option "UnixTimeStamp" (requires Qt 4.7 or higher)
-
+Geolocation        : Complete rewrite of GUI, including reverse-geocoding feature.
+YandexFotki    : New tool to export collection to Yandex web service (http://fotki.yandex.ru).
+MediaWiki      : New tool to export collection to MediaWiki based web service (http://www.mediawiki.org).
+RajceExport    : New tool to export collection to Rajce web service (http://www.rajce.idnes.cz).
+MetadataEdit   : Factoring Exif/Iptc/Xmp editor to a common dialog.
 
 BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 
@@ -54,7 +58,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 025 ==> 241015 : Unexpected behavior when deleting a file while several are selected.
 026 ==> 264093 : Preview zoom is set to 1:1, should be "fit to window".
 027 ==> 263994 : Left-hand side bar too big and cannot be made smaller.
-028 ==> 261779 : digiKam crashes in Digikam::DynamicThread::DynamicThreadPriv::transitionToRunning while scanning faces.
+028 ==> 261779 : digiKam crashes in digiKam::DynamicThread::DynamicThreadPriv::transitionToRunning while scanning faces.
 029 ==> 235666 : All tags no longer shown when the "Tags already assigned" button is clicked.
 030 ==> 114465 : Simpler entry of tags using keyboard shortcuts.
 031 ==> 229471 : Editor: forward when saving in progress.
@@ -80,11 +84,11 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 051 ==> 264976 : Face detection: "Clear results and rescan" doesn't clear results.
 052 ==> 201282 : Sort settings in status bar.
 053 ==> 210576 : Move tag filter to the bottom.
-054 ==> 262539 : CMake Warning "cycle in the constraint graph" with libkipi.
+054 ==> 262539 : CMake Warning "cycle in the constraint graph".
 055 ==> 231597 : Add XCF to the filter list in the album view.
 056 ==> 266788 : Showfoto crashes when opening a photo.
 057 ==> 266326 : Move digiKam documentation to git.
-058 ==> 266327 : Move libkexiv2 to git.
+058 ==> 266327 : Move MetadataEngine to git.
 059 ==> 267361 : When using the luminosity curve in the image editor on an initial import from NEF, all changes are irreversible and cumulative.
 060 ==> 266733 : digiKam crashes on startup on OS X.
 061 ==> 262574 : Add a face tag does not do anything.
@@ -112,7 +116,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 083 ==> 269903 : Libkdcraw no longer compiles due to a linking error [patch].
 084 ==> 269862 : Libkmap compilation fails because of changes in MarbleWidget [patch].
 085 ==> 269435 : digiKam does not display any picture from any source.
-086 ==> 246074 : Can't export photos to Picasaweb (with gwenview it's works fine).
+086 ==> 246074 : Can't export photos to Picasaweb.
 087 ==> 252700 : Font color for icons in toolbar does not change for darker Themes.
 088 ==> 168669 : Disabled entry menu seems more important and active in dark theme.
 089 ==> 241116 : [Themes] Cannot change text colour in menu bar.
@@ -138,7 +142,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 109 ==> 235928 : digiKam fails to open database at startup.
 110 ==> 271916 : digiKam crashed when opening editor.
 111 ==> 272133 : Crash editing Geo coordinates of several images.
-112 ==> 272216 : Compile error: No rule to make target /usr/lib/libm.so, required for lib/libkdcraw.so.20.0.0.
+112 ==> 272216 : Compile error: No rule to make target /usr/lib/libm.so, required for lib/RawEngine.so.20.0.0.
 113 ==> 272569 : Crashing in start.
 114 ==> 271651 : 2.0 beta4 can't use network shares.
 115 ==> 269320 : After initial database building thumbnails fail to rezise properly.
@@ -248,7 +252,7 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 219 ==> 276059 : Tags are not written to files on export or save when editing TIFF files.
 220 ==> 271710 : Crash when starting after adding 1500 pic + thumbnails.db is 3.9 GB with 4 GB storage capacity.
 221 ==> 244529 : Crash when writing metadata in files.
-222 ==> 267789 : Make face detection (kface) and geo tagging (kmap) optional features.
+222 ==> 267789 : Make face detection and geo tagging optional features.
 223 ==> 278323 : Wrong Ctrl+V shortcut for "Cut".
 224 ==> 278321 : Please sort "Themes" (color themes) sub menu.
 225 ==> 276827 : digiKam segfaults when autocompleting tags.
@@ -260,6 +264,54 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 231 ==> 226765 : Panning with arrow keys in preview mode is slow.
 232 ==> 278040 : Raw images disappear after being exported.
 233 ==> 255915 : Crash stopping slideshow.
-234 ==> 278329 : Using DigiKam in Ubuntu 11.04 I cannot switch to another language.
-235 ==> 277935 : Rename libkmap to libkgeomap and move it to extragear/libs.
+234 ==> 278329 : Using digiKam in Ubuntu 11.04 I cannot switch to another language.
+235 ==> 277935 : Rename libkmap to Geolocation and move it to extragear/libs.
 236 ==> 273077 : Generate Fingerprints gets slower and slower.
+237 ==> 150981 : Usage of ws.geonames.org to associate place names with coordinates.
+238 ==> 185143 : Track List Editor: Make images in the List selectable.
+239 ==> 195944 : Concentrate location manipulation functions in single dialog.
+240 ==> 209718 : Adding geolocation tag to a dozen pictures blocks digikam GUI for >10 seconds.
+241 ==> 215989 : Multiple GPX files for one geotagging one album.
+242 ==> 206133 : Support for Open Street Map.
+243 ==> 265126 : compile failure.
+244 ==> 262412 : Request to setup git repo for -tools.
+245 ==> 202226 : Yandex Fotki support export.
+246 ==> 266911 : Add space to suffix "MB" (" MB").
+247 ==> 260754 : DngConverter doesn't support sraw files.
+248 ==> 267775 : Import from facebook fails, no write permissions, no album selection.
+249 ==> 155030 : Meta information about picture dimension not updated after batch resize.
+250 ==> 258202 : Keep custom metadata (tags, rating) when converting.
+251 ==> 267650 : Resizing image causes digiKam caption to disappear in original.
+252 ==> 269121 : Failure to find libgpod.
+253 ==> 206842 : Export to Wikimedia Commons.
+254 ==> 269511 : Cmake install files include wrong path for libmediawiki/version.h.
+255 ==> 269220 : Move MediaWiki C++ interface to git.
+256 ==> 268316 : OK button not disabled on empty image list, following progress dialog never finishes [patch].
+257 ==> 269991 : DngConverter doesn't compile on 64bits platforms due to linking error [patch].
+258 ==> 184763 : Edit Image Caption dialog - not populated with existing caption.
+259 ==> 203047 : Edit Exif does not allow editing of seconds.
+260 ==> 169230 : "Remove Metadata" tool necessary.
+261 ==> 208500 : XMP tags GUI incorrectly manages language.
+262 ==> 178660 : Quick navigation "disabled" in list of languages (XMP).
+263 ==> 242632 : The Subject classification reference code is not saved.
+264 ==> 138753 : Add new menu option for Batch Copyrighting of images using IPTC.
+265 ==> 198960 : Change exif date taken field of selected images.
+266 ==> 270579 : Images previously selected persist in the tool window list [patch].
+267 ==> 270587 : Text fixes for the Commons export widget [patch].
+268 ==> 270593 : Acquireimages fail to link on amd64.
+269 ==> 270649 : Bad use of arguments for translation.
+270 ==> 270624 : No display on googlemap.
+271 ==> 266906 : A few widget titles should not be translatable.
+272 ==> 171727 : KML export asks for overwriting tempfile.
+273 ==> 271735 : HTML export of RAW images fails.
+274 ==> 275857 : Word puzzle in progressbar in rajceexport.
+275 ==> 215777 : Configuration to use HTTP instead of HTTPS.
+276 ==> 252437 : Empty album list fixed by switching to OAuth2 authentication
+277 ==> 226114 : Facebook Call Failed: Incorrect Signature.
+278 ==> 276609 : Facebook application is deleted. can't upload and previously uploaded pictures disappear.
+279 ==> 271838 : Segfault when trying to open Geo-Location.
+280 ==> 273781 : digiKam crashes when correlating images with GPX file created by Garmin GPS.
+281 ==> 277480 : Export Flash dose not work.
+282 ==> 226296 : FlashExport, unable to install simple viewer.
+283 ==> 277661 : Facebook exporter incompatible with Firefox 4 (solution: use .html extension not .php).
+284 ==> 278290 : GPS Correlator is disabled (grayed) after loading gpx files.
