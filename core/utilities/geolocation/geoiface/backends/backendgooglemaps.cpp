@@ -46,11 +46,17 @@
 
 // Local includes
 
-#include "htmlwidget.h"
+#include "digikam_config.h"
+#include "digikam_debug.h"
 #include "mapwidget.h"
 #include "abstractmarkertiler.h"
 #include "geomodelhelper.h"
-#include "digikam_debug.h"
+
+#ifdef HAVE_QWEBENGINE
+#   include "htmlwidget_qwebengine.h"
+#else
+#   include "htmlwidget.h"
+#endif
 
 namespace Digikam
 {
@@ -683,7 +689,7 @@ void BackendGoogleMaps::slotHTMLEvents(const QStringList& events)
 
     if (zoomProbablyChanged && !mapTypeChanged)
     {
-        d->cacheZoom = d->htmlWidget->runScript(QLatin1String("kgeomapGetZoom();")).toInt();
+        d->cacheZoom = d->htmlWidget->runScript(QLatin1String("kgeomapGetZoom();"), false).toInt();
         emit signalZoomChanged(QString::fromLatin1("googlemaps:%1").arg(d->cacheZoom));
     }
 
@@ -701,7 +707,7 @@ void BackendGoogleMaps::slotHTMLEvents(const QStringList& events)
 
     if (mapBoundsProbablyChanged)
     {
-        const QString mapBoundsString = d->htmlWidget->runScript(QLatin1String("kgeomapGetBounds();")).toString();
+        const QString mapBoundsString = d->htmlWidget->runScript(QLatin1String("kgeomapGetBounds();"), false).toString();
         GeoIfaceHelperParseBoundsString(mapBoundsString, &d->cacheBounds);
     }
 
@@ -764,11 +770,12 @@ bool BackendGoogleMaps::screenCoordinates(const GeoCoordinates& coordinates, QPo
     if (!d->isReady)
         return false;
 
-    const QString pointStringResult=d->htmlWidget->runScript(
+    const QString pointStringResult = d->htmlWidget->runScript(
                 QString::fromLatin1("kgeomapLatLngToPixel(%1, %2);")
                     .arg(coordinates.latString())
-                    .arg(coordinates.lonString())
-                    ).toString();
+                    .arg(coordinates.lonString()),
+                false
+                ).toString();
     const bool isValid = GeoIfaceHelperParseXYStringToPoint(
             pointStringResult,
             point);
@@ -994,8 +1001,8 @@ void BackendGoogleMaps::updateActionAvailability()
 void BackendGoogleMaps::updateZoomMinMaxCache()
 {
     // TODO: these functions seem to cause problems, the map is not fully updated after a few calls
-//     d->cacheMaxZoom = d->htmlWidget->runScript("kgeomapGetMaxZoom();").toInt();
-//     d->cacheMinZoom = d->htmlWidget->runScript("kgeomapGetMinZoom();").toInt();
+//     d->cacheMaxZoom = d->htmlWidget->runScript("kgeomapGetMaxZoom();", false).toInt();
+//     d->cacheMinZoom = d->htmlWidget->runScript("kgeomapGetMinZoom();", false).toInt();
 }
 
 void BackendGoogleMaps::slotThumbnailAvailableForIndex(const QVariant& index, const QPixmap& pixmap)
@@ -1294,7 +1301,7 @@ void BackendGoogleMaps::slotTrackManagerChanged()
         // store all tracks which are already in the manager as changed
         const TrackManager::Track::List trackList = s->trackManager->getTrackList();
 
-        Q_FOREACH(const TrackManager::Track& t, trackList)
+        foreach(const TrackManager::Track& t, trackList)
         {
             storeTrackChanges(TrackManager::TrackChanges(t.id, TrackManager::ChangeAdd));
         }
@@ -1312,7 +1319,7 @@ void BackendGoogleMaps::slotTracksChanged(const QList<TrackManager::TrackChanges
 
     if (needToTrackChanges)
     {
-        Q_FOREACH(const TrackManager::TrackChanges& tc, trackChanges)
+        foreach(const TrackManager::TrackChanges& tc, trackChanges)
         {
             storeTrackChanges(tc);
         }
@@ -1328,12 +1335,12 @@ void BackendGoogleMaps::slotTracksChanged(const QList<TrackManager::TrackChanges
     if (!s->trackManager)
     {
         // no track manager, clear all tracks
-        const QVariant successClear = d->htmlWidget->runScript(QString::fromLatin1("kgeomapClearTracks();"));
+        const QVariant successClear = d->htmlWidget->runScript(QString::fromLatin1("kgeomapClearTracks();"), false);
 
         return;
     }
 
-    Q_FOREACH(const TrackManager::TrackChanges& tc, trackChanges)
+    foreach(const TrackManager::TrackChanges& tc, trackChanges)
     {
         if (tc.second & TrackManager::ChangeRemoved)
         {
@@ -1415,7 +1422,7 @@ void BackendGoogleMaps::slotTrackVisibilityChanged(const bool newState)
         const TrackManager::Track::List trackList = s->trackManager->getTrackList();
         QList<TrackManager::TrackChanges> trackChanges;
 
-        Q_FOREACH(const TrackManager::Track& t, trackList)
+        foreach(const TrackManager::Track& t, trackList)
         {
             trackChanges << TrackManager::TrackChanges(t.id, TrackManager::ChangeAdd);
         }
@@ -1424,7 +1431,7 @@ void BackendGoogleMaps::slotTrackVisibilityChanged(const bool newState)
     }
     else if (d->htmlWidget)
     {
-        const QVariant successClear = d->htmlWidget->runScript(QString::fromLatin1("kgeomapClearTracks();"));
+        const QVariant successClear = d->htmlWidget->runScript(QString::fromLatin1("kgeomapClearTracks();"), false);
     }
 }
 

@@ -1,18 +1,22 @@
-*****************************************************************************************************
 digiKam 4.4.0 - Release date: 2014-10-12
 
+*****************************************************************************************************
 NEW FEATURES:
 
 General     : Navigate between pictures using PageUp/PageDown is now possible while editing properties through captions/tags sidebar.
 General     : New keyboard shortcuts to improve usability while photo review (as to switch focus on text edit widget, or to toogle tags view).
 General     : New keyboard shortcut to switch on/off color managed view for thumbnails and preview.
+
 AlbumGUI    : Album preview can be displayed in tooltip.
+
 SlideShow   : Labels and Tags keyboard shortcuts can be used while slideshow.
 SlideShow   : Support multi-monitors computer.
+
 PiwigoExport: Allow to upload videos (OGG, MP4 and WEBM) if the Piwigo server accept them.
 PiwigoExport: Remove the support of old Piwigo API (version < 2.4).
 
-BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
+*****************************************************************************************************
+BUGFIXES:
 
 001 ==> 147175 - CANVAS : fit only large images to window.
 002 ==> 282900 - Control click on thumb to deselect resets focus to first photo.
@@ -30,7 +34,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 014 ==> 290928 - Add keyboard shortcut to switch "Color managed view" from Preview mode.
 015 ==> 320304 - Aspect ratio not rounded and displays useless.
 016 ==> 325580 - digiKam crash running maintenance tool.
-017 ==> 338485 - Crash during Face recognition and detection about KFaceIface::Identity::isNull().
+017 ==> 338485 - Crash during Face recognition and detection about FaceEngine::Identity::isNull().
 018 ==> 275381 - GROUP : rating widget overlaps the grouping indicator over thumbnail.
 019 ==> 144168 - ICONVIEW : show only modification date if modification date is different than creation date.
 020 ==> 268284 - ZoomSlider from statubar tooltip looks inconsistent.
@@ -57,11 +61,11 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 041 ==> 336333 - Map view in import tool is very slow.
 042 ==> 339173 - Album Tool-Tips: Incorrect parent collection shown.
 043 ==> 339052 - MANAGER: Sort order (ascending/descending) not saved when window is closed.
-044 ==> 171199 - Single-click behavior on tree-view do not respect settings from KDE control panel.
+044 ==> 171199 - Single-click behavior on tree-view do not respect settings from desktop control panel.
 045 ==> 257313 - Slideshow on different display (presentation mode).
 046 ==> 338783 - No EXIF/XMP info in "Metadata" right side-bar tabs.
 047 ==> 337507 - Face Detection gives no results, no matter the accuracy setting.
 048 ==> 339440 - digiKam crashes when opening geolocation from sidebar or toolbar.
-049 ==> 313855 - Use single/double click setting from KDE control center to leave media player mode.
+049 ==> 313855 - Use single/double click setting from desktop control center to leave media player mode.
 050 ==> 339227 - Existing tags from image metadata are removed when adding new tags to multiple images.
 051 ==> 337943 - Crash when cancelling piwigo export.

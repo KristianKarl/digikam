@@ -1,12 +1,12 @@
-*****************************************************************************************************
 digiKam 2.9.0 - Release date: 2012-09-02
 
+*****************************************************************************************************
 NEW FEATURES:
 
-CameraGUI : libgphoto 2.5.0 API support.
+CameraGUI      : libgphoto 2.5.0 API support.
 
-
-BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
+*****************************************************************************************************
+BUGFIXES:
 
 001 ==> 296024 - Undefined symbol in libdigikamcore.so [patch].
 002 ==> 291627 - Nef data loss after geotaging.
@@ -17,5 +17,5 @@ BUGFIXES FROM KDE BUGZILLA (http://bugs.kde.org):
 007 ==> 305916 - Busycursor sticks if applied before previews are ready.
 008 ==> 303119 - digiKam crashes when applying Restoration on a PNG picture.
 009 ==> 306084 - Typo: "inti" was not declared in this scop.
-010 ==> 304644 : OpenGL Image Viewer displays no image with multiple monitor setup.
-011 ==> 183100 : Slideshow time: configure on toolbar button.
+010 ==> 304644 - OpenGL Image Viewer displays no image with multiple monitor setup.
+011 ==> 183100 - Slideshow time: configure on toolbar button.

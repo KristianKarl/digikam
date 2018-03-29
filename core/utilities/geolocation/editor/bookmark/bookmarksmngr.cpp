@@ -6,7 +6,7 @@
  * Date        : 2017-05-15
  * Description : low level manager for GPS bookmarks
  *
- * Copyright (C) 2017 by Gilles Caulier <caulier dot gilles at gmail dot com>
+ * Copyright (C) 2017-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -698,10 +698,10 @@ void BookmarksManager::load()
     if (reader.error() != QXmlStreamReader::NoError)
     {
         QMessageBox::warning(0, i18n("Loading Bookmark"),
-                             i18n("Error when loading bookmarks on line %1, column %2:\n%3")
-                             .arg(reader.lineNumber())
-                             .arg(reader.columnNumber())
-                             .arg(reader.errorString()));
+                             i18n("Error when loading bookmarks on line %1, column %2:\n%3",
+                                  reader.lineNumber(),
+                                  reader.columnNumber(),
+                                  reader.errorString()));
     }
 }
 
@@ -815,23 +815,21 @@ void BookmarksManager::importBookmarks()
     if (reader.error() != QXmlStreamReader::NoError)
     {
         QMessageBox::warning(0, i18n("Loading Bookmark"),
-                             i18n("Error when loading bookmarks on line %1, column %2:\n%3")
-                             .arg(reader.lineNumber())
-                             .arg(reader.columnNumber())
-                             .arg(reader.errorString()));
+                             i18n("Error when loading bookmarks on line %1, column %2:\n%3",
+                                  reader.lineNumber(),
+                                  reader.columnNumber(),
+                                  reader.errorString()));
     }
 
     importRootNode->setType(BookmarkNode::Folder);
-    importRootNode->title = i18n("Imported %1")
-                            .arg(QDate::currentDate().toString(Qt::SystemLocaleShortDate));
+    importRootNode->title = i18n("Imported %1", QDate::currentDate().toString(Qt::SystemLocaleShortDate));
     addBookmark(bookmarks(), importRootNode);
 }
 
 void BookmarksManager::exportBookmarks()
 {
     QString fileName = DFileDialog::getSaveFileName(0, i18n("Save File"),
-                                                    i18n("%1 Bookmarks.xbel")
-                                                    .arg(QCoreApplication::applicationName()),
+                                                    i18n("%1 Bookmarks.xbel", QCoreApplication::applicationName()),
                                                     i18n("XBEL (*.xbel *.xml)"));
     if (fileName.isEmpty())
         return;

@@ -75,6 +75,8 @@ extern "C"
 #include "coredb.h"
 #include "album.h"
 #include "applicationsettings.h"
+#include "metadatasettings.h"
+#include "metadatasynchronizer.h"
 #include "albumwatch.h"
 #include "imageattributeswatch.h"
 #include "collectionlocation.h"
@@ -1936,7 +1938,7 @@ void AlbumManager::setCurrentAlbums(QList<Album*> albums)
     /**
      * Filter out the null pointers
     */
-    Q_FOREACH(Album* const album, albums)
+    foreach(Album* const album, albums)
     {
         if (album != 0)
         {
@@ -2484,7 +2486,7 @@ AlbumList AlbumManager::findOrCreateTAlbums(const QStringList& tagPaths)
     return resultList;
 }
 
-bool AlbumManager::deleteTAlbum(TAlbum* album, QString& errMsg)
+bool AlbumManager::deleteTAlbum(TAlbum* album, QString& errMsg, bool askUser)
 {
     if (!album)
     {
@@ -2496,6 +2498,13 @@ bool AlbumManager::deleteTAlbum(TAlbum* album, QString& errMsg)
     {
         errMsg = i18n("Cannot delete Root Tag");
         return false;
+    }
+
+    QList<qlonglong> imageIds;
+
+    if (askUser)
+    {
+        imageIds = CoreDbAccess().db()->getItemIDsInTag(album->id());
     }
 
     {
@@ -2515,6 +2524,11 @@ bool AlbumManager::deleteTAlbum(TAlbum* album, QString& errMsg)
 
     removeTAlbum(album);
     emit signalAlbumsUpdated(Album::TAG);
+
+    if (askUser)
+    {
+        askUserForWriteChangedTAlbumToFiles(imageIds);
+    }
 
     return true;
 }
@@ -2572,6 +2586,8 @@ bool AlbumManager::renameTAlbum(TAlbum* album, const QString& name,
     album->setTitle(name);
     emit signalAlbumRenamed(album);
 
+    askUserForWriteChangedTAlbumToFiles(album);
+
     return true;
 }
 
@@ -2624,13 +2640,18 @@ bool AlbumManager::moveTAlbum(TAlbum* album, TAlbum* newParent, QString& errMsg)
             int oldId   = album->id();
             int mergeId = mergeTag->id();
 
+            if (oldId == mergeId)
+            {
+                return true;
+            }
+
             QApplication::setOverrideCursor(Qt::WaitCursor);
             QList<qlonglong> imageIds = CoreDbAccess().db()->getItemIDsInTag(oldId);
 
             CoreDbOperationGroup group;
             group.setMaximumTime(200);
 
-            foreach(qlonglong imageId, imageIds)
+            foreach(const qlonglong& imageId, imageIds)
             {
                 QList<FaceTagsIface> facesList = FaceTagsEditor().databaseFaces(imageId);
                 bool foundFace                 = false;
@@ -2655,7 +2676,15 @@ bool AlbumManager::moveTAlbum(TAlbum* album, TAlbum* newParent, QString& errMsg)
             }
 
             QApplication::restoreOverrideCursor();
-            return deleteTAlbum(album, errMsg);
+
+            if (!deleteTAlbum(album, errMsg, false))
+            {
+                return false;
+            }
+
+            askUserForWriteChangedTAlbumToFiles(imageIds);
+
+            return true;
         }
         else
         {
@@ -2693,6 +2722,8 @@ bool AlbumManager::moveTAlbum(TAlbum* album, TAlbum* newParent, QString& errMsg)
     {
         FaceTags::ensureIsPerson(album->id());
     }
+
+    askUserForWriteChangedTAlbumToFiles(album);
 
     return true;
 }
@@ -3621,6 +3652,43 @@ void AlbumManager::slotImagesDeleted(const QList<qlonglong>& imageIds)
     {
         emit signalUpdateDuplicatesAlbums(sAlbumsToUpdate.toList(), deletedImages.toList());
     }
+}
+
+void AlbumManager::askUserForWriteChangedTAlbumToFiles(TAlbum* const album)
+{
+    QList<qlonglong> imageIds = CoreDbAccess().db()->getItemIDsInTag(album->id());
+    askUserForWriteChangedTAlbumToFiles(imageIds);
+}
+
+void AlbumManager::askUserForWriteChangedTAlbumToFiles(const QList<qlonglong>& imageIds)
+{
+    MetadataSettings* const settings = MetadataSettings::instance();
+
+    if ((!settings->settings().saveTags &&
+         !settings->settings().saveFaceTags) || imageIds.isEmpty())
+    {
+        return;
+    }
+
+    if (imageIds.count() > 100)
+    {
+        QMessageBox msgBox(QMessageBox::Warning,
+                           qApp->applicationName(),
+                           i18n("This operation can take a long time in the background.\n"
+                                "Do you want to write the metadata to %1 files now?",
+                                imageIds.count()),
+                           QMessageBox::Yes | QMessageBox::No,
+                           qApp->activeWindow());
+
+        if (msgBox.exec() != QMessageBox::Yes)
+        {
+            return;
+        }
+    }
+
+    ImageInfoList infos(imageIds);
+    MetadataSynchronizer* const tool = new MetadataSynchronizer(infos, MetadataSynchronizer::WriteFromDatabaseToFile);
+    tool->start();
 }
 
 void AlbumManager::removeWatchedPAlbums(const PAlbum* const album)

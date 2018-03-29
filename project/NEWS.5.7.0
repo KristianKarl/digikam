@@ -1,6 +1,6 @@
-*****************************************************************************************************
 digiKam 5.7.0 - Release date: 2017-08-27
 
+*****************************************************************************************************
 NEW FEATURES:
 
 General     : Add online handbook reader not dependant of desktop.
@@ -11,16 +11,23 @@ General     : Replaced the minimum and maximum similarity selection boxes in fuz
               search, duplicates search and maintenance by a new, generic DIntRangeBox
               which makes the look, feel and behavious consistent in all places.
               Also, this makes redundant code obsolete and reduces the probability of bugs.
+
 PrintCreator: Add option to create printing from albums or images selection.
 PrintCreator: Add option to customize output image properties to render printing.
 PrintCreator: Tool is now multi-threaded to process images while preview and printing.
+
 ImageEditor : Add SendByMail and PrintCreator tools support.
+
 Showfoto    : Add SendByMail and PrintCreator tools support.
+
 LightTable  : Add SendByMail and PrintCreator tools support.
+
 Panorama    : Add Hugin 2017.0 support.
+
 Geolocation : Add new tool to export GPS trace to KML file from geolocation editor.
 
-BUGFIXES FROM BUGZILLA:
+*****************************************************************************************************
+BUGFIXES:
 
 001 ==> 381143 - Camera not removed between invocations.
 002 ==> 381306 - Error with import from Fujifilm X-T10.
@@ -56,7 +63,7 @@ BUGFIXES FROM BUGZILLA:
 032 ==> 191872 - Use the send image tool in showfoto.
 033 ==> 330274 - I downloaded showfoto photo program. Tried to open ShowFoto Handbook, got message could not find 'Khelpcenter'.
 034 ==> 240220 - Help button not working properly.
-035 ==> 110899 - All DigiKam ImagePlugins don't work in Showfoto.
+035 ==> 110899 - All DigiKam editor tool don't work in Showfoto.
 036 ==> 132162 - Load image tools on demand.
 037 ==> 240222 - ShowFoto Handbook menu item not working.
 038 ==> 211117 - Showfoto no filters or decorate menu.
@@ -68,7 +75,7 @@ BUGFIXES FROM BUGZILLA:
 044 ==> 377306 - Optionally remove all metadata.
 045 ==> 204040 - Allow to share images by e-mail in message body instead as attachments.
 046 ==> 281269 - Allow to share a remote image by e-mail.
-047 ==> 346577 - digiKam does not show help when not running in KDE.
+047 ==> 346577 - digiKam does not show help.
 048 ==> 256262 - "Help / digiKam Handbook" menu item is misleading.
 049 ==> 099497 - Please add a dummy handbook until there's a real one.
 050 ==> 147865 - Image>email image>add image dialog does not show most thumbnails - but does show some.
@@ -356,14 +363,14 @@ BUGFIXES FROM BUGZILLA:
 335 ==> 196329 - Renaming album causes problems (until re-opening).
 336 ==> 198868 - pictures are not displayed in the main view i just can see them in the batch menu.
 337 ==> 185494 - No images in digiKam, possibly database problem, however they look fine in showfoto.
-338 ==> 181792 - Folders appear empty on first run after migrating from an old KDE version.
+338 ==> 181792 - Folders appear empty on first run after migrating from an old desktop version.
 339 ==> 224404 - No images of a album are shown.
 340 ==> 294835 - Albums are listed with (0) photos, but Database Statistics shows correct numbers of photos.
 341 ==> 232720 - All digiKam Albums show zero items even though pictures exist.
 342 ==> 195079 - digiKam albums appear empty.
 343 ==> 203031 - Album list doesn't show pictures even after tons of new pictures were imported.
 344 ==> 342557 - No rule to make target in recent git distribution.
-345 ==> 267789 - Make face detection (kface) and geo tagging (kmap) optional features.
+345 ==> 267789 - Make face detection  and geo tagging optional features.
 346 ==> 171778 - digiKam does not load photos in its database.
 347 ==> 196545 - Images on digikam are not dispayed / visualized.
 348 ==> 198067 - digiKam does not show any pictures.
@@ -532,5 +539,5 @@ BUGFIXES FROM BUGZILLA:
 511 ==> 383989 - Cannot create panoramas.
 512 ==> 383912 - AppImage crashes when started in terminal with 'debug' option.
 513 ==> 381144 - SmugMug export max dimension limited to 5000 pixels.
-514 ==> 381664 - Plugin leads to the home page of Flickr and 'An error has occurred: Invalid Frob It can not be continued.'
+514 ==> 381664 - Tool leads to the home page of Flickr and 'An error has occurred: Invalid Frob It can not be continued.'
 515 ==> 383988 - Imgur tool does not provide authentication mechanism.

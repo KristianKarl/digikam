@@ -1,11 +1,12 @@
-*****************************************************************************************************
 digiKam 5.9.0 - Release date: 2018-03-18
 
+*****************************************************************************************************
 NEW FEATURES:
 
-General      : Libraw updated to last 0.18.8.
+General        : Libraw updated to last 0.18.8.
 
-BUGFIXES FROM BUGZILLA:
+*****************************************************************************************************
+BUGFIXES:
 
 001 ==> 388977 - Error during upgrading core database schema from v8 to v9.
 002 ==> 388867 - problem migrating databaseschema from 8 to 9.
@@ -17,7 +18,7 @@ BUGFIXES FROM BUGZILLA:
 008 ==> 389208 - Request addition of "Lens" to Tool-Tips (Icon Items).
 009 ==> 389342 - Tags are copied although moving of file fails because file with the same name already exists in target location.
 010 ==> 389420 - Thumbnails diminishing in size after switching Views.
-011 ==> 389493 - Collection browse dialog should be consistent with other browse dialogs on KDE.
+011 ==> 389493 - Collection browse dialog should be consistent with other browse dialogs.
 012 ==> 389512 - Timeline Thumbnails Not Shown.
 013 ==> 389651 - Custom font size is not applied until you enter and exit the settings menu.
 014 ==> 388345 - AppImage MySQL connection issues.

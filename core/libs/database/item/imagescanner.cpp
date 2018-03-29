@@ -483,7 +483,7 @@ void ImageScanner::scanFile(ScanMode mode)
             // NOTE: Here, we only scan fields which can be expected to have changed, when we detect a change of file data.
             // It seems to me that at the moment video metadata contains such fields (which may change after editing).
             // In contrast, with photos, ImageMetadata contains fields which describe the moment of taking the photo,
-            //  which means they dont change.
+            // which means they don't change.
             if (d->hasMetadata)
             {
                 scanVideoMetadata();
@@ -1183,7 +1183,7 @@ DImageHistory ImageScanner::resolvedImageHistory(const DImageHistory& history, b
             QList<qlonglong> imageIds = resolveHistoryImageId(id);
 
             // append each image found in collection to referredImages
-            foreach(qlonglong imageId, imageIds)
+            foreach(const qlonglong& imageId, imageIds)
             {
                 ImageInfo info(imageId);
 
@@ -1282,7 +1282,7 @@ static QList<qlonglong> mergedIdLists(const HistoryImageId& referenceId,
 
     // Add a candidate if it has the same UUID, or either reference or candidate  have a UUID
     // (other way round: do not add a candidate which positively has a different UUID)
-    foreach(qlonglong candidate, candidates)
+    foreach(const qlonglong& candidate, candidates)
     {
         if (results.contains(candidate))
         {

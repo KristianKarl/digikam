@@ -6,7 +6,7 @@
  * Date        : 2017-05-15
  * Description : Managemenet dialogs for GPS bookmarks
  *
- * Copyright (C) 2017 by Gilles Caulier <caulier dot gilles at gmail dot com>
+ * Copyright (C) 2017-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -100,7 +100,7 @@ AddBookmarkDialog::AddBookmarkDialog(const QString& url,
 
     QLabel* const label = new QLabel(this);
     label->setText(i18n("Type a name and a comment for the bookmark, "
-                        "and choose where to keep it.", 0));
+                        "and choose where to keep it."));
     label->setTextFormat(Qt::PlainText);
     label->setWordWrap(true);
 

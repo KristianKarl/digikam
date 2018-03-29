@@ -45,7 +45,7 @@
 #include "digikam_version.h"
 #include "daboutdata.h"
 #include "thememanager.h"
-#include "webbrowserdlg.h"
+#include  "webbrowserdlg.h"
 
 namespace Digikam
 {

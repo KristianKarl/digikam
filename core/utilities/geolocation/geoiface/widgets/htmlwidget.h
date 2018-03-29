@@ -49,7 +49,7 @@ public:
     ~HTMLWidget();
 
     void loadInitialHTML(const QString& initialHTML);
-    QVariant runScript(const QString& scriptCode);
+    QVariant runScript(const QString& scriptCode, bool async = true);
     bool runScript2Coordinates(const QString& scriptCode, GeoCoordinates* const coordinates);
     void mouseModeChanged(const GeoMouseModes mouseMode);
     void setSelectionRectangle(const GeoCoordinates::Pair& searchCoordinates);

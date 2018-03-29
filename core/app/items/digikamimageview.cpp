@@ -26,8 +26,8 @@
  *
  * ============================================================ */
 
-#include "digikamimageview_p.h"
 #include "digikamimageview.h"
+#include "digikamimageview_p.h"
 
 // Qt includes
 
@@ -391,29 +391,44 @@ void DigikamImageView::rename()
 {
     bool grouping     = needGroupResolving(ApplicationSettings::Rename);
     QList<QUrl>  urls = selectedUrls(grouping);
+    bool loop         = false;
     NewNamesList newNamesList;
 
-    qCDebug(DIGIKAM_GENERAL_LOG) << "Selected URLs to rename: " << urls;
-
-    QPointer<AdvancedRenameDialog> dlg = new AdvancedRenameDialog(this);
-    dlg->slotAddImages(urls);
-
-    if (dlg->exec() == QDialog::Accepted)
+    do
     {
+        qCDebug(DIGIKAM_GENERAL_LOG) << "Selected URLs to rename: " << urls;
+
+        QPointer<AdvancedRenameDialog> dlg = new AdvancedRenameDialog(this);
+        dlg->slotAddImages(urls);
+
+        if (dlg->exec() != QDialog::Accepted)
+        {
+            delete dlg;
+            break;
+        }
+
+        if (!loop)
+        {
+            QUrl nextUrl = nextInOrder(selectedImageInfos(grouping).last(), 1).fileUrl();
+            setCurrentUrl(nextUrl);
+            loop = true;
+        }
+
         newNamesList = dlg->newNames();
-
-        QUrl nextUrl = nextInOrder(selectedImageInfos(grouping).last(),1).fileUrl();
-        setCurrentUrl(nextUrl);
-    }
-
-    delete dlg;
-
-    if (!newNamesList.isEmpty())
-    {
-        QPointer<AdvancedRenameProcessDialog> dlg = new AdvancedRenameProcessDialog(newNamesList);
-        dlg->exec();
         delete dlg;
+        setFocus();
+
+        if (!newNamesList.isEmpty())
+        {
+            QPointer<AdvancedRenameProcessDialog> dlg = new AdvancedRenameProcessDialog(newNamesList, this);
+            dlg->exec();
+
+            urls = dlg->failedUrls();
+            delete dlg;
+            setFocus();
+        }
     }
+    while (!urls.isEmpty() && !newNamesList.isEmpty());
 }
 
 void DigikamImageView::slotRotateLeft(const QList<QModelIndex>& indexes)

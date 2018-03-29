@@ -28,6 +28,7 @@
 #include <QDialogButtonBox>
 #include <QApplication>
 #include <QCloseEvent>
+#include <QMessageBox>
 #include <QPixmap>
 #include <QTimer>
 #include <QDir>
@@ -60,12 +61,13 @@ public:
     ImageViewUtilities*  utilities;
 
     NewNamesList         newNameList;
+    QList<QUrl>          failedUrls;
     QUrl                 currentUrl;
     bool                 cancel;
 };
 
-AdvancedRenameProcessDialog::AdvancedRenameProcessDialog(const NewNamesList& list)
-    : DProgressDlg(0),
+AdvancedRenameProcessDialog::AdvancedRenameProcessDialog(const NewNamesList& list, QWidget* const parent)
+    : DProgressDlg(parent),
       d(new Private)
 {
     d->newNameList     = list;
@@ -169,6 +171,23 @@ void AdvancedRenameProcessDialog::slotRenameSuccessded(const QUrl& src)
 
     if (d->newNameList.isEmpty())
     {
+        if (!d->failedUrls.isEmpty())
+        {
+            QMessageBox msgBox(QMessageBox::Warning,
+                               i18n("Renaming images"),
+                               i18np("An error occurred while renaming %1 image.\n"
+                                    "Do you want to rename this image again?",
+                                    "An error occurred while renaming %1 images.\n"
+                                    "Do you want to rename these images again?",
+                                    d->failedUrls.count()),
+                               QMessageBox::Yes | QMessageBox::No, this);
+
+            if (msgBox.exec() != QMessageBox::Yes)
+            {
+                d->failedUrls.clear();
+            }
+        }
+
         complete();
     }
     else
@@ -179,12 +198,19 @@ void AdvancedRenameProcessDialog::slotRenameSuccessded(const QUrl& src)
 
 void AdvancedRenameProcessDialog::slotRenameFailed(const QUrl& src)
 {
+    if (d->cancel || d->currentUrl != src)
+    {
+        return;
+    }
+
     QPixmap pix = QIcon::fromTheme(QLatin1String("emblem-error")).pixmap(32, 32);
     addedAction(pix, QDir::toNativeSeparators(src.toLocalFile()));
     setLabel(i18n("<b>Renaming images has failed...</b>"));
     qApp->processEvents();
 
-    QThread::sleep(2);
+    d->failedUrls << src;
+
+    QThread::msleep(500);
 
     slotRenameSuccessded(src);
 }
@@ -197,7 +223,13 @@ void AdvancedRenameProcessDialog::closeEvent(QCloseEvent* e)
 
 void AdvancedRenameProcessDialog::abort()
 {
+    d->failedUrls.clear();
     d->cancel = true;
+}
+
+QList<QUrl> AdvancedRenameProcessDialog::failedUrls() const
+{
+    return d->failedUrls;
 }
 
 }  // namespace Digikam

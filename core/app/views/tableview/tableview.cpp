@@ -225,7 +225,7 @@ void TableView::setThumbnailSize(const ThumbnailSize& size)
     d->thumbnailSize                            = size;
     const QList<TableViewColumn*> columnObjects = s->tableViewModel->getColumnObjects();
 
-    Q_FOREACH(TableViewColumn* const iColumn, columnObjects)
+    foreach(TableViewColumn* const iColumn, columnObjects)
     {
         iColumn->updateThumbnailSize();
     }
@@ -350,7 +350,7 @@ QList<QUrl> TableView::allUrls(bool grouping) const
     const ImageInfoList infos = allInfo(grouping);
     QList<QUrl> resultList;
 
-    Q_FOREACH(const ImageInfo& info, infos)
+    foreach(const ImageInfo& info, infos)
     {
         resultList << info.fileUrl();
     }
@@ -543,7 +543,7 @@ void TableView::invertSelection()
 
     s->tableViewSelectionModel->clearSelection();
 
-    Q_FOREACH(const int i, rowsToSelect)
+    foreach(const int i, rowsToSelect)
     {
         const QModelIndex iIndex = s->tableViewModel->deepRowIndex(i);
         const QItemSelection is  = s->tableViewSelectionModelSyncer->targetIndexToRowItemSelection(iIndex);
@@ -690,27 +690,43 @@ void TableView::rename()
 {
     bool grouping     = needGroupResolving(ApplicationSettings::Rename);
     QList<QUrl>  urls = selectedUrls(grouping);
+    bool loop         = false;
     NewNamesList newNamesList;
 
-    qCDebug(DIGIKAM_GENERAL_LOG) << "Selected URLs to rename: " << urls;
-
-    QPointer<AdvancedRenameDialog> dlg = new AdvancedRenameDialog(this);
-    dlg->slotAddImages(urls);
-
-    if (dlg->exec() == QDialog::Accepted)
+    do
     {
+        qCDebug(DIGIKAM_GENERAL_LOG) << "Selected URLs to rename: " << urls;
+
+        QPointer<AdvancedRenameDialog> dlg = new AdvancedRenameDialog(this);
+        dlg->slotAddImages(urls);
+
+        if (dlg->exec() != QDialog::Accepted)
+        {
+            delete dlg;
+            break;
+        }
+
+        if (!loop)
+        {
+            slotAwayFromSelection();
+            loop = true;
+        }
+
         newNamesList = dlg->newNames();
-
-        slotAwayFromSelection();
-    }
-
-    delete dlg;
-
-    if (!newNamesList.isEmpty())
-    {
-        QPointer<AdvancedRenameProcessDialog> dlg = new AdvancedRenameProcessDialog(newNamesList);
-        dlg->exec();
         delete dlg;
+        setFocus();
+
+        if (!newNamesList.isEmpty())
+        {
+            QPointer<AdvancedRenameProcessDialog> dlg = new AdvancedRenameProcessDialog(newNamesList, this);
+            dlg->exec();
+
+            urls = dlg->failedUrls();
+            delete dlg;
+            setFocus();
+        }
     }
+    while (!urls.isEmpty() && !newNamesList.isEmpty());
 }
+
 } // namespace Digikam

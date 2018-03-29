@@ -1,14 +1,18 @@
-*****************************************************************************************************
 digiKam 4.6.0 - Release date: 2014-12-14
 
+*****************************************************************************************************
 NEW FEATURES:
 
 Editor : Several fixes to complete image editor canvas port to Qt4 model/view.
+
 General: Better support of removable media and unvavailable items.
+
 Import : Allow sub-subfolders auto creation while importing.
+
 BQM    : Allow to save/load Workflow from tools context menu.
 
-BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
+*****************************************************************************************************
+BUGFIXES:
 
 001 ==> 340811 - Wrap album caption.
 002 ==> 340278 - Please provide a windows build of 4.4.
@@ -20,7 +24,7 @@ BUGFIXES FROM KDE BUGZILLA (https://www.digikam.org/changelog):
 008 ==> 339053 - Allow the usage of arrows to move in the photo sequence when in preview [patch].
 009 ==> 205776 - Option to load full image size in preview mode does not only do what it says with RAW files [patch].
 010 ==> 341306 - CANVAS: no "Select All" for the second time and selection fixes after crop and auto crop [patch].
-011 ==> 341298 - MetadataEngine-4.14.3/MetadataEngine/kexiv2exif.cpp:934: bad if test ?
+011 ==> 341298 - MetadataEngine bad if test ?
 012 ==> 341470 - Better speed after downloading many pictures with auto-rotation/flip option [patch].
 013 ==> 286611 - Tags are losts randomly when converting TIFF to PNG.
 014 ==> 320564 - CANVAS : full image dimensions not shown when not viewing at 100% zoom level.
