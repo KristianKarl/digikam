@@ -244,7 +244,7 @@ class MetadataSelectorView::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         selectAllBtn        = 0;
         clearSelectionBtn   = 0;
@@ -487,4 +487,4 @@ void MetadataSelectorView::selectDefault()
     slotDeflautSelection();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -46,13 +46,13 @@ class IccProfile::Private : public QSharedData
 {
 public:
 
-    Private() :
+    explicit Private() :
         type(IccProfile::InvalidType),
         handle(0)
     {
     }
 
-    Private(const Private& other)
+    explicit Private(const Private& other)
         : QSharedData(other)
     {
         handle   = 0;
@@ -615,4 +615,4 @@ void IccProfile::considerOriginalAdobeRGB(const QString& filePath)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

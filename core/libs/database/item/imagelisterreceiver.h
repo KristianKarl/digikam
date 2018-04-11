@@ -8,7 +8,7 @@
  *
  * Copyright (C) 2005 by Renchi Raju <renchi dot raju at gmail dot com>
  * Copyright (C) 2007-2011 by Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
- * Copyright (C) 2015      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef IMAGELISTERRECEIVER_H
-#define IMAGELISTERRECEIVER_H
+#ifndef DIGIKAM_IMAGE_LISTER_RECEIVER_H
+#define DIGIKAM_IMAGE_LISTER_RECEIVER_H
 
 // Qt includes
 
@@ -51,13 +51,15 @@ public:
     virtual void error(const QString& /*errMsg*/) {};
 };
 
+// ------------------------------------------------------------------------------------------------
+
 class DIGIKAM_DATABASE_EXPORT ImageListerValueListReceiver
     : public ImageListerReceiver
 {
 
 public:
 
-    ImageListerValueListReceiver();
+    explicit ImageListerValueListReceiver();
 
     QList<ImageListerRecord> records;
     bool                     hasError;
@@ -89,7 +91,7 @@ class DIGIKAM_DATABASE_EXPORT ImageListerJobPartsSendingReceiver : public ImageL
 
 public:
 
-    ImageListerJobPartsSendingReceiver(DBJob *const job, int limit);
+    explicit ImageListerJobPartsSendingReceiver(DBJob *const job, int limit);
     virtual void receive(const ImageListerRecord &record);
 
 protected:
@@ -106,7 +108,7 @@ class DIGIKAM_DATABASE_EXPORT ImageListerJobGrowingPartsSendingReceiver
 
 public:
 
-    ImageListerJobGrowingPartsSendingReceiver(DBJob* job, int start, int end, int increment);
+    explicit ImageListerJobGrowingPartsSendingReceiver(DBJob* job, int start, int end, int increment);
     virtual void receive(const ImageListerRecord& record);
 
 protected:
@@ -115,6 +117,6 @@ protected:
     int m_increment;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif  // IMAGELISTERRECEIVER_H
+#endif // DIGIKAM_IMAGE_LISTER_RECEIVER_H

@@ -47,7 +47,7 @@ class LightTableView::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         syncPreview(false),
         grid(0),
         leftFrame(0),
@@ -475,4 +475,4 @@ void LightTableView::toggleFullScreen(bool set)
     d->rightPreview->toggleFullScreen(set);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

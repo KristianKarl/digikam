@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef THUMBNAIL_LOAD_THREAD_H
-#define THUMBNAIL_LOAD_THREAD_H
+#ifndef THUMB_NAIL_LOAD_THREAD_H
+#define THUMB_NAIL_LOAD_THREAD_H
 
 // Qt includes
 
@@ -334,6 +334,6 @@ private:
     Private* const d;
 };
 
-}   // namespace Digikam
+} // namespace Digikam
 
-#endif // SHARED_LOAD_SAVE_THREAD_H
+#endif // THUMB_NAIL_LOAD_THREAD_H

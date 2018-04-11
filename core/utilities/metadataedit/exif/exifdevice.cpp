@@ -55,7 +55,7 @@ class EXIFDevice::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         makeCheck                = 0;
         modelCheck               = 0;
@@ -841,4 +841,4 @@ void EXIFDevice::applyMetadata(QByteArray& exifData)
     exifData = meta.getExifEncoded();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

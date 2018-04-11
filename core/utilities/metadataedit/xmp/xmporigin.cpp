@@ -55,7 +55,7 @@ class XMPOrigin::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         cityEdit               = 0;
         sublocationEdit        = 0;
@@ -570,4 +570,4 @@ void XMPOrigin::applyMetadata(QByteArray& exifData, QByteArray& xmpData)
     xmpData  = meta.getXmp();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

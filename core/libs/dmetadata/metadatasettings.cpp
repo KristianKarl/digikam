@@ -45,7 +45,7 @@ class MetadataSettings::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : mutex(),
           configGroup(QLatin1String("Metadata Settings"))
     {
@@ -146,4 +146,4 @@ void MetadataSettings::readFromConfig()
     emit settingsChanged(s, old);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

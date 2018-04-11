@@ -44,12 +44,9 @@
 // Local includes
 
 #include "dlayoutbox.h"
-#include "digikam_debug.h"
 #include "dexpanderbox.h"
 #include "dnuminput.h"
 #include "digikam_debug.h"
-
-
 
 namespace Digikam
 {
@@ -58,7 +55,7 @@ class AntiVignettingSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         addVignettingCheck(0),
         maskPreviewLabel(0),
         densityInput(0),
@@ -326,4 +323,4 @@ void AntiVignettingSettings::slotSettingsChanged()
     emit signalSettingsChanged();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

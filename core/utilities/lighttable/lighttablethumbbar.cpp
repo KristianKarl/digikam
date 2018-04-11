@@ -160,7 +160,7 @@ class LightTableThumbBar::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         navigateByPair   = false;
         imageInfoModel   = 0;
@@ -477,4 +477,4 @@ void LightTableThumbBar::slotSetupChanged()
     d->imageFilterModel->setStringTypeNatural(ApplicationSettings::instance()->isStringTypeNatural());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -5,9 +5,9 @@
  *
  * Date        : 2014-02-01
  * Description : Kinetic Scroller for Thumbnail Bar
+ *               based on Razvan Petru implementation.
  *
- * Copyright (C) 2010 by Razvan Petru
- * Copyright (C) 2014 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -64,7 +64,7 @@ class ShowfotoKineticScroller::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         scrollArea            = 0;
         isPressed             = false;
@@ -102,9 +102,11 @@ public:
 };
 
 ShowfotoKineticScroller::ShowfotoKineticScroller(QObject* const parent)
-    : QObject(parent), d(new Private())
+    : QObject(parent),
+      d(new Private())
 {
-    connect(&d->kineticTimer, &QTimer::timeout, this, &ShowfotoKineticScroller::onKineticTimerElapsed);
+    connect(&d->kineticTimer, &QTimer::timeout,
+            this, &ShowfotoKineticScroller::onKineticTimerElapsed);
 }
 
 ShowfotoKineticScroller::~ShowfotoKineticScroller()
@@ -271,6 +273,7 @@ void ShowfotoKineticScroller::onKineticTimerElapsed()
             d->velocity -= gFriction;
         else if( d->velocity < 0 )
             d->velocity += gFriction;
+
         if( qAbs(d->velocity) < qAbs(gFriction) )
             d->stopMotion();
 

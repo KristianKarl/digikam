@@ -81,7 +81,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         histoSegments(0),
         pickerBox(0),
         resetButton(0),
@@ -934,4 +934,4 @@ void AdjustLevelsTool::slotSaveAsSettings()
     slotChannelChanged();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

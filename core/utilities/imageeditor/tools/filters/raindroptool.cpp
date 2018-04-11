@@ -53,7 +53,7 @@ class RainDropTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         dropInput(0),
         amountInput(0),
         coeffInput(0),
@@ -247,4 +247,4 @@ void RainDropTool::blockWidgetSignals(bool b)
     d->coeffInput->blockSignals(b);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

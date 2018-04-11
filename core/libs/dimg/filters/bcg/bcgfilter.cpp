@@ -82,7 +82,7 @@ class BCGFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         memset(map,   0, sizeof(map));
         memset(map16, 0, sizeof(map16));
@@ -305,4 +305,4 @@ void BCGFilter::applyBCG(uchar* const bits, uint width, uint height, bool sixtee
 
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -42,7 +42,7 @@ class ModelCompleter::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         displayRole(Qt::DisplayRole),
         uniqueIdRole(Qt::DisplayRole),
         delayedModelTimer(0),
@@ -280,4 +280,4 @@ void ModelCompleter::sync(QAbstractItemModel* const model, const QModelIndex& in
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

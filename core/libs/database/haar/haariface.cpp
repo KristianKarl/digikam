@@ -154,7 +154,7 @@ class HaarIface::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         data                       = nullptr;
         bin                        = nullptr;
@@ -1178,4 +1178,4 @@ double HaarIface::calculateScore(Haar::SignatureData& querySig, Haar::SignatureD
     return score;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

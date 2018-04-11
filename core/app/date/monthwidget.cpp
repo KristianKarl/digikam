@@ -70,7 +70,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         active(true),
         model(0),
         timer(0),
@@ -517,4 +517,4 @@ void MonthWidget::slotModelDestroyed()
     update();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

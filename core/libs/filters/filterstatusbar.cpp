@@ -55,7 +55,7 @@ public:
 
 public:
 
-    Private()
+    explicit Private()
     {
         status      = None;
         info        = 0;
@@ -222,4 +222,4 @@ void FilterStatusBar::slotFilterSettingsChanged(const ImageFilterSettings& setti
     d->settings = settings;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

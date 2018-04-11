@@ -55,7 +55,7 @@ class FilmGrainTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         configGroupName(QLatin1String("filmgrain Tool")),
         settingsView(0),
         previewWidget(0),
@@ -162,4 +162,4 @@ void FilmGrainTool::renderingFinished()
     toolSettings()->enableButton(EditorToolSettings::Ok, d->settingsView->settings().isDirty());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

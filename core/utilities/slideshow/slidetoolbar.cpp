@@ -49,7 +49,7 @@ class SlideToolBar::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         playBtn(0),
         stopBtn(0),
         nextBtn(0),
@@ -281,4 +281,4 @@ void SlideToolBar::slotScreenSelected(QAction* act)
     emit signalScreenSelected(act->data().toInt());
 }
 
-}   // namespace Digikam
+} // namespace Digikam

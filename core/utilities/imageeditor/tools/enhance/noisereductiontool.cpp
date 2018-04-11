@@ -51,7 +51,7 @@ class NoiseReductionTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         configGroupName(QLatin1String("noisereduction Tool")),
         nrSettings(0),
         previewWidget(0),
@@ -173,4 +173,4 @@ void NoiseReductionTool::analyserCompleted()
     slotPreview();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

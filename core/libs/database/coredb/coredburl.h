@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef COREDATABASEURL_H
-#define COREDATABASEURL_H
+#ifndef DIGIKAM_CORE_DATABASE_URL_H
+#define DIGIKAM_CORE_DATABASE_URL_H
 
 // Qt includes
 
@@ -140,7 +140,7 @@ public:
     /**
       * Create a CoreDbUrl object from a QUrl, to retrieve the information stored
       */
-    CoreDbUrl(const QUrl& digikamUrl);
+    explicit CoreDbUrl(const QUrl& digikamUrl);
 
     /**
      * Create an invalid database URL
@@ -257,6 +257,6 @@ public:
     bool operator==(const QUrl& digikamalbumsUrl) const;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // COREDATABASEURL_H
+#endif // DIGIKAM_CORE_DATABASE_URL_H

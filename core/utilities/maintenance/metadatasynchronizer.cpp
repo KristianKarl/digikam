@@ -47,7 +47,7 @@ class MetadataSynchronizer::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         imageInfoJob(0),
         thread(0),
         direction(MetadataSynchronizer::WriteFromDatabaseToFile),
@@ -215,4 +215,4 @@ void MetadataSynchronizer::slotAdvance()
     advance(1);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

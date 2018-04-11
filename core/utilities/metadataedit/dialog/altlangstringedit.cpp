@@ -42,7 +42,7 @@ class AltLangStringsEdit::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         valueCheck = 0;
         editor     = 0;
@@ -142,4 +142,4 @@ void AltLangStringsEdit::slotSelectionChanged(const QString& lang)
     emit signalDefaultLanguageEnabled(lang == QLatin1String("x-default"));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

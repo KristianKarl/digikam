@@ -62,7 +62,7 @@ class MetadataEditDialog::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         isReadOnly      = false;
         tabWidget       = 0;
@@ -372,4 +372,4 @@ void MetadataEditDialog::slotSetReadOnly(bool state)
     d->isReadOnly = state;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -50,7 +50,7 @@ class EXIFLens::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         apertureCheck         = 0;
         maxApertureCheck      = 0;
@@ -439,4 +439,4 @@ void EXIFLens::applyMetadata(QByteArray& exifData)
     exifData = meta.getExifEncoded();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

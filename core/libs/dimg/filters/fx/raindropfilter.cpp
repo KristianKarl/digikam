@@ -37,7 +37,7 @@
 #include <QDateTime>
 #include <QRect>
 #include <QtMath>
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 
 // Local includes
 
@@ -51,7 +51,7 @@ class RainDropFilter::Private
 
 public:
 
-    Private()
+    explicit Private()
       : drop(80),
         amount(150),
         coeff(30),
@@ -616,4 +616,4 @@ int RainDropFilter::pixelOffset(int Width, int X, int Y, int bytesDepth)
     return (Y * Width * bytesDepth + X * bytesDepth);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -32,7 +32,7 @@
 
 // Qt includes
 
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 
 // Local includes
 
@@ -79,7 +79,7 @@ class NRFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         for (int c = 0 ; c < 3; ++c)
         {
@@ -519,4 +519,4 @@ void NRFilter::ycbcr2srgb(float** const fimg, int size)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

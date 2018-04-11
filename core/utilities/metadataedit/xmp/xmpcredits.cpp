@@ -49,7 +49,7 @@ class XMPCredits::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         bylineEdit       = 0;
         bylineTitleEdit  = 0;
@@ -606,4 +606,4 @@ void XMPCredits::applyMetadata(QByteArray& xmpData)
     xmpData = meta.getXmp();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

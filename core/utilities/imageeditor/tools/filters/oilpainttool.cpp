@@ -53,7 +53,7 @@ class OilPaintTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         brushSizeInput(0),
         smoothInput(0),
         previewWidget(0),
@@ -201,4 +201,4 @@ void OilPaintTool::setFinalImage()
     iface.setOriginal(i18n("Oil Paint"), filter()->filterAction(), filter()->getTargetImage());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

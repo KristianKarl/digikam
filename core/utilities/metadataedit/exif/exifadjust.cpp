@@ -50,7 +50,7 @@ class EXIFAdjust::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         brightnessCheck     = 0;
         gainControlCheck    = 0;
@@ -377,4 +377,4 @@ void EXIFAdjust::applyMetadata(QByteArray& exifData)
     exifData = meta.getExifEncoded();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

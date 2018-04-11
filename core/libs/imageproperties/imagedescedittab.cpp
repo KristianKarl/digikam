@@ -33,7 +33,6 @@
 #include <QTextEdit>
 #include <QStyle>
 #include <QGridLayout>
-#include <QPushButton>
 #include <QScrollArea>
 #include <QSignalMapper>
 #include <QTimer>
@@ -92,7 +91,7 @@ public:
         INFOS
     };
 
-    Private()
+    explicit Private()
     {
         modified                   = false;
         ignoreImageAttributesWatch = false;
@@ -1490,4 +1489,4 @@ AddTagsLineEdit* ImageDescEditTab::getNewTagEdit() const
     return d->newTagEdit;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

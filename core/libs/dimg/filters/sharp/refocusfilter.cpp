@@ -31,7 +31,7 @@
 
 // Qt includes
 
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 
 // Local includes
 
@@ -49,7 +49,7 @@ class RefocusFilter::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         matrixSize(5),
         radius(0.9),
         gauss(0.0),
@@ -370,4 +370,4 @@ int RefocusFilter::maxMatrixSize()
     return MAX_MATRIX_SIZE;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

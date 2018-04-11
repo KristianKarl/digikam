@@ -75,7 +75,7 @@ class PresentationGL::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         timer               = 0;
         fileIndex           = 0;
@@ -1710,4 +1710,4 @@ QPixmap PresentationGL::generateCustomOutlinedTextPixmap(const QString& text, QF
     return pix;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -33,7 +33,7 @@
 
 // Qt includes
 
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 #include <QMutex>
 
 // Local includes
@@ -52,7 +52,7 @@ class CharcoalFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         globalProgress = 0;
         pencil         = 5.0;
@@ -361,4 +361,4 @@ void CharcoalFilter::readParameters(const Digikam::FilterAction& action)
     d->smooth = action.parameter(QLatin1String("smooth")).toDouble();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -41,7 +41,6 @@
 // Local includes
 
 #include "digikam_config.h"
-#include "digikam_export.h"
 #include "dxmlguiwindow.h"
 #include "digikam_export.h"
 
@@ -234,6 +233,6 @@ private:
     static DigikamApp* m_instance;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif  // DIGIKAM_APP_H
+#endif // DIGIKAM_APP_H

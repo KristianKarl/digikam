@@ -48,7 +48,7 @@ class GPSBookmarkModelHelper::Private
 {
 public:
 
-    Private()
+    explicit Private()
       : model(0),
         bookmarkManager(0),
         imageModel(0),
@@ -245,4 +245,4 @@ void GPSBookmarkModelHelper::snapItemsTo(const QModelIndex& targetIndex,
     emit(signalUndoCommand(undoCommand));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

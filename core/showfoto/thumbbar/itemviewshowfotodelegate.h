@@ -6,7 +6,7 @@
  * Date        : 2013-08-01
  * Description : Qt item view for images - the delegate
  *
- * Copyright (C) 2013 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2013 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef ITEMVIEWSHOWFOTODELEGATE_H
-#define ITEMVIEWSHOWFOTODELEGATE_H
+#ifndef ITEM_VIEW_SHOW_FOTO_DELEGATE_H
+#define ITEM_VIEW_SHOW_FOTO_DELEGATE_H
 
 // Local includes
 
@@ -124,6 +124,6 @@ private:
     Q_DECLARE_PRIVATE(ItemViewShowfotoDelegate)
 };
 
-}// namespace ShowFoto
+} // namespace ShowFoto
 
-#endif // ITEMVIEWSHOWFOTODELEGATE_H
+#endif // ITEM_VIEW_SHOW_FOTO_DELEGATE_H

@@ -65,7 +65,7 @@ class LocalContrastSettings::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         stretchContrastCheck(0),
         label4(0),
         label5(0),
@@ -737,4 +737,4 @@ void LocalContrastSettings::saveAsSettings()
     file.close();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

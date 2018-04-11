@@ -51,7 +51,7 @@ class BorderTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         configGroupName(QLatin1String("border Tool")),
 
         gboxSettings(0),
@@ -171,4 +171,4 @@ void BorderTool::setFinalImage()
     iface.setOriginal(i18n("Add Border"), filter()->filterAction(), targetImage);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

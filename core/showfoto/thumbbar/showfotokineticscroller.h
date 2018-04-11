@@ -5,9 +5,9 @@
  *
  * Date        : 2014-02-01
  * Description : Kinetic Scroller for Thumbnail Bar
+ *               based on Razvan Petru implementation.
  *
- * Copyright (C) 2010 by Razvan Petru
- * Copyright (C) 2014 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef SHOWFOTOKINETICSCROLLER_H
-#define SHOWFOTOKINETICSCROLLER_H
+#ifndef SHOW_FOTO_KINETIC_SCROLLER_H
+#define SHOW_FOTO_KINETICS_CROLLER_H
 
 // Qt includes
 
@@ -43,7 +43,7 @@ class ShowfotoKineticScroller: public QObject
 
 public:
 
-    ShowfotoKineticScroller(QObject* const parent = 0);
+    explicit ShowfotoKineticScroller(QObject* const parent = 0);
     ~ShowfotoKineticScroller();
 
     //! enabled for one widget only, new calls remove previous association
@@ -66,4 +66,4 @@ private:
 
 } // namespace ShowFoto
 
-#endif // SHOWFOTOKINETICSCROLLER_H
+#endif // SHOW_FOTO_KINETIC_SCROLLER_H

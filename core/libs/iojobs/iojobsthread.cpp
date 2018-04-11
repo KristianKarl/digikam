@@ -6,7 +6,7 @@
  * Date        : 2015-06-15
  * Description : IO Jobs thread for file system jobs
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  * Copyright (C) 2018 by Maik Qualmann <metzpinguin at gmail dot com>
  *
  * This program is free software; you can redistribute it
@@ -45,25 +45,26 @@ class IOJobsThread::Private
 
 public:
 
-    Private()
+    explicit Private()
         : jobsCount(0),
           isCanceled(false),
           jobData(0)
     {
     }
 
-    int            jobsCount;
-    bool           isCanceled;
+    int         jobsCount;
+    bool        isCanceled;
 
-    IOJobData*     jobData;
+    IOJobData*  jobData;
 
-    QList<QString> errorsList;
+    QStringList errorsList;
 };
 
 IOJobsThread::IOJobsThread(QObject* const parent)
     : ActionThreadBase(parent),
       d(new Private)
 {
+    setObjectName(QLatin1String("IOJobsThread"));
 }
 
 IOJobsThread::~IOJobsThread()
@@ -78,7 +79,7 @@ void IOJobsThread::copy(IOJobData* const data)
 
     ActionJobCollection collection;
 
-    for (int i = 0; i < maximumNumberOfThreads(); i++)
+    for (int i = 0 ; i < maximumNumberOfThreads() ; i++)
     {
         CopyJob* const j = new CopyJob(data);
 
@@ -97,7 +98,7 @@ void IOJobsThread::move(IOJobData* const data)
 
     ActionJobCollection collection;
 
-    for (int i = 0; i < maximumNumberOfThreads(); i++)
+    for (int i = 0 ; i < maximumNumberOfThreads() ; i++)
     {
         CopyJob* const j = new CopyJob(data);
 
@@ -116,7 +117,7 @@ void IOJobsThread::deleteFiles(IOJobData* const data)
 
     ActionJobCollection collection;
 
-    for (int i = 0; i < maximumNumberOfThreads(); i++)
+    for (int i = 0 ; i < maximumNumberOfThreads() ; i++)
     {
         DeleteJob* const j = new DeleteJob(data);
 
@@ -198,31 +199,36 @@ void IOJobsThread::deleteDTrashItems(const DTrashItemInfoList& items)
     appendJobs(collection);
 }
 
-bool IOJobsThread::isCanceled()
+bool IOJobsThread::isCanceled() const
 {
     return d->isCanceled;
 }
 
-bool IOJobsThread::hasErrors()
+bool IOJobsThread::hasErrors() const
 {
     return !d->errorsList.isEmpty();
 }
 
-QList<QString>& IOJobsThread::errorsList()
+QStringList& IOJobsThread::errorsList() const
 {
     return d->errorsList;
 }
 
+IOJobData* IOJobsThread::jobData() const
+{
+    return d->jobData;
+}
+
 void IOJobsThread::connectOneJob(IOJob* const j)
 {
-    connect(j, SIGNAL(error(QString)),
+    connect(j, SIGNAL(signalError(QString)),
             this, SLOT(slotError(QString)));
 
     connect(j, SIGNAL(signalDone()),
             this, SLOT(slotOneJobFinished()));
 
-    connect(j, SIGNAL(signalOneProccessed(int)),
-            this, SIGNAL(signalOneProccessed(int)));
+    connect(j, SIGNAL(signalOneProccessed()),
+            this, SIGNAL(signalOneProccessed()));
 }
 
 void IOJobsThread::slotOneJobFinished()
@@ -245,11 +251,6 @@ void IOJobsThread::slotCancel()
 {
     d->isCanceled = true;
     ActionThreadBase::cancel();
-}
-
-IOJobData* IOJobsThread::jobData()
-{
-    return d->jobData;
 }
 
 } // namespace Digikam

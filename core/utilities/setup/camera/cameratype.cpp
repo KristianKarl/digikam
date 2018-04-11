@@ -39,7 +39,7 @@ class CameraType::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         valid(false),
         startingNumber(1),
         action(0)
@@ -192,4 +192,4 @@ ImportUI* CameraType::currentImportUI() const
     return d->currentImportUI;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -45,7 +45,7 @@ class HSPreviewWidget::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         xBorder(0),
         hue(0.0),
         sat(0.0)
@@ -125,4 +125,4 @@ void HSPreviewWidget::updatePixmap()
     d->pixmap = image.convertToPixmap();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

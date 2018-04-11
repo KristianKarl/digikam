@@ -43,7 +43,7 @@ class SlideImage::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         deskSize(1024),
         previewThread(0),
         previewPreloadThread(0)
@@ -178,4 +178,4 @@ void SlideImage::updatePixmap()
                  0, 0, pix.width(), pix.height());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

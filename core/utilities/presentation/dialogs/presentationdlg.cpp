@@ -61,7 +61,7 @@ class PresentationDlg::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         buttonBox   = 0;
         startButton = 0;
@@ -309,4 +309,4 @@ void PresentationDlg::closeEvent(QCloseEvent* e)
     e->accept();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

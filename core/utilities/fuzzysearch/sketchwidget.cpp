@@ -77,7 +77,7 @@ class SketchWidget::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         isClear(true),
         drawing(false),
         penWidth(10),
@@ -640,4 +640,4 @@ void SketchWidget::updateDrawCursor()
     d->drawCursor = QCursor(pix);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

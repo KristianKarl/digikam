@@ -64,7 +64,7 @@ class SharpSettings::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         stack(0),
         sharpMethod(0),
         radiusInput(0),
@@ -579,4 +579,4 @@ void SharpSettings::saveAsSettings()
     file.close();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

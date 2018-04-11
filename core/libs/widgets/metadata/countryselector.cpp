@@ -42,7 +42,7 @@ class Q_DECL_HIDDEN CountrySelector::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         // We cannot use KLocale::allCountriesList() here because KDE only
         // support 2 characters country codes. XMP require 3 characters country
@@ -370,4 +370,4 @@ QString CountrySelector::countryForCode(const QString& countryCode)
     return (priv.countryCodeMap[countryCode]);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

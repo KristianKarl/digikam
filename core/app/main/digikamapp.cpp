@@ -10,7 +10,7 @@
  * Copyright (C)      2006 by Tom Albers <tomalbers at kde dot nl>
  * Copyright (C) 2009-2012 by Andi Clemens <andi dot clemens at gmail dot com>
  * Copyright (C) 2013      by Michael G. Hansen <mike at mghansen dot de>
- * Copyright (C) 2014-2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014-2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  * Copyright (C) 2002-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  *
  * This program is free software; you can redistribute it
@@ -27,7 +27,6 @@
  * ============================================================ */
 
 #include "digikamapp.h"
-/// @todo Order should be changed according to krazy2, but compilation fails. Try again later. MH
 #include "digikamapp_p.h"
 
 // Qt includes
@@ -1601,6 +1600,7 @@ void DigikamApp::slotImageSelected(const ImageInfoList& selection, const ImageIn
                                 numImagesWithoutGrouped);
                 break;
             }
+
             statusBarSelectionText
                         = i18np("No item selected (%1 [%2] item)",
                                 "No item selected (%1 [%2] items)",
@@ -1646,14 +1646,18 @@ void DigikamApp::slotImageSelected(const ImageInfoList& selection, const ImageIn
 
                 break;
             }
+
+#if __GNUC__ >= 7
             // no break; is completely intentional, arriving here is equivalent to case 1:
             [[fallthrough]];
+#endif
         }
         case 1:
         {
             slotSetCheckedExifOrientationAction(selectionWithoutGrouped.first());
 
             int index = listAll.indexOf(selection.first()) + 1;
+
             if (numImagesWithGrouped == numImagesWithoutGrouped)
             {
                 statusBarSelectionText = selection.first().fileUrl().fileName()
@@ -3390,6 +3394,7 @@ void DigikamApp::slotEditMetadata()
     foreach(const QUrl& url, urls)
     {
         scanner.scanFile(url.toLocalFile(), CollectionScanner::Rescan);
+        ImageAttributesWatch::instance()->fileMetadataChanged(url);
     }
 }
 
@@ -3591,4 +3596,4 @@ void DigikamApp::slotImportTool()
 #endif
 }
 
-}  // namespace Digikam
+} // namespace Digikam

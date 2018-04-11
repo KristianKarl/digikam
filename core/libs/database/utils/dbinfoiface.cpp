@@ -22,6 +22,8 @@
  *
  * ============================================================ */
 
+#include "dbinfoiface.h"
+
 // Local includes
 
 #include "albumselecttabs.h"
@@ -31,7 +33,6 @@
 #include "albumselectwidget.h"
 #include "coredb.h"
 #include "coredbnamefilter.h"
-#include "dbinfoiface.h"
 #include "digikamapp.h"
 #include "digikam_debug.h"
 #include "digikamview.h"
@@ -51,7 +52,7 @@ class DBInfoIface::Private
 {
 public:
 
-    Private()
+    explicit Private()
       : albumManager(AlbumManager::instance()),
         albumsChooser(0),
         albumSelector(0),
@@ -564,4 +565,4 @@ QUrl DBInfoIface::uploadUrl() const
     return url;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

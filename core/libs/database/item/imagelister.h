@@ -9,7 +9,7 @@
  * Copyright (C) 2005      by Renchi Raju <renchi dot raju at gmail dot com>
  * Copyright (C) 2007-2012 by Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
  * Copyright (C) 2007-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
- * Copyright (C) 2015      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -24,8 +24,8 @@
  *
  * ============================================================ */
 
-#ifndef IMAGE_LISTER_H
-#define IMAGE_LISTER_H
+#ifndef DIGIKAM_IMAGE_LISTER_H
+#define DIGIKAM_IMAGE_LISTER_H
 
 // Qt includes
 
@@ -134,8 +134,8 @@ public:
 private:
 
     /**
-     * This method generates image records for the reciever that contain the similarities.
-     * @param receiver reciever for the searches
+     * This method generates image records for the receiver that contain the similarities.
+     * @param receiver for the searches
      * @param imageSimilarityMap the map of image ids and their similarities in the HAAR search
      */
     void listFromHaarSearch(ImageListerReceiver* const receiver, const QMap<qlonglong,double>& imageSimilarityMap);
@@ -148,6 +148,6 @@ private:
     Private* const d;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // IMAGE_LISTER_H
+#endif // DIGIKAM_IMAGE_LISTER_H

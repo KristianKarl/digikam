@@ -72,7 +72,7 @@ class PresentationWidget::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         sharedData                   = 0;
         imageLoader                  = 0;
@@ -1554,4 +1554,4 @@ int PresentationWidget::effectBlobs(bool aInit)
     return 10;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -45,7 +45,7 @@ class ShearFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         antiAlias       = true;
         orgW            = 0;
@@ -261,4 +261,4 @@ void ShearFilter::readParameters(const FilterAction& action)
     d->backgroundColor.setAlpha(action.parameter(QLatin1String("backgroundColorA")).toInt());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

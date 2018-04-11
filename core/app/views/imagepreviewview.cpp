@@ -73,7 +73,7 @@ class ImagePreviewView::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         fullSize            = 0;
         scale               = 1.0;
@@ -573,4 +573,4 @@ void ImagePreviewView::mousePressEvent(QMouseEvent* e)
     GraphicsDImgView::mousePressEvent(e);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

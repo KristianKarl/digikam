@@ -26,9 +26,9 @@
 
 // Qt includes
 
-#include <QtCore/QString>
-#include <QtWidgets/QWidget>
-#include <QtWidgets/QComboBox>
+#include <QString>
+#include <QWidget>
+#include <QComboBox>
 
 // Local includes
 
@@ -42,7 +42,7 @@ class DIGIKAM_EXPORT CountrySelector : public QComboBox
 
 public:
 
-    CountrySelector(QWidget* const parent);
+    explicit CountrySelector(QWidget* const parent);
     ~CountrySelector();
 
     void setCountry(const QString& countryCode);

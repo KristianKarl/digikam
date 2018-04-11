@@ -57,7 +57,7 @@ class SlideOSD::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         paused(false),
         blink(false),
         refresh(1000),       // Progress bar refresh in ms
@@ -334,4 +334,4 @@ bool SlideOSD::isPaused() const
     return d->toolBar->isPaused();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -32,7 +32,6 @@
 
 // Qt includes
 
-#include <QFileInfo>
 #include <QByteArray>
 #include <QProcess>
 #include <QDir>
@@ -405,7 +404,8 @@ KService::List DFileOperations::servicesForOpenWith(const QList<QUrl>& urls)
 }
 
 bool DFileOperations::copyFolderRecursively(const QString& srcPath,
-                                            const QString& dstPath)
+                                            const QString& dstPath,
+                                            const bool* cancel)
 {
     QDir srcDir(srcPath);
     QString newCopyPath = dstPath + QLatin1Char('/') + srcDir.dirName();
@@ -419,13 +419,16 @@ bool DFileOperations::copyFolderRecursively(const QString& srcPath,
     {
         QString copyPath = newCopyPath + QLatin1Char('/') + fileInfo.fileName();
 
+        if (cancel && *cancel)
+            return false;
+
         if (!QFile::copy(fileInfo.filePath(), copyPath))
             return false;
     }
 
     foreach (const QFileInfo& fileInfo, srcDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot))
     {
-        if (!copyFolderRecursively(fileInfo.filePath(), newCopyPath))
+        if (!copyFolderRecursively(fileInfo.filePath(), newCopyPath, cancel))
             return false;
     }
 

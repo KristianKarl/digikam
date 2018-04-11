@@ -50,7 +50,7 @@ class AdvancedRenameProcessDialog::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         thumbLoadThread(0),
         utilities(0),
         cancel(false)
@@ -232,4 +232,4 @@ QList<QUrl> AdvancedRenameProcessDialog::failedUrls() const
     return d->failedUrls;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

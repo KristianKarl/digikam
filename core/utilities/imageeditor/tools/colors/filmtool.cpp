@@ -77,7 +77,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         histoSegments(0),
         resetButton(0),
         pickWhitePoint(0),
@@ -686,4 +686,4 @@ bool FilmTool::eventFilter(QObject* obj, QEvent* ev)
     return EditorToolThreaded::eventFilter(obj, ev);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

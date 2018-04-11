@@ -46,7 +46,7 @@ class NewItemsFinder::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : mode(CompleteCollectionScan),
           cancel(false)
     {
@@ -202,4 +202,4 @@ void NewItemsFinder::slotPartialScanDone(const QString& path)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

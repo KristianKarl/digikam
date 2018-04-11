@@ -66,7 +66,7 @@ class DConfigDlgWdgItem::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : checkable(false),
           checked(false),
           enabled(true)
@@ -701,6 +701,6 @@ QModelIndex DConfigDlgWdgModel::index(const DConfigDlgWdgItem* item) const
     return createIndex(pageItem->row(), 0, (void*)pageItem);
 }
 
-}  // namespace Digikam
+} // namespace Digikam
 
 #include "moc_dconfigdlgmodels.cpp"

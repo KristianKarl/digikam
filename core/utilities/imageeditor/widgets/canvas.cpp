@@ -61,7 +61,7 @@ class Canvas::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         rubber     = 0;
         wrapItem   = 0;
@@ -722,4 +722,4 @@ void Canvas::dropEvent(QDropEvent* e)
     emit signalAddedDropedItems(e);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

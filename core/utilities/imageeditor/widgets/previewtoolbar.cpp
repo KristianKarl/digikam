@@ -49,7 +49,7 @@ class PreviewToolBar::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         previewOriginalButton(0),
         previewBothButtonVert(0),
         previewBothButtonHorz(0),
@@ -313,4 +313,4 @@ void PreviewToolBar::writeSettings(KConfigGroup& group)
     group.writeEntry("PreviewMode", (int)previewMode());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -50,7 +50,7 @@ class XMPContent::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         writerCheck          = 0;
         headlineCheck        = 0;
@@ -306,4 +306,4 @@ void XMPContent::slotSyncOptionsEnabled(bool defaultLangAlt)
     d->syncEXIFCommentCheck->setEnabled(cond);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

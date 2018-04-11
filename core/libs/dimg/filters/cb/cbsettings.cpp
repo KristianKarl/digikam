@@ -54,7 +54,7 @@ class CBSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         rInput(0),
         gInput(0),
         bInput(0)
@@ -214,4 +214,4 @@ void CBSettings::writeSettings(KConfigGroup& group)
     group.writeEntry(d->configBlueAdjustmentEntry,  prm.blue);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

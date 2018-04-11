@@ -46,7 +46,7 @@ class DateFolderView::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         active(false),
         selected(),
         dateTreeView(0),
@@ -210,4 +210,4 @@ AlbumPointer<DAlbum> DateFolderView::currentAlbum() const
     return AlbumPointer<DAlbum> (d->dateTreeView->currentAlbum());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

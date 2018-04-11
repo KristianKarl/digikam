@@ -48,7 +48,7 @@ class TemplateViewer::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         names                      = 0;
         position                   = 0;
@@ -284,4 +284,4 @@ void TemplateViewer::setTemplate(const Template& t)
     d->subjectsList->addItems(t.IptcSubjects());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

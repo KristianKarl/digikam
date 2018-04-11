@@ -50,7 +50,7 @@ class TemplateSelector::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         label         = 0;
         setupButton   = 0;
@@ -200,4 +200,4 @@ void TemplateSelector::slotTemplateListChanged()
     populateTemplates();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -33,7 +33,7 @@ class DbEngineActionType::Private
 {
 
 public:
-    Private()
+    explicit Private()
         : isValue(false)
     {
     }
@@ -95,4 +95,4 @@ void DbEngineActionType::setValue(bool isValue)
     d->isValue = isValue;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

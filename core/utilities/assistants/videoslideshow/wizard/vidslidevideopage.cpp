@@ -41,7 +41,7 @@
 
 // QtAv includes
 
-#include <QtAV/VideoEncoder.h>
+#include <QtAV/VideoEncoder.h>   // krazy:exclude=includes
 
 // Local includes
 
@@ -58,7 +58,7 @@ class VidSlideVideoPage::Private
 {
 public:
 
-    Private(QWizard* const dialog)
+    explicit Private(QWizard* const dialog)
       : framesVal(0),
         typeVal(0),
         bitrateVal(0),

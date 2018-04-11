@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef COLLECTIONSCANNEROBSERVER_H
-#define COLLECTIONSCANNEROBSERVER_H
+#ifndef DIGIKAM_COLLECTION_SCANNER_OBSERVER_H
+#define DIGIKAM_COLLECTION_SCANNER_OBSERVER_H
 
 // Qt includes
 
@@ -74,6 +74,6 @@ public:
     virtual void error(const QString& errorMessage) = 0;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // COLLECTIONSCANNEROBSERVER_H
+#endif // DIGIKAM_COLLECTION_SCANNER_OBSERVER_H

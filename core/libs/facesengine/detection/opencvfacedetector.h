@@ -28,8 +28,8 @@
  *
  * ============================================================ */
 
-#ifndef FACESENGINE_OPENCVFACEDETECTOR_H
-#define FACESENGINE_OPENCVFACEDETECTOR_H
+#ifndef DIGIKAM_FACESENGINE_OPENCV_FACE_DETECTOR_H
+#define DIGIKAM_FACESENGINE_OPENCV_FACE_DETECTOR_H
 
 // OpenCV library
 
@@ -56,7 +56,7 @@ class OpenCVFaceDetector
 {
 public:
 
-    OpenCVFaceDetector(const QStringList& cascadeDirs);
+    explicit OpenCVFaceDetector(const QStringList& cascadeDirs);
     ~OpenCVFaceDetector();
 
     cv::Mat prepareForDetection(const QImage& inputImage) const;
@@ -118,4 +118,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* FACESENGINE_OPENCVFACEDETECTOR_H */
+#endif // DIGIKAM_FACESENGINE_OPENCV_FACE_DETECTOR_H

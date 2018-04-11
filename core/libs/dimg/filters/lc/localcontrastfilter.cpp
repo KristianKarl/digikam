@@ -30,7 +30,7 @@
 // Qt includes
 
 #include <QtMath>
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 
 // Local includes
 
@@ -44,7 +44,7 @@ class LocalContrastFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         current_process_power_value = 20.0;
     }

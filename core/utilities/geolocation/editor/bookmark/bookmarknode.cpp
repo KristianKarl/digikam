@@ -43,7 +43,7 @@ class BookmarkNode::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         parent(0),
         type(BookmarkNode::Root)
     {
@@ -152,13 +152,16 @@ BookmarkNode* XbelReader::read(const QString& fileName)
 
     if (!file.exists() || !file.open(QFile::ReadOnly))
     {
-        return new BookmarkNode(BookmarkNode::Root);
+        BookmarkNode* const root   = new BookmarkNode(BookmarkNode::Root);
+        BookmarkNode* const folder = new BookmarkNode(BookmarkNode::RootFolder, root);
+        folder->title = i18n("Bookmark folder");
+        return root;
     }
 
-    return read(&file);
+    return read(&file, true);
 }
 
-BookmarkNode* XbelReader::read(QIODevice* const device)
+BookmarkNode* XbelReader::read(QIODevice* const device, bool addRootFolder)
 {
     BookmarkNode* const root = new BookmarkNode(BookmarkNode::Root);
     setDevice(device);
@@ -170,7 +173,16 @@ BookmarkNode* XbelReader::read(QIODevice* const device)
         if (name() == QLatin1String("xbel") &&
             (version.isEmpty() || version == QLatin1String("1.0")))
         {
-            readXBEL(root);
+            if (addRootFolder)
+            {
+                BookmarkNode* const folder = new BookmarkNode(BookmarkNode::RootFolder, root);
+                folder->title = i18n("Bookmark folder");
+                readXBEL(folder);
+            }
+            else
+            {
+                readXBEL(root);
+            }
         }
         else
         {
@@ -292,8 +304,10 @@ bool XbelWriter::write(QIODevice* const device, const BookmarkNode* const root)
 
     if (root->type() == BookmarkNode::Root)
     {
-        for (int i = 0  ; i < root->children().count() ; i++)
-            writeItem(root->children().at(i));
+        BookmarkNode* const rootFolder = root->children().first();
+
+        for (int i = 0  ; i < rootFolder->children().count() ; i++)
+            writeItem(rootFolder->children().at(i));
     }
     else
     {

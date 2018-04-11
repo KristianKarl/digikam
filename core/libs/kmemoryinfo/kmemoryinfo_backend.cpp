@@ -1,6 +1,8 @@
 /*
- * i-scream libstatgrab
- * Copyright (C) 2000-2004 i-scream <http://www.i-scream.org>
+ * Copyright 2010 Pino Toscano <pino at kde dot org>
+ * Copyright 2011 Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
+ *
+ * Based on i-scream libstatgrab implementation.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -23,7 +25,7 @@
 
 /** Value returned : -1 : unsupported platform
  *                    0 : parse failure from supported platform
- *                    1 : parse done with sucess from supported platform
+ *                    1 : parse done with success from supported platform
  */
 static int get_mem_stats(Digikam::KMemoryInfo::KMemoryInfoData* const data);
 static int get_swap_stats(Digikam::KMemoryInfo::KMemoryInfoData* const data);

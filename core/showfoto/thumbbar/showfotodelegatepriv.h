@@ -6,7 +6,7 @@
  * Date        : 2013-08-01
  * Description : Qt item view for images - the delegate Private
  *
- * Copyright (C) 2013      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2013      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  * Copyright (C) 2013-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  *
  * This program is free software; you can redistribute it
@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef SHOWFOTODELEGATEPRIV_H
-#define SHOWFOTODELEGATEPRIV_H
+#ifndef SHOW_FOTO_DELEGATE_PRIV_H
+#define SHOW_FOTO_DELEGATE_PRIV_H
 
 // Qt includes
 
@@ -119,4 +119,4 @@ public:
 } // namespace Digikam
 
 
-#endif // SHOWFOTODELEGATEPRIV_H
+#endif // SHOW_FOTO_DELEGATE_PRIV_H

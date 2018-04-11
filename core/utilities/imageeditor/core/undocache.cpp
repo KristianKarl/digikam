@@ -48,7 +48,7 @@ class UndoCache::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
     }
 
@@ -169,4 +169,4 @@ DImg UndoCache::getData(int level) const
     return img;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

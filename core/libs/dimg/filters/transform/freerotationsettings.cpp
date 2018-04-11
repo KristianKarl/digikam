@@ -55,7 +55,7 @@ class FreeRotationSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         antialiasInput(0),
         angleInput(0),
         fineAngleInput(0),
@@ -205,4 +205,4 @@ void FreeRotationSettings::writeSettings(KConfigGroup& group)
     group.writeEntry(d->configAntiAliasingEntry, d->antialiasInput->isChecked());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

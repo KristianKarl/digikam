@@ -8,7 +8,7 @@
  *
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2009-2011 by Andi Clemens <andi dot clemens at gmail dot com>
- * Copyright (C) 2015      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -26,6 +26,10 @@
 #ifndef EDITOR_WINDOW_H
 #define EDITOR_WINDOW_H
 
+// C++ includes
+
+#include <queue>
+
 // Qt includes
 
 #include <QColor>
@@ -34,9 +38,6 @@
 #include <QString>
 #include <QProgressDialog>
 #include <QUrl>
-
-//std includes
-#include <queue>
 
 // Local includes
 
@@ -439,6 +440,6 @@ private:
     friend class EditorToolIface;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
 #endif // EDITOR_WINDOW_H

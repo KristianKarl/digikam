@@ -49,7 +49,7 @@ class JP2KSettings::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         JPEG2000Grid             = 0;
         labelJPEG2000compression = 0;
@@ -145,4 +145,4 @@ void JP2KSettings::slotToggleJPEG2000LossLess(bool b)
     d->labelJPEG2000compression->setEnabled(!b);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

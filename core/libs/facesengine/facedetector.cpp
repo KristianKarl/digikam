@@ -32,7 +32,7 @@
 // Local includes
 
 #include "digikam_debug.h"
-#include "facedetector.h"
+#include "facedetector.h"       // krazy:exclude=includes
 
 namespace Digikam
 {
@@ -41,7 +41,7 @@ class FaceDetector::Private : public QSharedData
 {
 public:
 
-    Private()
+    explicit Private()
         : m_backend(0)
     {
     }

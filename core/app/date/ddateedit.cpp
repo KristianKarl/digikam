@@ -100,7 +100,7 @@ class DDateEdit::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         readOnly(false),
         textChanged(false),
         discardNextMousePress(false),
@@ -507,4 +507,4 @@ void DDateEdit::updateView()
     blockSignals(blocked);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

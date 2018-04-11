@@ -6,7 +6,7 @@
  * Date        : 29-07-2013
  * Description : Sort settings for showfoto item infos
  *
- * Copyright (C) 2013 by Mohamed Anwer <moahmmed dot ahmed dot anwer at gmail dot com>
+ * Copyright (C) 2013 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -243,10 +243,14 @@ bool ShowfotoItemSortSettings::lessThan(const QVariant& left, const QVariant& ri
                 return result < 0;
             }
 
+#if __GNUC__ >= 7
             [[fallthrough]];
+#endif
         }
         default:
+        {
             return naturalCompare(left.toString(), right.toString(), currentSortOrder, sortCaseSensitivity);
+        }
     }
 }
 

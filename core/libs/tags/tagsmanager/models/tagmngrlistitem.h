@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef LISTITEM_H
-#define LISTITEM_H
+#ifndef TAG_MNGR_LIST_ITEM_H
+#define TAG_MNGR_LIST_ITEM_H
 
 // Qt includes
 
@@ -38,7 +38,7 @@ class ListItem : public QObject
 
 public:
 
-    ListItem(QList<QVariant>& data, ListItem* const parent = 0);
+    explicit ListItem(QList<QVariant>& data, ListItem* const parent = 0);
     ~ListItem();
 
     void appendChild(ListItem* const child);
@@ -77,4 +77,4 @@ private:
 
 } // namespace Digikam
 
-#endif // LISTITEM_H
+#endif // TAG_MNGR_LIST_ITEM_H

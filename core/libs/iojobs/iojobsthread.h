@@ -6,7 +6,7 @@
  * Date        : 2015-06-15
  * Description : IO Jobs thread for file system jobs
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  * Copyright (C) 2018 by Maik Qualmann <metzpinguin at gmail dot com>
  *
  * This program is free software; you can redistribute it
@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef IOJOBSTHREAD_H
-#define IOJOBSTHREAD_H
+#ifndef IO_JOBS_THREAD_H
+#define IO_JOBS_THREAD_H
 
 // Local includes
 
@@ -43,7 +43,7 @@ class DIGIKAM_EXPORT IOJobsThread : public ActionThreadBase
 
 public:
 
-    IOJobsThread(QObject* const parent);
+    explicit IOJobsThread(QObject* const parent);
     ~IOJobsThread();
 
     /**
@@ -92,25 +92,25 @@ public:
      * @brief isCanceled
      * @return true if the thread was inturrupted
      */
-    bool isCanceled();
+    bool isCanceled() const;
 
     /**
      * @brief hasErrors
      * @return true if string list was not empty
      */
-    bool hasErrors();
+    bool hasErrors() const;
 
     /**
      * @brief errorsList
      * @return
      */
-    QList<QString>& errorsList();
+    QStringList& errorsList() const;
 
     /**
      * @brief jobData
      * @return
      */
-    IOJobData* jobData();
+    IOJobData* jobData() const;
 
 public Q_SLOTS:
 
@@ -123,9 +123,9 @@ Q_SIGNALS:
 
     void finished();
 
+    void signalOneProccessed();
     void signalRenamed(const QUrl& oldUrl);
     void signalRenameFailed(const QUrl& oldUrl);
-    void signalOneProccessed(int operation);
 
     void collectionTrashItemInfo(const DTrashItemInfo& trashItemInfo);
 
@@ -159,4 +159,4 @@ private:
 
 } // namespace Digikam
 
-#endif // IOJOBSTHREAD_H
+#endif // IO_JOBS_THREAD_H

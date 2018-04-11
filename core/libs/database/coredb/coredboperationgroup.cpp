@@ -41,7 +41,7 @@ class CoreDbOperationGroup::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         access   = 0;
         acquired = false;
@@ -153,4 +153,4 @@ void CoreDbOperationGroup::allowLift()
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

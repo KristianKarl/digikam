@@ -55,7 +55,7 @@ class IPTCEnvelope::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         unoIDCheck       = 0;
         unoIDEdit        = 0;
@@ -703,4 +703,4 @@ void IPTCEnvelope::applyMetadata(QByteArray& iptcData)
     iptcData = meta.getIptc();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

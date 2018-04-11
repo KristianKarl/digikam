@@ -106,7 +106,7 @@ class ICCProfileWidget::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         cieTongue = 0;
     }
@@ -258,7 +258,7 @@ bool ICCProfileWidget::loadFromURL(const QUrl& url)
 bool ICCProfileWidget::loadFromProfileData(const QString& fileName, const QByteArray& data)
 {
     setFileName(fileName);
-    return(setProfile(data));
+    return(setProfile(IccProfile(data)));
 }
 
 bool ICCProfileWidget::loadProfile(const QString& fileName, const IccProfile& profile)
@@ -496,4 +496,4 @@ QString ICCProfileWidget::getTagDescription(const QString& key)
     return key.section(QLatin1Char('.'), 2, 2);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

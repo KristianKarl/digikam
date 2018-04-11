@@ -48,7 +48,7 @@ class XMPCategories::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         addSubCategoryButton = 0;
         delSubCategoryButton = 0;
@@ -327,4 +327,4 @@ void XMPCategories::applyMetadata(QByteArray& xmpData)
     xmpData = meta.getXmp();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

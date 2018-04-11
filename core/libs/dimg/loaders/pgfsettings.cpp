@@ -49,7 +49,7 @@ class PGFSettings::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         PGFGrid             = 0;
         labelPGFcompression = 0;
@@ -145,4 +145,4 @@ void PGFSettings::slotTogglePGFLossLess(bool b)
     d->labelPGFcompression->setEnabled(!b);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

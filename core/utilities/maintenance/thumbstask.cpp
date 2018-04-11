@@ -40,7 +40,7 @@ class ThumbsTask::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : catcher(0),
           data(0)
     {
@@ -114,4 +114,4 @@ void ThumbsTask::run()
     d->catcher->setActive(false);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

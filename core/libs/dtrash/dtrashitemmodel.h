@@ -6,7 +6,7 @@
  * Date        : 2015-08-09
  * Description : DTrash item info model
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DTRASHITEMMODEL_H
-#define DTRASHITEMMODEL_H
+#ifndef DTRASH_ITEM_MODEL_H
+#define DTRASH_ITEM_MODEL_H
 
 // Qt includes
 
@@ -42,7 +42,7 @@ class DTrashItemModel : public QAbstractTableModel
 
 public:
 
-    DTrashItemModel(QObject* parent = 0);
+    explicit DTrashItemModel(QObject* parent = 0);
     ~DTrashItemModel();
 
     /**
@@ -133,4 +133,4 @@ private:
 
 } // namespace Digikam
 
-#endif // DTRASHITEMMODEL_H
+#endif // DTRASH_ITEM_MODEL_H

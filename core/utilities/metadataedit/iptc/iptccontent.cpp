@@ -51,7 +51,7 @@ class IPTCContent::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         headlineCheck        = 0;
         captionEdit          = 0;
@@ -278,4 +278,4 @@ void IPTCContent::applyMetadata(QByteArray& exifData, QByteArray& iptcData)
     iptcData = meta.getIptc();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

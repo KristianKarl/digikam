@@ -6,7 +6,7 @@
  * Date        : 2015-06-10
  * Description : Progress observer for duplicate scanning
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DUPLICATESPROGRESSOBSERVER_H
-#define DUPLICATESPROGRESSOBSERVER_H
+#ifndef DIGIKAM_DUPLICATES_PROGRESS_OBSERVER_H
+#define DIGIKAM_DUPLICATES_PROGRESS_OBSERVER_H
 
 #include "haariface.h"
 #include "dbjob.h"
@@ -38,7 +38,7 @@ class DIGIKAM_DATABASE_EXPORT DuplicatesProgressObserver : public HaarProgressOb
 
 public:
 
-    DuplicatesProgressObserver(SearchesJob* const thread);
+    explicit DuplicatesProgressObserver(SearchesJob* const thread);
     ~DuplicatesProgressObserver();
 
     virtual void totalNumberToScan(int number);
@@ -52,4 +52,4 @@ private:
 
 } // namespace Digikam
 
-#endif // DUPLICATESPROGRESSOBSERVER_H
+#endif // DIGIKAM_DUPLICATES_PROGRESS_OBSERVER_H

@@ -54,7 +54,7 @@ class HSLTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         hslSettings(0),
         previewWidget(0),
         gboxSettings(0)
@@ -175,4 +175,4 @@ void HSLTool::setFinalImage()
     iface.setOriginal(i18n("HSL Adjustments"), filter()->filterAction(), filter()->getTargetImage());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

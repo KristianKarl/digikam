@@ -66,7 +66,7 @@ class PresentationMainPage::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         sharedData         = 0;
         imagesFilesListBox = 0;
@@ -498,4 +498,4 @@ void PresentationMainPage::setupConnections()
             this, SLOT(slotImagesFilesSelected(QTreeWidgetItem*)));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

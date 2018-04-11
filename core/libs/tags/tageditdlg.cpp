@@ -76,7 +76,7 @@ class TagEditDlg::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         titleEdit       = 0;
         iconButton      = 0;
@@ -558,4 +558,4 @@ TagsListCreationErrorDialog::TagsListCreationErrorDialog(QWidget* const parent, 
     adjustSize();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

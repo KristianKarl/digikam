@@ -54,7 +54,7 @@ class FilmGrainSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         sizeLabel(0),
         label1(0),
         label2(0),
@@ -565,4 +565,4 @@ void FilmGrainSettings::writeSettings(KConfigGroup& group)
     group.writeEntry(d->configHighlightsChromaRedAdjustmentEntry,  prm.chromaRedHighlights);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

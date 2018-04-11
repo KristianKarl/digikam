@@ -70,7 +70,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         mainTab(0),
         restorationTypeCB(0),
         settingsWidget(0),
@@ -415,4 +415,4 @@ void RestorationTool::slotSaveAsSettings()
     file.close();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

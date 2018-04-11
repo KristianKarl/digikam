@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef TAGLIST_H
-#define TAGLIST_H
+#ifndef TAG_LIST_H
+#define TAG_LIST_H
 
 // Qt includes
 
@@ -41,7 +41,7 @@ class TagList : public QWidget
 
 public:
 
-    TagList(TagMngrTreeView* const treeView, QWidget* const parent);
+    explicit TagList(TagMngrTreeView* const treeView, QWidget* const parent);
     ~TagList();
 
     /**
@@ -79,4 +79,4 @@ private:
 
 } // namespace Digikam
 
-#endif // TAGLIST_H
+#endif // TAG_LIST_H

@@ -45,7 +45,7 @@ class SetupEditor::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         tab(0),
         iface(0),
         iofiles(0),
@@ -107,4 +107,4 @@ void SetupEditor::readSettings()
     // Nothing todo. All is already processed in widget contructors
 }
 
-}  // namespace Digikam
+} // namespace Digikam

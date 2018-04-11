@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef LIBSINFODLG_H
-#define LIBSINFODLG_H
+#ifndef LIBS_INFO_DLG_H
+#define LIBS_INFO_DLG_H
 
 // Qt includes
 
@@ -49,6 +49,6 @@ private:
     QString checkTriState(int value) const;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif  // LIBSINFODLG_H
+#endif // LIBS_INFO_DLG_H

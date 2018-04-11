@@ -171,7 +171,7 @@ MetaEngine::MetaDataMap MetaEngine::getExifTagsDataList(const QStringList& exifK
         QString     ifDItemName;
         MetaDataMap metaDataMap;
 
-        for (Exiv2::ExifData::const_iterator md = exifData.begin(); md != exifData.end(); ++md)
+        for (Exiv2::ExifData::const_iterator md = exifData.begin() ; md != exifData.end() ; ++md)
         {
             QString key = QString::fromLatin1(md->key().c_str());
 
@@ -293,7 +293,7 @@ static bool is7BitAscii(const QByteArray& s)
 {
     const int size = s.size();
 
-    for (int i=0; i<size; i++)
+    for (int i = 0 ; i < size ; i++)
     {
         if (!isascii(s[i]))
         {
@@ -308,12 +308,14 @@ bool MetaEngine::setExifComment(const QString& comment) const
 {
     try
     {
-        removeExifTag("Exif.Image.ImageDescription");
         removeExifTag("Exif.Photo.UserComment");
 
         if (!comment.isNull())
         {
-            setExifTagString("Exif.Image.ImageDescription", comment);
+            if (getExifTagString("Exif.Image.ImageDescription", false).isNull())
+            {
+                setExifTagString("Exif.Image.ImageDescription", comment);
+            }
 
             // Write as Unicode only when necessary.
             QTextCodec* latin1Codec = QTextCodec::codecForName("iso8859-1");
@@ -548,7 +550,7 @@ bool MetaEngine::setExifTagVariant(const char* exifTagName, const QVariant& val,
         {
             QDateTime dateTime = val.toDateTime();
 
-            if(!dateTime.isValid())
+            if (!dateTime.isValid())
                 return false;
 
             try
@@ -613,10 +615,13 @@ QString MetaEngine::createExifUserStringFromValue(const char* exifTagName, const
             {
                 long num = 0, den = 1;
                 QList<QVariant> list = val.toList();
+
                 if (list.size() >= 1)
                     num = list[0].toInt();
+
                 if (list.size() >= 2)
                     den = list[1].toInt();
+
                 Exiv2::Rational rational;
                 rational.first  = num;
                 rational.second = den;
@@ -628,7 +633,8 @@ QString MetaEngine::createExifUserStringFromValue(const char* exifTagName, const
             case QVariant::DateTime:
             {
                 QDateTime dateTime = val.toDateTime();
-                if(!dateTime.isValid())
+
+                if (!dateTime.isValid())
                     break;
 
                 const std::string &exifdatetime(dateTime.toString(QString::fromLatin1("yyyy:MM:dd hh:mm:ss")).toLatin1().constData());
@@ -986,7 +992,7 @@ bool MetaEngine::setTiffThumbnail(const QImage& thumbImage) const
         // Remove sub-IFD tags
         std::string subImage1("SubImage1");
 
-        for (Exiv2::ExifData::iterator md = d->exifMetadata().begin(); md != d->exifMetadata().end();)
+        for (Exiv2::ExifData::iterator md = d->exifMetadata().begin() ; md != d->exifMetadata().end() ;)
         {
             if (md->groupName() == subImage1)
             {
@@ -1172,4 +1178,4 @@ MetaEngine::TagsMap MetaEngine::getMakernoteTagsList() const
     return TagsMap();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

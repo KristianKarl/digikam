@@ -68,7 +68,7 @@ class SetupMetadata::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         exifAutoRotateOriginal(false),
         exifAutoRotateShowedInfo(false),
         fieldsGroup(0),
@@ -806,4 +806,4 @@ void SetupMetadata::slotExifAutoRotateToggled(bool b)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

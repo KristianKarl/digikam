@@ -26,9 +26,9 @@
 
 // Qt includes
 
-#include <QtTest/QtTest>
+#include <QtTest>
 #include <QEventLoop>
-#include <QtCore/QDir>
+#include <QDir>
 
 // Local includes
 

@@ -6,7 +6,7 @@
  * Date        : 2007-10-28
  * Description : scan pictures interface.
  *
- * Copyright (C) 2005-2006 by Tom Albers <tomalbers@kde.nl>
+ * Copyright (C) 2005-2006 by Tom Albers <tomalbers at kde dot nl>
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2007-2013 by Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
  *
@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef SCANCONTROLLER_H
-#define SCANCONTROLLER_H
+#ifndef SCAN_CONTROLLER_H
+#define SCAN_CONTROLLER_H
 
 // Qt includes
 
@@ -263,7 +263,7 @@ private:
 
 private:
 
-    ScanController();
+    explicit ScanController();
     ~ScanController();
 
     friend class ScanControllerCreator;
@@ -281,13 +281,13 @@ class ScanControllerLoadingCacheFileWatch : public ClassicLoadingCacheFileWatch
     Q_OBJECT
 
     /* This class is derived from the ClassicLoadingCacheFileWatch,
-       which means it has the full functionality of the class
-       and only extends it by listening to CollectionScanner information
-    */
+     * which means it has the full functionality of the class
+     * and only extends it by listening to CollectionScanner information
+     */
 
 public:
 
-    ScanControllerLoadingCacheFileWatch();
+    explicit ScanControllerLoadingCacheFileWatch();
 
 private Q_SLOTS:
 
@@ -296,4 +296,4 @@ private Q_SLOTS:
 
 } // namespace Digikam
 
-#endif // SCANCONTROLLER_H
+#endif // SCAN_CONTROLLER_H

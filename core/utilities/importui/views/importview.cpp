@@ -56,7 +56,7 @@ class ImportView::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         needDispatchSelection(false),
         thumbSize(ThumbnailSize::Medium),
         dockArea(0),
@@ -518,12 +518,12 @@ void ImportView::setThumbSize(int size)
 
 ThumbnailSize ImportView::thumbnailSize() const
 {
-    return d->thumbSize;
+    return ThumbnailSize(d->thumbSize);
 }
 
 void ImportView::slotThumbSizeEffect()
 {
-    d->iconView->setThumbnailSize(d->thumbSize);
+    d->iconView->setThumbnailSize(ThumbnailSize(d->thumbSize));
     toggleZoomActions();
 
     ImportSettings::instance()->setDefaultIconSize(d->thumbSize);

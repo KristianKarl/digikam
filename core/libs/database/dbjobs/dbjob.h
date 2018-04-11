@@ -6,7 +6,7 @@
  * Date        : 2015-06-01
  * Description : DB Jobs for listing and scanning
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DBJOB_H
-#define DBJOB_H
+#ifndef DIGIKAM_DATABASE_JOB_H
+#define DIGIKAM_DATABASE_JOB_H
 
 // Local includes
 
@@ -44,7 +44,7 @@ class DIGIKAM_DATABASE_EXPORT DBJob : public ActionJob
 
 protected:
 
-    DBJob();
+    explicit DBJob();
     ~DBJob();
 
 Q_SIGNALS:
@@ -61,7 +61,7 @@ class DIGIKAM_DATABASE_EXPORT AlbumsJob : public DBJob
 
 public:
 
-    AlbumsJob(const AlbumsDBJobInfo& jobInfo);
+    explicit AlbumsJob(const AlbumsDBJobInfo& jobInfo);
     ~AlbumsJob();
 
 protected:
@@ -85,7 +85,7 @@ class DIGIKAM_DATABASE_EXPORT DatesJob : public DBJob
 
 public:
 
-    DatesJob(const DatesDBJobInfo& jobInfo);
+    explicit DatesJob(const DatesDBJobInfo& jobInfo);
     ~DatesJob();
 
 protected:
@@ -109,7 +109,7 @@ class DIGIKAM_DATABASE_EXPORT GPSJob : public DBJob
 
 public:
 
-    GPSJob(const GPSDBJobInfo& jobInfo);
+    explicit GPSJob(const GPSDBJobInfo& jobInfo);
     ~GPSJob();
 
 protected:
@@ -133,7 +133,7 @@ class DIGIKAM_DATABASE_EXPORT TagsJob : public DBJob
 
 public:
 
-    TagsJob(const TagsDBJobInfo& jobInfo);
+    explicit TagsJob(const TagsDBJobInfo& jobInfo);
     ~TagsJob();
 
 protected:
@@ -158,7 +158,7 @@ class DIGIKAM_DATABASE_EXPORT SearchesJob : public DBJob
 
 public:
 
-    SearchesJob(const SearchesDBJobInfo& jobInfo);
+    explicit SearchesJob(const SearchesDBJobInfo& jobInfo);
     ~SearchesJob();
 
     bool isCanceled();
@@ -179,4 +179,4 @@ private:
 
 } // namespace Digikam
 
-#endif // DBJOB_H
+#endif // DIGIKAM_DATABASE_JOB_H

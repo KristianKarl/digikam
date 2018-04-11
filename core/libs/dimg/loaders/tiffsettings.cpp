@@ -45,7 +45,7 @@ class TIFFSettings::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         TIFFGrid        = 0;
         TIFFcompression = 0;
@@ -97,4 +97,4 @@ bool TIFFSettings::getCompression() const
     return d->TIFFcompression->isChecked();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

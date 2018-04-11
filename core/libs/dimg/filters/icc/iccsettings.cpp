@@ -63,7 +63,7 @@ class IccSettings::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : configGroup(QLatin1String("Color Management"))
     {
     }
@@ -142,7 +142,7 @@ IccProfile IccSettings::monitorProfile(QWidget* const widget)
 
     if (!d->settings.monitorProfile.isNull())
     {
-        return d->settings.monitorProfile;
+        return IccProfile(d->settings.monitorProfile);
     }
     else
     {
@@ -181,11 +181,11 @@ bool IccSettings::monitorProfileFromSystem() const
 
 /*
  * From koffice/libs/pigment/colorprofiles/KoLcmsColorProfileContainer.cpp
- * Copyright (C) 2000 Matthias Elter <elter@kde.org>
+ * Copyright (C) 2000 Matthias Elter <elter at kde dot org>
  *               2001 John Califf
- *               2004 Boudewijn Rempt <boud@valdyas.org>
- * Copyright (C) 2007 Thomas Zander <zander@kde.org>
- * Copyright (C) 2007 Adrian Page <adrian@pagenet.plus.com>
+ *               2004 Boudewijn Rempt <boud at valdyas dot org>
+ * Copyright (C) 2007 Thomas Zander <zander at kde dot org>
+ * Copyright (C) 2007 Adrian Page <adrian at pagenet dot plus dot com>
 */
 IccProfile IccSettings::Private::profileFromWindowSystem(QWidget* const widget)
 {
@@ -251,7 +251,7 @@ IccProfile IccSettings::Private::profileFromWindowSystem(QWidget* const widget)
 
         if (!bytes.isEmpty())
         {
-            profile = bytes;
+            profile = IccProfile(bytes);
         }
 
         qCDebug(DIGIKAM_DIMG_LOG) << "Found X.org XICC monitor profile " << profile.description();
@@ -615,4 +615,4 @@ void IccSettings::loadAllProfilesProperties()
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -62,7 +62,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         messageView(0),
         settingsViewIcon(0),
         settingsViewTitle(0),
@@ -270,4 +270,4 @@ void ToolSettingsView::slotSettingsChanged(const BatchToolSettings& settings)
     emit signalSettingsChanged(d->set);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

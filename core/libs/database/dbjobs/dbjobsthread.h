@@ -6,7 +6,7 @@
  * Date        : 2015-06-01
  * Description : DB Jobs thread for listing and scanning
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DBJOBSTHREAD_H
-#define DBJOBSTHREAD_H
+#ifndef DIGIKAM_DATABASE_JOBS_THREAD_H
+#define DIGIKAM_DATABASE_JOBS_THREAD_H
 
 // Local includes
 
@@ -201,4 +201,4 @@ Q_SIGNALS:
 
 } // namespace Digikam
 
-#endif // DBJOBSTHREAD_H
+#endif // DIGIKAM_DATABASE_JOBS_THREAD_H

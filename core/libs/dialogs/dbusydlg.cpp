@@ -51,7 +51,7 @@ class DBusyDlg::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         thread(0)
     {
     }
@@ -99,4 +99,4 @@ void DBusyDlg::slotComplete()
     accept();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -23,6 +23,7 @@
  * ============================================================ */
 
 #include "editorcore.h"
+#include "editorcore_p.h"
 
 // C++ includes
 
@@ -42,31 +43,6 @@
 #include <QVariant>
 #include <QImageReader>
 #include <QPainter>
-
-// Local includes
-
-#include "digikam_debug.h"
-#include "colorcorrectiondlg.h"
-#include "dimgbuiltinfilter.h"
-#include "undomanager.h"
-#include "undoaction.h"
-#include "undostate.h"
-#include "iccmanager.h"
-#include "iccsettingscontainer.h"
-#include "icctransform.h"
-#include "exposurecontainer.h"
-#include "iofilesettings.h"
-#include "sharedloadsavethread.h"
-#include "dmetadata.h"
-#include "rawimport.h"
-#include "editortooliface.h"
-#include "dimg.h"
-#include "dimgfiltergenerator.h"
-#include "bcgfilter.h"
-#include "equalizefilter.h"
-#include "dimgfiltermanager.h"
-#include "versionmanager.h"
-#include "editorcore_p.h"
 
 namespace Digikam
 {
@@ -468,7 +444,7 @@ QString EditorCore::ensureHasCurrentUuid() const
 void EditorCore::provideCurrentUuid(const QString& uuid)
 {
     // If the (original) image did not yet have a UUID, one is provided by higher level
-    // Higher level decides how this UUID is stored; we dont touch the original here.
+    // Higher level decides how this UUID is stored; we don't touch the original here.
     if (!d->image.getImageHistory().currentReferredImage().hasUuid())
     {
         d->image.addCurrentUniqueImageId(uuid);
@@ -843,7 +819,7 @@ QPixmap EditorCore::convertToPixmap(DImg& img) const
 
         if (d->doSoftProofing)
         {
-            transform = manager.displaySoftProofingTransform(d->cmSettings.defaultProofProfile);
+            transform = manager.displaySoftProofingTransform(IccProfile(d->cmSettings.defaultProofProfile));
         }
         else
         {
@@ -882,4 +858,4 @@ UndoState EditorCore::undoState() const
     return state;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

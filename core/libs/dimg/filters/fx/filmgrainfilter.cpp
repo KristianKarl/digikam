@@ -32,7 +32,7 @@
 
 // Qt includes
 
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 #include <QMutex>
 
 // Local includes
@@ -48,7 +48,7 @@ class FilmGrainFilter::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         div(0.0),
         leadLumaNoise(1.0),
         leadChromaBlueNoise(1.0),
@@ -440,4 +440,4 @@ void FilmGrainFilter::readParameters(const Digikam::FilterAction& action)
     d->settings.chromaRedHighlights     = action.parameter(QLatin1String("chromaRedHighlights")).toInt();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -49,7 +49,7 @@ class SlideProperties::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : maxStringLen(80)
     {
     }
@@ -347,4 +347,4 @@ void SlideProperties::printTags(QPainter& p, int& offset, QStringList& tags)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

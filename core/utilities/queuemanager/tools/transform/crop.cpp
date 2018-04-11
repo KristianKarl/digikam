@@ -51,7 +51,7 @@ class Crop::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         autoCrop(0),
         heightInput(0),
         widthInput(0),
@@ -245,4 +245,4 @@ bool Crop::toolOperations()
     return (savefromDImg());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

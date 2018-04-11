@@ -82,7 +82,7 @@ public:
         ResizingBottomRight
     };
 
-    Private() :
+    explicit Private() :
         drawGoldenSection(false),
         drawGoldenSpiralSection(false),
         drawGoldenSpiral(false),
@@ -1511,4 +1511,4 @@ void ImageSelectionWidget::setIsDrawingSelection(bool draw)
     d->isDrawingSelection = draw;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

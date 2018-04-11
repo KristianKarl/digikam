@@ -59,7 +59,7 @@ class AdvancedRenameWidget::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         configExpandedStateDefault(true),
         tooltipToggleButton(0),
         modifiersToolButton(0),
@@ -475,4 +475,4 @@ void AdvancedRenameWidget::writeSettings()
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

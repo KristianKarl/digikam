@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef FACE_DATABASE_OPERATION_GROUP_H
-#define FACE_DATABASE_OPERATION_GROUP_H
+#ifndef DIGIKAM_FACE_DATABASE_OPERATION_GROUP_H
+#define DIGIKAM_FACE_DATABASE_OPERATION_GROUP_H
 
 namespace Digikam
 {
@@ -48,7 +48,7 @@ public:
     /**
      * Use an existing FaceDbAccess object, which must live as long as this object exists.
      */
-    FaceDbOperationGroup(FaceDbAccess* const access);
+    explicit FaceDbOperationGroup(FaceDbAccess* const access);
 
     ~FaceDbOperationGroup();
 
@@ -79,4 +79,4 @@ private:
 
 } // namespace Digikam
 
-#endif // FACE_DATABASE_OPERATION_GROUP_H
+#endif // DIGIKAM_FACE_DATABASE_OPERATION_GROUP_H

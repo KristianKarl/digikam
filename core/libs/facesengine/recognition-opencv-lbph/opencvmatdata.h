@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef _OPENCV_MAT_DATA_H_
-#define _OPENCV_MAT_DATA_H_
+#ifndef DIGIKAM_OPENCV_MAT_DATA_H
+#define DIGIKAM_OPENCV_MAT_DATA_H
 
 // OpenCV includes
 
@@ -41,7 +41,7 @@ class OpenCVMatData
 public:
 
     OpenCVMatData();
-    OpenCVMatData(const cv::Mat& mat);
+    explicit OpenCVMatData(const cv::Mat& mat);
 
     /// Creates a deep copy of the QByteArray
     cv::Mat toMat() const;
@@ -61,4 +61,4 @@ public:
 
 } // namespace Digikam
 
-#endif // _OPENCV_MAT_DATA_H_
+#endif // DIGIKAM_OPENCV_MAT_DATA_H

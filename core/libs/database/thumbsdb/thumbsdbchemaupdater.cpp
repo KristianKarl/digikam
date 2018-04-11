@@ -58,7 +58,7 @@ class ThumbsDbSchemaUpdater::Private
 
 public:
 
-    Private()
+    explicit Private()
       : setError(false),
         currentVersion(0),
         currentRequiredVersion(0),
@@ -295,4 +295,4 @@ bool ThumbsDbSchemaUpdater::updateV2ToV3()
     return true;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

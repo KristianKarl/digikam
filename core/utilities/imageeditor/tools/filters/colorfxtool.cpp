@@ -67,7 +67,7 @@ class ColorFxTool::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         previewWidget(0),
         gboxSettings(0),
         settingsView(0)
@@ -240,4 +240,4 @@ void ColorFxTool::setFinalImage()
     iface.setOriginal(name, filter()->filterAction(), filter()->getTargetImage());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

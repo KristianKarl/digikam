@@ -112,6 +112,7 @@ protected:
 ActionThread::ActionThread(QObject* const parent)
     : ActionThreadBase(parent)
 {
+    setObjectName(QLatin1String("ActionThread"));
 }
 
 ActionThread::~ActionThread()
@@ -181,7 +182,7 @@ class DImagesListTest::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         page        = 0;
         buttons     = 0;

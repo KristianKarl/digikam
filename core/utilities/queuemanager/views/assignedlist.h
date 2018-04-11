@@ -45,7 +45,7 @@ class AssignedListViewItem : public QTreeWidgetItem
 
 public:
 
-    AssignedListViewItem(QTreeWidget* const parent);
+    explicit AssignedListViewItem(QTreeWidget* const parent);
     AssignedListViewItem(QTreeWidget* const parent, QTreeWidgetItem* const preceding);
     virtual ~AssignedListViewItem();
 
@@ -120,6 +120,6 @@ private:
     void dropEvent(QDropEvent*);
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
 #endif // ASSIGNED_LIST_H

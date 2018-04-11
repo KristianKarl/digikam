@@ -49,7 +49,7 @@ class ImageQualitySorter::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         mode(ImageQualitySorter::NonAssignedItems),
         thread(0)
     {
@@ -164,4 +164,4 @@ void ImageQualitySorter::slotAdvance(const QImage& img)
     advance(1);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

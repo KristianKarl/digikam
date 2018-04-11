@@ -12,7 +12,7 @@
  * Copyright (C) 2004-2005 by Renchi Raju <renchi dot raju at gmail dot com>
  * Copyright (C) 2005-2006 by Tom Albers <tomalbers at kde dot nl>
  * Copyright (C) 2008      by Arnd Baecker <arnd dot baecker at web dot de>
- * Copyright (C) 2013-2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2013-2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -28,6 +28,7 @@
  * ============================================================ */
 
 #include "showfoto.h"
+#include "showfoto_p.h"
 
 // Qt includes
 
@@ -42,22 +43,17 @@
 #include <QList>
 #include <QPointer>
 #include <QProgressBar>
-#include <QSplitter>
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QStandardPaths>
 #include <QStyle>
 #include <QKeySequence>
-#include <QApplication>
-#include <QAction>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMimeDatabase>
-#include <QMimeType>
 #include <QMessageBox>
 #include <QApplication>
 #include <QMimeType>
-#include <QMimeDatabase>
 #include <QTemporaryFile>
 
 // KDE includes
@@ -77,7 +73,6 @@
 #include "dfileoperations.h"
 #include "iccsettingscontainer.h"
 #include "imagedialog.h"
-#include "imagepropertiessidebar.h"
 #include "iofilesettings.h"
 #include "loadingcache.h"
 #include "loadingcacheinterface.h"
@@ -89,10 +84,8 @@
 #include "showfotosetupmisc.h"
 #include "setupicc.h"
 #include "slideshow.h"
-#include "dsplashscreen.h"
 #include "statusprogressbar.h"
 #include "thememanager.h"
-#include "thumbnailloadthread.h"
 #include "thumbnailsize.h"
 #include "dnotificationwrapper.h"
 #include "showfotodelegate.h"
@@ -100,7 +93,6 @@
 #include "showfotocategorizedview.h"
 #include "showfotosettings.h"
 #include "dmetainfoiface.h"
-#include "showfoto_p.h"
 #include "dexpanderbox.h"
 #include "dfiledialog.h"
 #include "calwizard.h"
@@ -316,9 +308,9 @@ void ShowFoto::show()
             config->sync();
         }
     }
-    
+
     // Start the Media Server if necessary
-    
+
     Digikam::DMediaServerMngr::instance()->loadAtStartup();
 }
 

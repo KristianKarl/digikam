@@ -41,7 +41,9 @@ ORIG_WD="`pwd`"
 echo -e "---------- Update Linux CentOS 6\n"
 
 if [[ "$(arch)" = "x86_64" ]] ; then
+
     yum upgrade ca-certificates --disablerepo=epel
+
 fi
 
 if [[ ! -f /etc/yum.repos.d/epel.repo ]] ; then
@@ -119,7 +121,7 @@ yum -y install wget \
 
 #################################################################################################
 
-if [[ ! -f /opt/rh/devtoolset-3/enable ]] ; then
+if [[ ! -f /opt/rh/devtoolset-4/enable ]] ; then
 
     echo -e "---------- Install New Compiler Tools Set\n"
 
@@ -127,24 +129,23 @@ if [[ ! -f /opt/rh/devtoolset-3/enable ]] ; then
 
         # Newer compiler than what comes with offcial CentOS 6 (only 64 bits)
         yum -y install centos-release-scl-rh
-        yum -y install devtoolset-3-gcc devtoolset-3-gcc-c++
+        yum -y install devtoolset-4-gcc devtoolset-4-gcc-c++
 
     else
 
-        # Newer compiler that come from Sienctifc Linux for CentOS 6 32 bits
+        # Newer compiler for CentOS 6 32 bits
         cd /etc/yum.repos.d
-        wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo
-        yum -y --nogpgcheck install devtoolset-3-gcc devtoolset-3-gcc-c++
-        rm -f /etc/yum.repos.d/slc6-scl.repo
+        wget https://copr.fedorainfracloud.org/coprs/mlampe/devtoolset-4.1/repo/epel-6/mlampe-devtoolset-4.1-epel-6.repo
+        yum -y --nogpgcheck install devtoolset-4-gcc devtoolset-4-gcc-c++
+        rm -f /etc/yum.repos.d/mlampe-devtoolset-4.1-epel-6.repo
 
     fi
 
 fi
 
-
 #################################################################################################
 
-# Install new repo to get ffmpeg if necessary
+# Install new repo to get ffmpeg dependencies
 
 if [[ ! -f /etc/yum.repos.d/nux-dextop.repo ]] ; then
 
@@ -164,14 +165,28 @@ if [[ ! -f /etc/yum.repos.d/nux-dextop.repo ]] ; then
 
 fi
 
-yum -y install ffmpeg ffmpeg-devel
+yum -y install libass-devel \
+               fdk-aac-devel \
+               faac-devel \
+               lame-devel \
+               opencore-amr-devel \
+               opus-devel \
+               librtmp-devel \
+               speex-devel \
+               libtheora-devel \
+               libvorbis-devel \
+               libvpx-devel \
+               x264-devel \
+               x265-devel \
+               xvidcore-devel \
+               yasm
 
 #################################################################################################
 
 echo -e "---------- Clean-up Old Packages\n"
 
 # Remove system based devel package to prevent conflict with new one.
-yum -y erase qt-devel boost-devel libgphoto2 sane-backends libjpeg-devel jasper-devel libpng-devel libtiff-devel
+yum -y erase qt-devel boost-devel libgphoto2 sane-backends libjpeg-devel jasper-devel libpng-devel libtiff-devel ffmpeg ffmpeg-devel
 
 #################################################################################################
 
@@ -195,7 +210,7 @@ if [ ! -d $DOWNLOAD_DIR ] ; then
 fi
 
 # enable new compiler
-. /opt/rh/devtoolset-3/enable
+. /opt/rh/devtoolset-4/enable
 
 #################################################################################################
 
@@ -223,9 +238,9 @@ cmake3 --build . --config RelWithDebInfo --target ext_lensfun    -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qt         -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtwebkit   -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_exiv2      -- -j$CPU_CORES
+cmake3 --build . --config RelWithDebInfo --target ext_ffmpeg     -- -j$CPU_CORES
 cmake3 --build . --config RelWithDebInfo --target ext_qtav       -- -j$CPU_CORES
 
 #################################################################################################
 
 TerminateScript
-

@@ -6,7 +6,7 @@
  * Date        : 2015-08-07
  * Description : Trash view
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -44,6 +44,7 @@
 #include "dtrashitemmodel.h"
 #include "iojobsmanager.h"
 #include "thumbnailsize.h"
+#include "scancontroller.h"
 
 namespace Digikam
 {
@@ -53,7 +54,7 @@ class TrashView::Private
 
 public:
 
-    Private()
+    explicit Private()
         : model(0),
           thumbDelegate(0),
           mainLayout(0),
@@ -186,7 +187,26 @@ void TrashView::slotRestoreSelectedItems()
     IOJobsThread* const thread = IOJobsManager::instance()->startRestoringDTrashItems(items);
 
     connect(thread, SIGNAL(finished()),
-            this, SLOT(slotRemoveItemsFromModel()));
+            this, SLOT(slotRestoreFinished()));
+}
+
+void TrashView::slotRestoreFinished()
+{
+    if (d->selectedIndexesToRemove.isEmpty())
+    {
+        return;
+    }
+
+    DTrashItemInfoList items = d->model->itemsForIndexes(d->selectedIndexesToRemove);
+
+    foreach(const DTrashItemInfo& item, items)
+    {
+        QUrl url     = QUrl::fromLocalFile(item.collectionPath);
+        QString path = url.adjusted(QUrl::RemoveFilename).toLocalFile();
+        ScanController::instance()->scheduleCollectionScanRelaxed(path);
+    }
+
+    slotRemoveItemsFromModel();
 }
 
 void TrashView::slotDeleteSelectedItems()

@@ -76,7 +76,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         curves(0),
         lut(0),
         segmentMax(0),
@@ -1530,4 +1530,4 @@ bool ImageCurves::setChannelFromBinary(int channel, const QByteArray& data)
     return true;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

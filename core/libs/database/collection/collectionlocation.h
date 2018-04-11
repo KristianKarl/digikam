@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef COLLECTIONLOCATION_H
-#define COLLECTIONLOCATION_H
+#ifndef DIGIKAM_COLLECTION_LOCATION_H
+#define DIGIKAM_COLLECTION_LOCATION_H
 
 // Qt includes
 
@@ -139,11 +139,11 @@ protected:
     QString m_label;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
 inline uint qHash(const Digikam::CollectionLocation& loc)
 {
     return loc.hash();
 }
 
-#endif // COLLECTIONLOCATION_H
+#endif // DIGIKAM_COLLECTION_LOCATION_H

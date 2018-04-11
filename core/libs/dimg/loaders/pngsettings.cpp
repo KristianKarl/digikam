@@ -48,7 +48,7 @@ class PNGSettings::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         PNGGrid             = 0;
         labelPNGcompression = 0;
@@ -117,4 +117,4 @@ int PNGSettings::convertCompressionForLibPng(int value)
     return((int)(((1.0 - 100.0) / 8.0) * (float)value + 100.0 - ((1.0 - 100.0) / 8.0)));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

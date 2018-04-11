@@ -9,7 +9,7 @@
  * Copyright (C) 2003-2004 by Renchi Raju <renchi dot raju at gmail dot com>
  * Copyright (C) 2003-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2007      by Arnd Baecker <arnd dot baecker at web dot de>
- * Copyright (C) 2014-2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014-2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  * Copyright (C) 2014      by Veaceslav Munteanu <veaceslav dot munteanu90 at gmail dot com>
  * Copyright (C) 2017      by Simon Frei <freisim93 at gmail dot com>
  *
@@ -27,6 +27,7 @@
  * ============================================================ */
 
 #include "applicationsettings.h"
+#include "applicationsettings_p.h"
 
 // Qt includes
 
@@ -41,10 +42,9 @@
 #include "mimefilter.h"
 #include "thumbnailsize.h"
 #include "thememanager.h"
-#include "applicationsettings_p.h"
 
 #ifdef HAVE_KFILEMETADATA
-#include "baloowrap.h"
+#   include "baloowrap.h"
 #endif
 
 namespace Digikam
@@ -478,4 +478,4 @@ void ApplicationSettings::saveSettings()
     config->sync();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

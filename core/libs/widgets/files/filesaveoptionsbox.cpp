@@ -61,7 +61,7 @@ class FileSaveOptionsBox::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         noneOptions(0),
         noneGrid(0),
         labelNone(0),
@@ -244,4 +244,4 @@ void FileSaveOptionsBox::readSettings()
     d->PGFOptions->setLossLessCompression( group.readEntry(QLatin1String("PGFLossLess"),           true) );
 }
 
-}  // namespace Digikam
+} // namespace Digikam

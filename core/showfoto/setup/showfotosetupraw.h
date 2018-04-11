@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef SHOWFOTOSETUPRAW_H
-#define SHOWFOTOSETUPRAW_H
+#ifndef SHOW_FOTO_SETUP_RAW_H
+#define SHOW_FOTO_SETUP_RAW_H
 
 // Qt includes
 
@@ -52,6 +52,6 @@ private:
     Private* const d;
 };
 
-}  // namespace ShowFoto
+} // namespace ShowFoto
 
-#endif // SHOWFOTOSETUPRAW_H
+#endif // SHOW_FOTO_SETUP_RAW_H

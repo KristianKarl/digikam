@@ -25,8 +25,8 @@
  *
  * ============================================================ */
 
-#ifndef FACEREC_EIGENBORROWED_H
-#define FACEREC_EIGENBORROWED_H
+#ifndef DIGIKAM_FACE_REC_EIGEN_BORROWED_H
+#define DIGIKAM_FACE_REC_EIGEN_BORROWED_H
 
 #include "libopencv.h"
 #include "face.hpp"
@@ -43,7 +43,7 @@ class EigenFaceRecognizer : public cv::face::FaceRecognizer
 public:
 
     // Initializes this Eigenfaces Model.
-    EigenFaceRecognizer(double threshold = DBL_MAX)
+    explicit EigenFaceRecognizer(double threshold = DBL_MAX)
         : m_threshold(threshold),
           m_num_components(0)
     {
@@ -157,4 +157,4 @@ private:
 
 } // namespace Digikam
 
-#endif // FACEREC_EIGENBORROWED_H
+#endif // DIGIKAM_FACE_REC_EIGEN_BORROWED_H

@@ -52,7 +52,7 @@ class FingerPrintsGenerator::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         rebuildAll(true),
         thread(0)
     {
@@ -178,4 +178,4 @@ void FingerPrintsGenerator::slotDone()
     MaintenanceTool::slotDone();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

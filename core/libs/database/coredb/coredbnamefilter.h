@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef CORE_DATABASE_NAMEFILTER_H
-#define CORE_DATABASE_NAMEFILTER_H
+#ifndef DIGIKAM_CORE_DATABASE_NAME_FILTER_H
+#define DIGIKAM_CORE_DATABASE_NAME_FILTER_H
 
 // Qt includes
 
@@ -61,6 +61,6 @@ protected:
     QList<QRegExp> m_filterList;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // CORE_DATABASE_NAMEFILTER_H
+#endif // DIGIKAM_CORE_DATABASE_NAME_FILTER_H

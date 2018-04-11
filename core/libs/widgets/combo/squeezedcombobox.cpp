@@ -41,7 +41,7 @@ class Q_DECL_HIDDEN SqueezedComboBox::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         timer = 0;
     }
@@ -189,4 +189,4 @@ QString SqueezedComboBox::item(int index) const
     return d->originalItems[index];
 }
 
-}  // namespace Digikam
+} // namespace Digikam

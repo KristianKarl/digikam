@@ -9,7 +9,7 @@
 #
 
 echo "-- digiKam AppImage Bundle"
-echo "-- Use 'help' as CLI argument to know all available options"
+echo "-- Use 'help' as CLI argument to know all available options for digiKam application"
 
 DIR="`dirname \"$0\"`"
 DIR="`( cd \"$DIR\" && pwd )`"
@@ -28,10 +28,18 @@ export KDE_FORK_SLAVES=1
 export CAMLIBS=$DIR/usr/lib/libgphoto2
 export IOLIBS=$DIR/usr/lib/libgphoto2_port
 
+# if no customized Qt debug loggin variable is set, turn on one for a better readability
+
+if [ -z "$QT_MESSAGE_PATTERN" ]; then
+    export QT_MESSAGE_PATTERN="`echo -e "\033[34m%{function}\033[0m: %{message}"`"
+fi
+
 export APPIMAGE_STARTUP_LD_LIBRARY_PATH=$LD_LIBRARY_PATH
 export APPIMAGE_STARTUP_QT_PLUGIN_PATH=$QT_PLUGIN_PATH
 export APPIMAGE_STARTUP_XDG_DATA_DIRS=$XDG_DATA_DIRS
 export APPIMAGE_STARTUP_PATH=$PATH
+
+# Parse CLI options.
 
 if [[ $1 == "showfoto" ]] ; then
 
@@ -42,12 +50,16 @@ elif [[ $1 == "debug" ]] ; then
 
     if [[ $2 == "showfoto" ]] ; then
 
+        # Showfoto in debug mode.
+
         echo "Starting Showfoto into GDB..."
         echo "Use 'bt' command on debugger prompt to get a crash backtrace."
         echo "Use 'q' command to quit debugger session."
         gdb -ex=r --args showfoto ${@:3}
 
     else
+
+        # digiKam in debug mode.
 
         echo "Starting digiKam into GDB..."
         echo "Use 'bt' command on debugger prompt to get a crash backtrace."
@@ -58,16 +70,28 @@ elif [[ $1 == "debug" ]] ; then
 
 elif [[ $1 == "help" ]] ; then
 
-        echo "digiKam AppImage bundle CLI options:"
-        echo " without option     : run digiKam."
-        echo " <showfoto>         : run Showfoto instead digiKam."
-        echo " <debug>            : run digiKam into GDB."
-        echo " <debug> <showfoto> : run Showfoto into GDB."
-        echo " <help>             : show this help."
+    # digiKam/Showfoto CLI help.
+
+    echo "digiKam AppImage bundle CLI options:"
+    echo " without option       : run digiKam."
+    echo " <showfoto>           : run Showfoto instead digiKam."
+    echo " <debug>              : run digiKam into GDB."
+    echo " <debug> <showfoto>   : run Showfoto into GDB."
+    echo " <desktopintegration> : run native AppImage script for a desktop integration."
+    echo " <help>               : show these information."
+
+elif [[ ($1 == "desktopintegration") ]] ; then
+
+    # Native AppImage CLI options.
+
+    echo "Call native AppImage CLI tools for desktop integration..."
+
+    digikam.wrapper $@
 
 else
 
     # Run digiKam as well.
+
     digikam $@
 
 fi

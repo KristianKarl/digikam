@@ -49,7 +49,7 @@ class BorderFilter::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         borderMainWidth(0),
         border2ndWidth(0),
         orgRatio(0.0f)
@@ -562,4 +562,4 @@ void BorderFilter::readParameters(const FilterAction& action)
     d->settings.decorativeSecondColor = stringToColor(action.parameter(QLatin1String("decorativeSecondColor")).toString());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

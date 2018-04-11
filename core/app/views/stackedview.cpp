@@ -9,7 +9,7 @@
  *
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2013      by Michael G. Hansen <mike at mghansen dot de>
- * Copyright (C) 2015      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -48,16 +48,11 @@
 #include "imagethumbnailbar.h"
 #include "loadingcacheinterface.h"
 #include "previewlayout.h"
+#include "welcomepageview.h"
 #include "thumbbardock.h"
 #include "tableview.h"
 #include "trashview.h"
 #include "dimg.h"
-
-#ifdef HAVE_QWEBENGINE
-#   include "welcomepageview_qwebengine.h"
-#else
-#   include "welcomepageview.h"
-#endif
 
 #ifdef HAVE_MEDIAPLAYER
 #   include "mediaplayerview.h"
@@ -75,7 +70,7 @@ class StackedView::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         dockArea           = 0;
         splitter           = 0;
@@ -594,4 +589,4 @@ void StackedView::slotPreviewLoaded(bool)
     previewLoaded();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

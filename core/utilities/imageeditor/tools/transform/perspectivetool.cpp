@@ -57,7 +57,7 @@ class PerspectiveTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         newWidthLabel(0),
         newHeightLabel(0),
         topLeftAngleLabel(0),
@@ -283,4 +283,4 @@ void PerspectiveTool::setBackgroundColor(const QColor& bg)
     d->previewWidget->setBackgroundColor(bg);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

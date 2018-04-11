@@ -34,7 +34,6 @@
 #include <QIcon>
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
-#include <QPushButton>
 #include <QMessageBox>
 
 // KDE includes
@@ -58,7 +57,7 @@ class SoftProofDialog::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         switchOn(false),
         deviceProfileBox(0),
         infoProofProfiles(0),
@@ -210,7 +209,7 @@ void SoftProofDialog::updateOkButtonState()
 void SoftProofDialog::readSettings()
 {
     ICCSettingsContainer settings = IccSettings::instance()->settings();
-    d->deviceProfileBox->setCurrentProfile(settings.defaultProofProfile);
+    d->deviceProfileBox->setCurrentProfile(IccProfile(settings.defaultProofProfile));
     d->proofingIntentBox->setIntent(settings.proofingRenderingIntent);
     d->gamutCheckBox->setChecked(settings.doGamutCheck);
     d->maskColorBtn->setColor(settings.gamutCheckMaskColor);

@@ -39,7 +39,7 @@ class SetupRaw::Private
 public:
 
 
-    Private() :
+    explicit Private() :
         tab(0),
         raw(0)
     {
@@ -77,4 +77,4 @@ void SetupRaw::readSettings()
     d->raw->readSettings();
 }
 
-}  // namespace ShowFoto
+} // namespace ShowFoto

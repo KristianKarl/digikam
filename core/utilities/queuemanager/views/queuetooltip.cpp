@@ -43,7 +43,7 @@ class QueueToolTip::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         view(0),
         item(0)
     {
@@ -110,4 +110,4 @@ QString QueueToolTip::tipContents()
     return ToolTipFiller::imageInfoTipContents(info);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

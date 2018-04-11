@@ -51,7 +51,7 @@
 #include "lbphfacemodel.h"
 #include "dnnfacemodel.h"
 #include "dnn_face.h"
-#include "facedb.h"
+#include "facedb.h"                    // krazy:exclude=includes
 #include "digikam_debug.h"
 
 namespace Digikam
@@ -61,7 +61,7 @@ class FaceDb::Private
 {
 
 public:
-    Private()
+    explicit Private()
         : db(0)
     {
     }

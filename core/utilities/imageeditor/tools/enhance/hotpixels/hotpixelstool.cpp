@@ -61,7 +61,7 @@ class HotPixelsTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         blackFrameButton(0),
         progressBar(0),
         filterMethodCombo(0),
@@ -295,4 +295,4 @@ void HotPixelsTool::slotBlackFrame(const QList<HotPixel>& hpList, const QUrl& bl
     slotPreview();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

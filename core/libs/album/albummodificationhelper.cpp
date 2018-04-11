@@ -7,7 +7,7 @@
  * Description : helper class used to modify physical albums in views
  *
  * Copyright (C) 2009-2011 by Johannes Wienke <languitar at semipol dot de>
- * Copyright (C) 2014-2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014-2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -56,7 +56,7 @@ namespace Digikam
 class AlbumModificationHelper::Private
 {
 public:
-    Private() :
+    explicit Private() :
         dialogParent(0)
     {
     }
@@ -204,25 +204,6 @@ void AlbumModificationHelper::slotAlbumDelete(PAlbum* album)
 
     bool useTrash = !dialog.shouldDelete();
 
-    if (!useTrash)
-    {
-        CoreDbAccess access;
-        // get all albums to delete
-        QList<int> albumsToDelete;
-        addAlbumChildrenToList(albumsToDelete, album);
-        // If the directory should be deleted permanently, mark the images as obsolete and remove them
-        // from their album
-
-        QSet<qlonglong> imagesToRemove;
-        foreach(int albumId, albumsToDelete)
-        {
-            imagesToRemove.unite(access.db()->getItemIDsInAlbum(albumId).toSet());
-        }
-        access.db()->removeItemsPermanently(imagesToRemove.toList(), albumsToDelete);
-    }
-
-    // Currently trash kioslave can handle only full paths.
-    // pass full folder path to the trashing job
     DIO::del(album, useTrash);
 }
 
@@ -260,26 +241,6 @@ void AlbumModificationHelper::slotAlbumRename(PAlbum* album)
         if (!AlbumManager::instance()->renamePAlbum(album, title, errMsg))
         {
             QMessageBox::critical(qApp->activeWindow(), qApp->applicationName(), errMsg);
-        }
-    }
-}
-
-void AlbumModificationHelper::addAlbumChildrenToList(QList<int>& list, Album* const album)
-{
-    // simple recursive helper function
-    if (album)
-    {
-        if (!list.contains(album->id()))
-        {
-            list.append(album->id());
-        }
-
-        AlbumIterator it(album);
-
-        while (it.current())
-        {
-            addAlbumChildrenToList(list, *it);
-            ++it;
         }
     }
 }

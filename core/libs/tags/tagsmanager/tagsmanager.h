@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef TAGSMANAGER_H
-#define TAGSMANAGER_H
+#ifndef TAGS_MANAGER_H
+#define TAGS_MANAGER_H
 
 // Qt includes
 
@@ -48,7 +48,7 @@ class TagsManager : public KMainWindow, public StateSavingObject
 
 public:
 
-    TagsManager();
+    explicit TagsManager();
     ~TagsManager();
 
     /**
@@ -178,4 +178,4 @@ private:
 
 } // namespace Digikam
 
-#endif // TAGSMANAGER_H
+#endif // TAGS_MANAGER_H

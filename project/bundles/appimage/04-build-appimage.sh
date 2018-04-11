@@ -19,6 +19,16 @@ if [ "root" != "$USER" ]; then
     exit
 fi
 
+if [[ "$(arch)" = "x86_64" ]] ; then
+
+    LIB_PATH_ALT=lib64
+
+else
+
+    LIB_PATH_ALT=lib
+
+fi
+
 #################################################################################################
 # Manage script traces to log file
 
@@ -39,13 +49,7 @@ ChecksRunAsRoot
 StartScript
 ChecksCPUCores
 CentOS6Adjustments
-. /opt/rh/devtoolset-3/enable
-
-if [[ "$(arch)" = "x86_64" ]] ; then
-    LIB_PATH_ALT=lib64
-else
-    LIB_PATH_ALT=lib
-fi
+. /opt/rh/devtoolset-4/enable
 
 #################################################################################################
 
@@ -128,11 +132,13 @@ cp -r /usr/share/kxmlgui5                 ./usr/share
 cp -r /usr/share/kf5                      ./usr/share
 cp -r /usr/share/solid                    ./usr/share
 cp -r /usr/share/OpenCV                   ./usr/share
-cp -r /usr/share/metainfo/*digikam*       ./usr/share/metainfo/
-cp -r /usr/share/metainfo/*showfoto*      ./usr/share/metainfo/
 cp -r /usr/share/dbus-1/interfaces/kf5*   ./usr/share/dbus-1/interfaces/
 cp -r /usr/share/dbus-1/services/*kde*    ./usr/share/dbus-1/services/
 cp -r /usr/$LIB_PATH_ALT/libexec/kf5      ./usr/lib/libexec/
+
+# AppImage stream data file
+cp -r /usr/share/metainfo/org.kde.digikam.appdata.xml   ./usr/share/metainfo/digikam.appdata.xml
+cp -r /usr/share/metainfo/org.kde.showfoto.appdata.xml  ./usr/share/metainfo/showfoto.appdata.xml
 
 # QWebEngine bin data files.
 [[ -e /usr/ressources ]] && cp -r /usr/resources ./usr/
@@ -427,7 +433,7 @@ fi
 
 chmod a+x ./$APPIMGBIN
 
-./$APPIMGBIN -n $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
+./$APPIMGBIN $APP_IMG_DIR/ $ORIG_WD/bundle/$APPIMAGE
 chmod a+rwx $ORIG_WD/bundle/$APPIMAGE
 
 #################################################################################################

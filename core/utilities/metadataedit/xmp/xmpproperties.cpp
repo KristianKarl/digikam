@@ -57,7 +57,7 @@ class XMPProperties::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         priorityCB           = 0;
         objectTypeCB         = 0;
@@ -546,4 +546,4 @@ void XMPProperties::applyMetadata(QByteArray& xmpData)
     xmpData = meta.getXmp();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

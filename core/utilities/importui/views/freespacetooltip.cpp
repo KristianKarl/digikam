@@ -36,7 +36,7 @@ class FreeSpaceToolTip::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         parent(0)
     {
     }
@@ -90,4 +90,4 @@ QString FreeSpaceToolTip::tipContents()
     return d->tip;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

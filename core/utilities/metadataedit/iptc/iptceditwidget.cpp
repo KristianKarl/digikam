@@ -60,7 +60,7 @@ class IPTCEditWidget::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         modified        = false;
         isReadOnly      = false;
@@ -359,4 +359,4 @@ bool IPTCEditWidget::isModified() const
     return d->modified;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

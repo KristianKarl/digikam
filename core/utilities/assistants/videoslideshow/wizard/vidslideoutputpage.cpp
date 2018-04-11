@@ -39,7 +39,7 @@
 
 // QtAv includes
 
-#include <QtAV/AVMuxer.h>
+#include <QtAV/AVMuxer.h>    // krazy:exclude=includes
 
 // Local includes
 
@@ -56,7 +56,7 @@ class VidSlideOutputPage::Private
 {
 public:
 
-    Private(QWizard* const dialog)
+    explicit Private(QWizard* const dialog)
       : destUrl(0),
         conflictBox(0),
         playerVal(0),

@@ -39,7 +39,7 @@
 #include <QDateTime>
 #include <QSize>
 #include <QMutex>
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 #include <QtMath>
 
 // Local includes
@@ -55,7 +55,7 @@ class DistortionFXFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         antiAlias      = true;
         level          = 0;
@@ -1276,4 +1276,4 @@ void DistortionFXFilter::readParameters(const FilterAction& action)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -69,7 +69,7 @@ class RatioCropTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         originalIsLandscape(false),
         customLabel(0),
         orientLabel(0),
@@ -1109,4 +1109,4 @@ void RatioCropTool::setBackgroundColor(const QColor& bg)
     d->imageSelectionWidget->setBackgroundColor(bg);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

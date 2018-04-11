@@ -61,7 +61,7 @@ class BatchTool::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         exifResetOrientation(false),
         exifCanEditOrientation(true),
         branchHistory(true),
@@ -556,4 +556,4 @@ void BatchTool::registerSettingsWidget()
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

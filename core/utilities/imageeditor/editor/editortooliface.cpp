@@ -49,7 +49,7 @@ class EditorToolIface::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         toolsIconView(0),
         tool(0),
         editor(0),
@@ -329,4 +329,4 @@ void EditorToolIface::slotToolApplied()
     emit(d->editor->signalToolApplied());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

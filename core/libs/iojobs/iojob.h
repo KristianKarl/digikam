@@ -6,7 +6,7 @@
  * Date        : 2015-06-15
  * Description : IO Jobs for file systems jobs
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  * Copyright (C) 2018 by Maik Qualmann <metzpinguin at gmail dot com>
  *
  * This program is free software; you can redistribute it
@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef IOJOB_H
-#define IOJOB_H
+#ifndef IO_JOB_H
+#define IO_JOB_H
 
 // Qt includes
 
@@ -51,8 +51,8 @@ protected:
 
 Q_SIGNALS:
 
-    void signalOneProccessed(int operation);
-    void error(const QString& errMsg);
+    void signalOneProccessed();
+    void signalError(const QString& errMsg);
 };
 
 // ---------------------------------------
@@ -63,7 +63,7 @@ class DIGIKAM_EXPORT CopyJob : public IOJob
 
 public:
 
-    CopyJob(IOJobData* const data);
+    explicit CopyJob(IOJobData* const data);
 
 protected:
 
@@ -82,15 +82,11 @@ class DIGIKAM_EXPORT DeleteJob : public IOJob
 
 public:
 
-    DeleteJob(IOJobData* const data);
+    explicit DeleteJob(IOJobData* const data);
 
 protected:
 
     void run();
-
-private:
-
-    qlonglong getItemFromUrl(const QUrl& url);
 
 private:
 
@@ -105,7 +101,7 @@ class DIGIKAM_EXPORT RenameFileJob : public IOJob
 
 public:
 
-    RenameFileJob(IOJobData* const data);
+    explicit RenameFileJob(IOJobData* const data);
 
 Q_SIGNALS:
 
@@ -129,7 +125,7 @@ class DIGIKAM_EXPORT DTrashItemsListingJob : public IOJob
 
 public:
 
-    DTrashItemsListingJob(const QString& collectionPath);
+    explicit DTrashItemsListingJob(const QString& collectionPath);
 
 Q_SIGNALS:
 
@@ -152,7 +148,7 @@ class DIGIKAM_EXPORT RestoreDTrashItemsJob : public IOJob
 
 public:
 
-    RestoreDTrashItemsJob(const DTrashItemInfoList& infos);
+    explicit RestoreDTrashItemsJob(const DTrashItemInfoList& infos);
 
 protected:
 
@@ -171,7 +167,7 @@ class DIGIKAM_EXPORT DeleteDTrashItemsJob : public IOJob
 
 public:
 
-    DeleteDTrashItemsJob(const DTrashItemInfoList& infos);
+    explicit DeleteDTrashItemsJob(const DTrashItemInfoList& infos);
 
 protected:
 
@@ -184,4 +180,4 @@ private:
 
 } // namespace Digikam
 
-#endif // IOJOB_H
+#endif // IO_JOB_H

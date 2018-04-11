@@ -32,7 +32,7 @@
 
 // QtAV includes
 
-#include <QtAV/AVError.h>
+#include <QtAV/AVError.h> // krazy:exclude=includes
 
 namespace Digikam
 {
@@ -76,6 +76,6 @@ private:
     Private* const d;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
 #endif // SLIDE_VIDEO_H

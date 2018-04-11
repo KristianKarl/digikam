@@ -59,7 +59,7 @@ class IPTCOrigin::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         cityEdit               = 0;
         sublocationEdit        = 0;
@@ -710,4 +710,4 @@ void IPTCOrigin::applyMetadata(QByteArray& exifData, QByteArray& iptcData)
     iptcData = meta.getIptc();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

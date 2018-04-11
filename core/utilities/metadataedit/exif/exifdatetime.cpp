@@ -49,7 +49,7 @@ class EXIFDateTime::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         dateCreatedSel             = 0;
         dateOriginalSel            = 0;
@@ -544,4 +544,4 @@ void EXIFDateTime::applyMetadata(QByteArray& exifData, QByteArray& iptcData, QBy
     xmpData  = meta.getXmp();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -69,8 +69,8 @@ class CoreDB::Private
 
 public:
 
-    Private() :
-        db(0),
+    explicit Private()
+      : db(0),
         uniqueHashVersion(-1)
     {
     }
@@ -4935,4 +4935,4 @@ void CoreDB::writeSettings()
     group.writeEntry(d->configRecentlyUsedTags, d->recentlyAssignedTags);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

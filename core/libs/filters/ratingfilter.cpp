@@ -8,7 +8,7 @@
  *
  * Copyright (C) 2007-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2007      by Arnd Baecker <arnd dot baecker at web dot de>
- * Copyright (C) 2014      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -48,7 +48,7 @@ class RatingFilterWidget::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         dirty          = false;
         ratingTracker  = 0;
@@ -194,7 +194,7 @@ class RatingFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         ratingWidget   = 0;
         optionsBtn     = 0;
@@ -333,4 +333,4 @@ int RatingFilter::rating() const
     return d->ratingWidget->rating();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

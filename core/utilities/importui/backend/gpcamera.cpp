@@ -151,7 +151,7 @@ class GPCamera::Private
 
 public:
 
-    Private()
+    explicit Private()
 #ifdef HAVE_GPHOTO2
         : cameraInitialized(false),
           camera(0),
@@ -1805,4 +1805,4 @@ bool GPCamera::findConnectedUsbCamera(int vendorId, int productId, QString& mode
 #endif /* HAVE_GPHOTO2 */
 }
 
-}  // namespace Digikam
+} // namespace Digikam

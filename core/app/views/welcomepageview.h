@@ -9,7 +9,7 @@
  *
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2009-2011 by Andi Clemens <andi dot clemens at gmail dot com>
- * Copyright (C) 2015      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -27,12 +27,20 @@
 #ifndef WELCOME_PAGE_VIEW_H
 #define WELCOME_PAGE_VIEW_H
 
+#include "digikam_config.h"
+
 // Qt includes
 
-#include <QString>
 #include <QByteArray>
+#include <QString>
 #include <QUrl>
-#include <QWebView>
+
+#ifdef HAVE_QWEBENGINE
+#   include <QWebEngineView>
+#   include <QWebEnginePage>
+#else
+#   include <QWebView>
+#endif
 
 // Local includes
 
@@ -40,8 +48,30 @@
 
 namespace Digikam
 {
+#ifdef HAVE_QWEBENGINE
+class WelcomePageViewPage : public QWebEnginePage
+{
+    Q_OBJECT
 
+public:
+
+    explicit WelcomePageViewPage(QObject* const parent = 0);
+    virtual ~WelcomePageViewPage();
+
+    bool acceptNavigationRequest(const QUrl&, QWebEnginePage::NavigationType, bool);
+
+Q_SIGNALS:
+
+    void linkClicked(const QUrl&);
+
+};
+
+// -------------------------------------------------------------------
+
+class WelcomePageView : public QWebEngineView
+#else
 class WelcomePageView : public QWebView
+#endif
 {
     Q_OBJECT
 

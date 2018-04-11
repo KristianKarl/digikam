@@ -9,7 +9,7 @@
  * Copyright (C) 2004      by Renchi Raju <renchi dot raju at gmail dot com>
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2006-2011 by Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
- * Copyright (C) 2015      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -57,7 +57,6 @@ extern "C"
 #include <QTextCodec>
 #include <QTimer>
 #include <QComboBox>
-#include <QMessageBox>
 #include <QIcon>
 #include <QDialog>
 #include <QDialogButtonBox>
@@ -164,7 +163,7 @@ class AlbumManager::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         changed(false),
         hasPriorizedDbPath(false),
         dbFakeConnection(false),
@@ -2410,7 +2409,7 @@ bool AlbumManager::updatePAlbumIcon(PAlbum* album, qlonglong iconID, QString& er
 
 qlonglong AlbumManager::getItemFromAlbum(PAlbum* album, const QString& fileName)
 {
-    return CoreDbAccess().db()->getItemFromAlbum(album->id(),fileName);
+    return CoreDbAccess().db()->getItemFromAlbum(album->id(), fileName);
 }
 
 TAlbum* AlbumManager::createTAlbum(TAlbum* parent, const QString& name,
@@ -3714,4 +3713,4 @@ void AlbumManager::removeFakeConnection()
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

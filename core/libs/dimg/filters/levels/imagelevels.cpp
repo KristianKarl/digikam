@@ -85,7 +85,7 @@ public:
 
 public:
 
-    Private()
+    explicit Private()
     {
         levels     = 0;
         lut        = 0;
@@ -809,4 +809,4 @@ bool ImageLevels::saveLevelsToGimpLevelsFile(const QUrl& fileUrl)
     return true;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

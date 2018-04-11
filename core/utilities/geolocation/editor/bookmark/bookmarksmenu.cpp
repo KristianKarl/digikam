@@ -29,6 +29,10 @@
 #include <QUrl>
 #include <QDebug>
 
+// Local includes
+
+#include "bookmarknode.h"
+
 Q_DECLARE_METATYPE(QModelIndex)
 
 namespace Digikam
@@ -38,7 +42,7 @@ class ModelMenu::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         maxRows(7),
         firstSeparator(-1),
         maxWidth(-1),
@@ -276,7 +280,7 @@ class BookmarksMenu::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         manager(0)
     {
     }
@@ -312,7 +316,7 @@ void BookmarksMenu::activated(const QModelIndex& index)
 bool BookmarksMenu::prePopulated()
 {
     setModel(d->manager->bookmarksModel());
-    setRootIndex(d->manager->bookmarksModel()->index(d->manager->bookmarks()));
+    setRootIndex(d->manager->bookmarksModel()->index(d->manager->bookmarks()->children().first()));
 
     // initial actions
 

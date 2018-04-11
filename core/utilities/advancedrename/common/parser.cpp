@@ -51,7 +51,7 @@ class Parser::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {}
 
     RulesList options;
@@ -382,4 +382,4 @@ ParseResults Parser::applyModifiers(const QString& parseString, ParseResults& re
     return modifierResults;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

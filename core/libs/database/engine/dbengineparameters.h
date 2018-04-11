@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef DATABASE_ENGINE_PARAMETERS_H
-#define DATABASE_ENGINE_PARAMETERS_H
+#ifndef DIGIKAM_DATABASE_ENGINE_PARAMETERS_H
+#define DIGIKAM_DATABASE_ENGINE_PARAMETERS_H
 
 // Qt includes
 
@@ -214,6 +214,6 @@ public:
 
 DIGIKAM_EXPORT QDebug operator<<(QDebug dbg, const DbEngineParameters& t);
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // DATABASE_ENGINE_PARAMETERS_H
+#endif // DIGIKAM_DATABASE_ENGINE_PARAMETERS_H

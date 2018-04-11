@@ -8,7 +8,7 @@
  *
  * Copyright (C) 2004      by Joern Ahrens <joern dot ahrens at kdemail dot net>
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
- * Copyright (C) 2014      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -135,7 +135,7 @@ class AlbumHistory::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         moving(false),
         blockSelection(false)
     {
@@ -217,9 +217,11 @@ void AlbumHistory::addAlbums(QList<Album*> const albums, QWidget* const widget)
  *        A special overloaded function for handling AlbumHistory
  *        for the Labels tree-view
  *
- * @author Mohamed Anwer
+ * @author Mohamed_Anwer
  */
-void AlbumHistory::addAlbums(QList<Album*> const albums, QWidget* const widget, QHash<AlbumLabelsTreeView::Labels, QList<int> > selectedLabels)
+void AlbumHistory::addAlbums(QList<Album*> const albums,
+                             QWidget* const widget,
+                             QHash<AlbumLabelsTreeView::Labels, QList<int> > selectedLabels)
 {
 
     if (albums.isEmpty() || !widget || d->moving)
@@ -577,4 +579,4 @@ void AlbumHistory::slotAlbumsCleared()
     clearHistory();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

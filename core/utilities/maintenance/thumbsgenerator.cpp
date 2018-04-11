@@ -56,7 +56,7 @@ class ThumbsGenerator::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         rebuildAll(true),
         thread(0)
     {
@@ -200,4 +200,4 @@ void ThumbsGenerator::slotAdvance(const QImage& img)
     advance(1);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

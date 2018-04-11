@@ -56,7 +56,7 @@ class ImageGuideWidget::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         sixteenBit(false),
         focus(false),
         spotVisible(false),
@@ -880,4 +880,4 @@ void ImageGuideWidget::setMaskCursor()
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

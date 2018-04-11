@@ -33,8 +33,8 @@
 
 // QtAV includes
 
-#include <QtAV/AVError.h>
-#include <QtAV/AVPlayer.h>
+#include <QtAV/AVError.h>  // krazy:exclude=includes
+#include <QtAV/AVPlayer.h> // krazy:exclude=includes
 
 // Local includes
 
@@ -51,7 +51,7 @@ class PresentationAudioWidget::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         sharedData  = 0;
         currIndex   = 0;
@@ -368,7 +368,7 @@ void PresentationAudioWidget::slotPlayerError(const QtAV::AVError& err)
 {
     if (err.error() != AVError::NoError)
     {
-        qCDebug(DIGIKAM_GENERAL_LOG) << "An error as occured while playing (" << err.string() << ")";
+        qCDebug(DIGIKAM_GENERAL_LOG) << "An error as occurred while playing (" << err.string() << ")";
         slotError();
     }
 }

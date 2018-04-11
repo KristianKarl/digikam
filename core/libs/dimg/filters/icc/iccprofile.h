@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef ICCPROFILE_H
-#define ICCPROFILE_H
+#ifndef ICC_PROFILE_H
+#define ICC_PROFILE_H
 
 // Qt includes
 
@@ -38,7 +38,6 @@
 
 namespace Digikam
 {
-
 
 class DIGIKAM_EXPORT IccProfile
 {
@@ -70,12 +69,12 @@ public:
     /**
      * Creates a profile from the given data in memory
      */
-    IccProfile(const QByteArray& data);
+    explicit IccProfile(const QByteArray& data);
 
     /**
      * Creates a profile from the given file
      */
-    IccProfile(const QString& filePath);
+    explicit IccProfile(const QString& filePath);
 
     /**
      * Returns the profiles available with RawEngine. You still need to call open() on them.
@@ -196,8 +195,8 @@ public:
     ~LcmsLock();
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
 Q_DECLARE_METATYPE(Digikam::IccProfile)
 
-#endif   // ICCPROFILE_H
+#endif // ICC_PROFILE_H

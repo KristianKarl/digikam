@@ -55,7 +55,7 @@ class ImgQSort::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         clusterCount(30),                   //used for k-means clustering algorithm in noise detection
         size(512)
     {
@@ -145,7 +145,7 @@ ImgQSort::~ImgQSort()
 void ImgQSort::startAnalyse()
 {
     // For Noise Estimation
-    // Use the Top/Left corner of 256x256 pixels to analyse noise contents from image.
+    // Use the Top/Left corner of 256x256 pixels to analyze noise contents from image.
     // This will speed-up computation time with OpenCV.
 
     readImage();
@@ -830,4 +830,4 @@ int ImgQSort::exposureamount() const
     return exposurelevel;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

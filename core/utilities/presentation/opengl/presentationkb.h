@@ -114,7 +114,7 @@ class PresentationKB : public QGLWidget
 
 public:
 
-    PresentationKB(PresentationContainer* const sharedData);
+    explicit PresentationKB(PresentationContainer* const sharedData);
 
     ~PresentationKB();
 
@@ -161,6 +161,6 @@ private:
     friend class KBEffect;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
 #endif // PRESENTATION_KB_H

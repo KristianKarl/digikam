@@ -53,7 +53,7 @@ class RedEyeCorrectionSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         redtoavgratioInput(0)
     {
     }
@@ -149,4 +149,4 @@ void RedEyeCorrectionSettings::writeSettings(KConfigGroup& group)
     group.writeEntry(d->configRedToAvgRatioAdjustmentEntry, prm.m_redToAvgRatio);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

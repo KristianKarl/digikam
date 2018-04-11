@@ -25,7 +25,7 @@
 #include <QByteArray>
 #include <QCheckBox>
 #include <QString>
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 
 // Local includes
 
@@ -40,7 +40,7 @@ class LensFunFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         iface    = 0;
         modifier = 0;
@@ -392,4 +392,4 @@ void LensFunFilter::readParameters(const Digikam::FilterAction& action)
     d->iface->setSettings(prm);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

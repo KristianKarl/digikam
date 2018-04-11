@@ -30,10 +30,8 @@
 #define OPTIONCUSTOMWBGREENENTRY                       "Custom White Balance Green"
 #define OPTIONFOURCOLORRGBENTRY                        "Four Color RGB"
 #define OPTIONUNCLIPCOLORSENTRY                        "Unclip Color"
-// krazy:endcond=spelling
-#define OPTIONDONTSTRETCHPIXELSSENTRY                  "Dont Stretch Pixels"
-// krazy:endcond=spelling
-#define OPTIONMEDIANFILTERPASSESENTRY                  "Median Filter Passes"
+#define OPTIONDONTSTRETCHPIXELSSENTRY                  "Dont Stretch Pixels"        // krazy:endcond=spelling
+#define OPTIONMEDIANFILTERPASSESENTRY                  "Median Filter Passes"       // krazy:endcond=spelling
 #define OPTIONNOISEREDUCTIONTYPEENTRY                  "Noise Reduction Type"
 #define OPTIONNOISEREDUCTIONTHRESHOLDENTRY             "Noise Reduction Threshold"
 #define OPTIONUSECACORRECTIONENTRY                     "EnableCACorrection"
@@ -96,7 +94,7 @@ class Q_DECL_HIDDEN DRawDecoderWidget::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         autoBrightnessBox              = 0;
         sixteenBitsImage               = 0;

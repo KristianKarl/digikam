@@ -37,7 +37,7 @@ class TimeZoneComboBox : public QComboBox
 
 public:
 
-    TimeZoneComboBox(QWidget* const parent);
+    explicit TimeZoneComboBox(QWidget* const parent);
     ~TimeZoneComboBox();
 
     void setToUTC();
@@ -46,6 +46,6 @@ public:
     QString getTimeZone() const;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
 #endif // TIMEZONE_COMBOBOX_H

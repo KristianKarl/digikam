@@ -59,7 +59,7 @@ public :
 
 public:
 
-    Private() :
+    explicit Private() :
         validMouseEvent(false),
         selMouseEvent(false),
         maxCountByDay(1),
@@ -2069,4 +2069,4 @@ void TimeLineWidget::handleSelectionRange(QDateTime& selEndDateTime)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

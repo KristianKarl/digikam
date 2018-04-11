@@ -7,7 +7,7 @@
  * Description : database server starter
  *
  * Copyright (C) 2009-2010 by Holger Foerster <Hamsi2k at freenet dot de>
- * Copyright (C) 2016 by Swati Lodha <swatilodha27 at gmail dot com>
+ * Copyright (C) 2016      by Swati Lodha <swatilodha27 at gmail dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -51,7 +51,7 @@ class DatabaseServerStarter::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : internalServer(0)
     {
     }
@@ -129,4 +129,4 @@ void DatabaseServerStarter::stopServerManagerProcess()
     qCDebug(DIGIKAM_DATABASESERVER_LOG) << "Internal database server stopped";
 }
 
-}  // namespace Digikam
+} // namespace Digikam

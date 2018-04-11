@@ -6,7 +6,7 @@
  * Date        : 30-07-2013
  * Description : Qt filter model for showfoto items
  *
- * Copyright (C) 2013 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2013 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef SHOWFOTOFILTERMODEL_H
-#define SHOWFOTOFILTERMODEL_H
+#ifndef SHOW_FOTO_FILTER_MODEL_H
+#define SHOW_FOTO_FILTER_MODEL_H
 
 // Qt includes
 
@@ -221,4 +221,4 @@ protected:
 
 Q_DECLARE_METATYPE(ShowFoto::ShowfotoFilterModel*)
 
-#endif // SHOWFOTOFILTERMODEL_H
+#endif // SHOW_FOTO_FILTER_MODEL_H

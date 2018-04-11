@@ -44,7 +44,7 @@ class ThumbsDb::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         db(0)
     {
     }
@@ -385,4 +385,4 @@ void ThumbsDb::vacuum()
     d->db->execDBAction(d->db->getDBAction(QString::fromUtf8("vacuumThumbnailsDB")));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -66,7 +66,7 @@ class CurvesSettings::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         histoSegments(0),
         curvesBox(0)
     {}
@@ -287,4 +287,4 @@ int CurvesSettings::curvesLeftOffset() const
     return d->curvesBox->curvesLeftOffset();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

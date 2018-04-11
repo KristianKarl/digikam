@@ -4,7 +4,7 @@
  * http://www.digikam.org
  *
  * Date        : 2009-02-15
- * Description : KScan interface
+ * Description : Plasma scanner menu action
  *
  * Copyright (C) 2010-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  *
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef KSCAN_IFACE_H
-#define KSCAN_IFACE_H
+#ifndef KSCAN_ACTION_H
+#define KSCAN_ACTION_H
 
 // Qt includes
 
@@ -68,4 +68,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* KSCAN_IFACE_H */
+#endif // KSCAN_ACTION_H

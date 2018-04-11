@@ -52,7 +52,7 @@ class CharcoalTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         pencilInput(0),
         smoothInput(0),
         previewWidget(0),
@@ -198,4 +198,4 @@ void CharcoalTool::setFinalImage()
     iface.setOriginal(i18n("Charcoal"), filter()->filterAction(), filter()->getTargetImage());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

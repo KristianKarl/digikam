@@ -48,7 +48,7 @@ class RawCameraDlg::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         header(0),
         searchBar(0)
     {
@@ -155,4 +155,4 @@ void RawCameraDlg::updateHeader(int results)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

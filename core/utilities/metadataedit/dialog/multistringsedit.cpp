@@ -43,7 +43,7 @@ class MultiStringsEdit::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         addValueButton = 0;
         delValueButton = 0;
@@ -283,4 +283,4 @@ bool MultiStringsEdit::getValues(QStringList& oldValues, QStringList& newValues)
     return d->valueCheck->isChecked();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

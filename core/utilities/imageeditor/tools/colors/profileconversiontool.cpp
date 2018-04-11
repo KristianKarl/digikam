@@ -57,7 +57,7 @@ class ProfileConversionTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         profilesBox(0),
         previewWidget(0),
         gboxSettings(0)
@@ -187,7 +187,7 @@ void ProfileConversionTool::readSettings()
 {
     KSharedConfig::Ptr config = KSharedConfig::openConfig();
     KConfigGroup group        = config->group(d->configGroupName);
-    d->profilesBox->setCurrentProfile(group.readPathEntry(d->configProfileEntry, d->currentProfile.filePath()));
+    d->profilesBox->setCurrentProfile(IccProfile(group.readPathEntry(d->configProfileEntry, d->currentProfile.filePath())));
     d->profilesBox->readSettings(group);
 }
 
@@ -268,4 +268,4 @@ void ProfileConversionTool::fastConversion(const IccProfile& profile)
     iface.setOriginalMetadata(meta.data());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

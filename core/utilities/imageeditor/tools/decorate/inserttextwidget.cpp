@@ -45,7 +45,7 @@ class InsertTextWidget::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         currentMoving(false),
         textBorder(false),
         textTransparent(false),
@@ -747,4 +747,4 @@ void InsertTextWidget::mouseMoveEvent(QMouseEvent* e)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

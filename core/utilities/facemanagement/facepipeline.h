@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef FACEPIPELINE_H
-#define FACEPIPELINE_H
+#ifndef FACE_PIPELINE_H
+#define FACE_PIPELINE_H
 
 // Qt includes
 
@@ -70,7 +70,7 @@ public:
 public:
 
     FacePipelineFaceTagsIface();
-    FacePipelineFaceTagsIface(const FaceTagsIface& face);
+    FacePipelineFaceTagsIface(const FaceTagsIface& face);    // krazy:exclude=explicit
 
 public:
 
@@ -86,7 +86,7 @@ class FacePipelineFaceTagsIfaceList : public QList<FacePipelineFaceTagsIface>
 public:
 
     FacePipelineFaceTagsIfaceList();
-    FacePipelineFaceTagsIfaceList(const QList<FaceTagsIface>& faces);
+    FacePipelineFaceTagsIfaceList(const QList<FaceTagsIface>& faces);    // krazy:exclude=explicit
 
     FacePipelineFaceTagsIfaceList& operator=(const QList<FaceTagsIface>& faces);
 
@@ -326,4 +326,4 @@ Q_DECLARE_METATYPE(Digikam::FacePipelinePackage)
 Q_DECLARE_OPERATORS_FOR_FLAGS(Digikam::FacePipelineFaceTagsIface::Roles)
 Q_DECLARE_OPERATORS_FOR_FLAGS(Digikam::FacePipelinePackage::ProcessFlags)
 
-#endif // FACEPIPELINE_H
+#endif // FACE_PIPELINE_H

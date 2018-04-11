@@ -168,7 +168,7 @@ class MetadataPanel::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         tab                = 0;
         exifViewerConfig   = 0;
@@ -366,4 +366,4 @@ QList<MetadataSelectorView*> MetadataPanel::viewers()
     return viewers;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

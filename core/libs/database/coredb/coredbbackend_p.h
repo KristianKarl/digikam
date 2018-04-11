@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef COREDATABASEBACKEND_P_H
-#define COREDATABASEBACKEND_P_H
+#ifndef DIGIKAM_CORE_DATABASE_BACKEND_P_H
+#define DIGIKAM_CORE_DATABASE_BACKEND_P_H
 
 // Local includes
 
@@ -150,6 +150,6 @@ public:
     }
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // COREDATABASEBACKEND_P_H
+#endif // DIGIKAM_CORE_DATABASE_BACKEND_P_H

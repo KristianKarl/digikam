@@ -53,7 +53,7 @@ class IccProfilesSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         profilesBox(0)
     {
         favoriteProfiles.setMaxCost(10);
@@ -156,4 +156,4 @@ QStringList IccProfilesSettings::favoriteProfiles(KConfigGroup& group)
     return group.readPathEntry(d.configRecentlyUsedProfilesEntry, QStringList());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

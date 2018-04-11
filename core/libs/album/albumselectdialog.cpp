@@ -59,7 +59,7 @@ class AlbumSelectDialog::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         buttons   = 0;
         albumSel  = 0;
@@ -178,4 +178,4 @@ void AlbumSelectDialog::slotHelp()
     DXmlGuiWindow::openHandbook();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

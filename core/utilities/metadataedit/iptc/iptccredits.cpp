@@ -49,7 +49,7 @@ class IPTCCredits::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         copyrightCheck   = 0;
         creditCheck      = 0;
@@ -306,4 +306,4 @@ void IPTCCredits::applyMetadata(QByteArray& iptcData)
     iptcData = meta.getIptc();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

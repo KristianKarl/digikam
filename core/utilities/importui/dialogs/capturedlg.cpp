@@ -48,7 +48,7 @@ class CaptureDlg::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         stopPreview(false),
         timer(0),
         buttons(0),
@@ -198,4 +198,4 @@ void CaptureDlg::slotHelp()
     DXmlGuiWindow::openHandbook();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

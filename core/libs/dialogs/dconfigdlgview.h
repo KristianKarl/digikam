@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef DBCONFIGDLG_VIEW_H
-#define DBCONFIGDLG_VIEW_H
+#ifndef DCONFIG_DLG_VIEW_H
+#define DCONFIG_DLG_VIEW_H
 
 // Qt includes
 
@@ -201,6 +201,6 @@ private:
     Q_PRIVATE_SLOT(d_func(), void _k_dataChanged(const QModelIndex&, const QModelIndex&))
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // DBCONFIGDLG_VIEW_H
+#endif // DCONFIG_DLG_VIEW_H

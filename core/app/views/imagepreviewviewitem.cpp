@@ -41,7 +41,7 @@ class ImagePreviewViewItem::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         group = 0;
     }
@@ -92,4 +92,4 @@ void ImagePreviewViewItem::hoverMoveEvent(QGraphicsSceneHoverEvent* e)
     d->group->itemHoverMoveEvent(e);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

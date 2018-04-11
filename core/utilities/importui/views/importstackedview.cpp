@@ -45,7 +45,7 @@ class ImportStackedView::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         dockArea            = 0;
         splitter            = 0;
@@ -526,4 +526,4 @@ void ImportStackedView::slotPreviewLoaded(bool)
     previewLoaded();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -48,7 +48,7 @@ class IPTCStatus::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         statusEdit              = 0;
         JobIDEdit               = 0;
@@ -287,4 +287,4 @@ void IPTCStatus::applyMetadata(QByteArray& iptcData)
     iptcData = meta.getIptc();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

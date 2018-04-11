@@ -37,7 +37,7 @@
 // Qt includes
 
 #include <QDateTime>
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 #include <QtMath>
 
 // Local includes
@@ -53,7 +53,7 @@ class BlurFXFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         blurFXType = ZoomBlur;
         distance   = 100;
@@ -1948,4 +1948,4 @@ void BlurFXFilter::readParameters(const FilterAction& action)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

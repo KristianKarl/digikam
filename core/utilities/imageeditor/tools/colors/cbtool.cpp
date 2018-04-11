@@ -53,7 +53,7 @@ class CBTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         cbSettings(0),
         previewWidget(0),
         gboxSettings(0)
@@ -172,4 +172,4 @@ void CBTool::setFinalImage()
     iface.setOriginal(i18n("Color Balance"), filter()->filterAction(), filter()->getTargetImage());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

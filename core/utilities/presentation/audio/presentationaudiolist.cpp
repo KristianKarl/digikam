@@ -41,8 +41,8 @@
 
 // QtAV includes
 
-#include <QtAV/AVPlayer.h>
-#include <QtAV/Statistics.h>
+#include <QtAV/AVPlayer.h>   // krazy:exclude=includes
+#include <QtAV/Statistics.h> // krazy:exclude=includes
 
 // KDE includes
 
@@ -62,7 +62,7 @@ class PresentationAudioListItem::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         mediaObject = 0;
     }
@@ -128,7 +128,7 @@ void PresentationAudioListItem::slotPlayerError(const QtAV::AVError& err)
 {
     if (err.error() != AVError::NoError)
     {
-        qCDebug(DIGIKAM_GENERAL_LOG) << "An error as occured while playing (" << err.string() << ")";
+        qCDebug(DIGIKAM_GENERAL_LOG) << "An error as occurred while playing (" << err.string() << ")";
         showErrorDialog(err.string());
     }
 }

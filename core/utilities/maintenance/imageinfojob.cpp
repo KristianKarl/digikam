@@ -45,7 +45,7 @@ class ImageInfoJob::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         jobThread(0)
     {
     }
@@ -180,4 +180,4 @@ void ImageInfoJob::slotData(const QList<ImageListerRecord>& records)
     emit signalItemsInfo(itemsList);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

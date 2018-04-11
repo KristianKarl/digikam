@@ -59,7 +59,7 @@ class DistortionFXTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         effectTypeLabel(0),
         levelLabel(0),
         iterationLabel(0),
@@ -357,4 +357,4 @@ void DistortionFXTool::blockWidgetSignals(bool b)
     d->iterationInput->blockSignals(b);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

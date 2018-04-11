@@ -55,7 +55,7 @@ class ImportFilters::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         buttons          = 0;
         filterName       = 0;
@@ -244,4 +244,4 @@ void ImportFilters::getData(Filter* const filter)
     filter->onlyNew    = d->newFilesCheckBox->isChecked();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

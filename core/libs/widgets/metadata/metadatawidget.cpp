@@ -71,7 +71,7 @@ class MetadataWidget::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         view           = 0;
         mainLayout     = 0;
@@ -521,4 +521,4 @@ void MetadataWidget::buildView()
     d->view->slotSearchTextChanged(d->searchBar->searchTextSettings());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

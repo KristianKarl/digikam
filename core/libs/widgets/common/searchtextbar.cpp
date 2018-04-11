@@ -54,7 +54,7 @@ class SearchTextBar::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         optionAutoCompletionModeEntry(QLatin1String("AutoCompletionMode")),
         optionCaseSensitiveEntry(QLatin1String("CaseSensitive")),
         textQueryCompletion(false),
@@ -319,4 +319,4 @@ void SearchTextBar::setIgnoreCase(bool ignore)
     emit signalSearchTextSettings(d->settings);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

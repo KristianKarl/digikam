@@ -54,7 +54,7 @@ class SetupIOFiles::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         JPEGOptions(0),
         PNGOptions(0),
         TIFFOptions(0),
@@ -192,4 +192,4 @@ void SetupIOFiles::readSettings()
     d->showImageSettingsDialog->setChecked(group.readEntry(d->configShowImageSettingsDialog,   true));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

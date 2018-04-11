@@ -6,7 +6,7 @@
  * Date        : 2014-05-17
  * Description : Album Labels Tree View.
  *
- * Copyright (C) 2014-2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014-2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  * Copyright (C) 2014-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  *
  * This program is free software; you can redistribute it
@@ -60,7 +60,7 @@ class AlbumLabelsTreeView::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         ratings(0),
         picks(0),
         colors(0),
@@ -506,7 +506,7 @@ class AlbumLabelsSearchHandler::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         treeWidget(0),
         dbJobThread(0),
         restoringSelectionFromHistory(0),

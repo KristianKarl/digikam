@@ -9,7 +9,7 @@
  * Copyright (C) 2004-2005 by Renchi Raju <renchi dot raju at gmail dot com>
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2006-2012 by Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
- * Copyright (C) 2015      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -91,7 +91,7 @@ class CameraController::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         close(false),
         canceled(false),
         running(false),
@@ -1253,4 +1253,4 @@ void CameraController::openFile(const QString& folder, const QString& file)
     addCommand(cmd);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

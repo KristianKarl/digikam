@@ -47,7 +47,7 @@ class KBImageLoader::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         sharedData    = 0;
         fileIndex     = 0;
@@ -250,4 +250,4 @@ float KBImageLoader::imageAspect() const
     return d->textureAspect;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

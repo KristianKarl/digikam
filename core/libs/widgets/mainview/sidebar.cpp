@@ -739,7 +739,7 @@ class Sidebar::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         minimizedDefault(false),
         minimized(false),
         isMinimized(false),
@@ -1341,4 +1341,4 @@ void SidebarSplitter::slotSplitterMoved(int pos, int index)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

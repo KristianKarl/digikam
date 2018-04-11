@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef EDITORSTACKVIEW_H
-#define EDITORSTACKVIEW_H
+#ifndef EDITOR_STACK_VIEW_H
+#define EDITOR_STACK_VIEW_H
 
 // Qt includes
 
@@ -99,6 +99,6 @@ private:
     Private* const d;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif /* EDITORSTACKVIEW_H */
+#endif // EDITOR_STACK_VIEW_H

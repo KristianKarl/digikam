@@ -72,7 +72,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         bwFilters(0),
         bwFilm(0),
         bwTone(0),
@@ -648,4 +648,4 @@ void BWSepiaSettings::setScaleType(HistogramScale scale)
     d->curvesBox->setScale(scale);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

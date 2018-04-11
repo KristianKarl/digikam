@@ -44,7 +44,7 @@ class Q_DECL_HIDDEN DComboBox::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         defaultIndex = 0;
         resetButton  = 0;
@@ -149,4 +149,4 @@ void DComboBox::slotCurrentIndexChanged(int v)
     emit currentIndexChanged(v);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

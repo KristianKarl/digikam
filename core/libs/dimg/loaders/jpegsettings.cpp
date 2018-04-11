@@ -50,7 +50,7 @@ class JPEGSettings::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         JPEGGrid(0),
         labelJPEGcompression(0),
         labelWarning(0),
@@ -175,4 +175,4 @@ int JPEGSettings::convertCompressionForLibJpeg(int value)
     return((int)((75.0 / 100.0) * (float)value + 26.0 - (75.0 / 100.0)));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

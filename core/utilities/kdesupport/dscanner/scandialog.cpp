@@ -59,7 +59,7 @@ class ScanDialog::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         progress   = 0;
         saneWidget = 0;
@@ -295,4 +295,4 @@ void ScanDialog::slotThreadDone(const QUrl& url, bool success)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

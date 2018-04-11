@@ -48,7 +48,7 @@ class XMPStatus::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         objectNameEdit          = 0;
         specialInstructionEdit  = 0;
@@ -233,4 +233,4 @@ void XMPStatus::applyMetadata(QByteArray& xmpData)
     xmpData = meta.getXmp();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -6,7 +6,7 @@
  * Date        : 2013-07-22
  * Description : Qt item model for Showfoto thumbnails entries
  *
- * Copyright (C) 2013 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2013 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef SHOWFOTOTHUMBNAILMODEL_H
-#define SHOWFOTOTHUMBNAILMODEL_H
+#ifndef SHOW_FOTO_THUMB_NAIL_MODEL_H
+#define SHOW_FOTO_THUMB_NAIL_MODEL_H
 
 // Local Include
 
@@ -128,4 +128,4 @@ private:
 
 } // namespace ShowFoto
 
-#endif // SHOWFOTOTHUMBNAILMODEL_H
+#endif // SHOW_FOTO_THUMB_NAIL_MODEL_H

@@ -35,7 +35,7 @@
 
 // Qt includes
 
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 #include <QMutex>
 
 // Local includes
@@ -49,7 +49,7 @@ class OilPaintFilter::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         brushSize(1),
         smoothness(30),
         globalProgress(0)
@@ -267,4 +267,4 @@ void OilPaintFilter::readParameters(const Digikam::FilterAction& action)
     d->smoothness = action.parameter(QLatin1String("smoothness")).toInt();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

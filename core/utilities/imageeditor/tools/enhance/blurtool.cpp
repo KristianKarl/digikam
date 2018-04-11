@@ -50,7 +50,7 @@ class BlurTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         radiusInput(0),
         previewWidget(0),
         gboxSettings(0)
@@ -167,4 +167,4 @@ void BlurTool::setFinalImage()
     iface.setOriginal(i18n("Gaussian Blur"), filter()->filterAction(), filter()->getTargetImage());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

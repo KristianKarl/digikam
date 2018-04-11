@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DBUSYDLG_H
-#define DBUSYDLG_H
+#ifndef DBUSY_DLG_H
+#define DBUSY_DLG_H
 
 // Qt includes
 
@@ -79,6 +79,6 @@ private:
     Private* const d;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif  // DBUSYDLG_H
+#endif // DBUSY_DLG_H

@@ -6,7 +6,7 @@
  * Date        : 2005-01-01
  * Description : scan pictures interface.
  *
- * Copyright (C) 2005-2006 by Tom Albers <tomalbers@kde.nl>
+ * Copyright (C) 2005-2006 by Tom Albers <tomalbers at kde dot nl>
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2007-2013 by Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
  *
@@ -90,7 +90,7 @@ class ScanController::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         running(false),
         needsInitialization(false),
         needsCompleteScan(false),
@@ -478,7 +478,10 @@ void ScanController::scheduleCollectionScan(const QString& path)
 
 void ScanController::scheduleCollectionScanRelaxed(const QString& path)
 {
-    d->relaxedTimer->start();
+    if (!d->relaxedTimer->isActive())
+    {
+        d->relaxedTimer->start();
+    }
 
     QMutexLocker lock(&d->mutex);
 
@@ -1105,4 +1108,4 @@ void ScanControllerLoadingCacheFileWatch::slotImageChanged(const ImageChangeset&
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

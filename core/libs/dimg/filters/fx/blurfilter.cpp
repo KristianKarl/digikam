@@ -27,7 +27,7 @@
 
 // Qt includes
 
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 #include <QtMath>
 #include <QMutex>
 
@@ -42,7 +42,7 @@ class BlurFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         globalProgress = 0;
         radius         = 3;
@@ -270,4 +270,4 @@ void BlurFilter::readParameters(const FilterAction& action)
     d->radius = action.parameter(QLatin1String("radius")).toInt();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

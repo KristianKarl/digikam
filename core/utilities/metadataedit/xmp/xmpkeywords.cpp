@@ -47,7 +47,7 @@ class XMPKeywords::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         addKeywordButton = 0;
         delKeywordButton = 0;
@@ -268,4 +268,4 @@ void XMPKeywords::applyMetadata(QByteArray& xmpData)
     xmpData = meta.getXmp();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

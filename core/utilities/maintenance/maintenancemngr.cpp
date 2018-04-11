@@ -57,7 +57,7 @@ class MaintenanceMngr::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         running               = false;
         newItemsFinder        = 0;
@@ -372,4 +372,4 @@ void MaintenanceMngr::cancel()
     emit signalComplete();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

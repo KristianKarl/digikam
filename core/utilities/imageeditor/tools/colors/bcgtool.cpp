@@ -54,7 +54,7 @@ class BCGTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         settingsView(0),
         previewWidget(0),
         gboxSettings(0)
@@ -180,4 +180,4 @@ void BCGTool::setFinalImage()
     iface.setOriginal(i18n("Brightness / Contrast / Gamma"), filter()->filterAction(), filter()->getTargetImage());
 }
 
-}  // namespace Digikam
+} // namespace Digikam

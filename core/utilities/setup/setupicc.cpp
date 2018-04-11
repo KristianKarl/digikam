@@ -73,7 +73,7 @@ class SetupICC::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         iccFolderLabel(0),
         enableColorManagement(0),
         defaultSRGBConvert(0),
@@ -689,9 +689,9 @@ void SetupICC::readSettings(bool restore)
     d->defaultPathKU->setFileDlgPath(settings.iccFolder);
     fillCombos(false);
 
-    d->workProfilesKC->setCurrentProfile(settings.workspaceProfile);
-    d->inProfilesKC->setCurrentProfile(settings.defaultInputProfile);
-    d->proofProfilesKC->setCurrentProfile(settings.defaultProofProfile);
+    d->workProfilesKC->setCurrentProfile(IccProfile(settings.workspaceProfile));
+    d->inProfilesKC->setCurrentProfile(IccProfile(settings.defaultInputProfile));
+    d->proofProfilesKC->setCurrentProfile(IccProfile(settings.defaultProofProfile));
 
     if (IccSettings::instance()->monitorProfileFromSystem())
     {
@@ -700,7 +700,7 @@ void SetupICC::readSettings(bool restore)
     }
     else
     {
-        d->monitorProfilesKC->setCurrentProfile(settings.monitorProfile);
+        d->monitorProfilesKC->setCurrentProfile(IccProfile(settings.monitorProfile));
     }
 }
 

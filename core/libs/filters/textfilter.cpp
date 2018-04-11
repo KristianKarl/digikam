@@ -40,7 +40,7 @@ class TextFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         itemNameAction        = 0;
         itemTitleAction       = 0;
@@ -216,4 +216,4 @@ void TextFilter::reset()
     setsearchTextFields(SearchTextFilterSettings::All);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

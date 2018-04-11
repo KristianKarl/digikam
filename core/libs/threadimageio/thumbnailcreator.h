@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef DIGIKAMTHUMBNAILCREATOR_H
-#define DIGIKAMTHUMBNAILCREATOR_H
+#ifndef DIGIKAM_THUMB_NAIL_CREATOR_H
+#define DIGIKAM_THUMB_NAIL_CREATOR_H
 
 // Qt includes
 
@@ -219,6 +219,6 @@ private:
     Private* const d;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // DIGIKAMTHUMBNAILCREATOR_H
+#endif // DIGIKAM_THUMB_NAIL_CREATOR_H

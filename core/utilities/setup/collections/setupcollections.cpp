@@ -59,7 +59,7 @@ class SetupCollections::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         rootsPathChanged(false),
         collectionView(0),
         collectionModel(0)
@@ -139,4 +139,4 @@ void SetupCollections::readSettings()
     d->collectionModel->loadCollections();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -43,7 +43,7 @@ class WBFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         // Obsolete in algorithm since over/under exposure indicators
         // are implemented directly with preview widget.
@@ -537,4 +537,4 @@ void WBFilter::readParameters(const FilterAction& action)
     m_settings = WBContainer::fromFilterAction(action);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -40,7 +40,7 @@ class CBFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         memset(&redMap,     0, sizeof(redMap));
         memset(&greenMap,   0, sizeof(greenMap));
@@ -397,4 +397,4 @@ void CBFilter::readParameters(const Digikam::FilterAction& action)
     d->settings.red   = action.parameter(QLatin1String("red")).toDouble();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

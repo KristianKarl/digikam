@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef CANVAS_H
-#define CANVAS_H
+#ifndef EDITOR_CANVAS_H
+#define EDITOR_CANVAS_H
 
 // Qt includes
 
@@ -207,6 +207,6 @@ private:
     Private* const d;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif /* CANVAS_H */
+#endif // EDITOR_CANVAS_H

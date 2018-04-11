@@ -41,7 +41,7 @@ class CaptureWidget::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
     }
 
@@ -110,4 +110,4 @@ void CaptureWidget::resizeEvent(QResizeEvent*)
     blockSignals(false);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

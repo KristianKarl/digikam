@@ -41,7 +41,7 @@ class HSLFilter::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         memset(&htransfer,   0, sizeof(htransfer));
         memset(&ltransfer,   0, sizeof(ltransfer));
@@ -323,4 +323,4 @@ void HSLFilter::readParameters(const Digikam::FilterAction& action)
     d->settings.vibrance   = action.parameter(QLatin1String("vibrance")).toDouble();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

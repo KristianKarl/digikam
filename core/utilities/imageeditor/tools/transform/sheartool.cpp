@@ -55,7 +55,7 @@ class ShearTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         newWidthLabel(0),
         newHeightLabel(0),
         antialiasInput(0),
@@ -339,4 +339,4 @@ void ShearTool::setFinalImage()
     iface.setOriginal(i18n("Shear Tool"), filter()->filterAction(), targetImage);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -6,7 +6,7 @@
  * Date        : 2013-07-05
  * Description : Qt model for Showfoto entries
  *
- * Copyright (C) 2013 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2013 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef SHOWFOTOIMAGEMODEL_H
-#define SHOWFOTOIMAGEMODEL_H
+#ifndef SHOW_FOTO_IMAGE_MODEL_H
+#define SHOW_FOTO_IMAGE_MODEL_H
 
 // Qt includes
 
@@ -283,4 +283,4 @@ private:
 
 Q_DECLARE_METATYPE(ShowFoto::ShowfotoImageModel*)
 
-#endif // SHOWFOTOIMAGEMODEL_H
+#endif // SHOW_FOTO_IMAGE_MODEL_H

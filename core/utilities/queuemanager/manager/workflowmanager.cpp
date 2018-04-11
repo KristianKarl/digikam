@@ -46,7 +46,7 @@ class WorkflowManager::Private
 {
 public:
 
-    Private()
+    explicit Private()
         :mutex()
     {
         modified = false;
@@ -551,4 +551,4 @@ bool WorkflowManager::load(QStringList& failed)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

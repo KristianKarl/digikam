@@ -6,7 +6,7 @@
  * Date        : 2015-06-05
  * Description : Manager for creating and starting DB jobs threads
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DBJOBSMANAGER_H
-#define DBJOBSMANAGER_H
+#ifndef DIGIKAM_DATABASE_JOBS_MANAGER_H
+#define DIGIKAM_DATABASE_JOBS_MANAGER_H
 
 // Qt includes
 
@@ -92,4 +92,4 @@ private:
 
 } // namespace Digikam
 
-#endif // DBJOBSMANAGER_H
+#endif // DIGIKAM_DATABASE_JOBS_MANAGER_H

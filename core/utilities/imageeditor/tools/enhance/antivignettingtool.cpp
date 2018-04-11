@@ -56,7 +56,7 @@ class AntiVignettingTool::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         configGroupName(QLatin1String("antivignetting Tool")),
         settingsView(0),
         previewWidget(0),
@@ -166,4 +166,4 @@ void AntiVignettingTool::setFinalImage()
     iface->setOriginal(i18n("Vignetting Correction"), filter()->filterAction(), finalImage);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

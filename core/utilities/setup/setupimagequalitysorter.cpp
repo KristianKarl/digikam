@@ -53,7 +53,7 @@ class SetupImageQualitySorter::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         optionsView(0),
         enableSorter(0),
         useFullImage(0),
@@ -295,4 +295,4 @@ void SetupImageQualitySorter::readSettings()
     d->optionsView->setEnabled(imq.enableSorter);
 }
 
-}   // namespace Digikam
+} // namespace Digikam

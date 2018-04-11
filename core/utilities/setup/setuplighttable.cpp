@@ -50,7 +50,7 @@ class SetupLightTable::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         autoSyncPreview(0),
         autoLoadOnRightPanel(0),
         clearOnClose(0),
@@ -165,4 +165,4 @@ void SetupLightTable::applySettings()
     config->sync();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

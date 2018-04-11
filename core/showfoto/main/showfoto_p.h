@@ -8,7 +8,7 @@
  *
  * Copyright (C) 2004-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2006-2012 by Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
- * Copyright (C) 2013      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2013      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -23,8 +23,14 @@
  *
  * ============================================================ */
 
-#ifndef SHOWFOTO_P_H
-#define SHOWFOTO_P_H
+#ifndef SHOW_FOTO_P_H
+#define SHOW_FOTO_P_H
+
+// Qt includes
+
+#include <QSplitter>
+#include <QAction>
+#include <QUrl>
 
 // Local includes
 
@@ -36,6 +42,8 @@
 #include "showfotodelegate.h"
 #include "showfotosettings.h"
 #include "showfotodragdrophandler.h"
+#include "thumbnailloadthread.h"
+#include "dsplashscreen.h"
 
 namespace ShowFoto
 {
@@ -44,8 +52,8 @@ class ShowFoto::Private
 {
 public:
 
-    Private() :
-        validIccPath(true),
+    explicit Private()
+      : validIccPath(true),
         droppedUrls(false),
         itemsNb(0),
         vSplitter(0),
@@ -94,4 +102,4 @@ public:
 
 } // namespace Showfoto
 
-#endif // SHOWFOTO_P_H
+#endif // SHOW_FOTO_P_H

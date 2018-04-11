@@ -69,7 +69,7 @@ class EXIFLight::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         lightSourceCheck     = 0;
         flashModeCheck       = 0;
@@ -398,4 +398,4 @@ void EXIFLight::applyMetadata(QByteArray& exifData)
     exifData = meta.getExifEncoded();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -61,7 +61,7 @@ public:
         XMP
     };
 
-    Private() :
+    explicit Private() :
         exifWidget(0),
         makernoteWidget(0),
         iptcWidget(0),
@@ -217,4 +217,4 @@ void ImagePropertiesMetaDataTab::setCurrentData(const DMetadata& metaData, const
     d->xmpWidget->loadFromData(filename, data);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

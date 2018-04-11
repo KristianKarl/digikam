@@ -73,7 +73,7 @@ public:
 
 public:
 
-    Private()
+    explicit Private()
         : sixteenBits(false),
           guideVisible(false),
           statisticsVisible(false),
@@ -726,4 +726,4 @@ HistogramScale HistogramWidget::scaleType() const
     return d->scaleType;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

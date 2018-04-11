@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef IMAGEPREVIEWITEM_H
-#define IMAGEPREVIEWITEM_H
+#ifndef IMAGE_PREVIEW_ITEM_H
+#define IMAGE_PREVIEW_ITEM_H
 
 // Local includes
 
@@ -41,12 +41,12 @@ class DIGIKAM_EXPORT ImagePreviewItem : public GraphicsDImgItem
 
 public:
 
-    ImagePreviewItem();
+    explicit ImagePreviewItem();
     virtual ~ImagePreviewItem();
 
     void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget);
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif /* IMAGEPREVIEWITEM_H */
+#endif // IMAGE_PREVIEW_ITEM_H

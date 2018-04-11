@@ -43,7 +43,7 @@ class CaptionEdit::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         altLangStrEdit = 0;
         authorEdit     = 0;
@@ -200,4 +200,4 @@ QTextEdit* CaptionEdit::textEdit() const
     return d->altLangStrEdit->textEdit();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

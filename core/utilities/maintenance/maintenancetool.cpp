@@ -46,7 +46,7 @@ class MaintenanceTool::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         notification = true;
     }
@@ -106,4 +106,4 @@ void MaintenanceTool::slotCancel()
     setComplete();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -54,7 +54,7 @@ class ImagePropertiesSideBarCamGui::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         dirtyMetadataTab(false),
         dirtyCameraItemTab(false),
         dirtyGpsTab(false),
@@ -231,4 +231,4 @@ void ImagePropertiesSideBarCamGui::doSaveState()
     d->metadataTab->writeSettings(groupMetadataTab);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

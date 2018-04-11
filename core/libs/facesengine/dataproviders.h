@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef FACESENGINE_DATAPROVIDERS_H
-#define FACESENGINE_DATAPROVIDERS_H
+#ifndef DIGIKAM_FACESENGINE_DATAPROVIDERS_H
+#define DIGIKAM_FACESENGINE_DATAPROVIDERS_H
 
 // Qt includes
 
@@ -63,7 +63,7 @@ class DIGIKAM_DATABASE_EXPORT QListImageListProvider : public ImageListProvider
 {
 public:
 
-    QListImageListProvider(const QList<QImage>& lst);
+    explicit QListImageListProvider(const QList<QImage>& lst);
     QListImageListProvider();
 
     void reset();
@@ -123,4 +123,4 @@ public:
 
 } // namespace Digikam
 
-#endif // FACESENGINE_DATAPROVIDERS_H
+#endif // DIGIKAM_FACESENGINE_DATAPROVIDERS_H

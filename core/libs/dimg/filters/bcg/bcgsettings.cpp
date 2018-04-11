@@ -52,7 +52,7 @@ class BCGSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         bInput(0),
         cInput(0),
         gInput(0)
@@ -192,4 +192,4 @@ void BCGSettings::writeSettings(KConfigGroup& group)
     group.writeEntry(d->configGammaAdjustmentEntry,      prm.gamma);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

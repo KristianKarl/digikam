@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef IMAGELISTERRECORD_H
-#define IMAGELISTERRECORD_H
+#ifndef DIGIKAM_IMAGE_LISTER_RECORD_H
+#define DIGIKAM_IMAGE_LISTER_RECORD_H
 
 // Qt includes
 
@@ -57,7 +57,7 @@ public:
         ExtraValueFormat  = 2
     };
 
-    BinaryFormat binaryFormat;
+public:
 
     explicit ImageListerRecord(BinaryFormat format = TraditionalFormat)
         : binaryFormat(format)
@@ -71,6 +71,13 @@ public:
         category                         = DatabaseItem::UndefinedCategory;
         currentFuzzySearchReferenceImage = -1;
     }
+
+    bool operator==(const ImageListerRecord& record) const
+    {
+        return this->imageID == record.imageID;
+    }
+
+public:
 
     int                    albumID;
     int                    albumRootID;
@@ -94,6 +101,10 @@ public:
 
     QList<QVariant>        extraValues;
 
+    BinaryFormat           binaryFormat;
+
+public:
+    
     /** Initializes the beginning of a data packet. For later check with checkStream().
      */
     static void initializeStream(ImageListerRecord::BinaryFormat format, QDataStream& ds);
@@ -104,16 +115,11 @@ public:
      * Note: No check is possible for the TraditionalFormat, always returns true.
      */
     static bool checkStream(ImageListerRecord::BinaryFormat format, QDataStream& data);
-
-    bool operator==(const ImageListerRecord& record) const
-    {
-        return this->imageID == record.imageID;
-    }
 };
 
 DIGIKAM_DATABASE_EXPORT QDataStream& operator<<(QDataStream& os, const ImageListerRecord& record);
 DIGIKAM_DATABASE_EXPORT QDataStream& operator>>(QDataStream& ds, ImageListerRecord& record);
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // IMAGELISTERRECORD_H
+#endif // DIGIKAM_IMAGE_LISTER_RECORD_H

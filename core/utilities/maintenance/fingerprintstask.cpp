@@ -42,7 +42,7 @@ class FingerprintsTask::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : data(0)
     {
     }
@@ -104,4 +104,4 @@ void FingerprintsTask::run()
     emit signalDone();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

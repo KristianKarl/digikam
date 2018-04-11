@@ -69,7 +69,7 @@ class SlideShow::Private
 
 public:
 
-    Private()
+    explicit Private()
         : fileIndex(-1),
           screenSaverCookie(-1),
           mouseMoveTimer(0),
@@ -616,4 +616,4 @@ void SlideShow::slotScreenSelected(int screen)
                                  << " :: " << deskRect;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

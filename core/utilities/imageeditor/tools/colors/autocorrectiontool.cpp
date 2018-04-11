@@ -65,7 +65,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         correctionTools(0),
         previewWidget(0),
         gboxSettings(0)
@@ -323,4 +323,4 @@ void AutoCorrectionTool::autoCorrection(DImg* const img, DImg* const ref, int ty
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

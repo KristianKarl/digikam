@@ -1315,4 +1315,4 @@ int DNGWriter::convert()
     return PROCESSCOMPLETE;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

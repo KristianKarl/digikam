@@ -11,7 +11,7 @@
  * Copyright (C) 2009-2011 by Johannes Wienke <languitar at semipol dot de>
  * Copyright (C) 2010-2011 by Andi Clemens <andi dot clemens at gmail dot com>
  * Copyright (C) 2011-2013 by Michael G. Hansen <mike at mghansen dot de>
- * Copyright (C) 2014-2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014-2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  * Copyright (C) 2017      by Simon Frei <freisim93 at gmail dot com>
  *
  * This program is free software; you can redistribute it
@@ -103,7 +103,7 @@ class DigikamView::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         needDispatchSelection(false),
         useAlbumHistory(false),
         initialAlbumID(0),
@@ -1500,9 +1500,9 @@ void DigikamView::setThumbSize(int size)
 
 void DigikamView::slotThumbSizeEffect()
 {
-    d->iconView->setThumbnailSize(d->thumbSize);
-    d->tableView->setThumbnailSize(d->thumbSize);
-    d->trashView->setThumbnailSize(d->thumbSize);
+    d->iconView->setThumbnailSize(ThumbnailSize(d->thumbSize));
+    d->tableView->setThumbnailSize(ThumbnailSize(d->thumbSize));
+    d->trashView->setThumbnailSize(ThumbnailSize(d->thumbSize));
     toggleZoomActions();
 
     ApplicationSettings::instance()->setDefaultIconSize(d->thumbSize);
@@ -1525,8 +1525,8 @@ void DigikamView::toggleZoomActions()
             d->parent->enableZoomMinusAction(false);
         }
     }
-    else if (   (viewMode() == StackedView::IconViewMode)
-             || (viewMode() == StackedView::TableViewMode) )
+    else if ((viewMode() == StackedView::IconViewMode) ||
+             (viewMode() == StackedView::TableViewMode))
     {
         d->parent->enableZoomMinusAction(true);
         d->parent->enableZoomPlusAction(true);
@@ -2772,4 +2772,4 @@ void DigikamView::slotUngroupSelected()
     FileActionMngr::instance()->ungroup(selectedInfoList(false, true));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

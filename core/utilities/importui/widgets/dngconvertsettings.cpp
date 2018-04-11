@@ -48,7 +48,7 @@ class DNGConvertSettings::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : convertDng(0),
           dngSettings(0)
     {
@@ -135,4 +135,4 @@ void DNGConvertSettings::settings(DownloadSettings* const settings)
     settings->convertDng  = d->convertDng->isChecked();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

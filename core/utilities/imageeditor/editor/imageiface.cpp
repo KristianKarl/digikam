@@ -49,7 +49,7 @@ class ImageIface::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         previewType(FullImage),
         originalWidth(0),
         originalHeight(0),
@@ -382,7 +382,7 @@ void ImageIface::paint(QPaintDevice* const device, const QRect& rect, QPainter* 
 
             if (doSoftProofing)
             {
-                monitorICCtrans = manager.displaySoftProofingTransform(iccSettings.defaultProofProfile);
+                monitorICCtrans = manager.displaySoftProofingTransform(IccProfile(iccSettings.defaultProofProfile));
             }
             else
             {
@@ -469,4 +469,4 @@ void ImageIface::setOriginal(const QString& caller, const FilterAction& action, 
     d->core->putImg(caller, action, img);
 }
 
-}   // namespace Digikam
+} // namespace Digikam

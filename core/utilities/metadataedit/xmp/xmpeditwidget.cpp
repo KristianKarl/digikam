@@ -59,7 +59,7 @@ class XMPEditWidget::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         modified        = false;
         isReadOnly      = false;
@@ -348,4 +348,4 @@ bool XMPEditWidget::isModified() const
     return d->modified;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

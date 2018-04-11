@@ -36,7 +36,7 @@
 // Qt includes
 
 #include <QtMath>
-#include <QtConcurrent>
+#include <QtConcurrent>    // krazy:exclude=includes
 
 // Local includes
 
@@ -189,4 +189,4 @@ void EmbossFilter::readParameters(const Digikam::FilterAction& action)
     m_depth = action.parameter(QLatin1String("depth")).toInt();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

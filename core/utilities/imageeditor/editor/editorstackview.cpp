@@ -39,7 +39,7 @@ class EditorStackView::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         toolView(0),
         canvas(0)
     {
@@ -332,4 +332,4 @@ bool EditorStackView::isZoomablePreview() const
     return previewWidget();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

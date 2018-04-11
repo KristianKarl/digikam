@@ -46,7 +46,7 @@ class FindDuplicatesAlbum::Private
 
 public:
 
-    Private()
+    explicit Private()
         : iconSize(64)
     {
         thumbLoadThread = 0;
@@ -177,4 +177,4 @@ void FindDuplicatesAlbum::drawRow(QPainter* p,
     QTreeWidget::drawRow(p, opt, index);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

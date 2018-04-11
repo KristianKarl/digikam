@@ -43,7 +43,7 @@ class FindDuplicatesAlbumItem::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         hasThumb(false),
         album(0),
         itemCount(0)
@@ -211,4 +211,4 @@ bool FindDuplicatesAlbumItem::operator<(const QTreeWidgetItem& other) const
     return false;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

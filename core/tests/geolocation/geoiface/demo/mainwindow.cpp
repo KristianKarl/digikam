@@ -34,7 +34,6 @@
 #include <QFutureWatcher>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QProgressBar>
 #include <QPushButton>
 #include <QSplitter>
 #include <QTimer>
@@ -184,7 +183,7 @@ class MainWindow::Private
 {
 public:
 
-    Private()
+    explicit Private()
       : splitter(0),
         mapWidget(0),
         lookupAltitudeList(),

@@ -21,8 +21,10 @@
  *
  * ============================================================ */
 
-#ifndef FACE_REC_DNN_BORROWED_H
-#define FACE_REC_DNN_BORROWED_H
+#ifndef DIGIKAM_FACE_REC_DNN_BORROWED_H
+#define DIGIKAM_FACE_REC_DNN_BORROWED_H
+
+// Local includes
 
 #include "libopencv.h"
 #include "facedb.h"
@@ -40,7 +42,7 @@ class DNNFaceRecognizer
 public:
 
     // Initializes this DNNFace Model.
-    DNNFaceRecognizer(double threshold = DBL_MAX)
+    explicit DNNFaceRecognizer(double threshold = DBL_MAX)
         : m_threshold(threshold)
     {
     }
@@ -60,7 +62,7 @@ public:
 
     static cv::Ptr<DNNFaceRecognizer> create(double threshold = DBL_MAX);
 
-    ///void getFaceVector(cv::Mat data, std::vector<float>& vecdata) const;
+    //void getFaceVector(cv::Mat data, std::vector<float>& vecdata) const;
 
     /**
      * Computes a DNNFace model with images in src and
@@ -116,4 +118,4 @@ private:
 
 } // namespace Digikam
 
-#endif // FACE_REC_DNN_BORROWED_H
+#endif // DIGIKAM_FACE_REC_DNN_BORROWED_H

@@ -9,9 +9,9 @@
  *               Gary B. Huang, Vidit Jain, and Erik Learned-Miller.
  *               Unsupervised joint alignment of complex images.
  *               International Conference on Computer Vision (ICCV), 2007.
+ *               Based on Gary B. Huang, UMass-Amherst implementation.
  *
  * Copyright (C) 2013 by Marcel Wiesweg <marcel dot wiesweg at gmx dot de>
- * Copyright (C) 2007 by Gary B. Huang, UMass-Amherst
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -26,8 +26,8 @@
  *
  * ============================================================ */
 
-#ifndef FACESENGINE_ALIGNMENT_FLANDMARK_ALIGNER
-#define FACESENGINE_ALIGNMENT_FLANDMARK_ALIGNER
+#ifndef DIGIKAM_FACESENGINE_ALIGNMENT_FLANDMARK_ALIGNER
+#define DIGIKAM_FACESENGINE_ALIGNMENT_FLANDMARK_ALIGNER
 
 // OpenCV includes
 
@@ -41,7 +41,7 @@ class FlandmarkAligner
 
 public:
 
-    FlandmarkAligner();
+    explicit FlandmarkAligner();
     ~FlandmarkAligner();
 
     cv::Mat align(const cv::Mat& inputImage);
@@ -54,4 +54,4 @@ private:
 
 } // namespace Digikam
 
-#endif // FACESENGINE_ALIGNMENT_CONGEALING_FUNNELREAL_H
+#endif // DIGIKAM_FACESENGINE_ALIGNMENT_FLANDMARK_ALIGNER

@@ -264,7 +264,7 @@ bool TIFFLoader::load(const QString& filePath, DImgLoaderObserver* const observe
             QByteArray profile_rawdata;
             profile_rawdata.resize(profile_size);
             memcpy(profile_rawdata.data(), profile_data, profile_size);
-            imageSetIccProfile(profile_rawdata);
+            imageSetIccProfile(IccProfile(profile_rawdata));
         }
         else
         {
@@ -1121,4 +1121,4 @@ bool TIFFLoader::isReadOnly() const
     return false;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -79,7 +79,7 @@ class Q_DECL_HIDDEN DAdjustableLabel::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         emode = Qt::ElideMiddle;
     }
@@ -354,7 +354,7 @@ void DArrowClickLabel::mouseReleaseEvent(QMouseEvent* event)
 void DArrowClickLabel::paintEvent(QPaintEvent*)
 {
     // Inspired by karrowbutton.cpp,
-    //  Copyright (C) 2001 Frerich Raabe <raabe@kde.org>
+    //  Copyright (C) 2001 Frerich Raabe <raabe at kde dot org>
 
     QPainter p(this);
 
@@ -442,7 +442,7 @@ class Q_DECL_HIDDEN DLabelExpander::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         clickLabel      = 0;
         containerWidget = 0;
@@ -646,7 +646,7 @@ class Q_DECL_HIDDEN DExpanderBox::Private
 {
 public:
 
-    Private(DExpanderBox* const box)
+    explicit Private(DExpanderBox* const box)
     {
         parent = box;
         vbox   = 0;

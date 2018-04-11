@@ -48,7 +48,7 @@ class EXIFCaption::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         documentNameEdit     = 0;
         imageDescEdit        = 0;
@@ -407,4 +407,4 @@ void EXIFCaption::applyMetadata(QByteArray& exifData, QByteArray& iptcData, QByt
     xmpData  = meta.getXmp();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

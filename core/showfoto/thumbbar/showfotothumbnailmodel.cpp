@@ -6,7 +6,7 @@
  * Date        : 2013-07-22
  * Description : Qt item model for Showfoto thumbnails entries
  *
- * Copyright (C) 2013 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2013 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -42,13 +42,13 @@ class ShowfotoThumbnailModel::Private
 {
 public:
 
-        Private() :
-        thread(0),
-        preloadThread(0),
-        thumbSize(0),
-        lastGlobalThumbSize(0),
-        preloadThumbSize(0),
-        emitDataChanged(true)
+        explicit Private()
+          : thread(0),
+            preloadThread(0),
+            thumbSize(0),
+            lastGlobalThumbSize(0),
+            preloadThumbSize(0),
+            emitDataChanged(true)
     {
         maxThumbSize = ThumbnailSize::Huge;
     }
@@ -79,7 +79,8 @@ ShowfotoThumbnailModel::ShowfotoThumbnailModel(QObject* const parent)
     : ShowfotoImageModel(parent),
       d(new Private)
 {
-    connect(this, &ShowfotoThumbnailModel::signalThumbInfo, this, &ShowfotoThumbnailModel::slotThumbInfoLoaded);
+    connect(this, &ShowfotoThumbnailModel::signalThumbInfo,
+            this, &ShowfotoThumbnailModel::slotThumbInfoLoaded);
 }
 
 ShowfotoThumbnailModel::~ShowfotoThumbnailModel()
@@ -180,11 +181,11 @@ bool ShowfotoThumbnailModel::setData(const QModelIndex& index, const QVariant& v
 
                 if (value.isNull())
                 {
-                    d->thumbSize = d->lastGlobalThumbSize;
+                    d->thumbSize = ThumbnailSize(d->lastGlobalThumbSize);
                 }
                 else
                 {
-                    d->thumbSize = value.toInt();
+                    d->thumbSize = ThumbnailSize(value.toInt());
                 }
                 break;
 

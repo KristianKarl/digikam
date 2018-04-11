@@ -6,7 +6,7 @@
  * Date        : 2015-07-27
  * Description : Special digiKam trash implementation
  *
- * Copyright (C) 2015 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -76,7 +76,6 @@ bool DTrash::deleteImage(const QString& imageToDelete)
     // Get the album path, i.e. collection + album. For this,
     // get the n leftmost characters where n is the complete path without the size of the filename
     QString completePath = imageFileInfo.path();
-    QString albumPath    = CollectionManager::instance()->album(completePath);
 
     qlonglong imageId = -1;
     // Get the album and with this the image id of the image to trash.
@@ -84,7 +83,7 @@ bool DTrash::deleteImage(const QString& imageToDelete)
 
     if (pAlbum)
     {
-        imageId = AlbumManager::instance()->getItemFromAlbum(pAlbum,fileName);
+        imageId = AlbumManager::instance()->getItemFromAlbum(pAlbum, fileName);
     }
 
     QString baseNameForMovingIntoTrash = createJsonRecordForFile(collection, imageToDelete, imageId);

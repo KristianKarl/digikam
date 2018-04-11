@@ -54,7 +54,7 @@ class SetupToolTip::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         cameraUseFileMetadata(false),
         showToolTipsBox(0),
         showFileNameBox(0),
@@ -690,4 +690,4 @@ void SetupToolTip::refreshCameraOptions()
     d->showItemPhotoWBBox->setEnabled(b && d->cameraUseFileMetadata);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

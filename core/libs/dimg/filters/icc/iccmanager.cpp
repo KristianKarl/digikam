@@ -42,7 +42,7 @@ class IccManager::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         profileMismatch = false;
         observer        = 0;
@@ -73,7 +73,7 @@ IccManager::IccManager(DImg& image, const ICCSettingsContainer& settings)
     }
 
     d->embeddedProfile  = d->image.getIccProfile();
-    d->workspaceProfile = d->settings.workspaceProfile;
+    d->workspaceProfile = IccProfile(d->settings.workspaceProfile);
 
     if (!d->workspaceProfile.open())
     {
@@ -260,7 +260,7 @@ IccProfile IccManager::imageProfile(ICCSettingsContainer::Behavior behavior, con
     }
     else if (behavior & ICCSettingsContainer::UseDefaultInputProfile)
     {
-        return d->settings.defaultInputProfile;
+        return IccProfile(d->settings.defaultInputProfile);
     }
     else if (behavior & ICCSettingsContainer::UseSpecifiedProfile)
     {
@@ -621,4 +621,4 @@ void IccManager::transformForOutput(const IccProfile& prof)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

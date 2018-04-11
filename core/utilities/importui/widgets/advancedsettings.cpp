@@ -53,7 +53,7 @@ class AdvancedSettings::Private
 {
 public:
 
-    Private()
+    explicit Private()
         : formatLabel(0),
           autoRotateCheck(0),
           convertJpegCheck(0),
@@ -192,4 +192,4 @@ DownloadSettings AdvancedSettings::settings() const
     return settings;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

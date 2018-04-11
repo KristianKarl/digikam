@@ -8,7 +8,7 @@
  *
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
  * Copyright (C) 2009-2011 by Andi Clemens <andi dot clemens at gmail dot com>
- * Copyright (C) 2015      by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2015      by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -3444,7 +3444,7 @@ void EditorWindow::slotUpdateColorSpaceMenu()
 
         foreach(const QString& path, favoriteProfilePaths)
         {
-            favoriteProfiles << path;
+            favoriteProfiles << IccProfile(path);
         }
 
         d->profileMenuAction->addProfiles(favoriteProfiles);
@@ -3635,4 +3635,4 @@ void EditorWindow::slotFlipVIntoQue()
     m_transformQue.append(TransformType::FlipVertical);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

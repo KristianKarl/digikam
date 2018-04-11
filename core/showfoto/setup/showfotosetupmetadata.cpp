@@ -56,7 +56,7 @@ class SetupMetadata::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         exifRotateBox(0),
         exifSetOrientationBox(0),
         tab(0),
@@ -208,4 +208,4 @@ void SetupMetadata::setActiveTab(MetadataTab tab)
     d->tab->setCurrentIndex(tab);
 }
 
-}  // namespace ShowFoto
+} // namespace ShowFoto

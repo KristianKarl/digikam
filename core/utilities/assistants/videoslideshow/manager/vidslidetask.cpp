@@ -40,13 +40,13 @@
 
 // QtAv includes
 
-#include <QtAV/VideoFrame.h>
-#include <QtAV/AudioFrame.h>
-#include <QtAV/VideoEncoder.h>
-#include <QtAV/AudioEncoder.h>
-#include <QtAV/AudioDecoder.h>
-#include <QtAV/AVMuxer.h>
-#include <QtAV/AVDemuxer.h>
+#include <QtAV/VideoFrame.h>     // krazy:exclude=includes
+#include <QtAV/AudioFrame.h>     // krazy:exclude=includes
+#include <QtAV/VideoEncoder.h>   // krazy:exclude=includes
+#include <QtAV/AudioEncoder.h>   // krazy:exclude=includes
+#include <QtAV/AudioDecoder.h>   // krazy:exclude=includes
+#include <QtAV/AVMuxer.h>        // krazy:exclude=includes
+#include <QtAV/AVDemuxer.h>      // krazy:exclude=includes
 
 // Local includes
 
@@ -66,7 +66,7 @@ class VidSlideTask::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         settings = 0;
         astream  = 0;

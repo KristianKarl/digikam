@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef _DIGIKAM_IO_H_
-#define _DIGIKAM_IO_H_
+#ifndef DIGIKAM_DATABASE_IO_H
+#define DIGIKAM_DATABASE_IO_H
 
 // Qt includes
 
@@ -39,6 +39,7 @@ class QUrl;
 namespace Digikam
 {
 
+class Album;
 class PAlbum;
 class ImageInfo;
 class IOJobData;
@@ -96,20 +97,21 @@ Q_SIGNALS:
 
 private:
 
-    DIO();
+    explicit DIO();
     ~DIO();
 
     void processJob(IOJobData* const data);
     void createJob(IOJobData* const data);
 
     ProgressItem* getProgressItem(int operation) const;
-    QString       getItemString(int operation)   const;
+    QPair<QString, QString> getItemStrings(int operation)   const;
+    void addAlbumChildrenToList(QList<int>& list, Album* const album);
 
 private Q_SLOTS:
 
     void slotResult();
+    void slotOneProccessed();
     void slotCancel(ProgressItem* item);
-    void slotOneProccessed(int operation);
 
 private:
 
@@ -143,4 +145,4 @@ public:
 
 } // namespace Digikam
 
-#endif // _DIGIKAM_IO_H_
+#endif // DIGIKAM_DATABASE_IO_H

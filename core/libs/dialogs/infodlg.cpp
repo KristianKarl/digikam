@@ -57,7 +57,7 @@ class InfoDlg::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         listView(0),
         page(0)
     {
@@ -198,4 +198,4 @@ void InfoDlg::slotHelp()
     DXmlGuiWindow::openHandbook();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

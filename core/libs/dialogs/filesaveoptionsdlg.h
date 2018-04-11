@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef FILESAVEOPTIONSDLG_H
-#define FILESAVEOPTIONSDLG_H
+#ifndef FILE_SAVE_OPTIONS_DLG_H
+#define FILE_SAVE_OPTIONS_DLG_H
 
 // Qt includes
 
@@ -60,6 +60,6 @@ public:
     static DImg::FORMAT discoverFormat(const QString& filename, DImg::FORMAT fallback = DImg::NONE);
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif /* FILESAVEOPTIONSDLG_H */
+#endif // FILE_SAVE_OPTIONS_DLG_H

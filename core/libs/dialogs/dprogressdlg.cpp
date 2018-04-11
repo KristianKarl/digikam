@@ -48,7 +48,7 @@ class DProgressDlg::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         logo(0),
         title(0),
         label(0),
@@ -190,4 +190,4 @@ void DProgressDlg::setTitle(const QString& text)
     d->title->setText(text);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

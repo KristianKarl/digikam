@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DATABASE_ENGINE_SQL_QUERY_H
-#define DATABASE_ENGINE_SQL_QUERY_H
+#ifndef DIGIKAM_DATABASE_ENGINE_SQL_QUERY_H
+#define DIGIKAM_DATABASE_ENGINE_SQL_QUERY_H
 
 // Qt includes
 
@@ -55,6 +55,6 @@ private:
     QString m_query;
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif /* DATABASE_ENGINE_SQL_QUERY_H */
+#endif // DIGIKAM_DATABASE_ENGINE_SQL_QUERY_H

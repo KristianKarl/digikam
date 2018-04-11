@@ -51,7 +51,7 @@ class HSLSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         HSSelector(0),
         hInput(0),
         sInput(0),
@@ -289,4 +289,4 @@ void HSLSettings::writeSettings(KConfigGroup& group)
     group.writeEntry(d->configLighnessAdjustmentEntry,   prm.lightness);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

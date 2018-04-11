@@ -70,7 +70,7 @@ public:
 
 public:
 
-    Private() :
+    explicit Private() :
         file(0),
         folder(0),
         modifiedDate(0),
@@ -1011,4 +1011,4 @@ QString ImagePropertiesTab::humanReadableBytesCount(qint64 bytes, bool si)
     return (QString::fromUtf8("%1%2").arg(ret).arg(byteStr));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

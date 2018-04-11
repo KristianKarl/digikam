@@ -62,7 +62,7 @@ class ClockPhotoDialog::Private
 
 public:
 
-    Private()
+    explicit Private()
     {
         buttons        = 0;
         calendar       = 0;
@@ -298,4 +298,4 @@ void ClockPhotoDialog::slotCancel()
     reject();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

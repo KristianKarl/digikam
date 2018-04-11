@@ -165,7 +165,7 @@ class DItemToolTip::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         tipBorder(5)
     {
         corner = 0;
@@ -410,4 +410,4 @@ void DItemToolTip::paintEvent(QPaintEvent* e)
     }
 }
 
-}  // namespace Digikam
+} // namespace Digikam

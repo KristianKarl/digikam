@@ -78,7 +78,7 @@ class DDatePickerPopup::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         datePicker(0)
     {
     }
@@ -246,4 +246,4 @@ void DDatePickerPopup::slotPrevMonth()
     emit dateChanged(QDate::currentDate().addMonths(-1));
 }
 
-}  // namespace Digikam
+} // namespace Digikam

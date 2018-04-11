@@ -48,7 +48,7 @@ class UndoManager::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         origin(0),
         undoCache(0),
         core(0)
@@ -579,4 +579,4 @@ DImageHistory UndoManager::getImageHistoryOfFullRedo() const
     return d->core->getImageHistory();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

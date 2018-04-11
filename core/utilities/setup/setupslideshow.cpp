@@ -52,7 +52,7 @@ class SetupSlideShow::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         startWithCurrent(0),
         loopMode(0),
         showName(0),
@@ -272,4 +272,4 @@ void SetupSlideShow::readSettings()
     }
 }
 
-}   // namespace Digikam
+} // namespace Digikam

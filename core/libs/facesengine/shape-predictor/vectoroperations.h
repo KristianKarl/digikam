@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef VECTOR_OPERATIONS_H
-#define VECTOR_OPERATIONS_H
+#ifndef DIGIKAM_VECTOR_OPERATIONS_H
+#define DIGIKAM_VECTOR_OPERATIONS_H
 
 // C++ includes
 
@@ -240,6 +240,6 @@ std::vector<T> operator*(const std::vector<T>& v1, float d)
     return result;
 }
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // VECTOR_OPERATIONS_H
+#endif // DIGIKAM_VECTOR_OPERATIONS_H

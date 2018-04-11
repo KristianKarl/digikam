@@ -39,7 +39,7 @@ ChecksRunAsRoot
 StartScript
 ChecksCPUCores
 CentOS6Adjustments
-. /opt/rh/devtoolset-3/enable
+. /opt/rh/devtoolset-4/enable
 
 #################################################################################################
 
@@ -107,6 +107,7 @@ cmake3 -G "Unix Makefiles" .. \
       -DENABLE_MEDIAPLAYER=ON \
       -DENABLE_DBUS=ON \
       -DENABLE_APPSTYLES=ON \
+      -DENABLE_QWEBENGINE=OFF \
       -DENABLE_KIO=OFF \
       -DENABLE_LEGACY=OFF \
       -Wno-dev

@@ -53,7 +53,7 @@ class Setup::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         page_editorIface(0),
         page_metadata(0),
         page_tooltip(0),
@@ -344,4 +344,4 @@ bool Setup::execMetadataFilters(QWidget* const parent, int tab)
     return success;
 }
 
-}   // namespace ShowFoto
+} // namespace ShowFoto

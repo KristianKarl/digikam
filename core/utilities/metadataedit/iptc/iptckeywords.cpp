@@ -49,7 +49,7 @@ class IPTCKeywords::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         addKeywordButton = 0;
         delKeywordButton = 0;
@@ -289,4 +289,4 @@ void IPTCKeywords::applyMetadata(QByteArray& iptcData)
     iptcData = meta.getIptc();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

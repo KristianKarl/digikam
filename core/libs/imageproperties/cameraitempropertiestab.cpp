@@ -51,7 +51,7 @@ class CameraItemPropertiesTab::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         file(0),
         folder(0),
         date(0),
@@ -606,4 +606,4 @@ void CameraItemPropertiesTab::setCurrentItem(const CamItemInfo& itemInfo, const 
     d->labelVideoVideoCodec->setAdjustedText(videoInfo.videoCodec.isEmpty()             ? unavailable : videoInfo.videoCodec);
 }
 
-}  // namespace Digikam
+} // namespace Digikam

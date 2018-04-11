@@ -50,7 +50,7 @@ class ColorFXSettings::Private
 {
 public:
 
-    Private() :
+    explicit Private() :
         stack(0),
         effectType(0),
         levelInput(0),
@@ -421,4 +421,4 @@ QString ColorFXSettings::translateLuts(const QString& name) const
     return name;
 }
 
-}  // namespace Digikam
+} // namespace Digikam

@@ -6,7 +6,7 @@
  * Date        : 2014-01-28
  * Description : drag and drop handling for Showfoto
  *
- * Copyright (C) 2014 by Mohamed Anwer <m dot anwer at gmx dot com>
+ * Copyright (C) 2014 by Mohamed_Anwer <m_dot_anwer at gmx dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef SHOWFOTODRAGDROPHANDLER_H
-#define SHOWFOTODRAGDROPHANDLER_H
+#ifndef SHOW_FOTO_DRAG_DROP_HANDLER_H
+#define SHOW_FOTO_DRAG_DROP_HANDLER_H
 
 // KDE includes
 
@@ -64,4 +64,4 @@ private:
 
 } // namespace Digikam
 
-#endif // SHOWFOTODRAGDROPHANDLER_H
+#endif // SHOW_FOTO_DRAG_DROP_HANDLER_H

@@ -39,7 +39,7 @@ class LoadSaveThread::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         running           = true;
         blockNotification = false;
@@ -345,4 +345,4 @@ bool LoadSaveThread::reverseExifRotate(DImg& image, const QString& filePath)
     return rotatedOrFlipped;
 }
 
-}   // namespace Digikam
+} // namespace Digikam

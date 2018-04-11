@@ -50,7 +50,7 @@ class ObjectAttributesEdit::Private
 {
 public:
 
-    Private()
+    explicit Private()
     {
         addValueButton = 0;
         delValueButton = 0;
@@ -336,4 +336,4 @@ bool ObjectAttributesEdit::isValid() const
     return d->valueCheck->isValid();
 }
 
-}  // namespace Digikam
+} // namespace Digikam

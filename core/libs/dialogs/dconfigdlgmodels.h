@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef DBCONFIGDLG_MODELS_H
-#define DBCONFIGDLG_MODELS_H
+#ifndef DCONFIG_DLG_MODELS_H
+#define DCONFIG_DLG_MODELS_H
 
 // Qt includes
 
@@ -122,7 +122,7 @@ public:
      *
      * @param widget The widget that is shown as page in the DConfigDlgWdg.
      */
-    DConfigDlgWdgItem(QWidget* widget);
+    explicit DConfigDlgWdgItem(QWidget* widget);
 
     /**
      * Creates a new page widget item.
@@ -363,6 +363,6 @@ private:
     Q_PRIVATE_SLOT(d_func(), void _k_itemToggled(bool))
 };
 
-}  // namespace Digikam
+} // namespace Digikam
 
-#endif // DBCONFIGDLG_MODELS_H
+#endif // DCONFIG_DLG_MODELS_H

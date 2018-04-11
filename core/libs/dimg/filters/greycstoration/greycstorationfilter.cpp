@@ -94,7 +94,7 @@ class GreycstorationFilter::Private
 
 public:
 
-    Private() :
+    explicit Private() :
         gfact(1.0),
         computationThreads(2),
         mode(GreycstorationFilter::Restore),
@@ -553,4 +553,4 @@ void GreycstorationFilter::readParameters(const FilterAction& action)
     d->settings.tile        = action.parameter(QLatin1String("tile")).toInt();
 }
 
-}  // namespace Digikam
+} // namespace Digikam
