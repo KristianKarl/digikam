@@ -53,8 +53,7 @@ public:
         sortColumn(2),
         sortOrder(Qt::DescendingOrder),
         itemsLoadingThread(0),
-        thumbnailThread(0),
-        timer(0)
+        thumbnailThread(0)
     {
     }
 
@@ -65,26 +64,23 @@ public:
     Qt::SortOrder        sortOrder;
     IOJobsThread*        itemsLoadingThread;
     ThumbnailLoadThread* thumbnailThread;
-    QTimer*              timer;
     DTrashItemInfoList   data;
 };
 
-DTrashItemModel::DTrashItemModel(QObject* parent)
-    : QAbstractTableModel(parent), d(new Private)
+DTrashItemModel::DTrashItemModel(QObject* const parent)
+    : QAbstractTableModel(parent),
+      d(new Private)
 {
     qRegisterMetaType<DTrashItemInfo>("DTrashItemInfo");
-    d->thumbnailThread = ThumbnailLoadThread::defaultThread();
+    d->thumbnailThread = new ThumbnailLoadThread;
 
-    d->timer = new QTimer();
-    d->timer->setInterval(100);
-    d->timer->setSingleShot(true);
-
-    connect(d->timer, SIGNAL(timeout()),
-            this, SLOT(refreshLayout()));
+    connect(d->thumbnailThread, SIGNAL(signalThumbnailLoaded(LoadingDescription,QPixmap)),
+            this, SLOT(refreshThumbnails()));
 }
 
 DTrashItemModel::~DTrashItemModel()
 {
+    delete d->thumbnailThread;
     delete d;
 }
 
@@ -172,9 +168,9 @@ void DTrashItemModel::sort(int column, Qt::SortOrder order)
                     return a.collectionRelativePath < b.collectionRelativePath;
                 });
 
-    const QModelIndex topLeft     = index(0, 0, QModelIndex());
+    const QModelIndex topLeft     = index(0, 0);
     const QModelIndex bottomRight = index(rowCount(QModelIndex())-1,
-                                          columnCount(QModelIndex())-1, QModelIndex());
+                                          columnCount(QModelIndex())-1);
     dataChanged(topLeft, bottomRight);
 }
 
@@ -221,14 +217,14 @@ void DTrashItemModel::removeItems(const QModelIndexList& indexes)
 {
     QList<QPersistentModelIndex> persistentIndexes;
 
-    foreach (const QModelIndex& index, indexes)
+    foreach(const QModelIndex& index, indexes)
     {
         persistentIndexes << index;
     }
 
     layoutAboutToBeChanged();
 
-    foreach (const QPersistentModelIndex& index, persistentIndexes)
+    foreach(const QPersistentModelIndex& index, persistentIndexes)
     {
         if (!index.isValid())
             continue;
@@ -245,8 +241,18 @@ void DTrashItemModel::removeItems(const QModelIndexList& indexes)
 
 void DTrashItemModel::refreshLayout()
 {
+    const QModelIndex topLeft     = index(0, 0);
+    const QModelIndex bottomRight = index(rowCount(QModelIndex())-1, 0);
+    dataChanged(topLeft, bottomRight);
     layoutAboutToBeChanged();
     layoutChanged();
+}
+
+void DTrashItemModel::refreshThumbnails()
+{
+    const QModelIndex topLeft     = index(0, 0);
+    const QModelIndex bottomRight = index(rowCount(QModelIndex())-1, 0);
+    dataChanged(topLeft, bottomRight);
 }
 
 void DTrashItemModel::clearCurrentData()
@@ -281,7 +287,7 @@ DTrashItemInfoList DTrashItemModel::itemsForIndexes(const QList<QModelIndex>& in
 {
     DTrashItemInfoList items;
 
-    foreach (const QModelIndex& index, indexes)
+    foreach(const QModelIndex& index, indexes)
     {
         if (!index.isValid())
             continue;
@@ -309,11 +315,7 @@ void DTrashItemModel::changeThumbSize(int size)
     if (isEmpty())
         return;
 
-    const QModelIndex topLeft     = index(0, 0, QModelIndex());
-    const QModelIndex bottomRight = index(rowCount(QModelIndex())-1, 0, QModelIndex());
-    dataChanged(topLeft, bottomRight);
-
-    d->timer->start();
+    QTimer::singleShot(100, this, SLOT(refreshLayout()));
 }
 
 } // namespace Digikam
