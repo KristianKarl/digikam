@@ -178,4 +178,14 @@ BUGFIXES:
 161 ==> 392417 - AppImage (5.9.0-01-x86-64) does not support "--install" cli parameter.
 162 ==> 392922 - digikam-6.0.0 fail to start.
 163 ==> 391399 - Not possible to add location bookmarks in Digikam >5.6.0.
-164 ==> 
+164 ==> 380876 - Tags in Digikam DB maintained after being removed from file and file re-scanned.
+165 ==> 392017 - Merging, renaming and removing face tags.
+166 ==> 352711 - Externally removed tags are not removed from digiKam.
+167 ==> 393108 - Tags not always visible when selecting multiple pictures in a group.
+168 ==> 392656 - Selecting a root album for face scan doesn't include subfolders, but rather scans an unexpected album set.
+169 ==> 329438 - Rename function with Date & Time does not work with NTFS.
+170 ==> 376473 - Can"t set empty IPTC country code when using metadata templates.
+171 ==> 380289 - Cannot write to Albums residing on NFS.
+172 ==> 384465 - With Compact Flash Card Created date in thumbnails is wrong.
+173 ==> 381958 - Cannot add additional collection.
+174 ==> 

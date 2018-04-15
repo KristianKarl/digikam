@@ -61,10 +61,7 @@ extern "C"
 #include <QFileInfo>
 #include <QIODevice>
 #include <QTemporaryFile>
-
-// LibDRawDecoder includes
-
-
+#include <qplatformdefs.h>
 
 // Local includes
 
@@ -1285,9 +1282,9 @@ int DNGWriter::convert()
             qCDebug(DIGIKAM_GENERAL_LOG) << "DNGWriter: Setting modification date from meta data: " << date.toString();
 
             // don't touch access time
-            struct stat st;
+            QT_STATBUF st;
 
-            if (::stat(QFile::encodeName(dngFilePath).constData(), &st) == 0)
+            if (QT_STAT(QFile::encodeName(dngFilePath).constData(), &st) == 0)
             {
                 struct utimbuf ut;
                 ut.actime  = st.st_atime;

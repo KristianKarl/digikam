@@ -357,7 +357,7 @@ void ImageShackWindow::slotGetGalleriesDone(int errCode, const QString &errMsg)
 
 void ImageShackWindow::uploadNextItem()
 {
-    if (d->transferQueue.empty())
+    if (d->transferQueue.isEmpty())
     {
         d->widget->d->progressBar->hide();
         return;
@@ -418,7 +418,7 @@ void ImageShackWindow::slotAddPhotoDone(int errCode, const QString& errMsg)
     if (!errCode)
     {
         d->widget->imagesList()->removeItemByUrl(d->transferQueue.first());
-        d->transferQueue.pop_front();
+        d->transferQueue.removeFirst();
         d->imagesCount++;
     }
     else
