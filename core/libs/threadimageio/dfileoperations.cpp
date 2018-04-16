@@ -160,16 +160,23 @@ void DFileOperations::openFilesWithDefaultApplication(const QList<QUrl>& urls)
 QUrl DFileOperations::getUniqueFileUrl(const QUrl& orgUrl,
                                        bool* const newurl)
 {
-    QUrl destUrl(orgUrl);
-
     if (newurl)
         *newurl = false;
 
+    int counter = 0;
+    QUrl destUrl(orgUrl);
     QFileInfo fi(destUrl.toLocalFile());
+    QRegExp version(QLatin1String("(.+)_v(\\d+)"));
+    QString completeBaseName = fi.completeBaseName();
+
+    if (version.exactMatch(completeBaseName))
+    {
+        completeBaseName = version.cap(1);
+        counter          = version.cap(2).toInt();
+    }
 
     if (fi.exists())
     {
-        int i          = 0;
         bool fileFound = false;
 
         do
@@ -185,9 +192,10 @@ QUrl DFileOperations::getUniqueFileUrl(const QUrl& orgUrl,
             }
             else
             {
-                destUrl = destUrl.adjusted(QUrl::RemoveFilename);
-                destUrl.setPath(destUrl.path() + fi.completeBaseName() + QString::fromUtf8(" (%1).").arg(++i) + fi.completeSuffix());
                 fileFound = true;
+                destUrl   = destUrl.adjusted(QUrl::RemoveFilename);
+                destUrl.setPath(destUrl.path() + completeBaseName +
+                                QString::fromUtf8("_v%1.").arg(++counter) + fi.completeSuffix());
             }
         }
         while (fileFound);
