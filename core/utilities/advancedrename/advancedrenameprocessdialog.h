@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef ADVANCEDRENAMEPROCESSDIALOG_H
-#define ADVANCEDRENAMEPROCESSDIALOG_H
+#ifndef DIGIKAM_ADVANCED_RENAME_PROCESS_DIALOG_H
+#define DIGIKAM_ADVANCED_RENAME_PROCESS_DIALOG_H
 
 // Local includes
 
@@ -58,6 +58,7 @@ private:
     void abort();
     void complete();
     void processOne();
+    void getNextThumbnail();
 
 protected:
 
@@ -82,4 +83,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* ADVANCEDRENAMEPROCESSDIALOG_H */
+#endif // DIGIKAM_ADVANCED_RENAME_PROCESS_DIALOG_H

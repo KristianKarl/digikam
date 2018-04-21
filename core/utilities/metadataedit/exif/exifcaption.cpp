@@ -335,7 +335,7 @@ void EXIFCaption::readMetadata(QByteArray& exifData)
 
     d->userCommentEdit->clear();
     d->userCommentCheck->setChecked(false);
-    data = meta.getExifComment();
+    data = meta.getExifComment(false);
 
     if (!data.isNull())
     {
@@ -380,7 +380,7 @@ void EXIFCaption::applyMetadata(QByteArray& exifData, QByteArray& iptcData, QByt
 
     if (d->userCommentCheck->isChecked())
     {
-        meta.setExifComment(d->userCommentEdit->toPlainText());
+        meta.setExifComment(d->userCommentEdit->toPlainText(), false);
 
         if (syncJFIFCommentIsChecked())
             meta.setComments(d->userCommentEdit->toPlainText().toUtf8());

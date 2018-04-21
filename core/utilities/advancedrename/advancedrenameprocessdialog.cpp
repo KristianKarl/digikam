@@ -64,6 +64,9 @@ public:
     QList<QUrl>          failedUrls;
     QUrl                 currentUrl;
     bool                 cancel;
+
+    QPixmap              thumbPixmap;
+    QString              thumbPath;
 };
 
 AdvancedRenameProcessDialog::AdvancedRenameProcessDialog(const NewNamesList& list, QWidget* const parent)
@@ -72,7 +75,7 @@ AdvancedRenameProcessDialog::AdvancedRenameProcessDialog(const NewNamesList& lis
 {
     d->newNameList     = list;
     d->utilities       = new ImageViewUtilities(this);
-    d->thumbLoadThread = ThumbnailLoadThread::defaultThread();
+    d->thumbLoadThread = new ThumbnailLoadThread;
 
     connect(d->thumbLoadThread, SIGNAL(signalThumbnailLoaded(LoadingDescription,QPixmap)),
             this, SLOT(slotGotThumbnail(LoadingDescription,QPixmap)));
@@ -86,24 +89,24 @@ AdvancedRenameProcessDialog::AdvancedRenameProcessDialog(const NewNamesList& lis
     setValue(0);
     setModal(true);
     setButtonText(i18n("&Abort"));
+    setTitle(i18n("Processing..."));
     setWindowTitle(i18n("Renaming images"));
     setLabel(i18n("<b>Renaming images. Please wait...</b>"));
 
+    getNextThumbnail();
+    setMaximum(d->newNameList.count());
     QTimer::singleShot(500, this, SLOT(slotRenameImages()));
 }
 
 AdvancedRenameProcessDialog::~AdvancedRenameProcessDialog()
 {
+    delete d->thumbLoadThread;
     delete d->utilities;
     delete d;
 }
 
 void AdvancedRenameProcessDialog::slotRenameImages()
 {
-    setTitle(i18n("Processing..."));
-
-    setMaximum(d->newNameList.count());
-
     if (d->newNameList.isEmpty())
     {
         slotCancel();
@@ -120,8 +123,13 @@ void AdvancedRenameProcessDialog::processOne()
         return;
     }
 
-    d->currentUrl.clear();
-    d->thumbLoadThread->find(ThumbnailIdentifier(d->newNameList.first().first.toLocalFile()));
+    NewNameInfo info = d->newNameList.takeFirst();
+    d->currentUrl    = info.first;
+
+    addedAction(d->thumbPixmap, QDir::toNativeSeparators(d->thumbPath));
+    setLabel(i18n("<b>Renaming images. Please wait...</b>"));
+    d->utilities->rename(info.first, info.second);
+    getNextThumbnail();
 }
 
 void AdvancedRenameProcessDialog::complete()
@@ -131,29 +139,8 @@ void AdvancedRenameProcessDialog::complete()
 
 void AdvancedRenameProcessDialog::slotGotThumbnail(const LoadingDescription& desc, const QPixmap& pix)
 {
-    if (d->cancel || d->newNameList.isEmpty())
-    {
-        return;
-    }
-
-    if (d->newNameList.first().first.toLocalFile() != desc.filePath)
-    {
-        return;
-    }
-
-    if (d->currentUrl.toLocalFile() == desc.filePath)
-    {
-        return;
-    }
-
-    addedAction(pix, QDir::toNativeSeparators(desc.filePath));
-    setLabel(i18n("<b>Renaming images. Please wait...</b>"));
-    advance(1);
-
-    NewNameInfo info = d->newNameList.takeFirst();
-    d->currentUrl    = info.first;
-
-    d->utilities->rename(info.first, info.second);
+    d->thumbPixmap = pix;
+    d->thumbPath   = desc.filePath;
 }
 
 void AdvancedRenameProcessDialog::slotCancel()
@@ -168,6 +155,8 @@ void AdvancedRenameProcessDialog::slotRenameSuccessded(const QUrl& src)
     {
         return;
     }
+
+    advance(1);
 
     if (d->newNameList.isEmpty())
     {
@@ -210,7 +199,7 @@ void AdvancedRenameProcessDialog::slotRenameFailed(const QUrl& src)
 
     d->failedUrls << src;
 
-    QThread::msleep(500);
+    QThread::msleep(250);
 
     slotRenameSuccessded(src);
 }
@@ -223,13 +212,22 @@ void AdvancedRenameProcessDialog::closeEvent(QCloseEvent* e)
 
 void AdvancedRenameProcessDialog::abort()
 {
-    d->failedUrls.clear();
     d->cancel = true;
+    d->failedUrls.clear();
 }
 
 QList<QUrl> AdvancedRenameProcessDialog::failedUrls() const
 {
     return d->failedUrls;
+}
+
+void AdvancedRenameProcessDialog::getNextThumbnail()
+{
+    if (d->newNameList.count() > 0)
+    {
+        QString path = d->newNameList.first().first.toLocalFile();
+        d->thumbLoadThread->find(ThumbnailIdentifier(path));
+    }
 }
 
 } // namespace Digikam

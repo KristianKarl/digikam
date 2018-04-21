@@ -62,10 +62,6 @@
 #include "thumbsdbbackend.h"
 #include "thumbnailsize.h"
 
-#ifdef Q_OS_WIN
-#   include "windows.h"
-#endif
-
 namespace Digikam
 {
 
@@ -994,13 +990,13 @@ ThumbnailImage ThumbnailCreator::loadFromDatabase(const ThumbnailInfo& info) con
 void ThumbnailCreator::deleteFromDatabase(const ThumbnailInfo& info) const
 {
     ThumbsDbAccess access;
-    BdEngineBackend::QueryState lastQueryState=BdEngineBackend::ConnectionError;
+    BdEngineBackend::QueryState lastQueryState = BdEngineBackend::ConnectionError;
 
-    while (BdEngineBackend::ConnectionError==lastQueryState)
+    while (BdEngineBackend::ConnectionError == lastQueryState)
     {
         lastQueryState = access.backend()->beginTransaction();
 
-        if (BdEngineBackend::NoErrors!=lastQueryState)
+        if (BdEngineBackend::NoErrors != lastQueryState)
         {
             continue;
         }
@@ -1009,7 +1005,7 @@ void ThumbnailCreator::deleteFromDatabase(const ThumbnailInfo& info) const
         {
             lastQueryState=access.db()->removeByUniqueHash(info.uniqueHash, info.fileSize);
 
-            if (BdEngineBackend::NoErrors!=lastQueryState)
+            if (BdEngineBackend::NoErrors != lastQueryState)
             {
                 continue;
             }
@@ -1019,7 +1015,7 @@ void ThumbnailCreator::deleteFromDatabase(const ThumbnailInfo& info) const
         {
             lastQueryState=access.db()->removeByFilePath(info.filePath);
 
-            if (BdEngineBackend::NoErrors!=lastQueryState)
+            if (BdEngineBackend::NoErrors != lastQueryState)
             {
                 continue;
             }
@@ -1027,7 +1023,7 @@ void ThumbnailCreator::deleteFromDatabase(const ThumbnailInfo& info) const
 
         lastQueryState = access.backend()->commitTransaction();
 
-        if (BdEngineBackend::NoErrors!=lastQueryState)
+        if (BdEngineBackend::NoErrors != lastQueryState)
         {
             continue;
         }
@@ -1131,7 +1127,6 @@ void ThumbnailCreator::storeFreedesktop(const ThumbnailInfo& info, const Thumbna
 
             temp.close();
 
-#ifndef Q_OS_WIN
             // remove thumbPath file if it exist
             if (tempFileName != thumbPath && QFile::exists(tempFileName) && QFile::exists(thumbPath))
             {
@@ -1139,9 +1134,6 @@ void ThumbnailCreator::storeFreedesktop(const ThumbnailInfo& info, const Thumbna
             }
 
             if (!QFile::rename(tempFileName, thumbPath))
-#else
-            if(::MoveFileEx((LPCWSTR)tempFileName.utf16(), (LPCWSTR)thumbPath.utf16(), MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH) == 0)
-#endif
             {
                 qCDebug(DIGIKAM_GENERAL_LOG) << "Cannot rename thumb file (" << tempFileName << ")";
                 qCDebug(DIGIKAM_GENERAL_LOG) << "to (" << thumbPath << ")...";

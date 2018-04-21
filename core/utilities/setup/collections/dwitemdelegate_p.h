@@ -23,13 +23,17 @@
  *
  * ============================================================ */
 
-#ifndef DW_ITEM_DELEGATE_P_H
-#define DW_ITEM_DELEGATE_P_H
+#ifndef DIGIKAM_DW_ITEM_DELEGATE_P_H
+#define DIGIKAM_DW_ITEM_DELEGATE_P_H
 
 // Qt includes
 
 #include <QObject>
 #include <QItemSelectionModel>
+
+// Local includes
+
+#include "dwitemdelegate.h"
 
 namespace Digikam
 {
@@ -77,4 +81,4 @@ public:
 
 } // namespace Digikam
 
-#endif // DW_ITEM_DELEGATE_P_H
+#endif // DIGIKAM_DW_ITEM_DELEGATE_P_H

@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef SCAN_CONTROLLER_H
-#define SCAN_CONTROLLER_H
+#ifndef DIGIKAM_SCAN_CONTROLLER_H
+#define DIGIKAM_SCAN_CONTROLLER_H
 
 // Qt includes
 
@@ -113,6 +113,16 @@ public:
      * This method must only be used from the main thread.
      */
     void scheduleCollectionScanRelaxed(const QString& path);
+
+    /**
+     * Schedules a scan of the specified part of the collection.
+     * Asynchronous, returns immediately.
+     * A very long delay with timmer restart may be introduced
+     * before the actual scanning starts, so that you can call
+     * this often without checking for duplicates.
+     * This method is only for the QFileSystemWatcher.
+     */
+    void scheduleCollectionScanExternal(const QString& path);
 
     /**
      * If necessary (modified or newly created, scans the file directly
@@ -296,4 +306,4 @@ private Q_SLOTS:
 
 } // namespace Digikam
 
-#endif // SCAN_CONTROLLER_H
+#endif // DIGIKAM_SCAN_CONTROLLER_H
