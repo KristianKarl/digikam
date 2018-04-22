@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef AUTOCORRECTIONTOOL_H
-#define AUTOCORRECTIONTOOL_H
+#ifndef DIGIKAM_EDITOR_AUTO_CORRECTION_TOOL_H
+#define DIGIKAM_EDITOR_AUTO_CORRECTION_TOOL_H
 
 // Qt includes
 
@@ -69,4 +69,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* AUTOCORRECTIONTOOL_H */
+#endif // DIGIKAM_EDITOR_AUTO_CORRECTION_TOOL_H

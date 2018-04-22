@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef ADJUSTCURVESTOOL_H
-#define ADJUSTCURVESTOOL_H
+#ifndef DIGIKAM_EDITOR_ADJUST_CURVES_TOOL_H
+#define DIGIKAM_EDITOR_ADJUST_CURVES_TOOL_H
 
 // Local includes
 
@@ -70,4 +70,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* ADJUSTCURVESTOOL_H */
+#endif // DIGIKAM_EDITOR_ADJUST_CURVES_TOOL_H

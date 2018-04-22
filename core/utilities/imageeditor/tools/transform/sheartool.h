@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef SHEARTOOL_H
-#define SHEARTOOL_H
+#ifndef DIGIKAM_EDITOR_SHEAR_TOOL_H
+#define DIGIKAM_EDITOR_SHEAR_TOOL_H
 
 // Local includes
 
@@ -62,4 +62,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* SHEARTOOL_H */
+#endif // DIGIKAM_EDITOR_SHEAR_TOOL_H

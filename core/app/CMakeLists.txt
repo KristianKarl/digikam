@@ -46,7 +46,6 @@ set(DIGIKAMCORE_OBJECTS
             $<TARGET_OBJECTS:assistants_src>
             $<TARGET_OBJECTS:presentation_src>
             $<TARGET_OBJECTS:digikamlibtransitionmngr_src>
-            $<TARGET_OBJECTS:akonadiiface_src>  # NOTE: even if optional this code need to be compiled here.
             $<TARGET_OBJECTS:calendar_src>
             $<TARGET_OBJECTS:sendbymail_src>
             $<TARGET_OBJECTS:printcreator_src>
@@ -62,6 +61,13 @@ if(Marble_FOUND)
         $<TARGET_OBJECTS:geoiface_src>
         $<TARGET_OBJECTS:geomapwrapper_src>
         $<TARGET_OBJECTS:geolocationedit_src>
+    )
+endif()
+
+if(KF5AkonadiContact_FOUND)
+    set(DIGIKAMCORE_OBJECTS
+        ${DIGIKAMCORE_OBJECTS}
+        $<TARGET_OBJECTS:akonadiiface_src>
     )
 endif()
 
@@ -314,6 +320,7 @@ set(libdigikamgui_SRCS
     filters/filtersidebarwidget.cpp
     filters/tagfilterview.cpp
 
+    items/tooltipfiller.cpp
     items/digikamimageview.cpp
     items/digikamimageview_p.cpp
     items/digikamimagedelegate.cpp
@@ -334,12 +341,6 @@ set(libdigikamgui_SRCS
     items/overlays/imageselectionoverlay.cpp
 
     utils/contextmenuhelper.cpp
-    utils/tooltipfiller.cpp
-    utils/searchmodificationhelper.cpp
-    utils/editablesearchtreeview.cpp
-    utils/sidebarwidget.cpp
-    utils/slideshowbuilder.cpp
-    utils/digikammodelcollection.cpp
     utils/digikam_debug.cpp
     utils/componentsinfo.cpp
 
@@ -366,6 +367,9 @@ set(libdigikamgui_SRCS
     views/digikamview.cpp
     views/trashview.cpp
     views/stackedview.cpp
+    views/sidebarwidget.cpp
+    views/digikammodelcollection.cpp
+    views/slideshowbuilder.cpp
 
     ${digikamadaptor_SRCS}
 )

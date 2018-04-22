@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef BWSEPIATOOL_H
-#define BWSEPIATOOL_H
+#ifndef DIGIKAM_EDITOR_BW_SEPIA_TOOL_H
+#define DIGIKAM_EDITOR_BW_SEPIA_TOOL_H
 
 // Local includes
 
@@ -66,4 +66,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* BWSEPIATOOL_H */
+#endif // DIGIKAM_EDITOR_BW_SEPIA_TOOL_H

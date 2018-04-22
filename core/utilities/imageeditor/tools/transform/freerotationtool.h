@@ -23,8 +23,8 @@
  *
  * ============================================================ */
 
-#ifndef FREEROTATIONTOOL_H
-#define FREEROTATIONTOOL_H
+#ifndef DIGIKAM_EDITOR_FREE_ROTATION_TOOL_H
+#define DIGIKAM_EDITOR_FREE_ROTATION_TOOL_H
 
 // Local includes
 
@@ -83,4 +83,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* FREEROTATIONTOOL_H */
+#endif // DIGIKAM_EDITOR_FREE_ROTATION_TOOL_H

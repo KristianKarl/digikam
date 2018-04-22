@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef TRIANGLE_H
-#define TRIANGLE_H
+#ifndef DIGIKAM_EDITOR_TRIANGLE_H
+#define DIGIKAM_EDITOR_TRIANGLE_H
 
 // Qt includes
 
@@ -56,4 +56,4 @@ private:
 
 } // namespace Digikam
 
-#endif /* TRIANGLE_H */
+#endif // DIGIKAM_EDITOR_TRIANGLE_H
