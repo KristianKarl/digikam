@@ -4,9 +4,10 @@
  * http://www.digikam.org
  *
  * Date        : 2008-11-22
- * Description : some workaround functions to read jpeg files without relying on libjpeg
+ * Description : some workaround functions to read jpeg
+ *               files without relying on libjpeg
  *
- * Copyright (C) 2008 Patrick Spendrin <ps_ml_at_gmx_dot_de>
+ * Copyright (C) 2008 by Patrick Spendrin <ps ml at gmx dot de>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -21,24 +22,12 @@
  *
  * ============================================================ */
 
-extern "C"
-{
-#include "iccjpeg.h"
-}
-
-// C+ includes
-
-#include <cstdio>
-#include <cstdlib>
+#include "jpegwin.h"
 
 // Qt includes
 
 #include <QFile>
 #include <QByteArray>
-
-// Local includes
-
-#include "jpegwin.h"
 
 namespace Digikam
 {

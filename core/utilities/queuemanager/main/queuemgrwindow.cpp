@@ -52,7 +52,7 @@
 #include "digikam_debug.h"
 #include "actions.h"
 #include "album.h"
-#include "batchtoolsmanager.h"
+#include "batchtoolsfactory.h"
 #include "actionthread.h"
 #include "queuepool.h"
 #include "workflowmanager.h"
@@ -104,7 +104,7 @@ QueueMgrWindow::QueueMgrWindow()
     qRegisterMetaType<BatchToolSet>("BatchToolSet");
 
     m_instance = this;
-    BatchToolsManager::instance();        // Create first instance here
+    BatchToolsFactory::instance();        // Create first instance here
     WorkflowManager::instance();             // Create first instance here
     d->thread  = new ActionThread(this);
 
@@ -500,7 +500,7 @@ void QueueMgrWindow::refreshStatusBar()
             break;
     }
 
-    message.append(i18n(" - Total: "));
+    message.append(QLatin1String(" - ") + i18n("Total: "));
 
     switch (totalItems)
     {
@@ -530,7 +530,7 @@ void QueueMgrWindow::refreshStatusBar()
 
     if (!d->busy)
     {
-        d->statusProgressBar->setProgressBarMode(StatusProgressBar::TextMode, i18n("Ready"));
+        d->statusProgressBar->setProgressBarMode(StatusProgressBar::TextMode, i18nc("batch queue manager is ready to use", "Ready"));
         d->removeItemsSelAction->setEnabled(items > 0);
         d->removeItemsDoneAction->setEnabled((items - pendingItems) > 0);
         d->clearQueueAction->setEnabled(items > 0);
@@ -646,7 +646,7 @@ void QueueMgrWindow::slotItemSelectionChanged()
 
 void QueueMgrWindow::populateToolsList()
 {
-    BatchToolsList list = BatchToolsManager::instance()->toolsList();
+    BatchToolsList list = BatchToolsFactory::instance()->toolsList();
 
     foreach(BatchTool* const tool, list)
     {

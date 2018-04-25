@@ -96,11 +96,12 @@ WelcomePageView::WelcomePageView(QWidget* const parent)
     // ------------------------------------------------------------
 
 #ifdef HAVE_QWEBENGINE
-    connect(wpage, SIGNAL(linkClicked(const QUrl&)),
+    connect(wpage, SIGNAL(linkClicked(QUrl)),
+            this, SLOT(slotUrlOpen(QUrl)));
 #else
-    connect(this, SIGNAL(linkClicked(const QUrl&)),
+    connect(this, SIGNAL(linkClicked(QUrl)),
+            this, SLOT(slotUrlOpen(QUrl)));
 #endif
-            this, SLOT(slotUrlOpen(const QUrl&)));
 
     connect(ThemeManager::instance(), SIGNAL(signalThemeChanged()),
             this, SLOT(slotThemeChanged()));
@@ -126,6 +127,8 @@ QStringList WelcomePageView::featuresTabContent() const
     newFeatures << i18n("Light Table: Add Web services Import and Export tools;");
     newFeatures << i18n("New video metadata parser based on ffmpeg to populate database;");
     newFeatures << i18n("Add video support to find files based on properties registered on database.");
+    newFeatures << i18n("Similarity database has been moved to a dedicated file to not bloat core database with computed"
+                        "finger-prints. This will speed-up query in core database in case of Similarity feature is used.");
     // Add new features here...
     newFeatures << i18n("...and much more.");
 

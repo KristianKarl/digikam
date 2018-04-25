@@ -159,8 +159,8 @@ GSWindow::GSWindow(DInfoInterface* const iface,
             connect(d->talker,SIGNAL(signalTextBoxEmpty()),
                     this,SLOT(slotTextBoxEmpty()));
 
-            connect(d->talker,SIGNAL(signalAccessTokenFailed(int, QString)),
-                    this,SLOT(slotAccessTokenFailed(int, QString)));
+            connect(d->talker,SIGNAL(signalAccessTokenFailed(int,QString)),
+                    this,SLOT(slotAccessTokenFailed(int,QString)));
 
             connect(d->talker,SIGNAL(signalAccessTokenObtained()),
                     this,SLOT(slotAccessTokenObtained()));
@@ -171,14 +171,14 @@ GSWindow::GSWindow(DInfoInterface* const iface,
             connect(d->talker,SIGNAL(signalSetUserName(QString)),
                     this,SLOT(slotSetUserName(QString)));
 
-            connect(d->talker,SIGNAL(signalListAlbumsDone(int, QString, QList<GSFolder>)),
-                    this,SLOT(slotListAlbumsDone(int, QString, QList<GSFolder>)));
+            connect(d->talker,SIGNAL(signalListAlbumsDone(int,QString,QList<GSFolder>)),
+                    this,SLOT(slotListAlbumsDone(int,QString,QList<GSFolder>)));
 
-            connect(d->talker,SIGNAL(signalCreateFolderDone(int, QString)),
-                    this,SLOT(slotCreateFolderDone(int, QString)));
+            connect(d->talker,SIGNAL(signalCreateFolderDone(int,QString)),
+                    this,SLOT(slotCreateFolderDone(int,QString)));
 
-            connect(d->talker,SIGNAL(signalAddPhotoDone(int, QString, QString)),
-                    this,SLOT(slotAddPhotoDone(int, QString, QString)));
+            connect(d->talker,SIGNAL(signalAddPhotoDone(int,QString,QString)),
+                    this,SLOT(slotAddPhotoDone(int,QString,QString)));
 
             readSettings();
             buttonStateChange(false);
@@ -225,8 +225,8 @@ GSWindow::GSWindow(DInfoInterface* const iface,
             connect(d->gphotoTalker, SIGNAL(signalTextBoxEmpty()),
                     this, SLOT(slotTextBoxEmpty()));
 
-            connect(d->gphotoTalker, SIGNAL(signalAccessTokenFailed(int, QString)),
-                    this, SLOT(slotAccessTokenFailed(int, QString)));
+            connect(d->gphotoTalker, SIGNAL(signalAccessTokenFailed(int,QString)),
+                    this, SLOT(slotAccessTokenFailed(int,QString)));
 
             connect(d->gphotoTalker, SIGNAL(signalAccessTokenObtained()),
                     this, SLOT(slotAccessTokenObtained()));
@@ -234,17 +234,17 @@ GSWindow::GSWindow(DInfoInterface* const iface,
             connect(d->gphotoTalker, SIGNAL(signalRefreshTokenObtained(QString)),
                     this, SLOT(slotRefreshTokenObtained(QString)));
 
-            connect(d->gphotoTalker, SIGNAL(signalListAlbumsDone(int, QString, QList<GSFolder>)),
-                    this, SLOT(slotListAlbumsDone(int, QString, QList<GSFolder>)));
+            connect(d->gphotoTalker, SIGNAL(signalListAlbumsDone(int,QString,QList<GSFolder>)),
+                    this, SLOT(slotListAlbumsDone(int,QString,QList<GSFolder>)));
 
-            connect(d->gphotoTalker, SIGNAL(signalCreateAlbumDone(int, QString, QString)),
-                    this, SLOT(slotCreateFolderDone(int, QString, QString)));
+            connect(d->gphotoTalker, SIGNAL(signalCreateAlbumDone(int,QString,QString)),
+                    this, SLOT(slotCreateFolderDone(int,QString,QString)));
 
-            connect(d->gphotoTalker, SIGNAL(signalAddPhotoDone(int, QString, QString)),
+            connect(d->gphotoTalker, SIGNAL(signalAddPhotoDone(int,QString,QString)),
                     this, SLOT(slotAddPhotoDone(int,QString,QString)));
 
-            connect(d->gphotoTalker, SIGNAL(signalGetPhotoDone(int, QString, QByteArray)),
-                    this, SLOT(slotGetPhotoDone(int, QString, QByteArray)));
+            connect(d->gphotoTalker, SIGNAL(signalGetPhotoDone(int,QString,QByteArray)),
+                    this, SLOT(slotGetPhotoDone(int,QString,QByteArray)));
 
             readSettings();
             buttonStateChange(false);
@@ -407,8 +407,8 @@ void GSWindow::slotListPhotosDoneForDownload(int errCode,
                                              const QString& errMsg,
                                              const QList <GSPhoto>& photosList)
 {
-    disconnect(d->gphotoTalker, SIGNAL(signalListPhotosDone(int, QString, QList<GSPhoto>)),
-               this, SLOT(slotListPhotosDoneForDownload(int, QString, QList<GSPhoto>)));
+    disconnect(d->gphotoTalker, SIGNAL(signalListPhotosDone(int,QString,QList<GSPhoto>)),
+               this, SLOT(slotListPhotosDoneForDownload(int,QString,QList<GSPhoto>)));
 
     if (errCode == 0)
     {
@@ -448,8 +448,8 @@ void GSWindow::slotListPhotosDoneForUpload(int errCode,
 {
     qCCritical(DIGIKAM_WEBSERVICES_LOG)<< "err Code is "<< errCode <<" Err Message is "<< errMsg;
 
-    disconnect(d->gphotoTalker, SIGNAL(signalListPhotosDone(int, QString, QList<GSPhoto>)),
-               this, SLOT(slotListPhotosDoneForUpload(int, QString, QList<GSPhoto>)));
+    disconnect(d->gphotoTalker, SIGNAL(signalListPhotosDone(int,QString,QList<GSPhoto>)),
+               this, SLOT(slotListPhotosDoneForUpload(int,QString,QList<GSPhoto>)));
 
     if (errCode == 0)
     {
@@ -617,8 +617,8 @@ void GSWindow::googlePhotoTransferHandler()
     {
         case GoogleService::GPhotoImport:
             // list photos of the album, then start download
-            connect(d->gphotoTalker, SIGNAL(signalListPhotosDone(int, QString, QList<GSPhoto>)),
-                    this, SLOT(slotListPhotosDoneForDownload(int, QString, QList<GSPhoto>)));
+            connect(d->gphotoTalker, SIGNAL(signalListPhotosDone(int,QString,QList<GSPhoto>)),
+                    this, SLOT(slotListPhotosDoneForDownload(int,QString,QList<GSPhoto>)));
 
             d->gphotoTalker->listPhotos(
                 d->widget->getAlbumsCoB()->itemData(d->widget->getAlbumsCoB()->currentIndex()).toString(),
@@ -627,8 +627,8 @@ void GSWindow::googlePhotoTransferHandler()
 
         default:
             // list photos of the album, then start upload with add/update items
-            connect(d->gphotoTalker, SIGNAL(signalListPhotosDone(int, QString, QList<GSPhoto>)),
-                    this, SLOT(slotListPhotosDoneForUpload(int, QString, QList<GSPhoto>)));
+            connect(d->gphotoTalker, SIGNAL(signalListPhotosDone(int,QString,QList<GSPhoto>)),
+                    this, SLOT(slotListPhotosDoneForUpload(int,QString,QList<GSPhoto>)));
 
             d->gphotoTalker->listPhotos(
                 d->widget->getAlbumsCoB()->itemData(d->widget->getAlbumsCoB()->currentIndex()).toString());
@@ -669,21 +669,23 @@ void GSWindow::slotStartTransfer()
         case GoogleService::GDrive:
             if (!(d->talker->authenticated()))
             {
-                QMessageBox warn(QMessageBox::Warning,
+                QPointer<QMessageBox> warn = new QMessageBox(QMessageBox::Warning,
                                  i18n("Warning"),
                                  i18n("Authentication failed. Click \"Continue\" to authenticate."),
                                  QMessageBox::Yes | QMessageBox::No);
 
-                (warn.button(QMessageBox::Yes))->setText(i18n("Continue"));
-                (warn.button(QMessageBox::No))->setText(i18n("Cancel"));
+                (warn->button(QMessageBox::Yes))->setText(i18n("Continue"));
+                (warn->button(QMessageBox::No))->setText(i18n("Cancel"));
 
-                if (warn.exec() == QMessageBox::Yes)
+                if (warn->exec() == QMessageBox::Yes)
                 {
                     d->talker->doOAuth();
+                    delete warn;
                     return;
                 }
                 else
                 {
+                    delete warn;
                     return;
                 }
             }
@@ -692,21 +694,23 @@ void GSWindow::slotStartTransfer()
         default:
             if (!(d->gphotoTalker->authenticated()))
             {
-                QMessageBox warn(QMessageBox::Warning,
+                QPointer<QMessageBox> warn = new QMessageBox(QMessageBox::Warning,
                                  i18n("Warning"),
                                  i18n("Authentication failed. Click \"Continue\" to authenticate."),
                                  QMessageBox::Yes | QMessageBox::No);
 
-                (warn.button(QMessageBox::Yes))->setText(i18n("Continue"));
-                (warn.button(QMessageBox::No))->setText(i18n("Cancel"));
+                (warn->button(QMessageBox::Yes))->setText(i18n("Continue"));
+                (warn->button(QMessageBox::No))->setText(i18n("Cancel"));
 
-                if (warn.exec() == QMessageBox::Yes)
+                if (warn->exec() == QMessageBox::Yes)
                 {
                     d->gphotoTalker->doOAuth();
+                    delete warn;
                     return;
                 }
                 else
                 {
+                    delete warn;
                     return;
                 }
             }
@@ -802,10 +806,12 @@ void GSWindow::uploadNextPhoto()
                         break;
                     default:
                     {
-                        ReplaceDialog dlg(this, QString::fromLatin1(""), d->iface, pathComments.first, info.thumbURL);
-                        dlg.exec();
+                        QPointer<ReplaceDialog> dlg = new ReplaceDialog(this, QString::fromLatin1(""),
+                                                                        d->iface, pathComments.first,
+                                                                        info.thumbURL);
+                        dlg->exec();
 
-                        switch (dlg.getResult())
+                        switch (dlg->getResult())
                         {
                             case PWR_ADD_ALL:
                                 d->renamingOpt = PWR_ADD_ALL;
@@ -825,6 +831,7 @@ void GSWindow::uploadNextPhoto()
                                 break;
                         }
 
+                        delete dlg;
                         break;
                     }
                 }
@@ -910,10 +917,10 @@ void GSWindow::uploadNextPhoto()
                 else
                 {
                     res = d->gphotoTalker->updatePhoto(pathComments.first.toLocalFile(),
-                                                        info,
-                                                        d->widget->getResizeCheckBox()->isChecked(),
-                                                        d->widget->getDimensionSpB()->value(),
-                                                        d->widget->getImgQualitySpB()->value());
+                                                       info,
+                                                       d->widget->getResizeCheckBox()->isChecked(),
+                                                       d->widget->getDimensionSpB()->value(),
+                                                       d->widget->getImgQualitySpB()->value());
                 }
             }
             break;
@@ -1000,38 +1007,44 @@ void GSWindow::slotGetPhotoDone(int errCode, const QString& errMsg, const QByteA
         }
         else
         {
-            QMessageBox warn(QMessageBox::Warning,
+            QPointer<QMessageBox> warn = new QMessageBox(QMessageBox::Warning,
                              i18n("Warning"),
                              i18n("Failed to save photo: %1\n"
                                   "Do you want to continue?", errText),
                              QMessageBox::Yes | QMessageBox::No);
 
-            (warn.button(QMessageBox::Yes))->setText(i18n("Continue"));
-            (warn.button(QMessageBox::No))->setText(i18n("Cancel"));
+            (warn->button(QMessageBox::Yes))->setText(i18n("Continue"));
+            (warn->button(QMessageBox::No))->setText(i18n("Cancel"));
 
-            if (warn.exec() != QMessageBox::Yes)
+            if (warn->exec() != QMessageBox::Yes)
             {
                 slotTransferCancel();
+                delete warn;
                 return;
             }
+            
+            delete warn;
         }
     }
     else
     {
-        QMessageBox warn(QMessageBox::Warning,
+        QPointer<QMessageBox> warn = new QMessageBox(QMessageBox::Warning,
                          i18n("Warning"),
                          i18n("Failed to download photo: %1\n"
                               "Do you want to continue?", errMsg),
                          QMessageBox::Yes | QMessageBox::No);
 
-        (warn.button(QMessageBox::Yes))->setText(i18n("Continue"));
-        (warn.button(QMessageBox::No))->setText(i18n("Cancel"));
+        (warn->button(QMessageBox::Yes))->setText(i18n("Continue"));
+        (warn->button(QMessageBox::No))->setText(i18n("Cancel"));
 
-        if (warn.exec() != QMessageBox::Yes)
+        if (warn->exec() != QMessageBox::Yes)
         {
             slotTransferCancel();
+            delete warn;
             return;
         }
+        
+        delete warn;
     }
 
     QUrl newUrl = QUrl::fromLocalFile(QString(d->widget->getDestinationPath() + tmpUrl.fileName()));
@@ -1092,15 +1105,15 @@ void GSWindow::slotAddPhotoDone(int err, const QString& msg, const QString& phot
     {
         d->widget->imagesList()->processed(d->transferQueue.first().first,false);
 
-        QMessageBox warn(QMessageBox::Warning,
+        QPointer<QMessageBox> warn = new QMessageBox(QMessageBox::Warning,
                          i18n("Warning"),
                          i18n("Failed to upload photo to %1.\n%2\nDo you want to continue?", d->toolName,msg),
                          QMessageBox::Yes | QMessageBox::No);
 
-        (warn.button(QMessageBox::Yes))->setText(i18n("Continue"));
-        (warn.button(QMessageBox::No))->setText(i18n("Cancel"));
+        (warn->button(QMessageBox::Yes))->setText(i18n("Continue"));
+        (warn->button(QMessageBox::No))->setText(i18n("Cancel"));
 
-        if (warn.exec() != QMessageBox::Yes)
+        if (warn->exec() != QMessageBox::Yes)
         {
             d->transferQueue.clear();
             d->widget->progressBar()->hide();
@@ -1113,6 +1126,8 @@ void GSWindow::slotAddPhotoDone(int err, const QString& msg, const QString& phot
             d->widget->progressBar()->setValue(d->imagesCount);
             uploadNextPhoto();
         }
+        
+        delete warn;
     }
     else
     {
@@ -1269,16 +1284,16 @@ void GSWindow::slotUserChangeRequest()
     QUrl url(QString::fromLatin1("https://accounts.google.com/logout"));
     QDesktopServices::openUrl(url);
 
-    QMessageBox warn(QMessageBox::Warning,
+    QPointer<QMessageBox> warn = new QMessageBox(QMessageBox::Warning,
                      i18nc("@title:window", "Warning"),
                      i18n("After you have been logged out in the browser, "
                           "click \"Continue\" to authenticate for another account"),
                      QMessageBox::Yes | QMessageBox::No);
 
-    (warn.button(QMessageBox::Yes))->setText(i18n("Continue"));
-    (warn.button(QMessageBox::No))->setText(i18n("Cancel"));
+    (warn->button(QMessageBox::Yes))->setText(i18n("Continue"));
+    (warn->button(QMessageBox::No))->setText(i18n("Cancel"));
 
-    if (warn.exec() == QMessageBox::Yes)
+    if (warn->exec() == QMessageBox::Yes)
     {
         d->refreshToken = QString::fromLatin1("");
 
@@ -1293,6 +1308,8 @@ void GSWindow::slotUserChangeRequest()
                 break;
         }
     }
+    
+    delete warn;
 }
 
 void GSWindow::buttonStateChange(bool state)

@@ -22,8 +22,8 @@
  *
  * ============================================================ */
 
-#ifndef MOVIE_DECODER_H
-#define MOVIE_DECODER_H
+#ifndef DIGIKAM_MOVIE_DECODER_H
+#define DIGIKAM_MOVIE_DECODER_H
 
 // Qt includes
 
@@ -52,7 +52,7 @@ public:
     bool    getInitialized() const;
 
     void seek(int timeInSeconds);
-    void decodeVideoFrame();
+    bool decodeVideoFrame()  const;
     void getScaledVideoFrame(int scaledSize,
                              bool maintainAspectRatio,
                              VideoFrame& videoFrame);
@@ -68,4 +68,4 @@ private:
 
 } // namespace Digikam
 
-#endif // MOVIE_DECODER_H
+#endif // DIGIKAM_MOVIE_DECODER_H

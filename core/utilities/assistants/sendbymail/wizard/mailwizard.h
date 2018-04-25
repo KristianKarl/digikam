@@ -20,8 +20,8 @@
  *
  * ============================================================ */
 
-#ifndef MAIL_WIZARD_H
-#define MAIL_WIZARD_H
+#ifndef DIGIKAM_MAIL_WIZARD_H
+#define DIGIKAM_MAIL_WIZARD_H
 
 // Qt includes
 
@@ -45,8 +45,8 @@ public:
     explicit MailWizard(QWidget* const parent, DInfoInterface* const iface = 0);
     ~MailWizard();
 
-    bool validateCurrentPage();
-    int  nextId() const;
+    bool validateCurrentPage() override;
+    int  nextId() const override;
 
     DInfoInterface* iface()    const;
     MailSettings*   settings() const;
@@ -61,4 +61,4 @@ private:
 
 } // namespace Digikam
 
-#endif // MAIL_WIZARD_H
+#endif // DIGIKAM_MAIL_WIZARD_H
