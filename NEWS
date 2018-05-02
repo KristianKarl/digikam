@@ -16,6 +16,12 @@ Database     : New video metadata parser based on ffmpeg to populate database.
 Search       : Add video support to find files based on properties registered on database.
 
 General      : Add QWebEngine support.
+General      : Update internal Libraw to last 0.18.9.
+
+Tags         : Add possibility to merge tags by drag & drop.
+
+HTML Gallery : New Vanilla theme to emulate export to HTML from Adobe LightRoom.
+HTML Gallery : New Blue Frame theme.
 
 *****************************************************************************************************
 BUGFIXES:
@@ -197,4 +203,11 @@ BUGFIXES:
 175 ==> 387977 - No icon only view of "Extras sidebar": sidebar taking up a lot of space.
 176 ==> 277502 - All versions of version set always displayed in Album view [patch].
 177 ==> 393283 - Caption not updating Exif.Image.ImageDescription field.
-178 ==> 
+178 ==> 391060 - Crashes on undo of very large tif.
+179 ==> 366305 - Add a message at startup about the lack of temporary space to perform Undo operations.
+180 ==> 366391 - Rotating an image seems to forget to reset the orientation flag.
+181 ==> 393654 - Not able to select gpx file.
+182 ==> 367596 - Sub-folder count images but don't show them (unsupported JPEG file?).
+183 ==> 379922 - Digikam won't remove tags set by Windows Explorer.
+184 ==> 379081 - GPS data are in file but geolocation indicator is not shown and map view empty.
+185 ==> 

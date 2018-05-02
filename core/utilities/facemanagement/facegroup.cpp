@@ -77,8 +77,8 @@ public:
 
 protected:
 
+    FaceTagsIface       m_face;
     AssignNameWidget*   m_widget;
-    FaceTagsIface        m_face;
     HidingStateChanger* m_changer;
 };
 
@@ -224,6 +224,12 @@ FaceGroup::FaceGroup(GraphicsDImgView* const view)
     d->view                 = view;
     d->visibilityController = new ItemVisibilityController(this);
     d->visibilityController->setShallBeShown(false);
+
+    connect(AlbumManager::instance(), SIGNAL(signalAlbumRenamed(Album*)),
+            this, SLOT(slotAlbumRenamed(Album*)));
+
+    connect(AlbumManager::instance(), SIGNAL(signalAlbumsUpdated(int)),
+            this, SLOT(slotAlbumsUpdated(int)));
 
     connect(view->previewItem(), SIGNAL(stateChanged(int)),
             this, SLOT(itemStateChanged(int)));
@@ -660,13 +666,47 @@ void FaceGroup::rejectAll()
     clear();
 }
 
+void FaceGroup::slotAlbumsUpdated(int type)
+{
+    if (type != Album::TAG)
+    {
+        return;
+    }
+
+    if (d->items.isEmpty())
+    {
+        return;
+    }
+
+    clear();
+    load();
+}
+
+void FaceGroup::slotAlbumRenamed(Album* album)
+{
+    if (!album || album->type() != Album::TAG)
+    {
+        return;
+    }
+
+    foreach(FaceItem* const item, d->items)
+    {
+        if (!item->face().isNull() &&
+             item->face().tagId() == album->id())
+        {
+            item->updateCurrentTag();
+        }
+    }
+}
+
 void FaceGroup::slotAssigned(const TaggingAction& action, const ImageInfo&, const QVariant& faceIdentifier)
 {
     FaceItem* const item    = d->items[faceIdentifier.toInt()];
     FaceTagsIface face      = item->face();
     TagRegion currentRegion = TagRegion(item->originalRect());
 
-    if (!face.isConfirmedName() || face.region() != currentRegion || action.shallCreateNewTag() || (action.shallAssignTag() && action.tagId() != face.tagId()))
+    if (!face.isConfirmedName() || face.region() != currentRegion ||
+        action.shallCreateNewTag() || (action.shallAssignTag() && action.tagId() != face.tagId()))
     {
         int tagId = 0;
 
@@ -830,11 +870,9 @@ void ImagePreviewView::trainFaces()
         d->faceIface->markFacesAsTrained(getImageInfo().id(), trainList);
     }
 }
-* /
 
 void ImagePreviewView::suggestFaces()
 {
-    / *
     // Assign tentative names to the face list
     QList<Face> recogList;
 
@@ -869,7 +907,6 @@ void ImagePreviewView::suggestFaces()
             }
         }
     }
-    * /
 }
 */
 

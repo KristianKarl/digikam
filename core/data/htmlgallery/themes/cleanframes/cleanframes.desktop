@@ -1,4 +1,5 @@
 [Desktop Entry]
+Type=Theme
 Name=Clean Frames
 Name[ca]=Marcs nets
 Name[ca@valencia]=Marcs nets
@@ -44,7 +45,7 @@ Comment[uk]=Тема рамок на основі теми Ruediger Bente
 Comment[x-test]=xxA frame theme based on Ruediger Bente's frame themexx
 Comment[zh_CN]=基于 Ruediger Bente 边框主题的边框主题
 
-[X-HTMLExport Author]
+[X-HTMLGallery Author]
 Name=Elizabeth Marmorstein
 Name[ca]=Elizabeth Marmorstein
 Name[ca@valencia]=Elizabeth Marmorstein
@@ -68,7 +69,7 @@ Name[uk]=Elizabeth Marmorstein
 Name[x-test]=xxElizabeth Marmorsteinxx
 Url=mailto:purplegamba@cox.net
 
-[X-HTMLExport Preview]
+[X-HTMLGallery Preview]
 Name=Clean Frames
 Name[ca]=Marcs nets
 Name[ca@valencia]=Marcs nets
@@ -93,7 +94,7 @@ Name[x-test]=xxClean Framesxx
 Name[zh_CN]=简洁边框
 Url=preview.png
 
-[X-HTMLExport Parameter style]
+[X-HTMLGallery Parameter style]
 Name=Style
 Name[ca]=Estil
 Name[ca@valencia]=Estil
@@ -120,19 +121,19 @@ Name[x-test]=xxStylexx
 Name[zh_CN]=样式
 Type=list
 Default=pink.css
-Value_0=pink.css
-Caption_0=Pink
-Value_1=blue.css
-Caption_1=Blue
-Value_2=lavender.css
-Caption_2=Lavender
-Value_3=green.css
-Caption_3=Green
-Value_4=black.css
-Caption_4=Black
-Value_5=red.css
-Caption_5=Red
-Value_6=yellow.css
-Caption_6=Yellow
-Value_7=brown.css
-Caption_7=Brown
+Value-0=pink.css
+Caption-0=Pink
+Value-1=blue.css
+Caption-1=Blue
+Value-2=lavender.css
+Caption-2=Lavender
+Value-3=green.css
+Caption-3=Green
+Value-4=black.css
+Caption-4=Black
+Value-5=red.css
+Caption-5=Red
+Value-6=yellow.css
+Caption-6=Yellow
+Value-7=brown.css
+Caption-7=Brown

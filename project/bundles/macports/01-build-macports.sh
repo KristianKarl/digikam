@@ -226,12 +226,14 @@ fi
 
 echo -e "\n"
 
-port install cmake \
+port install \
+             ld64 +ld64_xcode \
+             cmake \
              libpng \
              jpeg \
              tiff \
              boost \
-             eigen3 +gcc5 \
+             eigen3 \
              gettext \
              libusb \
              libgphoto2 \
@@ -243,8 +245,8 @@ port install cmake \
              libical \
              lensfun \
              bison \
-             ffmpeg \
              sane-backends \
+             ffmpeg \
              qt58 \
              qt58-qtimageformats \
              qt58-qtwebkit \

@@ -1740,8 +1740,8 @@ void AlbumManager::personItemsCount()
     connect(d->personListJob, SIGNAL(finished()),
             this, SLOT(slotPeopleJobResult()));
 
-    connect(d->personListJob, SIGNAL(faceFoldersData(QMap<QString,QMap<int,int> >)),
-            this, SLOT(slotPeopleJobData(QMap<QString,QMap<int,int> >)));
+    connect(d->personListJob, SIGNAL(faceFoldersData(QMap<QString,QMap<int,int> >)),    // krazy:exclude=normalize
+            this, SLOT(slotPeopleJobData(QMap<QString,QMap<int,int> >)));               // krazy:exclude=normalize
 }
 
 void AlbumManager::scanSAlbums()
@@ -2620,83 +2620,25 @@ bool AlbumManager::moveTAlbum(TAlbum* album, TAlbum* newParent, QString& errMsg)
     if (hasDirectChildAlbumWithTitle(newParent, album->title()))
     {
         QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
-                           qApp->applicationName(),
-                           i18n("Another tag with the same name already exists.\n"
-                                "Do you want to merge the tags?"),
-                           QMessageBox::Yes | QMessageBox::No,
-                           qApp->activeWindow());
+                 qApp->applicationName(),
+                 i18n("Another tag with the same name already exists.\n"
+                      "Do you want to merge the tags?"),
+                 QMessageBox::Yes | QMessageBox::No,
+                 qApp->activeWindow());
 
-        if (msgBox->exec() == QMessageBox::Yes)
+        int result = msgBox->exec();
+        delete msgBox;
+
+        if (result == QMessageBox::Yes)
         {
-            delete msgBox;
+            TAlbum* const destAlbum = findTAlbum(newParent->tagPath() +
+                                                 QLatin1Char('/') +
+                                                 album->title());
 
-            if (album->m_firstChild)
-            {
-                errMsg = i18n("Only a tag without children can be merged!");
-                return false;
-            }
-
-            TAlbum* const mergeTag = findTAlbum(newParent->tagPath() +
-                                                QLatin1Char('/') +
-                                                album->title());
-            if (!mergeTag)
-            {
-                errMsg = i18n("No such album");
-                return false;
-            }
-
-            int oldId   = album->id();
-            int mergeId = mergeTag->id();
-
-            if (oldId == mergeId)
-            {
-                return true;
-            }
-
-            QApplication::setOverrideCursor(Qt::WaitCursor);
-            QList<qlonglong> imageIds = CoreDbAccess().db()->getItemIDsInTag(oldId);
-
-            CoreDbOperationGroup group;
-            group.setMaximumTime(200);
-
-            foreach(const qlonglong& imageId, imageIds)
-            {
-                QList<FaceTagsIface> facesList = FaceTagsEditor().databaseFaces(imageId);
-                bool foundFace                 = false;
-
-                foreach(const FaceTagsIface& face, facesList)
-                {
-                    if (face.tagId() == oldId)
-                    {
-                        foundFace = true;
-                        FaceTagsEditor().removeFace(face);
-                        FaceTagsEditor().add(imageId, mergeId, face.region(), false);
-                    }
-                }
-
-                if (!foundFace)
-                {
-                    ImageInfo info(imageId);
-                    info.removeTag(oldId);
-                    info.setTag(mergeId);
-                    group.allowLift();
-                }
-            }
-
-            QApplication::restoreOverrideCursor();
-
-            if (!deleteTAlbum(album, errMsg, false))
-            {
-                return false;
-            }
-
-            askUserForWriteChangedTAlbumToFiles(imageIds);
-
-            return true;
+            return mergeTAlbum(album, destAlbum, false, errMsg);
         }
         else
         {
-            delete msgBox;
             return true;
         }
     }
@@ -2733,6 +2675,94 @@ bool AlbumManager::moveTAlbum(TAlbum* album, TAlbum* newParent, QString& errMsg)
     }
 
     askUserForWriteChangedTAlbumToFiles(album);
+
+    return true;
+}
+
+bool AlbumManager::mergeTAlbum(TAlbum* album, TAlbum* destAlbum, bool dialog, QString& errMsg)
+{
+    if (!album || !destAlbum)
+    {
+        errMsg = i18n("No such album");
+        return false;
+    }
+
+    if (album == d->rootTAlbum || destAlbum == d->rootTAlbum)
+    {
+        errMsg = i18n("Cannot merge root tag");
+        return false;
+    }
+
+    if (album->m_firstChild)
+    {
+        errMsg = i18n("Only a tag without children can be merged!");
+        return false;
+    }
+
+    if (dialog)
+    {
+        QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
+                 qApp->applicationName(),
+                 i18n("Do you want to merge tag '%1' into tag '%2'?",
+                      album->title(), destAlbum->title()),
+                 QMessageBox::Yes | QMessageBox::No,
+                 qApp->activeWindow());
+
+        int result = msgBox->exec();
+        delete msgBox;
+
+        if (result == QMessageBox::No)
+        {
+            return true;
+        }
+    }
+
+    int oldId   = album->id();
+    int mergeId = destAlbum->id();
+
+    if (oldId == mergeId)
+    {
+        return true;
+    }
+
+    QApplication::setOverrideCursor(Qt::WaitCursor);
+    QList<qlonglong> imageIds = CoreDbAccess().db()->getItemIDsInTag(oldId);
+
+    CoreDbOperationGroup group;
+    group.setMaximumTime(200);
+
+    foreach(const qlonglong& imageId, imageIds)
+    {
+        QList<FaceTagsIface> facesList = FaceTagsEditor().databaseFaces(imageId);
+        bool foundFace                 = false;
+
+        foreach(const FaceTagsIface& face, facesList)
+        {
+            if (face.tagId() == oldId)
+            {
+                foundFace = true;
+                FaceTagsEditor().removeFace(face);
+                FaceTagsEditor().add(imageId, mergeId, face.region(), false);
+            }
+        }
+
+        if (!foundFace)
+        {
+            ImageInfo info(imageId);
+            info.removeTag(oldId);
+            info.setTag(mergeId);
+            group.allowLift();
+        }
+    }
+
+    QApplication::restoreOverrideCursor();
+
+    if (!deleteTAlbum(album, errMsg, false))
+    {
+        return false;
+    }
+
+    askUserForWriteChangedTAlbumToFiles(imageIds);
 
     return true;
 }
@@ -3682,20 +3712,20 @@ void AlbumManager::askUserForWriteChangedTAlbumToFiles(const QList<qlonglong>& i
     if (imageIds.count() > 100)
     {
         QPointer<QMessageBox> msgBox = new QMessageBox(QMessageBox::Warning,
-                           qApp->applicationName(),
-                           i18n("This operation can take a long time in the background.\n"
-                                "Do you want to write the metadata to %1 files now?",
-                                imageIds.count()),
-                           QMessageBox::Yes | QMessageBox::No,
-                           qApp->activeWindow());
+                 qApp->applicationName(),
+                 i18n("This operation can take a long time in the background.\n"
+                      "Do you want to write the metadata to %1 files now?",
+                      imageIds.count()),
+                 QMessageBox::Yes | QMessageBox::No,
+                 qApp->activeWindow());
 
-        if (msgBox->exec() != QMessageBox::Yes)
+        int result = msgBox->exec();
+        delete msgBox;
+
+        if (result != QMessageBox::Yes)
         {
-            delete msgBox;
             return;
         }
-        
-        delete msgBox;
     }
 
     ImageInfoList infos(imageIds);

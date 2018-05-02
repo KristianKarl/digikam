@@ -4,7 +4,7 @@
  * http://www.digikam.org
  *
  * Date        : 2004-09-29
- * Description : perform lossless rotation/flip to JPEG file
+ * Description : helper methods for JPEG image format.
  *
  * Copyright (C) 2004-2005 by Renchi Raju <renchi dot raju at gmail dot com>
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
@@ -37,11 +37,6 @@
 #include <cstdio>
 #include <cstdlib>
 
-// Digikam includes
-
-#include <dimg.h>
-#include <dmetadata.h>
-
 // C ANSI includes
 
 extern "C"
@@ -56,13 +51,13 @@ extern "C"
 
 // Pragma directives to reduce warnings from libjpeg transupp header file.
 #if !defined(Q_OS_DARWIN) && defined(Q_CC_GNU)
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunused-parameter"
+#   pragma GCC diagnostic push
+#   pragma GCC diagnostic ignored "-Wunused-parameter"
 #endif
 
 #if defined(Q_OS_DARWIN) && defined(Q_CC_CLANG)
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunused-parameter"
+#   pragma clang diagnostic push
+#   pragma clang diagnostic ignored "-Wunused-parameter"
 #endif
 
 extern "C"
@@ -72,11 +67,11 @@ extern "C"
 
 // Restore warnings
 #if !defined(Q_OS_DARWIN) && defined(Q_CC_GNU)
-#pragma GCC diagnostic pop
+#   pragma GCC diagnostic pop
 #endif
 
 #if defined(Q_OS_DARWIN) && defined(Q_CC_CLANG)
-#pragma clang diagnostic pop
+#   pragma clang diagnostic pop
 #endif
 
 // Qt includes
@@ -85,18 +80,18 @@ extern "C"
 #include <QByteArray>
 #include <QFile>
 #include <QFileInfo>
+#include <qplatformdefs.h>
 
 // Local includes
 
 #include "digikam_debug.h"
-#include "digikam_config.h"
-#include "dmetadata.h"
+#include "dimg.h"
 #include "metadatasettings.h"
 #include "filereadwritelock.h"
 
 #ifdef Q_OS_WIN
-#include "windows.h"
-#include "jpegwin.h"
+#   include "windows.h"
+#   include "jpegwin.h"
 #endif
 
 namespace Digikam
@@ -541,9 +536,9 @@ void JpegRotator::updateMetadata(const QString& fileName, const MetaEngineRotati
 
     // File properties restoration.
 
-    struct stat st;
+    QT_STATBUF st;
 
-    if (::stat(QFile::encodeName(m_file).constData(), &st) == 0)
+    if (QT_STAT(QFile::encodeName(m_file).constData(), &st) == 0)
     {
         // See bug #329608: Restore file modification time from original file only if updateFileTimeStamp for Setup/Metadata is turned off.
 

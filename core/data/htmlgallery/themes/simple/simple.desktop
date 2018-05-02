@@ -1,4 +1,5 @@
 [Desktop Entry]
+Type=Theme
 Name=Simple
 Name[ca]=Senzill
 Name[ca@valencia]=Senzill
@@ -43,7 +44,7 @@ Comment[uk]=Проста і легка тема
 Comment[x-test]=xxA simple and light themexx
 Comment[zh_CN]=简洁明快的主题
 
-[X-HTMLExport Author]
+[X-HTMLGallery Author]
 Name=Aurélien Gâteau
 Name[ca]=Aurélien Gâteau
 Name[ca@valencia]=Aurélien Gâteau
@@ -69,7 +70,7 @@ Name[x-test]=xxAurélien Gâteauxx
 Name[zh_CN]=Aurélien Gâteau
 Url=mailto:aurelien.gateau@free.fr
 
-[X-HTMLExport Parameter style]
+[X-HTMLGallery Parameter style]
 Name=Style
 Name[ca]=Estil
 Name[ca@valencia]=Estil
@@ -96,12 +97,12 @@ Name[x-test]=xxStylexx
 Name[zh_CN]=样式
 Type=list
 Default=natural.css
-Value_0=natural.css
-Caption_0=Natural
-Value_1=dark.css
-Caption_1=Dark
+Value-0=natural.css
+Caption-0=Natural
+Value-1=dark.css
+Caption-1=Dark
 
-[X-HTMLExport Preview]
+[X-HTMLGallery Preview]
 Name=Simple
 Name[ca]=Senzill
 Name[ca@valencia]=Senzill

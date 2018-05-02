@@ -1,4 +1,5 @@
 [Desktop Entry]
+Type=Theme
 Name=Elegant
 Name[ca]=Elegant
 Name[ca@valencia]=Elegant
@@ -37,7 +38,7 @@ Comment[tr]="Basit" tema tabanlıdır. Slayt gösterisinde resimleri göstermek 
 Comment[uk]=Заснована на темі «Проста». Використовує Lytebox, автором якого є Markus F. Hay для показу слайдів із зображень.
 Comment[x-test]=xxBased on the "Simple" theme. Uses Lytebox by Markus F. Hay to display the images in a slideshow.xx
 
-[X-HTMLExport Author]
+[X-HTMLGallery Author]
 Name=Wojciech Jarosz
 Name[ca]=Wojciech Jarosz
 Name[ca@valencia]=Wojciech Jarosz
@@ -60,7 +61,7 @@ Name[uk]=Wojciech Jarosz
 Name[x-test]=xxWojciech Jaroszxx
 Url=mailto:wjarosz@ucsd.edu
 
-[X-HTMLExport Preview]
+[X-HTMLGallery Preview]
 Name=Elegant
 Name[ca]=Elegant
 Name[ca@valencia]=Elegant
@@ -82,7 +83,7 @@ Name[uk]=Елегантний
 Name[x-test]=xxElegantxx
 Url=preview.png
 
-[X-HTMLExport Parameter author]
+[X-HTMLGallery Parameter author]
 Name=Author
 Name[ca]=Autor
 Name[ca@valencia]=Autor
@@ -107,7 +108,7 @@ Name[zh_CN]=作者
 Type=string
 Default=
 
-[X-HTMLExport Parameter pageSize]
+[X-HTMLGallery Parameter pageSize]
 Name=Images per page
 Name[ca]=Imatges per pàgina
 Name[ca@valencia]=Imatges per pàgina
@@ -132,7 +133,7 @@ Name[zh_CN]=每页的图像
 Type=int
 Default=20
 
-[X-HTMLExport Parameter paginationLocation]
+[X-HTMLGallery Parameter paginationLocation]
 Name=Page links location
 Name[ca]=La pàgina enllaça amb la ubicació
 Name[ca@valencia]=La pàgina enllaça amb la ubicació
@@ -154,14 +155,14 @@ Name[x-test]=xxPage links locationxx
 Name[zh_CN]=页面链接位置
 Type=list
 Default=top
-Value_0=bottom
-Caption_0=Bottom
-Value_1=top
-Caption_1=Top
-Value_2=both
-Caption_2=Both
+Value-0=bottom
+Caption-0=Bottom
+Value-1=top
+Caption-1=Top
+Value-2=both
+Caption-2=Both
 
-[X-HTMLExport Parameter useLyteBox]
+[X-HTMLGallery Parameter useLyteBox]
 Name=Use LyteBox
 Name[ca]=Usa el LyteBox
 Name[ca@valencia]=Usa el LyteBox
@@ -184,12 +185,12 @@ Name[x-test]=xxUse LyteBoxxx
 Name[zh_CN]=使用 LyteBox
 Type=list
 Default=true
-Value_0=true
-Caption_0=Yes
-Value_1=false
-Caption_1=No
+Value-0=true
+Caption-0=Yes
+Value-1=false
+Caption-1=No
 
-[X-HTMLExport Parameter slideInterval]
+[X-HTMLGallery Parameter slideInterval]
 Name=LyteBox Slideshow Interval
 Name[ca]=Interval entre diapositives del LyteBox
 Name[ca@valencia]=Interval entre diapositives del LyteBox
@@ -211,18 +212,18 @@ Name[x-test]=xxLyteBox Slideshow Intervalxx
 Name[zh_CN]=LyteBox 幻灯片间隔
 Type=list
 Default=6000
-Value_0=2000
-Caption_0=2 seconds
-Value_1=4000
-Caption_1=4 seconds
-Value_2=6000
-Caption_2=6 seconds
-Value_3=8000
-Caption_3=8 seconds
-Value_4=10000
-Caption_4=10 seconds
+Value-0=2000
+Caption-0=2 seconds
+Value-1=4000
+Caption-1=4 seconds
+Value-2=6000
+Caption-2=6 seconds
+Value-3=8000
+Caption-3=8 seconds
+Value-4=10000
+Caption-4=10 seconds
 
-[X-HTMLExport Parameter style]
+[X-HTMLGallery Parameter style]
 Name=Style
 Name[ca]=Estil
 Name[ca@valencia]=Estil
@@ -249,14 +250,14 @@ Name[x-test]=xxStylexx
 Name[zh_CN]=样式
 Type=list
 Default=dark.css
-Value_0=natural.css
-Caption_0=Natural
-Value_1=dark.css
-Caption_1=Dark
-Value_2=custom
-Caption_2=Custom
+Value-0=natural.css
+Caption-0=Natural
+Value-1=dark.css
+Caption-1=Dark
+Value-2=custom
+Caption-2=Custom
 
-[X-HTMLExport Parameter bgColor]
+[X-HTMLGallery Parameter bgColor]
 Name=Custom Background Color
 Name[ca]=Color personalitzat pel fons
 Name[ca@valencia]=Color personalitzat pel fons
@@ -281,7 +282,7 @@ Name[zh_CN]=自定义背景颜色
 Type=color
 Default=#000000
 
-[X-HTMLExport Parameter fgColor]
+[X-HTMLGallery Parameter fgColor]
 Name=Custom Foreground Color
 Name[ca]=Color personalitzat pel primer pla
 Name[ca@valencia]=Color personalitzat pel primer pla
@@ -305,7 +306,7 @@ Name[zh_CN]=自定义前景颜色
 Type=color
 Default=#888888
 
-[X-HTMLExport Parameter linkColor]
+[X-HTMLGallery Parameter linkColor]
 Name=Custom Link Color
 Name[ca]=Color personalitzat per a l'enllaç
 Name[ca@valencia]=Color personalitzat per a l'enllaç
@@ -329,7 +330,7 @@ Name[zh_CN]=自定义链接颜色
 Type=color
 Default=#aaaaaa
 
-[X-HTMLExport Parameter hoverLinkColor]
+[X-HTMLGallery Parameter hoverLinkColor]
 Name=Custom Hover Link Color
 Name[ca]=Color personalitzat per a l'enllaç en passar-hi per sobre
 Name[ca@valencia]=Color personalitzat per a l'enllaç en passar-hi per sobre
@@ -353,7 +354,7 @@ Name[zh_CN]=自定义悬停链接颜色
 Type=color
 Default=#ffffff
 
-[X-HTMLExport Parameter visitedLinkColor]
+[X-HTMLGallery Parameter visitedLinkColor]
 Name=Custom Visited Link Color
 Name[ca]=Color personalitzat per a l'enllaç visitat
 Name[ca@valencia]=Color personalitzat per a l'enllaç visitat
@@ -377,7 +378,7 @@ Name[zh_CN]=自定义已访问链接颜色
 Type=color
 Default=#aaaaaa
 
-[X-HTMLExport Parameter frameColor]
+[X-HTMLGallery Parameter frameColor]
 Name=Custom Frame Color
 Name[ca]=Color personalitzat pel marc
 Name[ca@valencia]=Color personalitzat pel marc
@@ -401,7 +402,7 @@ Name[zh_CN]=自定义相框颜色
 Type=color
 Default=#222222
 
-[X-HTMLExport Parameter frameBorderColor]
+[X-HTMLGallery Parameter frameBorderColor]
 Name=Custom Frame Border Color
 Name[ca]=Color personalitzat per a la vora del marc
 Name[ca@valencia]=Color personalitzat per a la vora del marc
@@ -425,7 +426,7 @@ Name[zh_CN]=自定义相框边框颜色
 Type=color
 Default=#444444
 
-[X-HTMLExport Parameter selectedFrameColor]
+[X-HTMLGallery Parameter selectedFrameColor]
 Name=Custom Selected Frame Color
 Name[ca]=Color personalitzat pel marc seleccionat
 Name[ca@valencia]=Color personalitzat pel marc seleccionat
@@ -449,7 +450,7 @@ Name[zh_CN]=自定义已选择相框颜色
 Type=color
 Default=#555555
 
-[X-HTMLExport Parameter selectedFrameBorderColor]
+[X-HTMLGallery Parameter selectedFrameBorderColor]
 Name=Custom Selected Frame Border Color
 Name[ca]=Color personalitzat per a la vora del marc seleccionat
 Name[ca@valencia]=Color personalitzat per a la vora del marc seleccionat

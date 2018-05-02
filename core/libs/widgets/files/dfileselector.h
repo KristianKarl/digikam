@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DFILE_SELECTOR_H
-#define DFILE_SELECTOR_H
+#ifndef DIGIKAM_DFILE_SELECTOR_H
+#define DIGIKAM_DFILE_SELECTOR_H
 
 // Qt includes
 
@@ -57,10 +57,10 @@ public:
     void setFileDlgPath(const QString& path);
     QString fileDlgPath() const;
 
-    void setFileDlgMode(DFileDialog::FileMode mode);
+    void setFileDlgMode(QFileDialog::FileMode mode);
     void setFileDlgFilter(const QString& filter);
     void setFileDlgTitle(const QString& title);
-    void setFileDlgOptions(DFileDialog::Options opts);
+    void setFileDlgOptions(QFileDialog::Options opts);
 
 Q_SIGNALS:
 
@@ -79,4 +79,4 @@ private:
 
 } // namespace Digikam
 
-#endif // DFILE_SELECTOR_H
+#endif // DIGIKAM_DFILE_SELECTOR_H

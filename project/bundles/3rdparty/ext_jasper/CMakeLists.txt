@@ -10,10 +10,23 @@ SET(PREFIX_ext_jasper "${EXTPREFIX}")
 
 ExternalProject_Add(ext_jasper
     DOWNLOAD_DIR ${EXTERNALS_DOWNLOAD_DIR}
-    URL http://www.ece.uvic.ca/~frodo/jasper/software/jasper-1.900.29.tar.gz
-    URL_MD5 4619ec9860c10e557b3f192f5e76f596
+    URL https://github.com/mdadams/jasper/archive/version-2.0.14.tar.gz
+    URL_MD5 9ef0e943d5b2c364ae84974a753841b8
 
-    CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=${PREFIX_ext_jasper} ${GLOBAL_AUTOMAKE_PROFILE} --disable-opengl
+    INSTALL_DIR ${PREFIX_ext_jasper}
+
+    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${PREFIX_ext_jasper}
+               -DCMAKE_BUILD_TYPE=${GLOBAL_BUILD_TYPE}
+               ${GLOBAL_PROFILE}
+               -DCMAKE_SYSTEM_PREFIX_PATH=${PREFIX_ext_jasper}
+               -DJAS_ENABLE_SHARED=ON
+               -DJAS_ENABLE_LIBJPEG=ON
+               -DJAS_ENABLE_OPENGL=OFF
+               -DJAS_LOCAL=OFF
+               -DJAS_ENABLE_DOC=OFF
+               -DJAS_ENABLE_PROGRAMS=OFF
+               -Wno-dev
+
     UPDATE_COMMAND ""
     ALWAYS 0
 )

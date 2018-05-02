@@ -4,7 +4,7 @@
  * http://www.digikam.org
  *
  * Date        : 2004-09-29
- * Description : perform lossless rotation/flip to JPEG file
+ * Description : helper methods for JPEG image format.
  *
  * Copyright (C) 2004-2005 by Renchi Raju <renchi dot raju at gmail dot com>
  * Copyright (C) 2006-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
@@ -33,8 +33,9 @@
 
 // Local includes
 
-#include "dmetadata.h"
+#include "digikam_config.h"
 #include "digikam_export.h"
+#include "dmetadata.h"
 #include "metaengine_rotation.h"
 
 namespace Digikam
