@@ -16,7 +16,8 @@ Database     : New video metadata parser based on ffmpeg to populate database.
 Search       : Add video support to find files based on properties registered on database.
 
 General      : Add QWebEngine support.
-General      : Update internal Libraw to last 0.18.9.
+General      : Update internal Libraw to last 0.18.10.
+General      : Fix all Krazy static analyzer reports.
 
 Tags         : Add possibility to merge tags by drag & drop.
 
@@ -210,4 +211,10 @@ BUGFIXES:
 182 ==> 367596 - Sub-folder count images but don't show them (unsupported JPEG file?).
 183 ==> 379922 - Digikam won't remove tags set by Windows Explorer.
 184 ==> 379081 - GPS data are in file but geolocation indicator is not shown and map view empty.
-185 ==> 
+185 ==> 354819 - Specific pictures not showing up in digikam.
+186 ==> 393855 - MySQL/MariaDB upgrade fails.
+187 ==> 384603 - Camera Creation Date not set from EXIF data.
+188 ==> 386959 - Properties view: wrong creation date [patch].
+189 ==> 393970 - No mts video thumbnails.
+190 ==> 
+
