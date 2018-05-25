@@ -49,9 +49,9 @@ DBJob::~DBJob()
 // ----------------------------------------------
 
 AlbumsJob::AlbumsJob(const AlbumsDBJobInfo& jobInfo)
-    : DBJob()
+    : DBJob(),
+      m_jobInfo(jobInfo)
 {
-    m_jobInfo = jobInfo;
 }
 
 AlbumsJob::~AlbumsJob()
@@ -72,7 +72,7 @@ void AlbumsJob::run()
         lister.setListOnlyAvailable(m_jobInfo.isListAvailableImagesOnly());
 
         // Send data every 200 images to be more responsive
-        Digikam::ImageListerJobGrowingPartsSendingReceiver receiver(this, 200, 2000, 100);
+        ImageListerJobGrowingPartsSendingReceiver receiver(this, 200, 2000, 100);
         lister.listAlbum(&receiver, m_jobInfo.albumRootId(), m_jobInfo.album());
         receiver.sendData();
     }
@@ -83,9 +83,9 @@ void AlbumsJob::run()
 // ----------------------------------------------
 
 DatesJob::DatesJob(const DatesDBJobInfo& jobInfo)
-    : DBJob()
+    : DBJob(),
+      m_jobInfo(jobInfo)
 {
-    m_jobInfo = jobInfo;
 }
 
 DatesJob::~DatesJob()
@@ -118,9 +118,9 @@ void DatesJob::run()
 // ----------------------------------------------
 
 GPSJob::GPSJob(const GPSDBJobInfo& jobInfo)
-    : DBJob()
+    : DBJob(),
+      m_jobInfo(jobInfo)
 {
-    m_jobInfo = jobInfo;
 }
 
 GPSJob::~GPSJob()
@@ -164,9 +164,9 @@ void GPSJob::run()
 // ----------------------------------------------
 
 TagsJob::TagsJob(const TagsDBJobInfo& jobInfo)
-    : DBJob()
+    : DBJob(),
+      m_jobInfo(jobInfo)
 {
-    m_jobInfo = jobInfo;
 }
 
 TagsJob::~TagsJob()
@@ -229,9 +229,9 @@ void TagsJob::run()
 // ----------------------------------------------
 
 SearchesJob::SearchesJob(const SearchesDBJobInfo& jobInfo)
-    : DBJob()
+    : DBJob(),
+      m_jobInfo(jobInfo)
 {
-    m_jobInfo = jobInfo;
 }
 
 SearchesJob::~SearchesJob()
@@ -255,7 +255,7 @@ void SearchesJob::run()
         // Send data every 200 images to be more responsive
         ImageListerJobPartsSendingReceiver receiver(this, 200);
 
-        foreach(SearchInfo info, infos)
+        foreach(const SearchInfo& info, infos)
         {
             if (info.type == DatabaseSearch::HaarSearch)
             {

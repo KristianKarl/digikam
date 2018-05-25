@@ -38,18 +38,27 @@ LevelsFilter::LevelsFilter(QObject* const parent)
     initFilter();
 }
 
-LevelsFilter::LevelsFilter(DImg* const orgImage, QObject* const parent, const LevelsContainer& settings)
-    : DImgThreadedFilter(orgImage, parent, QLatin1String("LevelsFilter"))
+LevelsFilter::LevelsFilter(DImg* const orgImage,
+                           QObject* const parent,
+                           const LevelsContainer& settings)
+    : DImgThreadedFilter(orgImage, parent,
+                         QLatin1String("LevelsFilter")),
+      m_settings(settings)
 {
-    m_settings = settings;
     initFilter();
 }
 
-LevelsFilter::LevelsFilter(const LevelsContainer& settings, DImgThreadedFilter* const master,
-                           const DImg& orgImage, DImg& destImage, int progressBegin, int progressEnd)
-    : DImgThreadedFilter(master, orgImage, destImage, progressBegin, progressEnd, QLatin1String("LevelsFilter"))
+LevelsFilter::LevelsFilter(const LevelsContainer& settings,
+                           DImgThreadedFilter* const master,
+                           const DImg& orgImage,
+                           DImg& destImage,
+                           int progressBegin,
+                           int progressEnd)
+    : DImgThreadedFilter(master, orgImage, destImage,
+                         progressBegin, progressEnd,
+                         QLatin1String("LevelsFilter")),
+      m_settings(settings)
 {
-    m_settings = settings;
     initFilter();
     destImage = m_destImage;
 }
@@ -75,7 +84,8 @@ void LevelsFilter::filterImage()
 
     postProgress(50);
 
-    m_destImage = DImg(m_orgImage.width(), m_orgImage.height(), m_orgImage.sixteenBit(), m_orgImage.hasAlpha());
+    m_destImage = DImg(m_orgImage.width(), m_orgImage.height(),
+                       m_orgImage.sixteenBit(), m_orgImage.hasAlpha());
     postProgress(60);
 
     levels.levelsCalculateTransfers();
@@ -85,7 +95,8 @@ void LevelsFilter::filterImage()
     levels.levelsLutSetup(AlphaChannel);
     postProgress(80);
 
-    levels.levelsLutProcess(m_orgImage.bits(), m_destImage.bits(), m_orgImage.width(), m_orgImage.height());
+    levels.levelsLutProcess(m_orgImage.bits(), m_destImage.bits(),
+                            m_orgImage.width(), m_orgImage.height());
     postProgress(90);
 }
 
@@ -94,7 +105,7 @@ FilterAction LevelsFilter::filterAction()
     FilterAction action(FilterIdentifier(), CurrentVersion());
     action.setDisplayableName(DisplayableName());
 
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0 ; i < 5 ; ++i)
     {
         action.addParameter(QString::fromLatin1("gamma[%1]").arg(i),   m_settings.gamma[i]);
         action.addParameter(QString::fromLatin1("hInput[%1]").arg(i),  m_settings.hInput[i]);
@@ -108,7 +119,7 @@ FilterAction LevelsFilter::filterAction()
 
 void LevelsFilter::readParameters(const Digikam::FilterAction& action)
 {
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0 ; i < 5 ; ++i)
     {
         m_settings.gamma[i]   = action.parameter(QString::fromLatin1("gamma[%1]").arg(i)).toDouble();
         m_settings.hInput[i]  = action.parameter(QString::fromLatin1("hInput[%1]").arg(i)).toInt();

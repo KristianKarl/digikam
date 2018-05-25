@@ -51,19 +51,19 @@ protected:
 
 Q_SIGNALS:
 
-    void signalOneProccessed();
     void signalError(const QString& errMsg);
+    void signalOneProccessed(const QUrl& url);
 };
 
 // ---------------------------------------
 
-class DIGIKAM_EXPORT CopyJob : public IOJob
+class DIGIKAM_EXPORT CopyOrMoveJob : public IOJob
 {
     Q_OBJECT
 
 public:
 
-    explicit CopyJob(IOJobData* const data);
+    explicit CopyOrMoveJob(IOJobData* const data);
 
 protected:
 
@@ -105,8 +105,7 @@ public:
 
 Q_SIGNALS:
 
-    void signalRenamed(const QUrl& oldUrl);
-    void signalRenameFailed(const QUrl& oldUrl);
+    void signalRenameFailed(const QUrl& url);
 
 protected:
 

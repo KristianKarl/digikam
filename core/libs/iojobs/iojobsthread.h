@@ -47,16 +47,10 @@ public:
     ~IOJobsThread();
 
     /**
-     * @brief Starts a number of jobs to copy source files to destination
+     * @brief Starts a number of jobs to copy or move source files to destination
      * @param data: IOJobsData container
      */
-    void copy(IOJobData* const data);
-
-    /**
-     * @brief Starts a number of jobs to move source files to destination
-     * @param data: IOJobsData container
-     */
-    void move(IOJobData* const data);
+    void copyOrMove(IOJobData* const data);
 
     /**
      * @brief Starts a number of jobs to delete multiple files
@@ -123,9 +117,8 @@ Q_SIGNALS:
 
     void finished();
 
-    void signalOneProccessed();
-    void signalRenamed(const QUrl& oldUrl);
-    void signalRenameFailed(const QUrl& oldUrl);
+    void signalOneProccessed(const QUrl& url);
+    void signalRenameFailed(const QUrl& url);
 
     void collectionTrashItemInfo(const DTrashItemInfo& trashItemInfo);
 

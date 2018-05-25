@@ -86,14 +86,14 @@ public:
     static void del(PAlbum* const album, bool useTrash);
 
     /// Rename item to new name
-    static void rename(const ImageInfo& info, const QString& newName);
+    static void rename(const ImageInfo& info, const QString& newName, bool overwrite = false);
 
     static DIO* instance();
 
 Q_SIGNALS:
 
-    void signalRenameSucceeded(const QUrl&);
-    void signalRenameFailed(const QUrl&);
+    void signalRenameSucceeded(const QUrl& url);
+    void signalRenameFailed(const QUrl& url);
 
 private:
 
@@ -103,14 +103,14 @@ private:
     void processJob(IOJobData* const data);
     void createJob(IOJobData* const data);
 
-    ProgressItem* getProgressItem(int operation) const;
-    QPair<QString, QString> getItemStrings(int operation)   const;
+    QString getItemString(IOJobData* const data)         const;
+    ProgressItem* getProgressItem(IOJobData* const data) const;
     void addAlbumChildrenToList(QList<int>& list, Album* const album);
 
 private Q_SLOTS:
 
     void slotResult();
-    void slotOneProccessed();
+    void slotOneProccessed(const QUrl& url);
     void slotCancel(ProgressItem* item);
 
 private:

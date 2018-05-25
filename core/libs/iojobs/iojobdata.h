@@ -78,7 +78,8 @@ public:
 
     explicit IOJobData(int operation,
                        const ImageInfo& info,
-                       const QString& newName);
+                       const QString& newName,
+                       bool overwrite = false);
 
     ~IOJobData();
 
@@ -88,23 +89,24 @@ public:
     void             setDestUrl(const QUrl& srcUrl,
                                 const QUrl& destUrl);
 
-    void             addProcessedUrl(const QUrl& url);
+    void             setProgressId(const QString& id);
 
     int              operation()                          const;
+
+    bool             overwrite()                          const;
 
     PAlbum*          srcAlbum()                           const;
     PAlbum*          destAlbum()                          const;
 
-    QUrl             srcUrl()                             const;
     QUrl             destUrl(const QUrl& srcUrl = QUrl()) const;
     QUrl             getNextUrl()                         const;
 
-    ImageInfo        imageInfo()                          const;
+    QString          getProgressId()                      const;
+
+    ImageInfo        findImageInfo(const QUrl& url)       const;
 
     QList<QUrl>      sourceUrls()                         const;
     QList<ImageInfo> imageInfos()                         const;
-
-    QList<QUrl>      processedUrls()                      const;
 
 private:
 

@@ -42,6 +42,7 @@ public:
 
     explicit Private()
       : operation(Unknown),
+        overwrite(false),
         srcAlbum(0),
         destAlbum(0)
     {
@@ -49,17 +50,20 @@ public:
 
     int              operation;
 
+    bool             overwrite;
+
     PAlbum*          srcAlbum;
     PAlbum*          destAlbum;
 
     QMap<QUrl, QUrl> changeDestMap;
     QList<ImageInfo> imageInfoList;
     QList<QUrl>      sourceUrlList;
-    QList<QUrl>      processedList;
 
     QUrl             destUrl;
 
-    QMutex           lock;
+    QString          progressId;
+
+    QMutex           mutex;
 };
 
 IOJobData::IOJobData(int operation,
@@ -125,14 +129,16 @@ IOJobData::IOJobData(int operation,
 
 IOJobData::IOJobData(int operation,
                      const ImageInfo& info,
-                     const QString& newName)
+                     const QString& newName,
+                     bool overwrite)
     : d(new Private)
 {
     d->operation = operation;
+    d->overwrite = overwrite;
 
     setImageInfos(QList<ImageInfo>() << info);
 
-    d->destUrl = srcUrl().adjusted(QUrl::RemoveFilename);
+    d->destUrl = info.fileUrl().adjusted(QUrl::RemoveFilename);
     d->destUrl.setPath(d->destUrl.path() + newName);
 }
 
@@ -164,14 +170,19 @@ void IOJobData::setDestUrl(const QUrl& srcUrl,
     d->changeDestMap.insert(srcUrl, destUrl);
 }
 
-void IOJobData::addProcessedUrl(const QUrl& url)
+void IOJobData::setProgressId(const QString& id)
 {
-    d->processedList << url;
+    d->progressId = id;
 }
 
 int IOJobData::operation() const
 {
     return d->operation;
+}
+
+bool IOJobData::overwrite() const
+{
+    return d->overwrite;
 }
 
 PAlbum* IOJobData::srcAlbum() const
@@ -182,20 +193,6 @@ PAlbum* IOJobData::srcAlbum() const
 PAlbum* IOJobData::destAlbum() const
 {
     return d->destAlbum;
-}
-
-QUrl IOJobData::srcUrl() const
-{
-    if (!d->imageInfoList.isEmpty())
-    {
-        return d->imageInfoList.first().fileUrl();
-    }
-    else if (d->sourceUrlList.isEmpty())
-    {
-        return QUrl();
-    }
-
-    return d->sourceUrlList.first();
 }
 
 QUrl IOJobData::destUrl(const QUrl& srcUrl) const
@@ -210,7 +207,7 @@ QUrl IOJobData::destUrl(const QUrl& srcUrl) const
 
 QUrl IOJobData::getNextUrl() const
 {
-    d->lock.lock();
+    d->mutex.lock();
     QUrl url;
 
     if (!d->sourceUrlList.isEmpty())
@@ -218,18 +215,26 @@ QUrl IOJobData::getNextUrl() const
         url = d->sourceUrlList.takeFirst();
     }
 
-    d->lock.unlock();
+    d->mutex.unlock();
     return url;
 }
 
-ImageInfo IOJobData::imageInfo() const
+QString IOJobData::getProgressId() const
 {
-    if (d->imageInfoList.isEmpty())
+    return d->progressId;
+}
+
+ImageInfo IOJobData::findImageInfo(const QUrl& url) const
+{
+    foreach(const ImageInfo& info, d->imageInfoList)
     {
-        return ImageInfo();
+        if (info.fileUrl() == url)
+        {
+            return info;
+        }
     }
 
-    return d->imageInfoList.first();
+    return ImageInfo();
 }
 
 QList<QUrl> IOJobData::sourceUrls() const
@@ -240,11 +245,6 @@ QList<QUrl> IOJobData::sourceUrls() const
 QList<ImageInfo> IOJobData::imageInfos() const
 {
     return d->imageInfoList;
-}
-
-QList<QUrl> IOJobData::processedUrls() const
-{
-    return d->processedList;
 }
 
 } // namespace Digikam

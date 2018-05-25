@@ -73,34 +73,18 @@ IOJobsThread::~IOJobsThread()
     delete d;
 }
 
-void IOJobsThread::copy(IOJobData* const data)
+void IOJobsThread::copyOrMove(IOJobData* const data)
 {
     d->jobData = data;
 
     ActionJobCollection collection;
 
-    for (int i = 0 ; i < maximumNumberOfThreads() ; i++)
+    int threads = qMin(maximumNumberOfThreads(),
+                       data->sourceUrls().count());
+
+    for (int i = 0 ; i < threads ; i++)
     {
-        CopyJob* const j = new CopyJob(data);
-
-        connectOneJob(j);
-
-        collection.insert(j, 0);
-        d->jobsCount++;
-    }
-
-    appendJobs(collection);
-}
-
-void IOJobsThread::move(IOJobData* const data)
-{
-    d->jobData = data;
-
-    ActionJobCollection collection;
-
-    for (int i = 0 ; i < maximumNumberOfThreads() ; i++)
-    {
-        CopyJob* const j = new CopyJob(data);
+        CopyOrMoveJob* const j = new CopyOrMoveJob(data);
 
         connectOneJob(j);
 
@@ -117,7 +101,10 @@ void IOJobsThread::deleteFiles(IOJobData* const data)
 
     ActionJobCollection collection;
 
-    for (int i = 0 ; i < maximumNumberOfThreads() ; i++)
+    int threads = qMin(maximumNumberOfThreads(),
+                       data->sourceUrls().count());
+
+    for (int i = 0 ; i < threads ; i++)
     {
         DeleteJob* const j = new DeleteJob(data);
 
@@ -138,9 +125,6 @@ void IOJobsThread::renameFile(IOJobData* const data)
     RenameFileJob* const j = new RenameFileJob(data);
 
     connectOneJob(j);
-
-    connect(j, SIGNAL(signalRenamed(QUrl)),
-            this, SIGNAL(signalRenamed(QUrl)));
 
     connect(j, SIGNAL(signalRenameFailed(QUrl)),
             this, SIGNAL(signalRenameFailed(QUrl)));
@@ -227,8 +211,9 @@ void IOJobsThread::connectOneJob(IOJob* const j)
     connect(j, SIGNAL(signalDone()),
             this, SLOT(slotOneJobFinished()));
 
-    connect(j, SIGNAL(signalOneProccessed()),
-            this, SIGNAL(signalOneProccessed()));
+    connect(j, SIGNAL(signalOneProccessed(QUrl)),
+            this, SIGNAL(signalOneProccessed(QUrl)),
+            Qt::QueuedConnection);
 }
 
 void IOJobsThread::slotOneJobFinished()

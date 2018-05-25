@@ -369,7 +369,7 @@ QList<AlbumShortInfo> CoreDB::getAlbumShortInfos()
 {
     QList<QVariant> values;
 
-    d->db->execSql(QString::fromUtf8("SELECT Albums.id, Albums.relativePath, Albums.albumRoot from Albums ORDER BY Albums.id; "),
+    d->db->execSql(QString::fromUtf8("SELECT Albums.id, Albums.relativePath, Albums.albumRoot from Albums ORDER BY Albums.id;"),
                    &values);
 
     QList<AlbumShortInfo> albumList;
@@ -2041,7 +2041,7 @@ QList<CommentInfo> CoreDB::getImageComments(qlonglong imageID)
 }
 
 int CoreDB::setImageComment(qlonglong imageID, const QString& comment, DatabaseComment::Type type,
-                             const QString& language, const QString& author, const QDateTime& date)
+                            const QString& language, const QString& author, const QDateTime& date)
 {
     QVariantList boundValues;
     boundValues << imageID << (int)type << language << author << date << comment;
@@ -2162,8 +2162,8 @@ QList<CopyrightInfo> CoreDB::getImageCopyright(qlonglong imageID, const QString&
 }
 
 void CoreDB::setImageCopyrightProperty(qlonglong imageID, const QString& property,
-                                        const QString& value, const QString& extraValue,
-                                        CopyrightPropertyUnique uniqueness)
+                                       const QString& value, const QString& extraValue,
+                                       CopyrightPropertyUnique uniqueness)
 {
     if (uniqueness == PropertyUnique)
     {
@@ -2185,7 +2185,7 @@ void CoreDB::setImageCopyrightProperty(qlonglong imageID, const QString& propert
 }
 
 void CoreDB::removeImageCopyrightProperties(qlonglong imageID, const QString& property,
-                                             const QString& extraValue, const QString& value)
+                                            const QString& extraValue, const QString& value)
 {
     int removeBy = 0;
 
@@ -2642,7 +2642,7 @@ QStringList CoreDB::getDirtyOrMissingFaceImageUrls()
                                      " WHERE Images.status=1 AND Images.category=1 AND "
                                      " ( ImageScannedMatrix.imageid IS NULL "
                                      "   OR Images.modificationDate != ImageScannedMatrix.modificationDate "
-                                     "   OR Images.uniqueHash != ImageScannedMatrix.uniqueHash ); "),
+                                     "   OR Images.uniqueHash != ImageScannedMatrix.uniqueHash );"),
                    &values);
 
     QStringList urls;
@@ -2707,7 +2707,7 @@ QList<ItemScanInfo> CoreDB::getIdenticalFiles(const QString& uniqueHash, qlonglo
 
     // find items with same fingerprint
     d->db->execSql(QString::fromUtf8("SELECT id, album, name, status, category, modificationDate, fileSize FROM Images "
-                           " WHERE fileSize=? AND uniqueHash=? AND album IS NOT NULL; "),
+                           " WHERE fileSize=? AND uniqueHash=? AND album IS NOT NULL;"),
                    fileSize, uniqueHash,
                    &values);
 
@@ -4449,6 +4449,11 @@ void CoreDB::deleteItem(int albumID, const QString& file)
 {
     qlonglong imageId = getImageId(albumID, file);
 
+    if (imageId == -1)
+    {
+        return;
+    }
+
     d->db->execSql(QString::fromUtf8("DELETE FROM Images WHERE id=?;"),
                    imageId);
 
@@ -4621,7 +4626,7 @@ void CoreDB::moveItem(int srcAlbumID, const QString& srcName,
 }
 
 int CoreDB::copyItem(int srcAlbumID, const QString& srcName,
-                      int dstAlbumID, const QString& dstName)
+                     int dstAlbumID, const QString& dstName)
 {
     // find id of src image
     qlonglong srcId = getImageId(srcAlbumID, srcName);
@@ -4670,7 +4675,7 @@ void CoreDB::copyImageAttributes(qlonglong srcId, qlonglong dstId)
 
     DatabaseFields::Set fields;
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageInformation "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageInformation "
                            " (imageid, rating, creationDate, digitizationDate, orientation, "
                            "  width, height, format, colorDepth, colorModel) "
                            "SELECT ?, rating, creationDate, digitizationDate, orientation, "
@@ -4679,7 +4684,7 @@ void CoreDB::copyImageAttributes(qlonglong srcId, qlonglong dstId)
                    dstId, srcId);
     fields |= DatabaseFields::ImageInformationAll;
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageMetadata "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageMetadata "
                            " (imageid, make, model, lens, aperture, focalLength, focalLength35, "
                            "  exposureTime, exposureProgram, exposureMode, sensitivity, flash, whiteBalance, "
                            "  whiteBalanceColorTemperature, meteringMode, subjectDistance, subjectDistanceCategory) "
@@ -4690,7 +4695,7 @@ void CoreDB::copyImageAttributes(qlonglong srcId, qlonglong dstId)
                    dstId, srcId);
     fields |= DatabaseFields::ImageMetadataAll;
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO VideoMetadata "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO VideoMetadata "
                            " (imageid, aspectRatio, audioBitRate, audioChannelType, audioCompressor, duration, frameRate, "
                            "  videoCodec) "
                            "SELECT ?, aspectRatio, audioBitRate, audioChannelType, audioCompressor, duration, frameRate, "
@@ -4699,7 +4704,7 @@ void CoreDB::copyImageAttributes(qlonglong srcId, qlonglong dstId)
                    dstId, srcId);
     fields |= DatabaseFields::VideoMetadataAll;
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImagePositions "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImagePositions "
                            " (imageid, latitude, latitudeNumber, longitude, longitudeNumber, "
                            "  altitude, orientation, tilt, roll, accuracy, description) "
                            "SELECT ?, latitude, latitudeNumber, longitude, longitudeNumber, "
@@ -4708,32 +4713,32 @@ void CoreDB::copyImageAttributes(qlonglong srcId, qlonglong dstId)
                    dstId, srcId);
     fields |= DatabaseFields::ImagePositionsAll;
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageComments "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageComments "
                            " (imageid, type, language, author, date, comment) "
                            "SELECT ?, type, language, author, date, comment "
                            "FROM ImageComments WHERE imageid=?;"),
                    dstId, srcId);
     fields |= DatabaseFields::ImageCommentsAll;
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageCopyright "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageCopyright "
                            " (imageid, property, value, extraValue) "
                            "SELECT ?, property, value, extraValue "
                            "FROM ImageCopyright WHERE imageid=?;"),
                    dstId, srcId);
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageHistory "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageHistory "
                            " (imageid, uuid, history) "
                            "SELECT ?, uuid, history "
                            "FROM ImageHistory WHERE imageid=?;"),
                    dstId, srcId);
     fields |= DatabaseFields::ImageHistoryInfoAll;
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageRelations "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageRelations "
                            " (subject, object, type) "
                            "SELECT ?, object, type "
                            "FROM ImageRelations WHERE subject=?;"),
                    dstId, srcId);
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageRelations "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageRelations "
                            " (subject, object, type) "
                            "SELECT subject, ?, type "
                            "FROM ImageRelations WHERE object=?;"),
@@ -4748,7 +4753,7 @@ void CoreDB::copyImageAttributes(qlonglong srcId, qlonglong dstId)
 
 void CoreDB::copyImageProperties(qlonglong srcId, qlonglong dstId)
 {
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageProperties "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageProperties "
                            " (imageid, property, value) "
                            "SELECT ?, property, value "
                            "FROM ImageProperties WHERE imageid=?;"),
@@ -4757,13 +4762,13 @@ void CoreDB::copyImageProperties(qlonglong srcId, qlonglong dstId)
 
 void CoreDB::copyImageTags(qlonglong srcId, qlonglong dstId)
 {
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageTags "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageTags "
                            " (imageid, tagid) "
                            "SELECT ?, tagid "
                            "FROM ImageTags WHERE imageid=?;"),
                    dstId, srcId);
 
-    d->db->execSql(QString::fromUtf8("INSERT INTO ImageTagProperties "
+    d->db->execSql(QString::fromUtf8("REPLACE INTO ImageTagProperties "
                            " (imageid, tagid, property, value) "
                            "SELECT ?, tagid, property, value "
                            "FROM ImageTagProperties WHERE imageid=?;"),

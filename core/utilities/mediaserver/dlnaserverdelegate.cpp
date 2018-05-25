@@ -82,9 +82,8 @@ DLNAMediaServerDelegate::DLNAMediaServerDelegate(const char* url_root,
                                                  bool        use_cache)
     : d(new Private)
 {
-      d->urlRoot          = url_root;
-      d->filterUnknownOut = false;
-      d->useCache         = use_cache;
+      d->urlRoot  = url_root;
+      d->useCache = use_cache;
 }
 
 DLNAMediaServerDelegate::~DLNAMediaServerDelegate()
@@ -121,9 +120,11 @@ NPT_Result DLNAMediaServerDelegate::ProcessFileRequest(NPT_HttpRequest&         
     NPT_CHECK_WARNING(ServeFile(request, context, response, NPT_FilePath::Create(d->fileRoot, file_path)));
     return NPT_SUCCESS;
 
+// cppcheck-suppress unusedLabel
 failure:
 
     response.SetStatus(404, "File Not Found");
+
     return NPT_SUCCESS;
 }
 
@@ -163,7 +164,9 @@ NPT_Result DLNAMediaServerDelegate::OnBrowseMetadata(PLT_ActionReference&       
                              (NPT_String(filter).Find("ALLIP") != -1));
 
     if (item.IsNull())
+    {
         return NPT_FAILURE;
+    }
 
     NPT_String tmp;
     NPT_CHECK_SEVERE(PLT_Didl::ToDidl(*item.AsPointer(), filter, tmp));
@@ -284,7 +287,9 @@ NPT_Result DLNAMediaServerDelegate::OnBrowseDirectChildren(PLT_ActionReference& 
         // verify we want to process this file first
 
         if (!ProcessFile(filepath, filter))
+        {
             continue;
+        }
 
         qCDebug(DIGIKAM_MEDIASRV_LOG) << "OnBrowseDirectChildren()"
                                       << "::  Process item" << filepath.GetChars();
@@ -375,7 +380,9 @@ PLT_MediaObject* DLNAMediaServerDelegate::BuildFromFilePath(const NPT_String&   
         }
 
         if (object->m_Title.GetLength() == 0)
+        {
             goto failure;
+        }
 
         // make sure we return something with a valid mimetype
 
@@ -394,7 +401,9 @@ PLT_MediaObject* DLNAMediaServerDelegate::BuildFromFilePath(const NPT_String&   
         resource.m_ProtocolInfo = PLT_ProtocolInfo::GetProtocolInfo(filepath, true, &context);
 
         if (!resource.m_ProtocolInfo.IsValid())
+        {
             goto failure;
+        }
 
         // format the resource URI
 
@@ -445,7 +454,9 @@ PLT_MediaObject* DLNAMediaServerDelegate::BuildFromFilePath(const NPT_String&   
             // if we only want the one resource reachable by client
 
             if (!allip)
+            {
                 break;
+            }
         }
     }
     else
@@ -525,6 +536,7 @@ failure:
                                   << filepath.GetChars() << "\"";
 
     delete object;
+
     return NULL;
 }
 
@@ -532,7 +544,9 @@ NPT_Result DLNAMediaServerDelegate::GetFilePath(const char* object_id,
                                                 NPT_String& filepath)
 {
     if (!object_id)
+    {
         return NPT_ERROR_INVALID_PARAMETERS;
+    }
 
     filepath = "/";     // krazy:exclude=doublequote_chars
 
@@ -543,9 +557,13 @@ NPT_Result DLNAMediaServerDelegate::GetFilePath(const char* object_id,
         int index = 0;
 
         if (object_id[0] == '0' && object_id[1] == '/')
+        {
             index = 2;
+        }
         else if (object_id[0] == '0')
+        {
             index = 1;
+        }
 
         filepath += (object_id + index);
     }
@@ -621,12 +639,16 @@ NPT_String DLNAMediaServerDelegate::BuildSafeResourceUri(const NPT_HttpUrl& base
     NPT_HttpUrl uri = base_uri;
 
     if (host)
+    {
         uri.SetHost(host);
+    }
 
     NPT_String uri_path = uri.GetPath();
 
     if (!uri_path.EndsWith("/"))
+    {
         uri_path += "/";        // krazy:exclude=doublequote_chars
+    }
 
     // some controllers (like WMP) will call us with an already urldecoded version.
     // We're intentionally prepending a known urlencoded string
@@ -683,7 +705,9 @@ NPT_Result DLNAMediaServerDelegate::ExtractResourcePath(const NPT_HttpUrl& url,
         // remove our prepended string we used to detect urldecoded version
 
         if (file_path.StartsWith("%25/"))
+        {
             file_path.Erase(0, 4);
+        }
 
         // ok to urldecode
 

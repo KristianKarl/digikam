@@ -16,13 +16,14 @@ Database     : New video metadata parser based on ffmpeg to populate database.
 Search       : Add video support to find files based on properties registered on database.
 
 General      : Add QWebEngine support.
-General      : Update internal Libraw to last 0.18.10.
+General      : Update internal Libraw to last 0.18.11.
 General      : Fix all Krazy static analyzer reports.
 
 Tags         : Add possibility to merge tags by drag & drop.
 
 HTML Gallery : New Vanilla theme to emulate export to HTML from Adobe LightRoom.
 HTML Gallery : New Blue Frame theme.
+HTML Gallery : New Kiosk-Mode theme.
 
 *****************************************************************************************************
 BUGFIXES:
@@ -221,4 +222,15 @@ BUGFIXES:
 192 ==> 393773 - showfoto crashes when geotagging.
 193 ==> 388199 - No context menu to copy coordinates from map.
 194 ==> 393399 - Windows defender freaks out in windows 10 and Edge.
-195 ==> 
+195 ==> 392134 - SIGSEGV While Scanning Faces [patch].
+196 ==> 394168 - OSM Search Yields No Results.
+197 ==> 377719 - Cannot rename file with overwrite [patch].
+198 ==> 388002 - remove kio related legacy [patch]
+199 ==> 394242 - Import settings unneccesarily asks to overwrite image database, and crashes when I decline.
+200 ==> 394278 - A slideshow theme for kiosk mode.
+201 ==> 340389 - digiKam crashes while editing pictures for color balancing on OSX [patch].
+202 ==> 394413 - Unify group handling [patch].
+203 ==> 394573 - Revers geodata from open street map does not work.
+204 ==> 394590 - Feature request: being able to filter on all metadatas fields.
+205 ==> 
+

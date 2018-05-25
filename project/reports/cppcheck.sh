@@ -4,6 +4,7 @@
 #
 # Run CppCheck static analyzer on whole digiKam source code.
 # http://cppcheck.sourceforge.net/
+# Dependencies : Python::pygments module to export report as HTML.
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
 # For details see the accompanying COPYING-CMAKE-SCRIPTS file.
@@ -30,16 +31,25 @@ krazySkipConfig
 IGNORE_DIRS=""
 
 for DROP_ITEM in $KRAZY_FILTERS ; do
-    IGNORE_DIRS+="-i../../$DROP_ITEM/ " 
+    IGNORE_DIRS+="-i../../$DROP_ITEM/ "
 done
 
 cppcheck -j$CPU_CORES \
+         -DQ_OS_LINUX \
          --verbose \
-         --xml \
+         --inline-suppr \
+         --xml-version=2 \
          --platform=unix64 \
          --enable=all \
          --report-progress \
          --suppress=*:*CImg.h* \
+         --suppress=variableScope \
+         --suppress=purgedConfiguration \
+         --suppress=toomanyconfigs \
+         --suppress=unreadVariable \
+         --suppress=class_X_Y \
+         --suppress=ConfigurationNotChecked \
+         --suppress=unmatchedSuppression \
          $IGNORE_DIRS \
          ../../core \
          2> report.cppcheck.xml
@@ -50,7 +60,7 @@ cppcheck-htmlreport --file=report.cppcheck.xml \
                     --title=$TITLE
 
 # update www.digikam.org report section.
-updateReportToWebsite "cppcheck" $REPORT_DIR $TITLE
+updateReportToWebsite "cppcheck" $REPORT_DIR $TITLE $(parseGitBranch)
 
 cd $ORIG_DIR
 
