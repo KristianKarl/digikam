@@ -39,10 +39,10 @@
 #include "coredbaccess.h"
 #include "album.h"
 #include "dmetadata.h"
-#include "loadingcacheinterface.h"
 #include "metadatasettings.h"
 #include "scancontroller.h"
-#include "thumbnailloadthread.h"
+#include "thumbsdb.h"
+#include "thumbsdbaccess.h"
 #include "iojobsmanager.h"
 #include "collectionmanager.h"
 #include "dnotificationwrapper.h"
@@ -468,26 +468,41 @@ void DIO::slotOneProccessed(const QUrl& url)
     }
     else if (operation == IOJobData::Rename)
     {
-        // If we rename a file, the name changes. This is equivalent to a move.
-        // Do this in database, too.
         ImageInfo info = data->findImageInfo(url);
 
         if (!info.isNull())
         {
-            CoreDbAccess().db()->moveItem(info.albumId(), info.name(),
-                                          info.albumId(), data->destUrl(url).fileName());
-
-            // delete thumbnail
-            ThumbnailLoadThread::deleteThumbnail(url.toLocalFile());
-
-            QString destPath = data->destUrl(url).toLocalFile();
+            QString oldPath = url.toLocalFile();
+            QString newName = data->destUrl(url).fileName();
+            QString newPath = data->destUrl(url).toLocalFile();
 
             if (data->overwrite())
             {
-                ThumbnailLoadThread::deleteThumbnail(destPath);
+                ThumbsDbAccess().db()->removeByFilePath(newPath);
+                CoreDbAccess().db()->deleteItem(info.albumId(), newName);
             }
 
-            LoadingCacheInterface::fileChanged(destPath);
+            info.setName(newName);
+            ThumbsDbAccess().db()->renameByFilePath(oldPath, newPath);
+
+            // Remove old thumbnails and images from the cache
+            {
+                LoadingCache* const cache = LoadingCache::cache();
+                LoadingCache::CacheLock lock(cache);
+                QStringList possibleKeys  = LoadingDescription::possibleThumbnailCacheKeys(oldPath);
+
+                foreach(const QString& cacheKey, possibleKeys)
+                {
+                    cache->removeThumbnail(cacheKey);
+                }
+
+                possibleKeys              = LoadingDescription::possibleCacheKeys(oldPath);
+
+                foreach(const QString& cacheKey, possibleKeys)
+                {
+                    cache->removeImage(cacheKey);
+                }
+            }
         }
 
         emit signalRenameSucceeded(url);
