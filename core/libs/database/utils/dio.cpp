@@ -46,6 +46,7 @@
 #include "iojobsmanager.h"
 #include "collectionmanager.h"
 #include "dnotificationwrapper.h"
+#include "loadingcacheinterface.h"
 #include "progressmanager.h"
 #include "digikamapp.h"
 #include "iojobdata.h"
@@ -479,30 +480,15 @@ void DIO::slotOneProccessed(const QUrl& url)
             if (data->overwrite())
             {
                 ThumbsDbAccess().db()->removeByFilePath(newPath);
+                LoadingCacheInterface::fileChanged(newPath, false);
                 CoreDbAccess().db()->deleteItem(info.albumId(), newName);
             }
 
-            info.setName(newName);
             ThumbsDbAccess().db()->renameByFilePath(oldPath, newPath);
-
             // Remove old thumbnails and images from the cache
-            {
-                LoadingCache* const cache = LoadingCache::cache();
-                LoadingCache::CacheLock lock(cache);
-                QStringList possibleKeys  = LoadingDescription::possibleThumbnailCacheKeys(oldPath);
-
-                foreach(const QString& cacheKey, possibleKeys)
-                {
-                    cache->removeThumbnail(cacheKey);
-                }
-
-                possibleKeys              = LoadingDescription::possibleCacheKeys(oldPath);
-
-                foreach(const QString& cacheKey, possibleKeys)
-                {
-                    cache->removeImage(cacheKey);
-                }
-            }
+            LoadingCacheInterface::fileChanged(oldPath, false);
+            // Rename in ImageInfo and database
+            info.setName(newName);
         }
 
         emit signalRenameSucceeded(url);
