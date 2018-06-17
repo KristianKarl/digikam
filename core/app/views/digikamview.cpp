@@ -53,6 +53,8 @@
 #include "dmessagebox.h"
 #include "dzoombar.h"
 #include "dtrashitemmodel.h"
+#include "facescansettings.h"
+#include "facesdetector.h"
 #include "fileactionmngr.h"
 #include "fileactionprogress.h"
 #include "filtersidebarwidget.h"
@@ -595,9 +597,6 @@ void DigikamView::setupConnections()
     connect(d->stackedview, SIGNAL(signalPrevItem()),
             this, SLOT(slotPrevItem()));
 
-    connect(d->stackedview, SIGNAL(signalEditItem()),
-            this, SLOT(slotImageEdit()));
-
     connect(d->stackedview, SIGNAL(signalDeleteItem()),
             this, SLOT(slotImageDelete()));
 
@@ -607,23 +606,11 @@ void DigikamView::setupConnections()
     connect(d->stackedview, SIGNAL(signalEscapePreview()),
             this, SLOT(slotEscapePreview()));
 
-    connect(d->stackedview, SIGNAL(signalSlideShow()),
-            this, SLOT(slotSlideShowAll()));
-
     connect(d->stackedview, SIGNAL(signalSlideShowCurrent()),
             this, SLOT(slotSlideShowManualFromCurrent()));
 
     connect(d->stackedview, SIGNAL(signalZoomFactorChanged(double)),
             this, SLOT(slotZoomFactorChanged(double)));
-
-    connect(d->stackedview, SIGNAL(signalInsert2LightTable()),
-            this, SLOT(slotImageAddToLightTable()));
-
-    connect(d->stackedview, SIGNAL(signalInsert2QueueMgr()),
-            this, SLOT(slotImageAddToCurrentQueue()));
-
-    connect(d->stackedview, SIGNAL(signalFindSimilar()),
-            this, SLOT(slotImageFindSimilar()));
 
     connect(d->stackedview, SIGNAL(signalAddToExistingQueue(int)),
             this, SLOT(slotImageAddToExistingQueue(int)));
@@ -1034,13 +1021,13 @@ void DigikamView::slotNewDuplicatesSearch(PAlbum* album)
     d->fuzzySearchSideBar->newDuplicatesSearch(album);
 }
 
-void DigikamView::slotNewDuplicatesSearch(QList<PAlbum*> albums)
+void DigikamView::slotNewDuplicatesSearch(const QList<PAlbum*>& albums)
 {
     slotLeftSideBarActivate(d->fuzzySearchSideBar);
     d->fuzzySearchSideBar->newDuplicatesSearch(albums);
 }
 
-void DigikamView::slotNewDuplicatesSearch(QList<TAlbum*> albums)
+void DigikamView::slotNewDuplicatesSearch(const QList<TAlbum*>& albums)
 {
     slotLeftSideBarActivate(d->fuzzySearchSideBar);
     d->fuzzySearchSideBar->newDuplicatesSearch(albums);
@@ -1106,7 +1093,7 @@ void DigikamView::getBackwardHistory(QStringList& titles)
 {
     d->albumHistory->getBackwardHistory(titles);
 
-    for (int i = 0; i < titles.size(); ++i)
+    for (int i = 0 ; i < titles.size() ; ++i)
     {
         titles[i] = d->userPresentableAlbumTitle(titles.at(i));
     }
@@ -1116,7 +1103,7 @@ void DigikamView::getForwardHistory(QStringList& titles)
 {
     d->albumHistory->getForwardHistory(titles);
 
-    for (int i = 0; i < titles.size(); ++i)
+    for (int i = 0 ; i < titles.size() ; ++i)
     {
         titles[i] = d->userPresentableAlbumTitle(titles.at(i));
     }
@@ -1208,7 +1195,7 @@ void DigikamView::slotSelectAlbum(const QUrl& url)
     d->albumFolderSideBar->setCurrentAlbum(album);
 }
 
-void DigikamView::slotAlbumSelected(QList<Album*> albums)
+void DigikamView::slotAlbumSelected(const QList<Album*>& albums)
 {
     emit signalNoCurrentItem();
     emit signalAlbumSelected(0);
@@ -1755,6 +1742,32 @@ void DigikamView::slotImageFindSimilar()
     {
         d->fuzzySearchSideBar->newSimilarSearch(current);
         slotLeftSideBarActivate(d->fuzzySearchSideBar);
+    }
+}
+
+void DigikamView::slotImageScanForFaces()
+{
+    FaceScanSettings settings;
+
+    settings.accuracy               = ApplicationSettings::instance()->getFaceDetectionAccuracy();
+    settings.recognizeAlgorithm     = RecognitionDatabase::RecognizeAlgorithm::LBP;
+    settings.task                   = FaceScanSettings::DetectAndRecognize;
+    settings.alreadyScannedHandling = FaceScanSettings::Rescan;
+    settings.infos                  = selectedInfoList(ApplicationSettings::Tools);
+
+    FacesDetector* const tool = new FacesDetector(settings);
+
+    connect(tool, SIGNAL(signalComplete()),
+            this, SLOT(slotRefreshImagePreview()));
+
+    tool->start();
+}
+
+void DigikamView::slotRefreshImagePreview()
+{
+    if (viewMode() == StackedView::PreviewImageMode)
+    {
+        d->stackedview->imagePreviewView()->reload();
     }
 }
 
@@ -2602,6 +2615,7 @@ void DigikamView::slotShowContextMenuOnInfo(QContextMenuEvent* event, const Imag
 
     // --------------------------------------------------------
 
+    cmHelper.addAction(QLatin1String("image_scan_for_faces"));
     cmHelper.addAction(QLatin1String("image_find_similar"));
     cmHelper.addStandardActionLightTable();
     cmHelper.addQueueManagerMenu();
