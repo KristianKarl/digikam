@@ -340,8 +340,27 @@ bool MetaEngine::Private::saveOperations(const QFileInfo& finfo, Exiv2::Image::A
             qCDebug(DIGIKAM_METAENGINE_LOG) << "File time stamp restored";
         }
         else
-        {
+        {    
             image->writeMetadata();
+
+            // If we want Digikam to rescan for modified metadata when only the sidecar file is updated,
+            // we need to touch the timestamp on the image file as well.
+            // This will enable a rescan of the sidecar file.
+            if (updateFileTimeStamp &&
+                image->mimeType() == "application/rdf+xml")
+            {
+                QString sidecarFileName = filePath + QLatin1String(".xmp");
+                QT_STATBUF     st;
+                struct utimbuf ut;
+                int ret = QT_STAT(QFile::encodeName(sidecarFileName).constData(), &st);
+
+                if (ret == 0)
+                {
+                    ut.modtime = st.st_mtime;
+                    ut.actime  = st.st_atime;
+                    ::utime(QFile::encodeName(filePath).constData(), &ut);
+                }
+            }
         }
 
         return true;
