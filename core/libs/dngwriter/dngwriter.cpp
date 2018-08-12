@@ -1261,7 +1261,7 @@ int DNGWriter::convert()
                 qCDebug(DIGIKAM_GENERAL_LOG) << "DNGWriter: cleanup makernotes using Exiv2" ;
 
                 meta.setWriteRawFiles(true);
-                meta.removeExifTag("Exif.OlympusIp.BlackLevel", false);
+                meta.removeExifTag("Exif.OlympusIp.BlackLevel");
             }
             else
             {
