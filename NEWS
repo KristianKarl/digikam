@@ -322,5 +322,27 @@ BUGFIXES:
 265 ==> 397207 - Too many open files, when reverse geocoding many images.
 266 ==> 397278 - DNG conversion not possible.
 267 ==> 397311 - DIN A relation in "Aspect Ratio Crop".
-268 ==> 
+268 ==> 222716 - digiKam does not start. Showing: Reading database.
+269 ==> 276633 - Crash when using map view inside of digiKam.
+270 ==> 224706 - digiKam for KDE on Windows "Failed to rename Album" (KDirWatch Relevant).
+271 ==> 383016 - digiKam with incomplete German translation.
+272 ==> 244982 - digiKam crashes at initial configuration.
+273 ==> 366453 - digiKam crash while using mouse over title bar.
+274 ==> 278490 - Incorrect tab layout with slider/spinbox/reset button.
+275 ==> 324642 - digiKam crash when starting a bug report while offline.
+276 ==> 238392 - digiKam Camera interface : rename dialog interprets alt-s as plain s when button greyed out.
+277 ==> 397177 - image editor does not export exif and IPTC data when saving to PNG.
+278 ==> 341276 - Picture bigger than 5MB are not previewed.
+279 ==> 388908 - Error while scanning with HP F300 series.
+280 ==> 381723 - digiKam crashed when I tried to close the window opened by clicking import button.
+281 ==> 345288 - Crash from digiKam when try customizing a shortcut to a Tag.
+282 ==> 381193 - digiKam crashes after uploading photos from smartphone via USB.
+283 ==> 275670 - Face preview image incorrect on 'rotated' images.
+284 ==> 395199 - Uploading large video files to flickr fails [patch].
+285 ==> 240144 - digiKam : When I press the left button of the mouse on a photo, a menu appears, but no items are seen.
+286 ==> 240229 - White contextual menu problem.
+287 ==> 309508 - Export to Flickr does not send the geodata.
+288 ==> 383987 - Flickr tool no longer authenticates to Flickr.
+289 ==> 338333 - Account problem.
+290 ==> 
 
