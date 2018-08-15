@@ -344,5 +344,44 @@ BUGFIXES:
 287 ==> 309508 - Export to Flickr does not send the geodata.
 288 ==> 383987 - Flickr tool no longer authenticates to Flickr.
 289 ==> 338333 - Account problem.
-290 ==> 
+290 ==> 397001 - The "maximise" button is missing in decoration of the geolocation editor window [patch].
+291 ==> 397406 - Digikam shouldn't use parentheses when renaming files.
+292 ==> 397411 - Not being able to move files in a removable media collection which is not mounted.
+293 ==> 227566 - digiKam does not allow smb:// shared folder as picture collection.
+294 ==> 395201 - SSL broken in 5.9.0 AppImage bundle.
+295 ==> 385363 - digiKam crashes when authorizing access to Google photo because of SSL error in AppImage.
+296 ==> 348277 - Please focus auth code input field in the GDrive authentication dialog.
+297 ==> 383174 - Google photo, export stops after a random quantity of photos.
+298 ==> 387422 - Flickr export authorization does not work.
+299 ==> 397126 - Fail to replace a photo in google photo.
+300 ==> 387201 - kioslave needed by flickr export but not included in appimage.
+301 ==> 389785 - 'Open in Filemanager' dolphin not working.
+302 ==> 396619 - All Exports fail - cannot find ioslave.
+303 ==> 254512 - Crash when initializing the export to Flickr.com.
+304 ==> 237818 - Crash when uploading multiple images to Flickr.
+305 ==> 286754 - Crash when when entering collection name in flickr uploader.
+306 ==> 337980 - Flickr Export tool can no longer obtain a new token.
+307 ==> 151018 - Requires new token with every invokation.
+308 ==> 132922 - Export to flickr doesn't work.
+309 ==> 149864 - Dialog box pops up saying 'Error Occured: Missing signature. We can not proceed further".
+310 ==> 196179 - Flickr export does not work.
+311 ==> 391734 - Can't export to google photos: SSL Handshake failed.
+312 ==> 386402 - Not all page sizes for selected printer can be selected.
+313 ==> 395557 - Printformat not selectable.
+314 ==> 340644 - Allow to use standard photo paper sizes.
+315 ==> 330906 - Crashes when exporting to HTML.
+316 ==> 309316 - Html gallery export crash and other bugs.
+317 ==> 314248 - digiKam crashing when exporting pictures to html.
+318 ==> 225725 - Crash using HTML export.
+319 ==> 396092 - Don't init search till user press a buttom specifically for this task.
+320 ==> 397376 - Search in Geolocation doesn't work for Streets / location, only for City.
+321 ==> 393259 - Configuration conflicts.
+322 ==> 391329 - Two actions that wants to use same shortcut (Ctrl+Shift+,).
+323 ==> 391655 - Kubuntu 18.04 beta, Digikam 5.6.0 Ambiguous Shortcuts - Zoom to 100% and Configure Digikam share the same shortcut (Ctrl+Shift+,).
+324 ==> 393031 - Two actions for digikam[helpfully identified as a bug].
+325 ==> 395518 - When manually typing face name, sort the filtered tags by recent usage.
+326 ==> 304202 - No option to re-read metadata from XMP sidecar file.
+327 ==> 289445 - Allow to create Contact Sheet from an album.
+328 ==> 164750 - Picture alignment and background picture.
+239 ==> 
 
