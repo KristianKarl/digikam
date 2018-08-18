@@ -384,4 +384,12 @@ BUGFIXES:
 327 ==> 289445 - Allow to create Contact Sheet from an album.
 328 ==> 164750 - Picture alignment and background picture.
 329 ==> 338180 - Add "Toggle auto-refresh" option in search view.
-330 ==> 
+330 ==> 359235 - digiKam doesn't response after start when StatusBar=Disabled in digikamrc.
+331 ==> 090550 - Linking error with jpeg.
+332 ==> 393974 - Appimage bundle does not automatically recognize Gphoto2 devices connected.
+333 ==> 141288 - Error KIoexec usb camera.
+334 ==> 397554 - digiKam crashes while running BatchQueueManager.
+335 ==> 379261 - Crash on attempting camera import.
+336 ==> 379335 - digiKam crashes when deleting images in the download window [patch].
+337 ==> 394291 - Cannot upgrade mysql db from v7 to v9.
+338 ==> 
