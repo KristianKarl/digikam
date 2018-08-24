@@ -7,7 +7,7 @@
  * Description : a tool to export items to web services.
  *
  * Copyright (C) 2017-2018 by Gilles Caulier <caulier dot gilles at gmail dot com>
- * Copyright (C) 2018 by Thanh Trung Dinh <dinhthanhtrung1996 at gmail dot com>
+ * Copyright (C) 2018      by Thanh Trung Dinh <dinhthanhtrung1996 at gmail dot com>
  *
  * This program is free software; you can redistribute it
  * and/or modify it under the terms of the GNU General
@@ -54,7 +54,7 @@ public:
     bool validateCurrentPage() override;
     int  nextId() const override;
 
-    DInfoInterface*     iface()  const;
+    DInfoInterface*     iface()    const;
     WSSettings*         settings() const;
 
     /*
@@ -64,8 +64,8 @@ public:
      * These 2 methods below are getters, used in other pages of wizard so as to facilitate
      * access to WSAuthentication instance and its settings.
      */
-    WSAuthentication*   wsAuth() const;
-    QSettings*          oauthSettings() const;
+    WSAuthentication*   wsAuth()             const;
+    QSettings*          oauthSettings()      const;
     O0SettingsStore*    oauthSettingsStore() const;
 
     void setItemsList(const QList<QUrl>& urls);

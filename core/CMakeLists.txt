@@ -26,7 +26,7 @@ set(DIGIKAM_PATCH_VERSION "0")
 # "-beta3" : beta3 release.
 # "-rc"    : release candidate.
 # ""       : final release. Can be used in production.
-set(DIGIKAM_SUFFIX_VERSION "-git")
+set(DIGIKAM_SUFFIX_VERSION "-beta1")
 
 # ==============================================================================
 # Set env. variables accordingly.
@@ -112,6 +112,10 @@ option(ENABLE_INTERNALMYSQL         "Build digiKam with internal MySQL server ex
 
 # Debug options:
 option(ENABLE_DIGIKAM_MODELTEST     "Enable ModelTest on some models for debugging (default=OFF)"                        OFF)
+
+if(MINGW)
+    option(ENABLE_DRMINGW           "Enable the Dr. Mingw crash handler support for windows (default ON)"                ON)
+endif()
 
 ############## Find Packages ###################
 
@@ -410,15 +414,6 @@ message(STATUS "--------------------------------------------------")
 message(STATUS "digiKam RawEngine dependencies checks:")
 message(STATUS "")
 
-include(MacroOpenMP)
-DETECT_OPENMP()
-
-if(OPENMP_FOUND)
-    message(STATUS "RawEngine will be compiled with OpenMP support")
-else()
-    message(STATUS "RawEngine will not be compiled with OpenMP support")
-endif()
-
 # Flag to use libjasper with LibRaw RedCine codec
 
 if(Jasper_FOUND)
@@ -459,7 +454,6 @@ set(PTHREADS_FOUND (CMAKE_USE_PTHREADS_INIT OR CMAKE_USE_WIN32_THREADS_INIT))
 # Registration of Libraw configuration to a dedicated header
 
 MACRO_BOOL_TO_01(JPEG8_FOUND  LIBRAW_USE_DNGLOSSYCODEC)
-MACRO_BOOL_TO_01(OPENMP_FOUND LIBRAW_USE_OPENMP)
 MACRO_BOOL_TO_01(Jasper_FOUND LIBRAW_USE_REDCINECODEC)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/libs/rawengine/libraw/libraw_config.h.cmake
@@ -492,6 +486,7 @@ MACRO_BOOL_TO_01(ENABLE_MEDIAPLAYER      HAVE_MEDIAPLAYER)
 MACRO_BOOL_TO_01(ENABLE_DBUS             HAVE_DBUS)
 MACRO_BOOL_TO_01(ENABLE_APPSTYLES        HAVE_APPSTYLE_SUPPORT)
 MACRO_BOOL_TO_01(ENABLE_QWEBENGINE       HAVE_QWEBENGINE)
+MACRO_BOOL_TO_01(ENABLE_DRMINGW          HAVE_DRMINGW)
 
 # Whether to use Qt's scaling to downscale previews. Under MacOSX, Qt
 # can make use of the higher physical resolution of Retina

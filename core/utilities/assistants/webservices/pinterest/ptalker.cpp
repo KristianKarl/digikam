@@ -321,7 +321,7 @@ void PTalker::getUserName()
 
 /** Get list of boards by parsing json sent by pinterest
  */
-void PTalker::listBoards(const QString& path)
+void PTalker::listBoards(const QString& /*path*/)
 {
     QUrl url(QLatin1String("https://api.pinterest.com/v1/me/boards/"));;
 
@@ -373,7 +373,7 @@ bool PTalker::addPin(const QString& imgPath, const QString& uploadBoard, bool re
         d->meta.save(path);
     }
 
-    QString boardparam = d->userName + QLatin1String("/") + uploadBoard;
+    QString boardparam = d->userName + QLatin1Char('/') + uploadBoard;
 
     if (!form.addFile(path))
     {
@@ -387,7 +387,7 @@ bool PTalker::addPin(const QString& imgPath, const QString& uploadBoard, bool re
     ///Board Section
     QHttpPart board;
     QString boardHeader = QString("form-data; name=\"board\"") ;
-    board.setHeader(QNetworkRequest::ContentDispositionHeader,boardHeader);
+    board.setHeader(QNetworkRequest::ContentDispositionHeader, boardHeader);
 
     QByteArray postData = boardparam.toUtf8();
     board.setBody(postData);
@@ -396,7 +396,7 @@ bool PTalker::addPin(const QString& imgPath, const QString& uploadBoard, bool re
     ///Note section
     QHttpPart note;
     QString noteHeader = QString("form-data; name=\"note\"") ;
-    note.setHeader(QNetworkRequest::ContentDispositionHeader,noteHeader);
+    note.setHeader(QNetworkRequest::ContentDispositionHeader, noteHeader);
 
     postData = QByteArray();
 
@@ -408,8 +408,8 @@ bool PTalker::addPin(const QString& imgPath, const QString& uploadBoard, bool re
     file->open(QIODevice::ReadOnly);
 
     QHttpPart imagepart;
-    QString imagepartHeader = QString::fromLatin1("form-data; name=\"image\"; filename=\"") +
-                              QFileInfo(imgPath).fileName() + QString::fromLatin1("\"") ;
+    QString imagepartHeader = QLatin1String("form-data; name=\"image\"; filename=\"") +
+                              QFileInfo(imgPath).fileName() + QLatin1Char('"');
 
     imagepart.setHeader(QNetworkRequest::ContentDispositionHeader,imagepartHeader);
     imagepart.setHeader(QNetworkRequest::ContentTypeHeader, QLatin1String("image/jpeg"));
@@ -417,7 +417,7 @@ bool PTalker::addPin(const QString& imgPath, const QString& uploadBoard, bool re
     imagepart.setBodyDevice(file);
     multipart->append(imagepart);
 
-    QString content = QString::fromLatin1("multipart/form-data;boundary=")+multipart->boundary();
+    QString content = QLatin1String("multipart/form-data;boundary=") + multipart->boundary();
     QNetworkRequest netRequest(url);
     netRequest.setHeader(QNetworkRequest::ContentTypeHeader, content);
 

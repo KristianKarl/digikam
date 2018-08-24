@@ -41,17 +41,25 @@
 
 // Local includes
 
+#include "digikam_config.h"
+#include "digikam_debug.h"
+#include "digikam_globals.h"
+#include "digikam_version.h"
 #include "metaengine.h"
 #include "daboutdata.h"
 #include "showfoto.h"
-#include "digikam_version.h"
 
 using namespace Digikam;
 
 int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
+
+    tryInitDrMingw();
+
+#ifdef Q_OS_LINUX
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+#endif
 
     // if we have some local breeze icon resource, prefer it
     DXmlGuiWindow::setupIconTheme();

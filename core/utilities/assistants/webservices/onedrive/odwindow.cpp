@@ -125,8 +125,8 @@ ODWindow::ODWindow(DInfoInterface* const iface,
     connect(d->talker,SIGNAL(signalListAlbumsFailed(QString)),
             this,SLOT(slotListAlbumsFailed(QString)));
 
-    connect(d->talker,SIGNAL(signalListAlbumsDone(QList<QPair<QString,QString> >)),
-            this,SLOT(slotListAlbumsDone(QList<QPair<QString,QString> >)));
+    connect(d->talker,SIGNAL(signalListAlbumsDone(QList<QPair<QString,QString> >)), // krazy:exclude=normalize
+            this,SLOT(slotListAlbumsDone(QList<QPair<QString,QString> >)));         // krazy:exclude=normalize
 
     connect(d->talker,SIGNAL(signalCreateFolderFailed(QString)),
             this,SLOT(slotCreateFolderFailed(QString)));
@@ -324,7 +324,7 @@ void ODWindow::uploadNextPhoto()
     }
 
     QString imgPath = d->transferQueue.first().toLocalFile();
-    QString temp = d->currentAlbumName + QLatin1String("/");
+    QString temp = d->currentAlbumName + QLatin1Char('/');
 
     bool result = d->talker->addPhoto(imgPath,
                                       temp,

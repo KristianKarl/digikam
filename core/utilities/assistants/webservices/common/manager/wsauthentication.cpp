@@ -93,8 +93,9 @@ public:
 WSAuthentication::WSAuthentication(QWidget* const parent, DInfoInterface* const iface)
     : d(new Private())
 {
-    d->wizard   = dynamic_cast<WSWizard*>(parent);
-    if(d->wizard)
+    d->wizard = dynamic_cast<WSWizard*>(parent);
+
+    if (d->wizard)
     {
         d->iface = d->wizard->iface();
     }
@@ -119,11 +120,11 @@ WSAuthentication::~WSAuthentication()
 
 void WSAuthentication::createTalker(WSSettings::WebService ws, const QString& serviceName)
 {
-    d->ws = ws;
+    d->ws          = ws;
     d->serviceName = serviceName;
     qCDebug(DIGIKAM_WEBSERVICES_LOG) << "create " << serviceName << "talker";
 
-    switch(ws)
+    switch (ws)
     {
         case WSSettings::WebService::FLICKR:
             //d->talker = new FlickrTalker(d->wizard, serviceName, d->iface);
@@ -134,7 +135,7 @@ void WSAuthentication::createTalker(WSSettings::WebService ws, const QString& se
         case WSSettings::WebService::IMGUR:
             //d->talker = new ImgurTalker(d->wizard);
             break;
-        case WSSettings::WebService::FACEBOOK: 
+        case WSSettings::WebService::FACEBOOK:
             d->albumDlg = new FbNewAlbumDlg(d->wizard, d->serviceName);
             d->talker   = new FbTalker(d->wizard, d->albumDlg);
             break;
@@ -149,8 +150,8 @@ void WSAuthentication::createTalker(WSSettings::WebService ws, const QString& se
             break;
     }
 
-    connect(d->talker, SIGNAL(signalOpenBrowser(const QUrl&)),
-            this, SIGNAL(signalOpenBrowser(const QUrl&)));
+    connect(d->talker, SIGNAL(signalOpenBrowser(QUrl)),
+            this, SIGNAL(signalOpenBrowser(QUrl)));
 
     connect(d->talker, SIGNAL(signalCloseBrowser()),
             this, SIGNAL(signalCloseBrowser()));
@@ -158,14 +159,14 @@ void WSAuthentication::createTalker(WSSettings::WebService ws, const QString& se
     connect(d->talker, SIGNAL(signalAuthenticationComplete(bool)),
             this, SIGNAL(signalAuthenticationComplete(bool)));
 
-    connect(this, SIGNAL(signalResponseTokenReceived(const QMap<QString,QString>&)),
-            d->talker, SLOT(slotResponseTokenReceived(const QMap<QString,QString>&)));
+    connect(this, SIGNAL(signalResponseTokenReceived(QMap<QString,QString>)),
+            d->talker, SLOT(slotResponseTokenReceived(QMap<QString,QString>)));
 
-    connect(d->talker, SIGNAL(signalCreateAlbumDone(int,const QString&,const QString&)),
-            this, SIGNAL(signalCreateAlbumDone(int,const QString&,const QString&)));
+    connect(d->talker, SIGNAL(signalCreateAlbumDone(int,QString,QString)),
+            this, SIGNAL(signalCreateAlbumDone(int,QString,QString)));
 
-    connect(d->talker, SIGNAL(signalListAlbumsDone(int,const QString&,const QList <WSAlbum>&)),
-            this, SLOT(slotListAlbumsDone(int,const QString&,const QList <WSAlbum>&)));
+    connect(d->talker, SIGNAL(signalListAlbumsDone(int,QString,QList<WSAlbum>)),
+            this, SLOT(slotListAlbumsDone(int,QString,QList<WSAlbum>)));
 
     connect(d->talker, SIGNAL(signalAddPhotoDone(int,QString)),
             this, SLOT(slotAddPhotoDone(int,QString)));
@@ -242,8 +243,8 @@ QString WSAuthentication::getImageCaption(const QString& fileName)
 
     // If webservice doesn't support image titles, include it in descriptions if needed.
     QStringList descriptions = QStringList() << info.title() << info.comment();
-    descriptions.removeAll(QString::fromLatin1(""));
-    return descriptions.join(QString::fromLatin1("\n\n"));
+    descriptions.removeAll(QLatin1String(""));
+    return descriptions.join(QLatin1String("\n\n"));
 }
 
 void WSAuthentication::prepareForUpload()
@@ -304,7 +305,7 @@ void WSAuthentication::prepareForUpload()
             {
                 meta.setImageDimensions(image.size());
                 meta.setImageOrientation(MetaEngine::ORIENTATION_NORMAL);
-                meta.setImageProgramId(QString::fromLatin1("digiKam"), digiKamVersion());
+                meta.setImageProgramId(QLatin1String("digiKam"), digiKamVersion());
                 meta.setMetadataWritingMode((int)DMetadata::WRITETOIMAGEONLY);
                 meta.save(d->tmpPath.last());
                 caption = getImageCaption(imgPath);
@@ -358,7 +359,7 @@ void WSAuthentication::slotCancel()
 
     // Then the folder containing all temporary photos to upload will be removed after all.
     QDir tmpDir(d->tmpDir);
-    if(tmpDir.exists())
+    if (tmpDir.exists())
     {
         tmpDir.removeRecursively();
     }
@@ -384,7 +385,7 @@ void WSAuthentication::slotListAlbumsRequest()
 
 void WSAuthentication::slotListAlbumsDone(int errCode, const QString& errMsg, const QList<WSAlbum>& albumsList)
 {
-    QString albumDebug = QString::fromLatin1("");
+    QString albumDebug = QLatin1String("");
 
     foreach (const WSAlbum &album, albumsList)
     {
@@ -422,8 +423,8 @@ void WSAuthentication::slotAddPhotoDone(int errCode, const QString& errMsg)
     else
     {
         if (QMessageBox::question(d->wizard, i18n("Uploading Failed"),
-            i18n("Failed to upload photo: %1\n"
-            "Do you want to continue?", errMsg))
+                i18n("Failed to upload photo: %1\n"
+                "Do you want to continue?", errMsg))
             != QMessageBox::Yes)
         {
             d->transferQueue.clear();
