@@ -139,7 +139,7 @@ int AbstractAlbumModel::rowCount(const QModelIndex& parent) const
     if (parent.isValid())
     {
         Album* const a = static_cast<Album*>(parent.internalPointer());
-        return d->numberOfChildren(a);
+        return a->childCount();
     }
     else
     {
@@ -154,7 +154,7 @@ int AbstractAlbumModel::rowCount(const QModelIndex& parent) const
         }
         else
         {
-            return d->numberOfChildren(d->rootAlbum);
+            return d->rootAlbum->childCount();
         }
     }
 }
@@ -210,7 +210,7 @@ QModelIndex AbstractAlbumModel::index(int row, int column, const QModelIndex& pa
     if (parent.isValid())
     {
         Album* const parentAlbum = static_cast<Album*>(parent.internalPointer());
-        Album* const a           = d->findNthChild(parentAlbum, row);
+        Album* const a           = parentAlbum->childAtRow(row);
 
         if (a)
         {
@@ -233,7 +233,7 @@ QModelIndex AbstractAlbumModel::index(int row, int column, const QModelIndex& pa
         }
         else
         {
-            Album* const a = d->findNthChild(d->rootAlbum, row);
+            Album* const a = d->rootAlbum->childAtRow(row);
 
             if (a)
             {

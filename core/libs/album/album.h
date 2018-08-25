@@ -104,6 +104,11 @@ public:
     Album*  prev() const;
 
     /**
+     * @return the child of this album at row
+     */
+    Album*  childAtRow(int row) const;
+
+    /**
      * @return a list of all child Albums
      */
     AlbumList childAlbums(bool recursive = false);
@@ -148,6 +153,16 @@ public:
      * @see id()
      */
     int     globalID() const;
+
+    /**
+     * @return the @p childCount of the album
+     */
+    int     childCount() const;
+
+    /**
+     * @return the @p rowFromChild of the album
+     */
+    int     rowFromChild(Album* const child) const;
 
     /**
      * @return the @p title aka name of the album
@@ -320,10 +335,14 @@ private:
     bool                     m_usedByLabelsTree;
 
     int                      m_id;
-    QString                  m_name;
 
+    QString                  m_name;
     QString                  m_title;
+
     QMap<const void*, void*> m_extraMap;
+
+    QHash<Album*, int>       m_rowHash;
+    QHash<int, Album*>       m_childHash;
 
     Type                     m_type;
 
