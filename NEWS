@@ -466,5 +466,14 @@ BUGFIXES:
 405 ==> 395842 - digiKam crashes adjusting color balance on a RAW file.
 406 ==> 388608 - Faces engine hangs and crashes.
 407 ==> 397855 - Not compatible with Windows 10.
-408 ==> 
-
+408 ==> 391039 - digiKam stalled after trying to make a panorama.
+409 ==> 184318 - Starting digiKam it crashed and caused the signal 11 (SIGSEGV).
+410 ==> 222740 - Starting digiKam cause sound system to report pulseaudio is removed.
+411 ==> 378697 - Add image carousel to front page screenshots.
+412 ==> 180375 - Web page: Wrong link to Alpenglow Webpage.
+413 ==> 331141 - Broken link to database schema in web site digikam.org pointing to project.kde.org.
+414 ==> 397862 - Reordering geolocation bookmarks will remove them from the list.
+415 ==> 223348 - digiKam crash during album view browsing AVIs with PgUp/PgDown.
+416 ==> 156146 - Reading data base, digiKam don't start.
+417 ==> 118090 - digiKam crashed while attempting to save scanned (tiff) image.
+418 ==> 
