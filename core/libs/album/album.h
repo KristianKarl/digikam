@@ -161,9 +161,9 @@ public:
     int     childCount() const;
 
     /**
-     * @return the @p rowFromChild of the album
+     * @return the @p rowFromAlbum of the album
      */
-    int     rowFromChild(Album* const child) const;
+    int     rowFromAlbum() const;
 
     /**
      * @return the @p title aka name of the album
@@ -332,7 +332,6 @@ private:
 private:
 
     bool                     m_root;
-    bool                     m_clearing;
     bool                     m_usedByLabelsTree;
 
     int                      m_id;
@@ -346,10 +345,6 @@ private:
     Type                     m_type;
 
     Album*                   m_parent;
-    Album*                   m_firstChild;
-    Album*                   m_lastChild;
-    Album*                   m_next;
-    Album*                   m_prev;
 
     friend class AlbumManager;
 };
