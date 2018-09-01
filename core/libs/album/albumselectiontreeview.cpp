@@ -48,7 +48,7 @@
 namespace Digikam
 {
 
-class AlbumViewToolTip: public ItemViewToolTip
+class Q_DECL_HIDDEN AlbumViewToolTip: public ItemViewToolTip
 {
 public:
 
@@ -73,13 +73,13 @@ protected:
 
 // ----------------------------------------------------------------------------------------------------
 
-class AlbumSelectionTreeView::Private
+class Q_DECL_HIDDEN AlbumSelectionTreeView::Private
 {
 
 public:
 
-    explicit Private() :
-        enableToolTips(false),
+    explicit Private()
+      : enableToolTips(false),
         albumModificationHelper(0),
         toolTip(0),
         renameAction(0),
@@ -108,7 +108,7 @@ public:
 
 // ----------------------------------------------------------------------------------------------------
 
-class AlbumSelectionTreeView::Private::AlbumSelectionTreeViewContextMenuElement
+class Q_DECL_HIDDEN AlbumSelectionTreeView::Private::AlbumSelectionTreeViewContextMenuElement
       : public AbstractAlbumTreeView::ContextMenuElement
 {
 public:

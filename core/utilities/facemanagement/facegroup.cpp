@@ -61,7 +61,7 @@ enum FaceGroupState
 
 //-------------------------------------------------------------------------------
 
-class FaceItem : public RegionFrameItem
+class Q_DECL_HIDDEN FaceItem : public RegionFrameItem
 {
 public:
 
@@ -166,7 +166,7 @@ void AssignNameWidgetHidingStateChanger::slotStateChanged()
 
 //-------------------------------------------------------------------------------
 
-class FaceGroup::Private
+class Q_DECL_HIDDEN FaceGroup::Private
 {
 public:
 

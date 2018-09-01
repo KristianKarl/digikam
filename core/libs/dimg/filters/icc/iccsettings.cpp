@@ -59,7 +59,7 @@
 namespace Digikam
 {
 
-class IccSettings::Private
+class Q_DECL_HIDDEN IccSettings::Private
 {
 public:
 
@@ -93,7 +93,7 @@ public:
 
 // -----------------------------------------------------------------------------------------------
 
-class IccSettingsCreator
+class Q_DECL_HIDDEN IccSettingsCreator
 {
 public:
 

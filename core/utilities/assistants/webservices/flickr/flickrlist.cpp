@@ -40,7 +40,8 @@
 
 namespace Digikam
 {
-class FlickrList::Private
+
+class Q_DECL_HIDDEN FlickrList::Private
 {
 public:
 
@@ -420,7 +421,7 @@ void FlickrList::slotAddImages(const QList<QUrl>& list)
 
 // ------------------------------------------------------------------------------------------------
 
-class FlickrListViewItem::Private
+class Q_DECL_HIDDEN FlickrListViewItem::Private
 {
 public:
 

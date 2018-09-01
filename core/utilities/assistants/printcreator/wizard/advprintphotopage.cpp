@@ -58,13 +58,13 @@ namespace Digikam
 
 static const char* const CUSTOM_PAGE_LAYOUT_NAME = I18N_NOOP("Custom");
 
-class AdvPrintPhotoPage::Private
+class Q_DECL_HIDDEN AdvPrintPhotoPage::Private
 {
 public:
 
     template <class Ui_Class>
 
-    class WizardUI : public QWidget, public Ui_Class
+    class Q_DECL_HIDDEN WizardUI : public QWidget, public Ui_Class
     {
     public:
 

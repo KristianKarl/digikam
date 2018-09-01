@@ -35,7 +35,7 @@ namespace Digikam
 
 class CoreDbWatch;
 
-class CoreDbBackendPrivate : public BdEngineBackendPrivate
+class Q_DECL_HIDDEN CoreDbBackendPrivate : public BdEngineBackendPrivate
 {
 public:
 
@@ -88,11 +88,11 @@ public:
     }
 
     template <class T>
-    class ChangesetContainer
+    class Q_DECL_HIDDEN ChangesetContainer
     {
     public:
 
-        explicit ChangesetContainer(CoreDbBackendPrivate* d)
+        explicit ChangesetContainer(CoreDbBackendPrivate* const d)
             : d(d)
         {
         }
@@ -120,7 +120,7 @@ public:
 
     public:
 
-        QList<T>                      changesets;
+        QList<T>                    changesets;
         CoreDbBackendPrivate* const d;
     };
 

@@ -80,14 +80,14 @@ void UPnPLogger(const NPT_LogRecord* record)
 namespace Digikam
 {
 
-class CDeviceHostReferenceHolder
+class Q_DECL_HIDDEN CDeviceHostReferenceHolder
 {
 public:
 
     PLT_DeviceHostReference m_device;
 };
 
-class DMediaServer::Private
+class Q_DECL_HIDDEN DMediaServer::Private
 {
 public:
 

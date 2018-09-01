@@ -23,9 +23,6 @@
  *
  * ============================================================ */
 
-#ifndef TEST_QUERYINFO_H
-#define TEST_QUERYINFO_H
-
 // Qt includes
 
 #include <QObject>
@@ -53,7 +50,7 @@ Q_DECLARE_METATYPE(Protection)
 Q_DECLARE_METATYPE(QueryInfo*)
 Q_DECLARE_METATYPE(QVector <Protection>)
 
-class QueryInfoTest : public QObject
+class Q_DECL_HIDDEN QueryInfoTest : public QObject
 {
     Q_OBJECT
 
@@ -151,7 +148,7 @@ private Q_SLOTS:
         connect(&job, SIGNAL(protection(QVector<Protection>)),
                 this,SLOT(queryInfoHandleProtection(QVector<Protection>)));
 
-        job.exec();
+        job.exec();   // krazy:exclude=crashy
 
         QList<FakeServer::Request> requests = fakeserver.getRequest();
         QCOMPARE(requests.size(), 1);
@@ -228,5 +225,3 @@ private:
 QTEST_MAIN(QueryInfoTest)
 
 #include "queryinfotest.moc"
-
-#endif // TEST_QUERYINFO_H

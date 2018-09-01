@@ -49,7 +49,7 @@ namespace Digikam
 
 // This class was split from Private to be able to use the automatic C++ copy constructor
 // (Private contains a QMutex and is thus non-copyable)
-class DisjointMetadataDataFields
+class Q_DECL_HIDDEN DisjointMetadataDataFields
 {
 public:
 
@@ -123,7 +123,7 @@ public:
     bool                                invalid;
 };
 
-class DisjointMetadata::Private : public DisjointMetadataDataFields
+class Q_DECL_HIDDEN DisjointMetadata::Private : public DisjointMetadataDataFields
 {
 public:
 

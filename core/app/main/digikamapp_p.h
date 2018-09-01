@@ -188,7 +188,7 @@ class FilterStatusBar;
 class TagsActionMngr;
 class DAdjustableLabel;
 
-class ProgressEntry
+class Q_DECL_HIDDEN ProgressEntry
 {
 public:
 
@@ -205,7 +205,7 @@ public:
 
 // ------------------------------------------------------------------------------
 
-class DigikamApp::Private
+class Q_DECL_HIDDEN DigikamApp::Private
 {
 public:
 

@@ -41,7 +41,7 @@
 namespace Digikam
 {
 
-class MetadataSettings::Private
+class Q_DECL_HIDDEN MetadataSettings::Private
 {
 public:
 
@@ -90,7 +90,7 @@ MetadataSettingsContainer MetadataSettings::Private::setSettings(const MetadataS
 
 // -----------------------------------------------------------------------------------------------
 
-class MetadataSettingsCreator
+class Q_DECL_HIDDEN MetadataSettingsCreator
 {
 public:
 

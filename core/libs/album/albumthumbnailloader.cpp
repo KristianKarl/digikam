@@ -51,7 +51,7 @@ namespace Digikam
 typedef QMap<qlonglong, QList<int> > IdAlbumMap;
 typedef QMap<int, QPixmap>           AlbumThumbnailMap;
 
-class AlbumThumbnailLoaderCreator
+class Q_DECL_HIDDEN AlbumThumbnailLoaderCreator
 {
 public:
 
@@ -62,7 +62,7 @@ Q_GLOBAL_STATIC(AlbumThumbnailLoaderCreator, creator)
 
 // ---------------------------------------------------------------------------------------------
 
-class AlbumThumbnailLoader::Private
+class Q_DECL_HIDDEN AlbumThumbnailLoader::Private
 {
 public:
 

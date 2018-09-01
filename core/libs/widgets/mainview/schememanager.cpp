@@ -43,7 +43,7 @@ namespace Digikam
 
 // HCY color space management
 
-class HCYColorSpace
+class Q_DECL_HIDDEN HCYColorSpace
 {
 public:
 
@@ -475,12 +475,14 @@ qreal HCYColorSpace::luma(const QColor& color)
 
 // -------------------------------------------------------------------------------------
 
-class StateEffects
+class Q_DECL_HIDDEN StateEffects
 {
 public:
 
     explicit StateEffects(QPalette::ColorGroup state, const KSharedConfigPtr&);
-    ~StateEffects() {}
+    ~StateEffects()
+    {
+    }
 
     QBrush brush(const QBrush& background) const;
     QBrush brush(const QBrush& foreground, const QBrush& background) const;
@@ -727,13 +729,15 @@ static const DecoDefaultColors defaultDecorationColors =
 
 // ------------------------------------------------------------------------------------
 
-class SchemeManagerPrivate : public QSharedData
+class Q_DECL_HIDDEN SchemeManagerPrivate : public QSharedData
 {
 public:
 
     explicit SchemeManagerPrivate(const KSharedConfigPtr&, QPalette::ColorGroup, const char*, SetDefaultColors);
     explicit SchemeManagerPrivate(const KSharedConfigPtr&, QPalette::ColorGroup, const char*, SetDefaultColors, const QBrush&);
-    ~SchemeManagerPrivate() {}
+    ~SchemeManagerPrivate()
+    {
+    }
 
     QBrush background(SchemeManager::BackgroundRole) const;
     QBrush foreground(SchemeManager::ForegroundRole) const;

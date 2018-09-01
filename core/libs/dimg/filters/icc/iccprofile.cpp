@@ -42,12 +42,12 @@
 namespace Digikam
 {
 
-class IccProfile::Private : public QSharedData
+class Q_DECL_HIDDEN IccProfile::Private : public QSharedData
 {
 public:
 
-    explicit Private() :
-        type(IccProfile::InvalidType),
+    explicit Private()
+      : type(IccProfile::InvalidType),
         handle(0)
     {
     }
@@ -98,7 +98,7 @@ public:
 
 // ----------------------------------------------------------------------------------
 
-class IccProfileStatic
+class Q_DECL_HIDDEN IccProfileStatic
 {
 public:
 

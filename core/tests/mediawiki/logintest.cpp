@@ -23,9 +23,6 @@
  *
  * ============================================================ */
 
-#ifndef TEST_LOGIN_H
-#define TEST_LOGIN_H
-
 // Qt includes
 
 #include <QObject>
@@ -44,13 +41,14 @@
 using MediaWiki::Iface;
 using MediaWiki::Login;
 
-class LoginTest : public QObject
+class Q_DECL_HIDDEN LoginTest : public QObject
 {
     Q_OBJECT
 
 public Q_SLOTS:
 
-    void loginHandle(KJob* job) {
+    void loginHandle(KJob* job)
+    {
         Q_UNUSED(job)
         loginCount++;
     }
@@ -59,7 +57,7 @@ private Q_SLOTS:
 
     void initTestCase()
     {
-        loginCount = 0;
+        loginCount     = 0;
         this->m_server = new FakeServer;
     }
 
@@ -77,8 +75,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -99,8 +99,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
 
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
@@ -121,8 +123,11 @@ private Q_SLOTS:
 
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(login.error(), (int)Login::NoError);
     }
@@ -140,8 +145,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -159,8 +166,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -179,8 +188,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -199,8 +210,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -219,8 +232,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QString());
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -239,8 +254,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -259,8 +276,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -279,8 +298,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -299,8 +320,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -319,8 +342,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -342,8 +367,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -364,8 +391,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -387,8 +416,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -410,8 +441,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -433,8 +466,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QString());
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -456,8 +491,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -479,8 +516,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -502,8 +541,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -525,8 +566,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -548,8 +591,10 @@ private Q_SLOTS:
         Iface site(QUrl(QStringLiteral("http://127.0.0.1:12566")));
         Login login(site, QStringLiteral("MyUsername"), QStringLiteral("test"));
 
-        connect(&login, SIGNAL(result(KJob*)),this, SLOT(loginHandle(KJob*)));
-        login.exec();
+        connect(&login, SIGNAL(result(KJob*)),
+                this, SLOT(loginHandle(KJob*)));
+
+        login.exec();   // krazy:exclude=crashy
         FakeServer::Request serverrequest = m_server->getRequest()[0];
         QCOMPARE(this->loginCount, 1);
         QCOMPARE(serverrequest.type, QStringLiteral("POST"));
@@ -572,5 +617,3 @@ private:
 QTEST_MAIN(LoginTest)
 
 #include "logintest.moc"
-
-#endif // TEST_LOGIN_H

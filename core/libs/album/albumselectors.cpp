@@ -50,7 +50,7 @@
 namespace Digikam
 {
 
-class ModelClearButton : public AnimatedClearButton
+class Q_DECL_HIDDEN ModelClearButton : public AnimatedClearButton
 {
 public:
 
@@ -67,7 +67,7 @@ public:
 
 // ------------------------------------------------------------------------------------------
 
-class AlbumSelectors::Private
+class Q_DECL_HIDDEN AlbumSelectors::Private
 {
 public:
 

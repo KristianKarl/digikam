@@ -36,7 +36,7 @@
 namespace Digikam
 {
 
-class DPopupFrame::Private
+class Q_DECL_HIDDEN DPopupFrame::Private
 {
 public:
 
@@ -61,7 +61,7 @@ public:
     OutsideClickCatcher* outsideClickCatcher;
 };
 
-class DPopupFrame::Private::OutsideClickCatcher : public QObject
+class Q_DECL_HIDDEN DPopupFrame::Private::OutsideClickCatcher : public QObject
 {
 public:
 

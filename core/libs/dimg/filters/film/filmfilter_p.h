@@ -31,7 +31,7 @@ namespace Digikam
 
 class DColor;
 
-class FilmProfile
+class Q_DECL_HIDDEN FilmProfile
 {
 public:
 
@@ -114,7 +114,7 @@ private:
 
 // --------------------------------------------------------------------------------------------------------
 
-class FilmContainer::Private
+class Q_DECL_HIDDEN FilmContainer::Private
 {
 public:
 
@@ -144,7 +144,7 @@ public:
 
 // ------------------------------------------------------------------
 
-class FilmFilter::Private
+class Q_DECL_HIDDEN FilmFilter::Private
 {
 public:
 

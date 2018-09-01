@@ -48,7 +48,7 @@
 namespace Digikam
 {
 
-class DbEngineConnectionChecker::Private
+class Q_DECL_HIDDEN DbEngineConnectionChecker::Private
 {
 
 public:
@@ -140,7 +140,7 @@ bool DbEngineConnectionChecker::checkSuccessful() const
 
 // ---------------------------------------------------------------------------------------
 
-class DbEngineGuiErrorHandler::Private
+class Q_DECL_HIDDEN DbEngineGuiErrorHandler::Private
 {
 
 public:

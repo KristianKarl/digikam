@@ -55,11 +55,11 @@ set(CMAKE_MIN_VERSION     "3.0.0")
 set(ECM_MIN_VERSION       "1.7.0")
 set(KF5_MIN_VERSION       "5.1.0")
 set(QT_MIN_VERSION        "5.6.0")
-set(KSANE_MIN_VERSION     "5.0.0")
 set(LENSFUN_MIN_VERSION   "0.2.6.0")
 set(EXIV2_MIN_VERSION     "0.26")
 set(OPENCV_MIN_VERSION    "3.1.0")
 set(QTAV_MIN_VERSION      "1.12.0")
+set(KSANE_MIN_VERSION     "5.0.0")         # For digital scanner support.
 set(CALENDAR_MIN_VERSION  "4.81.0")        # Calendar Core dependency
 set(AKONADI_MIN_VERSION   "4.89.0")        # Akonadi Contact dependency
 set(VKONTAKTE_MIN_VERSION "4.70.0")        # VKontakte library dependency
@@ -99,22 +99,24 @@ include(MacroBoolTo01)
 
 # ==============================================================================
 
-option(ENABLE_KFILEMETADATASUPPORT  "Build digiKam with KDE files indexer support (default=OFF)"                         OFF)
-option(ENABLE_AKONADICONTACTSUPPORT "Build digiKam with KDE Mail Contacts support (default=OFF)"                         OFF)
-option(ENABLE_MEDIAPLAYER           "Build digiKam with Media Player support (default=OFF)"                              OFF)
-option(ENABLE_DBUS                  "Build digiKam with DBUS support (default=ON)"                                       ON)
-option(ENABLE_APPSTYLES             "Build digiKam with support for changing the widget application style (default=OFF)" OFF)
-option(ENABLE_QWEBENGINE            "Build digiKam with QWebEngine instead of QWebKit (default=OFF)"                     OFF)
+option(ENABLE_KFILEMETADATASUPPORT       "Build digiKam with KDE files indexer support (default=OFF)"                         OFF)
+option(ENABLE_AKONADICONTACTSUPPORT      "Build digiKam with KDE Mail Contacts support (default=OFF)"                         OFF)
+option(ENABLE_MEDIAPLAYER                "Build digiKam with Media Player support (default=OFF)"                              OFF)
+option(ENABLE_DBUS                       "Build digiKam with DBUS support (default=ON)"                                       ON)
+option(ENABLE_APPSTYLES                  "Build digiKam with support for changing the widget application style (default=OFF)" OFF)
+option(ENABLE_QWEBENGINE                 "Build digiKam with QWebEngine instead of QWebKit (default=OFF)"                     OFF)
 
 # Mysql support options (experimental):
-option(ENABLE_MYSQLSUPPORT          "Build digiKam with MySQL dabatase support (default=ON)"                             ON)
-option(ENABLE_INTERNALMYSQL         "Build digiKam with internal MySQL server executable (default=ON)"                   ON)
+option(ENABLE_MYSQLSUPPORT               "Build digiKam with MySQL dabatase support (default=ON)"                             ON)
+option(ENABLE_INTERNALMYSQL              "Build digiKam with internal MySQL server executable (default=ON)"                   ON)
 
-# Debug options:
-option(ENABLE_DIGIKAM_MODELTEST     "Enable ModelTest on some models for debugging (default=OFF)"                        OFF)
+# Developer options:
+option(ENABLE_DIGIKAM_MODELTEST          "Enable ModelTest on some models for debugging (default=OFF)"                        OFF)
 
+# Packaging options:
 if(MINGW)
-    option(ENABLE_DRMINGW           "Enable the Dr. Mingw crash handler support for windows (default ON)"                ON)
+    option(ENABLE_DRMINGW                "Enable the Dr. MinGW crash handler support for windows (default ON)"                ON)
+    option(ENABLE_MINGW_HARDENING_LINKER "Enable DEP (NX), ASLR, and high-entropy ASLR linker flags for MinGW (default ON)"   ON)
 endif()
 
 ############## Find Packages ###################
@@ -178,6 +180,11 @@ find_package(KF5 ${KF5_MIN_VERSION} QUIET
 find_package(KF5 ${AKONADI_MIN_VERSION} QUIET
              OPTIONAL_COMPONENTS
              AkonadiContact         # For KDE Mail Contacts support.
+)
+
+find_package(KF5 ${KSANE_MIN_VERSION} QUIET
+             OPTIONAL_COMPONENTS
+             Sane                   # For digital scanner support.
 )
 
 find_package(KF5 ${CALENDAR_MIN_VERSION} QUIET
@@ -295,7 +302,6 @@ find_package(BISON)                                # For Panorama tool.
 find_package(LibXslt)                              # For HTMLGallery tool.
 find_package(LibXml2)                              # For HTMLGallery tool.
 
-DETECT_LIBKSANE(${KSANE_MIN_VERSION})              # For digital scanner device support.
 DETECT_LIBKVKONTAKTE(${VKONTAKTE_MIN_VERSION})     # For VKontakte webservice support.
 
 find_package(Marble)                               # For geolocation support.
@@ -322,10 +328,42 @@ elseif()
     set(HAVE_OPENGL FALSE)
 endif()
 
+# -- Windows rules ------------------------------------------------------------
+
 # For LibRaw
 if(WIN32)
     find_library(WSOCK32_LIBRARY wsock32)
     find_library(WS2_32_LIBRARY ws2_32)
+endif()
+
+if(MINGW)
+
+    # NOTE: inspired from https://phabricator.kde.org/T3917
+    if(ENABLE_MINGW_HARDENING_LINKER)
+
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--dynamicbase -Wl,--nxcompat -Wl,--disable-auto-image-base")
+        set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--dynamicbase -Wl,--nxcompat -Wl,--disable-auto-image-base")
+        set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -Wl,--dynamicbase -Wl,--nxcompat -Wl,--disable-auto-image-base")
+
+        if ("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
+
+            # Enable high-entropy ASLR for 64-bit
+            # The image base has to be >4GB for HEASLR to be enabled.
+            # The values used here are kind of arbitrary.
+            set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--high-entropy-va -Wl,--image-base,0x140000000")
+            set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--high-entropy-va -Wl,--image-base,0x180000000")
+            set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -Wl,--high-entropy-va -Wl,--image-base,0x180000000")
+
+        endif()
+
+        message(STATUS "MinGW linker Security Flags enabled")
+
+    else()
+
+        message(WARNING "MinGW Linker Security Flags not enabled!")
+
+    endif ()
+
 endif()
 
 # -- To link under Solaris (see bug #274484) -----------------------------------

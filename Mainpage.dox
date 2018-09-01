@@ -342,7 +342,6 @@ https://phabricator.kde.org/source/digikam/
 Even if code base can be compiled as well, more features can be enabled if extra components are downloaded and compiled at the same time.
 The project pages of these extra components are given below:
 
- - \b libksane            : https://phabricator.kde.org/source/libksane/
  - \b libkvkontatke       : https://projects.kde.org/projects/extragear/libs/libkvkontatke
  - \b digiKam \b handbook : https://phabricator.kde.org/source/digikam-doc/
 
@@ -448,7 +447,6 @@ There are two configuration sections : the top level and the core.
  - Developers only options:
 
   - \b BUILD_TESTING=ON                      : Build tests code (default=ON).
-  - \b DIGIKAMSC_COMPILE_LIBKSANE=OFF        : Force to use local libksane instead version installed on your computer (default=OFF).
   - \b DIGIKAMSC_COMPILE_LIBKVKONTAKE=OFF    : Force to use local libkvkontakte instead version installed on your computer (default=OFF).
 
 \subsection coreoptions Core Configuration
@@ -470,7 +468,11 @@ There are two configuration sections : the top level and the core.
  - Developers only options:
 
   - \b ENABLE_DIGIKAM_MODELTEST              : Enable ModelTest on some models for debugging (default=OFF).
+
+ - Packaging options
+
   - \b ENABLE_DRMINGW                        : Enable the Dr. Mingw crash handler for windows (default=ON).
+  - \b ENABLE_MINGW_HARDENING_LINKER         : Enable DEP (NX), ASLR, and high-entropy ASLR linker flags for MinGW (default ON).
 
 \section setuplocaldev Setup Local Compilation and Run-Time
 
@@ -702,10 +704,10 @@ for eg:
 \code
 void function()
 {
-....int a;                    // 4 spaces from beginning
-....for (int i=0; i<10; i++)  // 4 spaces from beginning
-....{                         // 4 spaces from beginning
-........a = i;                // 4 spaces from previous indent block
+....int a;                          // 4 spaces from beginning
+....for (int i = 0 ; i < 10 ; ++i)  // 4 spaces from beginning
+....{                               // 4 spaces from beginning
+........a = i;                      // 4 spaces from previous indent block
 \endcode
 
 Emacs by default will indent to 4 spaces
@@ -736,7 +738,7 @@ class A
 { //new line
 ...
 
-for (int i=0; i<10; i++)
+for (int i = 0 ; i < 10 ; ++i)
 { //new line
 
 if (a == foobar)
@@ -820,15 +822,15 @@ a = (b == foobar) ? 1 : -1; // you are asking for trouble by putting comments he
   composed of the classname and a H suffix separated by underscore
 
 \code
-#ifndef ANOTHERNICECLASS_H
-#define ANOTHERNICECLASS_H
+#ifndef DIGIKAM_ANOTHER_NICE_CLASS_H
+#define DIGIKAM_ANOTHER_NICE_CLASS_H
 
 class AnotherNiceClass
 {
 ...
 }
 
-#endif
+#endif // DIGIKAM_ANOTHER_NICE_CLASS_H
 \endcode
 
 - Use forward declarations as much as possible.

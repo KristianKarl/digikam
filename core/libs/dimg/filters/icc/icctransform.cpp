@@ -46,7 +46,7 @@
 namespace Digikam
 {
 
-class TransformDescription
+class Q_DECL_HIDDEN TransformDescription
 {
 public:
 
@@ -83,7 +83,7 @@ public:
     int        proofIntent;
 };
 
-class IccTransform::Private : public QSharedData
+class Q_DECL_HIDDEN IccTransform::Private : public QSharedData
 {
 public:
 

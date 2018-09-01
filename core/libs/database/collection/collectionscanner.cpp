@@ -68,7 +68,7 @@
 namespace Digikam
 {
 
-class NewlyAppearedFile
+class Q_DECL_HIDDEN NewlyAppearedFile
 {
 
 public:
@@ -124,7 +124,7 @@ static bool modificationDateEquals(const QDateTime& a, const QDateTime& b)
 
 // --------------------------------------------------------------------
 
-class CollectionScannerHintContainerImplementation : public CollectionScannerHintContainer
+class Q_DECL_HIDDEN CollectionScannerHintContainerImplementation : public CollectionScannerHintContainer
 {
 public:
 
@@ -267,13 +267,13 @@ void CollectionScannerHintContainerImplementation::clear()
 
 // --------------------------------------------------------------------
 
-class CollectionScanner::Private
+class Q_DECL_HIDDEN CollectionScanner::Private
 {
 
 public:
 
-    explicit Private() :
-        wantSignals(false),
+    explicit Private()
+      : wantSignals(false),
         needTotalFiles(false),
         hints(0),
         updatingHashHint(false),

@@ -47,7 +47,7 @@
 namespace Digikam
 {
 
-class DatabaseServerStarter::Private
+class Q_DECL_HIDDEN DatabaseServerStarter::Private
 {
 public:
 
@@ -61,7 +61,7 @@ public:
 
 // -----------------------------------------------------------------------------------------------
 
-class DatabaseServerStarterCreator
+class Q_DECL_HIDDEN DatabaseServerStarterCreator
 {
 public:
 
@@ -112,7 +112,6 @@ DatabaseServerError DatabaseServerStarter::startServerManagerProcess(const DbEng
 
     return result;
 }
-
 
 void DatabaseServerStarter::stopServerManagerProcess()
 {

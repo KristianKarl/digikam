@@ -55,7 +55,7 @@
 namespace Digikam
 {
 
-class ThemeManagerCreator
+class Q_DECL_HIDDEN ThemeManagerCreator
 {
 public:
 
@@ -67,7 +67,7 @@ Q_GLOBAL_STATIC(ThemeManagerCreator, creator)
 // ---------------------------------------------------------------
 
 
-class ThemeManager::Private
+class Q_DECL_HIDDEN ThemeManager::Private
 {
 public:
 

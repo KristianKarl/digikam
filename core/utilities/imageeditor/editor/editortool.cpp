@@ -49,13 +49,13 @@
 namespace Digikam
 {
 
-class EditorTool::Private
+class Q_DECL_HIDDEN EditorTool::Private
 {
 
 public:
 
-    explicit Private() :
-        initPreview(false),
+    explicit Private()
+      : initPreview(false),
         version(0),
         view(0),
         timer(0),
@@ -365,13 +365,13 @@ void EditorTool::slotUpdateSpotInfo(const DColor& col, const QPoint& point)
 
 // ----------------------------------------------------------------
 
-class EditorToolThreaded::Private
+class Q_DECL_HIDDEN EditorToolThreaded::Private
 {
 
 public:
 
-    explicit Private() :
-        delFilter(true),
+    explicit Private()
+      : delFilter(true),
         currentRenderingMode(EditorToolThreaded::NoneRendering),
         threadedFilter(0),
         threadedAnalyser(0)

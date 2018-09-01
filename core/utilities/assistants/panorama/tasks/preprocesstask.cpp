@@ -42,14 +42,12 @@
 #include "drawdecoderwidget.h"
 #include "drawdecoding.h"
 
-
-
 namespace Digikam
 {
 
 class PanoObserver;
 
-class PreProcessTask::Private
+class Q_DECL_HIDDEN PreProcessTask::Private
 {
 public:
 
@@ -66,7 +64,7 @@ public:
     PanoObserver*             observer;
 };
 
-class PanoObserver : public DImgLoaderObserver
+class Q_DECL_HIDDEN PanoObserver : public DImgLoaderObserver
 {
 public:
 

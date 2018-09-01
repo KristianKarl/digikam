@@ -101,7 +101,7 @@ namespace Digikam
 {
 typedef QSharedPointer<DImgFilterGenerator> ImgFilterPtr;
 
-class DImgFilterManager::Private
+class Q_DECL_HIDDEN DImgFilterManager::Private
 {
 public:
 
@@ -257,7 +257,7 @@ void DImgFilterManager::Private::addGenerator(const ImgFilterPtr& generator)
 
 // -----------------------------------------------------------------------------------------
 
-class DImgFilterManagerCreator
+class Q_DECL_HIDDEN DImgFilterManagerCreator
 {
 public:
 

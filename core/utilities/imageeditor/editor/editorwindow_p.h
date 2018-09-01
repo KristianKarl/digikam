@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DIGIKAM_EDITOR_WINDOW_PRIVATE_H
-#define DIGIKAM_EDITOR_WINDOW_PRIVATE_H
+#ifndef DIGIKAM_IMAGE_EDITOR_WINDOW_PRIVATE_H
+#define DIGIKAM_IMAGE_EDITOR_WINDOW_PRIVATE_H
 
 // Qt includes
 
@@ -63,13 +63,12 @@ class PreviewToolBar;
 class DAdjustableLabel;
 class IccProfilesMenuAction;
 
-class EditorWindow::Private
+class Q_DECL_HIDDEN EditorWindow::Private
 {
-
 public:
 
-    Private() :
-        cmViewIndicator(0),
+    Private()
+      : cmViewIndicator(0),
         underExposureIndicator(0),
         overExposureIndicator(0),
         infoLabel(0),
@@ -382,4 +381,4 @@ void EditorWindow::Private::plugNewVersionInFormatAction(EditorWindow* const q, 
 
 } // namespace Digikam
 
-#endif // DIGIKAM_EDITOR_WINDOW_PRIVATE_H
+#endif // DIGIKAM_IMAGE_EDITOR_WINDOW_PRIVATE_H

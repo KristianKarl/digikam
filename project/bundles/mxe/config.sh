@@ -19,7 +19,7 @@ BUILDING_DIR="`pwd`/temp.build"
 
 #------------
 # IMPORTANT: Target Windows architecture to build installer. Possible values: 32 or 64 bits.
-MXE_ARCHBITS=32
+MXE_ARCHBITS=64
 #------------
 
 if [[ $MXE_ARCHBITS == 32 ]]; then
@@ -69,6 +69,9 @@ DK_EPOCH="-`date "+%Y%m%dT%H%M%S"`"
 
 # Installer will include or not digiKam debug symbols
 DK_DEBUG=1
+
+# Sign bundles with GPG. Passphrase must be hosted in ~/.gnupg/dkorg-gpg-pwd.txt
+DK_SIGN=1
 
 # Upload automatically bundle to files.kde.org (pre-release only).
 DK_UPLOAD=1

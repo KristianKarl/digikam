@@ -41,7 +41,7 @@
 namespace Digikam
 {
 
-class ImageModel::Private
+class Q_DECL_HIDDEN ImageModel::Private
 {
 public:
 
@@ -108,7 +108,7 @@ public:
 typedef QPair<int, int> IntPair; // to make foreach macro happy
 typedef QList<IntPair>  IntPairList;
 
-class ImageModelIncrementalUpdater
+class Q_DECL_HIDDEN ImageModelIncrementalUpdater
 {
 public:
 

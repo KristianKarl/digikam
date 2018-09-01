@@ -58,9 +58,10 @@ namespace Digikam
  * @brief Marker model for storing data needed to display markers on the map. The data is retrieved from Digikam's database.
  */
 
-class GPSMarkerTiler::MyTile : public Tile
+class Q_DECL_HIDDEN GPSMarkerTiler::MyTile : public Tile
 {
 public:
+
     MyTile()
         : Tile()
     {
@@ -81,11 +82,11 @@ public:
     QList<qlonglong> imagesId;
 };
 
-class GPSMarkerTiler::Private
+class Q_DECL_HIDDEN GPSMarkerTiler::Private
 {
 public:
 
-    class InternalJobs
+    class Q_DECL_HIDDEN InternalJobs
     {
     public:
 

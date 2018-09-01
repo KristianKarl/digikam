@@ -66,7 +66,7 @@ namespace Digikam
  * Stores an album along with the sidebar view, where the album
  * is selected
  */
-class HistoryItem
+class Q_DECL_HIDDEN HistoryItem
 {
 public:
 
@@ -105,7 +105,7 @@ public:
 
 // ---------------------------------------------------------------------
 
-class HistoryPosition
+class Q_DECL_HIDDEN HistoryPosition
 {
 public:
 
@@ -130,7 +130,7 @@ public:
 
 // ---------------------------------------------------------------------
 
-class AlbumHistory::Private
+class Q_DECL_HIDDEN AlbumHistory::Private
 {
 public:
 

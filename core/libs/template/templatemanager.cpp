@@ -41,7 +41,7 @@
 namespace Digikam
 {
 
-class TemplateManager::Private
+class Q_DECL_HIDDEN TemplateManager::Private
 {
 public:
 
@@ -59,7 +59,7 @@ public:
     QMutex          mutex;
 };
 
-class TemplateManagerCreator
+class Q_DECL_HIDDEN TemplateManagerCreator
 {
 public:
 

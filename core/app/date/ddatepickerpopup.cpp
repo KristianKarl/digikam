@@ -37,7 +37,7 @@
 namespace Digikam
 {
 
-class DDatePickerAction : public QWidgetAction
+class Q_DECL_HIDDEN DDatePickerAction : public QWidgetAction
 {
 public:
 
@@ -74,12 +74,12 @@ private:
 
 // ---------------------------------------------------------------------------------------
 
-class DDatePickerPopup::Private
+class Q_DECL_HIDDEN DDatePickerPopup::Private
 {
 public:
 
-    explicit Private() :
-        datePicker(0)
+    explicit Private()
+      : datePicker(0)
     {
     }
 

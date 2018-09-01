@@ -111,7 +111,7 @@ extern "C"
 namespace Digikam
 {
 
-class PAlbumPath
+class Q_DECL_HIDDEN PAlbumPath
 {
 public:
 
@@ -160,7 +160,7 @@ uint qHash(const PAlbumPath& id)
 
 // -----------------------------------------------------------------------------------
 
-class AlbumManager::Private
+class Q_DECL_HIDDEN AlbumManager::Private
 {
 public:
 
@@ -252,7 +252,7 @@ public:
 
 // -----------------------------------------------------------------------------------
 
-class ChangingDB
+class Q_DECL_HIDDEN ChangingDB
 {
 public:
 
@@ -272,7 +272,7 @@ public:
 
 // -----------------------------------------------------------------------------------
 
-class AlbumManagerCreator
+class Q_DECL_HIDDEN AlbumManagerCreator
 {
 public:
 

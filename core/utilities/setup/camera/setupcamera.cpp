@@ -70,7 +70,7 @@
 namespace Digikam
 {
 
-class SetupCameraItem : public QTreeWidgetItem
+class Q_DECL_HIDDEN SetupCameraItem : public QTreeWidgetItem
 {
 
 public:
@@ -113,7 +113,7 @@ private:
 
 // -------------------------------------------------------------------
 
-class CameraAutoDetectThread::Private
+class Q_DECL_HIDDEN CameraAutoDetectThread::Private
 {
 public:
 
@@ -162,7 +162,7 @@ QString CameraAutoDetectThread::port() const
 
 // -------------------------------------------------------------------
 
-class SetupCamera::Private
+class Q_DECL_HIDDEN SetupCamera::Private
 {
 public:
 

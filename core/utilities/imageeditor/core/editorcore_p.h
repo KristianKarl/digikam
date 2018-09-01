@@ -21,8 +21,8 @@
  *
  * ============================================================ */
 
-#ifndef DIGIKAM_EDITOR_CORE_PRIVATE_H
-#define DIGIKAM_EDITOR_CORE_PRIVATE_H
+#ifndef DIGIKAM_IMAGE_EDITOR_CORE_PRIVATE_H
+#define DIGIKAM_IMAGE_EDITOR_CORE_PRIVATE_H
 
 // Local includes
 
@@ -53,12 +53,12 @@ namespace Digikam
 
 class UndoManager;
 
-class EditorCore::Private
+class Q_DECL_HIDDEN EditorCore::Private
 {
 
 public:
 
-    class FileToSave
+    class Q_DECL_HIDDEN FileToSave
     {
     public:
 
@@ -75,8 +75,8 @@ public:
 
 public:
 
-    Private() :
-        valid(false),
+    Private()
+      : valid(false),
         rotatedOrFlipped(false),
         exifOrient(false),
         doSoftProofing(false),
@@ -403,4 +403,4 @@ void EditorCore::Private::load(const LoadingDescription& description)
 
 } // namespace Digikam
 
-#endif // DIGIKAM_EDITOR_CORE_PRIVATE_H
+#endif // DIGIKAM_IMAGE_EDITOR_CORE_PRIVATE_H

@@ -45,13 +45,13 @@
 namespace Digikam
 {
 
-class AdvPrintCropPage::Private
+class Q_DECL_HIDDEN AdvPrintCropPage::Private
 {
 public:
 
     template <class Ui_Class>
 
-    class WizardUI : public QWidget, public Ui_Class
+    class Q_DECL_HIDDEN WizardUI : public QWidget, public Ui_Class
     {
     public:
 

@@ -53,7 +53,7 @@
 namespace Digikam
 {
 
-class CameraItem::Private
+class Q_DECL_HIDDEN CameraItem::Private
 {
 
 public:
@@ -116,7 +116,7 @@ void CameraItem::setThumb(const QPixmap& pix, bool hasThumb)
 
 //----------------------------------------------------------------------------
 
-class CameraItemList::Private
+class Q_DECL_HIDDEN CameraItemList::Private
 {
 
 public:

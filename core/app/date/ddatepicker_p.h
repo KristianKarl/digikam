@@ -45,7 +45,7 @@
 namespace Digikam
 {
 
-class DatePickerValidator : public QValidator
+class Q_DECL_HIDDEN DatePickerValidator : public QValidator
 {
 public:
 
@@ -60,7 +60,7 @@ private:
 
 // ------------------------------------------------------------------------------
 
-class DatePickerYearSelector : public QLineEdit
+class Q_DECL_HIDDEN DatePickerYearSelector : public QLineEdit
 {
     Q_OBJECT
 
@@ -93,7 +93,7 @@ private:
 
 // ------------------------------------------------------------------------------
 
-class DDatePicker::Private
+class Q_DECL_HIDDEN DDatePicker::Private
 {
 public:
 

@@ -41,12 +41,12 @@
 namespace Digikam
 {
 
-class ImportSettings::Private
+class Q_DECL_HIDDEN ImportSettings::Private
 {
-
 public:
-    explicit Private() :
-        iconShowName(true),
+
+    explicit Private()
+      : iconShowName(true),
         iconShowSize(false),
         iconShowDate(true),
         iconShowTitle(false),
@@ -213,7 +213,7 @@ const QString ImportSettings::Private::configShowThumbbarEntry(QLatin1String("Sh
 
 // -------------------------------------------------------------------------------------------------
 
-class ImportSettingsCreator
+class Q_DECL_HIDDEN ImportSettingsCreator
 {
 public:
 

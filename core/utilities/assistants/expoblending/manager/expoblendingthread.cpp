@@ -77,7 +77,7 @@ namespace Digikam
 
 class RawObserver;
 
-class ExpoBlendingThread::Private
+class Q_DECL_HIDDEN ExpoBlendingThread::Private
 {
 public:
 
@@ -130,7 +130,7 @@ public:
     MetaEngine                      meta;
 };
 
-class RawObserver : public DImgLoaderObserver
+class Q_DECL_HIDDEN RawObserver : public DImgLoaderObserver
 {
 public:
 

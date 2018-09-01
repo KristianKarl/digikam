@@ -1052,7 +1052,8 @@ void SearchField::setValidValueState(bool valueIsValid)
 // -------------------------------------------------------------------------
 
 SearchFieldText::SearchFieldText(QObject* const parent)
-    : SearchField(parent), m_edit(0)
+    : SearchField(parent),
+      m_edit(0)
 {
 }
 
@@ -2177,7 +2178,7 @@ QList<QRect> SearchFieldChoice::valueWidgetRects() const
 }
 
 /*
-class SearchFieldChoice : public SearchField
+class Q_DECL_HIDDEN SearchFieldChoice : public SearchField
 {
     // Note: Someone added this space on purpose (Marcel?)
     // It seems that automoc4 is not recognizing this macro to be in a comment

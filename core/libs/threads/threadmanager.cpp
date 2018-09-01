@@ -42,7 +42,7 @@
 namespace Digikam
 {
 
-class ParkingThread : public QThread
+class Q_DECL_HIDDEN ParkingThread : public QThread
 {
 public:
 
@@ -139,7 +139,7 @@ public:
 
 // --------------------------------------------------------------------------------------------------
 
-class WorkerObjectRunnable : public QRunnable
+class Q_DECL_HIDDEN WorkerObjectRunnable : public QRunnable
 {
 public:
 
@@ -211,7 +211,7 @@ void WorkerObjectRunnable::run()
 
 // -------------------------------------------------------------------------------------------------
 
-class ThreadManager::Private
+class Q_DECL_HIDDEN ThreadManager::Private
 {
 public:
 
@@ -230,11 +230,13 @@ public:
     }
 };
 
-class ThreadManagerCreator
+class Q_DECL_HIDDEN ThreadManagerCreator
 {
 public:
+
     ThreadManager object;
 };
+
 Q_GLOBAL_STATIC(ThreadManagerCreator, creator)
 
 ThreadManager* ThreadManager::instance()

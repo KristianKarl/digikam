@@ -23,9 +23,6 @@
  *
  * ============================================================ */
 
-#ifndef TEST_GENERAL_H
-#define TEST_GENERAL_H
-
 // Qt includes
 
 #include <QObject>
@@ -46,7 +43,7 @@ using MediaWiki::Iface;
 using MediaWiki::QuerySiteInfoGeneral;
 using MediaWiki::Generalinfo;
 
-class QuerySiteInfoGeneralTest : public QObject
+class Q_DECL_HIDDEN QuerySiteInfoGeneralTest : public QObject
 {
     Q_OBJECT
 
@@ -121,7 +118,7 @@ void QuerySiteInfoGeneralTestAttribute()
     resultExpected.setDataBaseVersion(QStringLiteral("5.1.46-facebook-r3489-log"));
     resultExpected.setRev(QStringLiteral("75268"));
     resultExpected.setCas(QStringLiteral("first-letter"));
-    resultExpected.setLicence(QStringLiteral("Creative Commons Attribution-Share Alike 3.0 Unported"));
+    resultExpected.setLicense(QStringLiteral("Creative Commons Attribution-Share Alike 3.0 Unported"));
     resultExpected.setLanguage(QStringLiteral("en"));
     resultExpected.setFallBack8bitEncoding(QStringLiteral("windows-1252"));
     resultExpected.setWriteApi(QStringLiteral(""));
@@ -193,5 +190,3 @@ private:
 QTEST_MAIN(QuerySiteInfoGeneralTest)
 
 #include "querysiteinfogeneraltest.moc"
-
-#endif // TEST_GENERAL_H

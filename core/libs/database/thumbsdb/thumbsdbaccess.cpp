@@ -45,7 +45,7 @@
 namespace Digikam
 {
 
-class ThumbsDbAccessStaticPriv
+class Q_DECL_HIDDEN ThumbsDbAccessStaticPriv
 {
 public:
 
@@ -73,7 +73,7 @@ ThumbsDbAccessStaticPriv* ThumbsDbAccess::d = 0;
 
 // -----------------------------------------------------------------------------
 
-class ThumbsDbAccessMutexLocker : public QMutexLocker
+class Q_DECL_HIDDEN ThumbsDbAccessMutexLocker : public QMutexLocker
 {
 public:
 

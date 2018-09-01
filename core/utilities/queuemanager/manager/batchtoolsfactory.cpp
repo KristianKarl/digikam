@@ -74,7 +74,7 @@
 namespace Digikam
 {
 
-class BatchToolsFactory::Private
+class Q_DECL_HIDDEN BatchToolsFactory::Private
 {
 
 public:
@@ -88,7 +88,7 @@ public:
 
 // --------------------------------------------------------------------------------
 
-class BatchToolsFactoryCreator
+class Q_DECL_HIDDEN BatchToolsFactoryCreator
 {
 public:
 

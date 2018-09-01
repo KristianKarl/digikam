@@ -44,7 +44,7 @@
 namespace Digikam
 {
 
-class AbstractAlbumModel::Private
+class Q_DECL_HIDDEN AbstractAlbumModel::Private
 {
 public:
 
@@ -635,7 +635,7 @@ void AbstractSpecificAlbumModel::emitDataChangedForChildren(Album* album)
 
 // ------------------------------------------------------------------
 
-class AbstractCountingAlbumModel::Private
+class Q_DECL_HIDDEN AbstractCountingAlbumModel::Private
 {
 public:
 
@@ -878,7 +878,7 @@ void AbstractCountingAlbumModel::slotAlbumMoved(Album*)
 
 // ------------------------------------------------------------------
 
-class AbstractCheckableAlbumModel::Private
+class Q_DECL_HIDDEN AbstractCheckableAlbumModel::Private
 {
 public:
 

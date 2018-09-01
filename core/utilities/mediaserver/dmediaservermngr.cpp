@@ -52,7 +52,7 @@
 namespace Digikam
 {
 
-class DMediaServerMngrCreator
+class Q_DECL_HIDDEN DMediaServerMngrCreator
 {
 public:
 
@@ -63,7 +63,7 @@ Q_GLOBAL_STATIC(DMediaServerMngrCreator, creator)
 
 // ---------------------------------------------------------------------------------------------
 
-class DMediaServerMngr::Private
+class Q_DECL_HIDDEN DMediaServerMngr::Private
 {
 public:
 
@@ -218,7 +218,7 @@ bool DMediaServerMngr::startMediaServer()
     }
 
     d->server->addAlbumsOnServer(d->collectionMap);
- 
+
     return true;
 }
 

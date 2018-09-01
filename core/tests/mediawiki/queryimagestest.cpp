@@ -43,9 +43,8 @@ Q_DECLARE_METATYPE(QList<QString>)
 Q_DECLARE_METATYPE(QList<Image>)
 Q_DECLARE_METATYPE(QList<QList<Image> >)
 
-class QueryImagesTest : public QObject
+class Q_DECL_HIDDEN QueryImagesTest : public QObject
 {
-
     Q_OBJECT
 
 public Q_SLOTS:
@@ -91,7 +90,10 @@ private Q_SLOTS:
         QueryImages* const job = new QueryImages(MediaWiki);
         job->setTitle(title);
         job->setLimit(limit);
-        connect(job, SIGNAL(images(QList<Image>)), this, SLOT(imagesHandle(QList<Image>)));
+
+        connect(job, SIGNAL(images(QList<Image>)),
+                this, SLOT(imagesHandle(QList<Image>)));
+
         job->exec();
 
         // Test job
@@ -180,7 +182,7 @@ private Q_SLOTS:
 
 private:
 
-    QList<QList<Image> >imagesReceivedList;
+    QList<QList<Image> > imagesReceivedList;
 };
 
 QTEST_MAIN(QueryImagesTest)

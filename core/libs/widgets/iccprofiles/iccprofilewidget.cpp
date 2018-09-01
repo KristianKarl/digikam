@@ -67,7 +67,7 @@ static const char* ICCEntryList[] =
 namespace Digikam
 {
 
-class ICCTagInfo
+class Q_DECL_HIDDEN ICCTagInfo
 {
 
 public:
@@ -101,7 +101,7 @@ typedef QMap<QString, ICCTagInfo> ICCTagInfoMap;
 
 // ---------------------------------------------------------------------------------------
 
-class ICCProfileWidget::Private
+class Q_DECL_HIDDEN ICCProfileWidget::Private
 {
 
 public:
