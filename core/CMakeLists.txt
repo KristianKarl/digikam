@@ -92,7 +92,6 @@ include(KDEFrameworkCompilerSettings)
 include(KDECompilerSettings)
 # Local macros
 include(MacroUtils)
-include(MacroLocalLibs)
 include(MacroOpenCV)
 include(MacroJPEG)
 include(MacroBoolTo01)
@@ -152,8 +151,13 @@ if(ENABLE_DBUS)
     endif()
 endif()
 
+# Dependencies For unit tests and CLI test tools
+
 if(BUILD_TESTING)
-    find_package(Qt5 ${QT_MIN_VERSION} NO_MODULE COMPONENTS Test Qml WebView)
+    find_package(Qt5 ${QT_MIN_VERSION} NO_MODULE COMPONENTS
+                 Test
+                 Qml WebView  # Optional, for 'sialis' O2 library test tool.
+    )
 endif()
 
 find_package(KF5 ${KF5_MIN_VERSION}
@@ -187,10 +191,16 @@ find_package(KF5 ${KSANE_MIN_VERSION} QUIET
              Sane                   # For digital scanner support.
 )
 
+find_package(KF5 ${VKONTAKTE_MIN_VERSION} QUIET
+             OPTIONAL_COMPONENTS
+             Vkontakte              # For VKontakte webservice support.
+)
+
 find_package(KF5 ${CALENDAR_MIN_VERSION} QUIET
              OPTIONAL_COMPONENTS
              CalendarCore           # For Calendar tool.
 )
+
 if ("${KF5CalendarCore_VERSION}" VERSION_GREATER 5.6.40)
     set(HAVE_KCALENDAR_QDATETIME TRUE)
 endif()
@@ -301,8 +311,6 @@ find_package(BISON)                                # For Panorama tool.
 
 find_package(LibXslt)                              # For HTMLGallery tool.
 find_package(LibXml2)                              # For HTMLGallery tool.
-
-DETECT_LIBKVKONTAKTE(${VKONTAKTE_MIN_VERSION})     # For VKontakte webservice support.
 
 find_package(Marble)                               # For geolocation support.
 
